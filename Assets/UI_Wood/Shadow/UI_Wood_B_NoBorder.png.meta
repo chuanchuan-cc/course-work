@@ -1,0 +1,7761 @@
+fileFormatVersion: 2
+guid: 9a4d4e38de69b0e47b73875c1c60f551
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3907593875485539394
+    second: UI_Wood_B_NoBorder_0
+  - first:
+      213: -6187439117280295840
+    second: UI_Wood_B_NoBorder_1
+  - first:
+      213: -6079063041637562033
+    second: UI_Wood_B_NoBorder_2
+  - first:
+      213: -692113404719432368
+    second: UI_Wood_B_NoBorder_3
+  - first:
+      213: -262310993050177207
+    second: UI_Wood_B_NoBorder_4
+  - first:
+      213: 5964304997130462277
+    second: UI_Wood_B_NoBorder_5
+  - first:
+      213: -4824158560047831008
+    second: UI_Wood_B_NoBorder_6
+  - first:
+      213: -2905130852306679956
+    second: UI_Wood_B_NoBorder_7
+  - first:
+      213: -6959432035659086904
+    second: UI_Wood_B_NoBorder_8
+  - first:
+      213: -439536719531625780
+    second: UI_Wood_B_NoBorder_9
+  - first:
+      213: 8159724246896166593
+    second: UI_Wood_B_NoBorder_10
+  - first:
+      213: 7180951991626133923
+    second: UI_Wood_B_NoBorder_11
+  - first:
+      213: -439874519018325568
+    second: UI_Wood_B_NoBorder_12
+  - first:
+      213: -6422391412642074891
+    second: UI_Wood_B_NoBorder_13
+  - first:
+      213: -3594605174546531979
+    second: UI_Wood_B_NoBorder_14
+  - first:
+      213: -6700375264906120051
+    second: UI_Wood_B_NoBorder_15
+  - first:
+      213: -3666943693429023389
+    second: UI_Wood_B_NoBorder_16
+  - first:
+      213: -2821861042267922174
+    second: UI_Wood_B_NoBorder_17
+  - first:
+      213: -4205474978030832595
+    second: UI_Wood_B_NoBorder_18
+  - first:
+      213: -3001877257665532905
+    second: UI_Wood_B_NoBorder_19
+  - first:
+      213: 1197750013112611950
+    second: UI_Wood_B_NoBorder_20
+  - first:
+      213: -71765287145412219
+    second: UI_Wood_B_NoBorder_21
+  - first:
+      213: -2632669506766987119
+    second: UI_Wood_B_NoBorder_22
+  - first:
+      213: 7701417660103388608
+    second: UI_Wood_B_NoBorder_23
+  - first:
+      213: 7400785928861581678
+    second: UI_Wood_B_NoBorder_24
+  - first:
+      213: 6859528372918173383
+    second: UI_Wood_B_NoBorder_25
+  - first:
+      213: 5747004640887465775
+    second: UI_Wood_B_NoBorder_26
+  - first:
+      213: -312906245001878980
+    second: UI_Wood_B_NoBorder_27
+  - first:
+      213: -5425537835776483639
+    second: UI_Wood_B_NoBorder_28
+  - first:
+      213: -7794490674312154161
+    second: UI_Wood_B_NoBorder_29
+  - first:
+      213: 7838770224121891154
+    second: UI_Wood_B_NoBorder_30
+  - first:
+      213: -8626037993870470017
+    second: UI_Wood_B_NoBorder_31
+  - first:
+      213: 5089943143575828955
+    second: UI_Wood_B_NoBorder_32
+  - first:
+      213: 87345255889776935
+    second: UI_Wood_B_NoBorder_33
+  - first:
+      213: 3307605665604932731
+    second: UI_Wood_B_NoBorder_34
+  - first:
+      213: -179052281566564512
+    second: UI_Wood_B_NoBorder_35
+  - first:
+      213: 1861950300501347156
+    second: UI_Wood_B_NoBorder_36
+  - first:
+      213: -7801259296124798015
+    second: UI_Wood_B_NoBorder_37
+  - first:
+      213: -7397332579400713625
+    second: UI_Wood_B_NoBorder_38
+  - first:
+      213: 8376326351762566639
+    second: UI_Wood_B_NoBorder_39
+  - first:
+      213: 147289465937675014
+    second: UI_Wood_B_NoBorder_40
+  - first:
+      213: 5384821604597466444
+    second: UI_Wood_B_NoBorder_41
+  - first:
+      213: -6257135264721390116
+    second: UI_Wood_B_NoBorder_42
+  - first:
+      213: 9166687379903678757
+    second: UI_Wood_B_NoBorder_43
+  - first:
+      213: -5091350816112021440
+    second: UI_Wood_B_NoBorder_44
+  - first:
+      213: -7311346024798947703
+    second: UI_Wood_B_NoBorder_45
+  - first:
+      213: -7242844304732708211
+    second: UI_Wood_B_NoBorder_46
+  - first:
+      213: 832612963748935019
+    second: UI_Wood_B_NoBorder_47
+  - first:
+      213: -132867590007480580
+    second: UI_Wood_B_NoBorder_48
+  - first:
+      213: 6795408908449012085
+    second: UI_Wood_B_NoBorder_49
+  - first:
+      213: 6684023045869216188
+    second: UI_Wood_B_NoBorder_50
+  - first:
+      213: 8347823445028899558
+    second: UI_Wood_B_NoBorder_51
+  - first:
+      213: 4409513235522641809
+    second: UI_Wood_B_NoBorder_52
+  - first:
+      213: -6713298533482743272
+    second: UI_Wood_B_NoBorder_53
+  - first:
+      213: -3685423628159601960
+    second: UI_Wood_B_NoBorder_54
+  - first:
+      213: -3854797674629533614
+    second: UI_Wood_B_NoBorder_55
+  - first:
+      213: -8993569619365356926
+    second: UI_Wood_B_NoBorder_56
+  - first:
+      213: -3410095653357568967
+    second: UI_Wood_B_NoBorder_57
+  - first:
+      213: -8659867170315166573
+    second: UI_Wood_B_NoBorder_58
+  - first:
+      213: -104742674509700939
+    second: UI_Wood_B_NoBorder_59
+  - first:
+      213: 6348399488547417540
+    second: UI_Wood_B_NoBorder_60
+  - first:
+      213: -8659613862194072367
+    second: UI_Wood_B_NoBorder_61
+  - first:
+      213: 33941660970988556
+    second: UI_Wood_B_NoBorder_62
+  - first:
+      213: 4018014337442165532
+    second: UI_Wood_B_NoBorder_63
+  - first:
+      213: 7571696483706562803
+    second: UI_Wood_B_NoBorder_64
+  - first:
+      213: 1168539556420555145
+    second: UI_Wood_B_NoBorder_65
+  - first:
+      213: -7161833145711331647
+    second: UI_Wood_B_NoBorder_66
+  - first:
+      213: 8610094991439046367
+    second: UI_Wood_B_NoBorder_67
+  - first:
+      213: -5860980123089629364
+    second: UI_Wood_B_NoBorder_68
+  - first:
+      213: -5736061553495443168
+    second: UI_Wood_B_NoBorder_69
+  - first:
+      213: 3731125661286709688
+    second: UI_Wood_B_NoBorder_70
+  - first:
+      213: 6434051572723726944
+    second: UI_Wood_B_NoBorder_71
+  - first:
+      213: 8316415190440162058
+    second: UI_Wood_B_NoBorder_72
+  - first:
+      213: -1171769071853975630
+    second: UI_Wood_B_NoBorder_73
+  - first:
+      213: 3309043423799670940
+    second: UI_Wood_B_NoBorder_74
+  - first:
+      213: 3323270115297099685
+    second: UI_Wood_B_NoBorder_75
+  - first:
+      213: -5470605341183255656
+    second: UI_Wood_B_NoBorder_76
+  - first:
+      213: -8923641691775668280
+    second: UI_Wood_B_NoBorder_77
+  - first:
+      213: 7784037408205713251
+    second: UI_Wood_B_NoBorder_78
+  - first:
+      213: 5146194273819538859
+    second: UI_Wood_B_NoBorder_79
+  - first:
+      213: 2253634624158541619
+    second: UI_Wood_B_NoBorder_80
+  - first:
+      213: 3758161799790452856
+    second: UI_Wood_B_NoBorder_81
+  - first:
+      213: 935937545077388544
+    second: UI_Wood_B_NoBorder_82
+  - first:
+      213: 2395225478220051946
+    second: UI_Wood_B_NoBorder_83
+  - first:
+      213: -5522357374455134442
+    second: UI_Wood_B_NoBorder_84
+  - first:
+      213: -3262149267751032715
+    second: UI_Wood_B_NoBorder_85
+  - first:
+      213: 1360025069862960372
+    second: UI_Wood_B_NoBorder_86
+  - first:
+      213: -9175993065667241330
+    second: UI_Wood_B_NoBorder_87
+  - first:
+      213: -4811746729690515232
+    second: UI_Wood_B_NoBorder_88
+  - first:
+      213: -7719929520265065283
+    second: UI_Wood_B_NoBorder_89
+  - first:
+      213: -2467296641275321181
+    second: UI_Wood_B_NoBorder_90
+  - first:
+      213: 1691818657848439225
+    second: UI_Wood_B_NoBorder_91
+  - first:
+      213: 4078112226638530856
+    second: UI_Wood_B_NoBorder_92
+  - first:
+      213: 392715336004943449
+    second: UI_Wood_B_NoBorder_93
+  - first:
+      213: -472053584851358283
+    second: UI_Wood_B_NoBorder_94
+  - first:
+      213: 5025995341155939493
+    second: UI_Wood_B_NoBorder_95
+  - first:
+      213: 1121390213798851629
+    second: UI_Wood_B_NoBorder_96
+  - first:
+      213: 5845548882167411785
+    second: UI_Wood_B_NoBorder_97
+  - first:
+      213: -3921616450457448088
+    second: UI_Wood_B_NoBorder_98
+  - first:
+      213: 2512767536609620126
+    second: UI_Wood_B_NoBorder_99
+  - first:
+      213: 602954160068767026
+    second: UI_Wood_B_NoBorder_100
+  - first:
+      213: 4066037107763335008
+    second: UI_Wood_B_NoBorder_101
+  - first:
+      213: -2825326425138384592
+    second: UI_Wood_B_NoBorder_102
+  - first:
+      213: 309346248656110400
+    second: UI_Wood_B_NoBorder_103
+  - first:
+      213: -6631067937536512285
+    second: UI_Wood_B_NoBorder_104
+  - first:
+      213: 7734222307602603197
+    second: UI_Wood_B_NoBorder_105
+  - first:
+      213: -3946859142805581879
+    second: UI_Wood_B_NoBorder_106
+  - first:
+      213: -2575183533136233083
+    second: UI_Wood_B_NoBorder_107
+  - first:
+      213: 5289200550288884143
+    second: UI_Wood_B_NoBorder_108
+  - first:
+      213: -5459160187487696738
+    second: UI_Wood_B_NoBorder_109
+  - first:
+      213: -8908671152922277666
+    second: UI_Wood_B_NoBorder_110
+  - first:
+      213: -180051592787470010
+    second: UI_Wood_B_NoBorder_111
+  - first:
+      213: 7675128971053390411
+    second: UI_Wood_B_NoBorder_112
+  - first:
+      213: 7511735877033332794
+    second: UI_Wood_B_NoBorder_113
+  - first:
+      213: -4535274178739480124
+    second: UI_Wood_B_NoBorder_114
+  - first:
+      213: -7042900759668492382
+    second: UI_Wood_B_NoBorder_115
+  - first:
+      213: 2585104442784910465
+    second: UI_Wood_B_NoBorder_116
+  - first:
+      213: 8330622321886726301
+    second: UI_Wood_B_NoBorder_117
+  - first:
+      213: 7523689362358915873
+    second: UI_Wood_B_NoBorder_118
+  - first:
+      213: 5121730409408870255
+    second: UI_Wood_B_NoBorder_119
+  - first:
+      213: 3633862234379818989
+    second: UI_Wood_B_NoBorder_120
+  - first:
+      213: -4677183816831069357
+    second: UI_Wood_B_NoBorder_121
+  - first:
+      213: 3403002391188166378
+    second: UI_Wood_B_NoBorder_122
+  - first:
+      213: -2431046728439201990
+    second: UI_Wood_B_NoBorder_123
+  - first:
+      213: 5091402023127168375
+    second: UI_Wood_B_NoBorder_124
+  - first:
+      213: -3823684958519198452
+    second: UI_Wood_B_NoBorder_125
+  - first:
+      213: 4472346320790166962
+    second: UI_Wood_B_NoBorder_126
+  - first:
+      213: -5450454629574243392
+    second: UI_Wood_B_NoBorder_127
+  - first:
+      213: 1528452193384770216
+    second: UI_Wood_B_NoBorder_128
+  - first:
+      213: -2380872617563319621
+    second: UI_Wood_B_NoBorder_129
+  - first:
+      213: 789228587300450475
+    second: UI_Wood_B_NoBorder_130
+  - first:
+      213: 8538228554485411880
+    second: UI_Wood_B_NoBorder_131
+  - first:
+      213: -4198894191112729964
+    second: UI_Wood_B_NoBorder_132
+  - first:
+      213: -5463646872252077296
+    second: UI_Wood_B_NoBorder_133
+  - first:
+      213: 936027230199319280
+    second: UI_Wood_B_NoBorder_134
+  - first:
+      213: 3612000471158823080
+    second: UI_Wood_B_NoBorder_135
+  - first:
+      213: 3940002812482091388
+    second: UI_Wood_B_NoBorder_136
+  - first:
+      213: -7806413395637351348
+    second: UI_Wood_B_NoBorder_137
+  - first:
+      213: -3122905039741226171
+    second: UI_Wood_B_NoBorder_138
+  - first:
+      213: 1912587806267090043
+    second: UI_Wood_B_NoBorder_139
+  - first:
+      213: 301899849762509086
+    second: UI_Wood_B_NoBorder_140
+  - first:
+      213: -8262980381265635448
+    second: UI_Wood_B_NoBorder_141
+  - first:
+      213: 234649067713856141
+    second: UI_Wood_B_NoBorder_142
+  - first:
+      213: -8840224358906839196
+    second: UI_Wood_B_NoBorder_143
+  - first:
+      213: -1876146341567724727
+    second: UI_Wood_B_NoBorder_144
+  - first:
+      213: 2663884139312444434
+    second: UI_Wood_B_NoBorder_145
+  - first:
+      213: 8145363359164616049
+    second: UI_Wood_B_NoBorder_146
+  - first:
+      213: -1141771659415714642
+    second: UI_Wood_B_NoBorder_147
+  - first:
+      213: 5158843546328550619
+    second: UI_Wood_B_NoBorder_148
+  - first:
+      213: -4567752959909813500
+    second: UI_Wood_B_NoBorder_149
+  - first:
+      213: -2798568301726399002
+    second: UI_Wood_B_NoBorder_150
+  - first:
+      213: 75627996894339781
+    second: UI_Wood_B_NoBorder_151
+  - first:
+      213: 1391625838025153509
+    second: UI_Wood_B_NoBorder_152
+  - first:
+      213: 3398770764415093188
+    second: UI_Wood_B_NoBorder_153
+  - first:
+      213: 5691502535289074169
+    second: UI_Wood_B_NoBorder_154
+  - first:
+      213: -5985155135232346963
+    second: UI_Wood_B_NoBorder_155
+  - first:
+      213: 5749911441807455065
+    second: UI_Wood_B_NoBorder_156
+  - first:
+      213: 7050034382405938040
+    second: UI_Wood_B_NoBorder_157
+  - first:
+      213: 6089314681345235376
+    second: UI_Wood_B_NoBorder_158
+  - first:
+      213: 8614814588217164134
+    second: UI_Wood_B_NoBorder_159
+  - first:
+      213: 4407676542890786092
+    second: UI_Wood_B_NoBorder_160
+  - first:
+      213: -1008767356625135926
+    second: UI_Wood_B_NoBorder_161
+  - first:
+      213: -1391483607359040437
+    second: UI_Wood_B_NoBorder_162
+  - first:
+      213: -1694775354765239603
+    second: UI_Wood_B_NoBorder_163
+  - first:
+      213: -5664852543604128310
+    second: UI_Wood_B_NoBorder_164
+  - first:
+      213: -535279994501466790
+    second: UI_Wood_B_NoBorder_165
+  - first:
+      213: -290382994024784743
+    second: UI_Wood_B_NoBorder_166
+  - first:
+      213: 8715164636254225038
+    second: UI_Wood_B_NoBorder_167
+  - first:
+      213: 7785053340898693432
+    second: UI_Wood_B_NoBorder_168
+  - first:
+      213: -2993175475041364394
+    second: UI_Wood_B_NoBorder_169
+  - first:
+      213: -7528320817420563780
+    second: UI_Wood_B_NoBorder_170
+  - first:
+      213: -4312544059421991307
+    second: UI_Wood_B_NoBorder_171
+  - first:
+      213: 2498817110873820169
+    second: UI_Wood_B_NoBorder_172
+  - first:
+      213: 1225895435604410651
+    second: UI_Wood_B_NoBorder_173
+  - first:
+      213: -4570894031437101836
+    second: UI_Wood_B_NoBorder_174
+  - first:
+      213: 9003488560616377575
+    second: UI_Wood_B_NoBorder_175
+  - first:
+      213: 6360566908894823351
+    second: UI_Wood_B_NoBorder_176
+  - first:
+      213: 5289425086186557776
+    second: UI_Wood_B_NoBorder_177
+  - first:
+      213: 2242385793361548551
+    second: UI_Wood_B_NoBorder_178
+  - first:
+      213: -6230397558771147185
+    second: UI_Wood_B_NoBorder_179
+  - first:
+      213: 4841835994135052439
+    second: UI_Wood_B_NoBorder_180
+  - first:
+      213: 5746407980241897882
+    second: UI_Wood_B_NoBorder_181
+  - first:
+      213: 1420978796230534287
+    second: UI_Wood_B_NoBorder_182
+  - first:
+      213: 3162125208765670569
+    second: UI_Wood_B_NoBorder_183
+  - first:
+      213: -2315478789436270749
+    second: UI_Wood_B_NoBorder_184
+  - first:
+      213: -3580868203547541357
+    second: UI_Wood_B_NoBorder_185
+  - first:
+      213: -5901938550667056676
+    second: UI_Wood_B_NoBorder_186
+  - first:
+      213: 5624057540391726038
+    second: UI_Wood_B_NoBorder_187
+  - first:
+      213: 5472125885190221453
+    second: UI_Wood_B_NoBorder_188
+  - first:
+      213: 1465719111385202971
+    second: UI_Wood_B_NoBorder_189
+  - first:
+      213: -5577101911284499524
+    second: UI_Wood_B_NoBorder_190
+  - first:
+      213: -4591626152818311059
+    second: UI_Wood_B_NoBorder_191
+  - first:
+      213: 8834904086260444512
+    second: UI_Wood_B_NoBorder_192
+  - first:
+      213: -1034225450534699836
+    second: UI_Wood_B_NoBorder_193
+  - first:
+      213: 6680992290718762046
+    second: UI_Wood_B_NoBorder_194
+  - first:
+      213: -3874878511057429250
+    second: UI_Wood_B_NoBorder_195
+  - first:
+      213: -3185149773451818238
+    second: UI_Wood_B_NoBorder_196
+  - first:
+      213: -2697904622093387006
+    second: UI_Wood_B_NoBorder_197
+  - first:
+      213: -5557681708597640875
+    second: UI_Wood_B_NoBorder_198
+  - first:
+      213: 3166994388937200184
+    second: UI_Wood_B_NoBorder_199
+  - first:
+      213: 9096025648549201563
+    second: UI_Wood_B_NoBorder_200
+  - first:
+      213: 7904628366329961676
+    second: UI_Wood_B_NoBorder_201
+  - first:
+      213: -7805503562318731251
+    second: UI_Wood_B_NoBorder_202
+  - first:
+      213: 4252507378583339225
+    second: UI_Wood_B_NoBorder_203
+  - first:
+      213: 1214409607894375941
+    second: UI_Wood_B_NoBorder_204
+  - first:
+      213: 167034983965717534
+    second: UI_Wood_B_NoBorder_205
+  - first:
+      213: -9062384314933942388
+    second: UI_Wood_B_NoBorder_206
+  - first:
+      213: -4036587695851059564
+    second: UI_Wood_B_NoBorder_207
+  - first:
+      213: 13000729415022559
+    second: UI_Wood_B_NoBorder_208
+  - first:
+      213: -5194354330907046141
+    second: UI_Wood_B_NoBorder_209
+  - first:
+      213: -4226006225168635974
+    second: UI_Wood_B_NoBorder_210
+  - first:
+      213: -8611200107877604920
+    second: UI_Wood_B_NoBorder_211
+  - first:
+      213: -3739461480798655876
+    second: UI_Wood_B_NoBorder_212
+  - first:
+      213: 7352561510453404968
+    second: UI_Wood_B_NoBorder_213
+  - first:
+      213: 8716733867346563176
+    second: UI_Wood_B_NoBorder_214
+  - first:
+      213: 7335611124299493081
+    second: UI_Wood_B_NoBorder_215
+  - first:
+      213: -7146782840048362217
+    second: UI_Wood_B_NoBorder_216
+  - first:
+      213: -7173176039939286111
+    second: UI_Wood_B_NoBorder_217
+  - first:
+      213: 6176447845165053792
+    second: UI_Wood_B_NoBorder_218
+  - first:
+      213: -7604501407614932155
+    second: UI_Wood_B_NoBorder_219
+  - first:
+      213: 6930873413544701099
+    second: UI_Wood_B_NoBorder_220
+  - first:
+      213: -8332048010968409052
+    second: UI_Wood_B_NoBorder_221
+  - first:
+      213: -5686540025957884602
+    second: UI_Wood_B_NoBorder_222
+  - first:
+      213: -8278951747585843492
+    second: UI_Wood_B_NoBorder_223
+  - first:
+      213: -5353775050925713759
+    second: UI_Wood_B_NoBorder_224
+  - first:
+      213: -1771292889980063014
+    second: UI_Wood_B_NoBorder_225
+  - first:
+      213: -5499485570257773399
+    second: UI_Wood_B_NoBorder_226
+  - first:
+      213: -8657933908448633938
+    second: UI_Wood_B_NoBorder_227
+  - first:
+      213: 4184163139928135845
+    second: UI_Wood_B_NoBorder_228
+  - first:
+      213: -4748878858170890831
+    second: UI_Wood_B_NoBorder_229
+  - first:
+      213: 963169667879066186
+    second: UI_Wood_B_NoBorder_230
+  - first:
+      213: 7377763593346777973
+    second: UI_Wood_B_NoBorder_231
+  - first:
+      213: -3146093513764083412
+    second: UI_Wood_B_NoBorder_232
+  - first:
+      213: -3617837939488008783
+    second: UI_Wood_B_NoBorder_233
+  - first:
+      213: 5170505788639365742
+    second: UI_Wood_B_NoBorder_234
+  - first:
+      213: -8279024953533216284
+    second: UI_Wood_B_NoBorder_235
+  - first:
+      213: -4437313599256695416
+    second: UI_Wood_B_NoBorder_236
+  - first:
+      213: 6695934139586619290
+    second: UI_Wood_B_NoBorder_237
+  - first:
+      213: 4018579227576182828
+    second: UI_Wood_B_NoBorder_238
+  - first:
+      213: -7530376014901144338
+    second: UI_Wood_B_NoBorder_239
+  - first:
+      213: 4655980000659274803
+    second: UI_Wood_B_NoBorder_240
+  - first:
+      213: -437780186650940579
+    second: UI_Wood_B_NoBorder_241
+  - first:
+      213: -5495334790840194390
+    second: UI_Wood_B_NoBorder_242
+  - first:
+      213: -5774737956104745902
+    second: UI_Wood_B_NoBorder_243
+  - first:
+      213: -3381973880595241522
+    second: UI_Wood_B_NoBorder_244
+  - first:
+      213: -9046957749001310767
+    second: UI_Wood_B_NoBorder_245
+  - first:
+      213: -2494503198423656282
+    second: UI_Wood_B_NoBorder_246
+  - first:
+      213: 4766895856203906119
+    second: UI_Wood_B_NoBorder_247
+  - first:
+      213: -9111630414749774449
+    second: UI_Wood_B_NoBorder_248
+  - first:
+      213: 7418810956085279207
+    second: UI_Wood_B_NoBorder_249
+  - first:
+      213: -7692189638411807995
+    second: UI_Wood_B_NoBorder_250
+  - first:
+      213: 3704540910218588456
+    second: UI_Wood_B_NoBorder_251
+  - first:
+      213: 3530659057558038700
+    second: UI_Wood_B_NoBorder_252
+  - first:
+      213: -464239086323802140
+    second: UI_Wood_B_NoBorder_253
+  - first:
+      213: -8428090723167492506
+    second: UI_Wood_B_NoBorder_254
+  - first:
+      213: -2525120358410377739
+    second: UI_Wood_B_NoBorder_255
+  - first:
+      213: 1354676937369142762
+    second: UI_Wood_B_NoBorder_256
+  - first:
+      213: -6177699165501966292
+    second: UI_Wood_B_NoBorder_257
+  - first:
+      213: -5243711798012818760
+    second: UI_Wood_B_NoBorder_258
+  - first:
+      213: 3129628467809973413
+    second: UI_Wood_B_NoBorder_259
+  - first:
+      213: 3961584123358339960
+    second: UI_Wood_B_NoBorder_260
+  - first:
+      213: -1812707000944011475
+    second: UI_Wood_B_NoBorder_261
+  - first:
+      213: -9106163873303385592
+    second: UI_Wood_B_NoBorder_262
+  - first:
+      213: 5117175543278688955
+    second: UI_Wood_B_NoBorder_263
+  - first:
+      213: 1005656406222049117
+    second: UI_Wood_B_NoBorder_264
+  - first:
+      213: -382757246333087606
+    second: UI_Wood_B_NoBorder_265
+  - first:
+      213: -741804874953847233
+    second: UI_Wood_B_NoBorder_266
+  - first:
+      213: -5431663772492892823
+    second: UI_Wood_B_NoBorder_267
+  - first:
+      213: 9221949034728647635
+    second: UI_Wood_B_NoBorder_268
+  - first:
+      213: 4521585066654356153
+    second: UI_Wood_B_NoBorder_269
+  - first:
+      213: 4703153455936615740
+    second: UI_Wood_B_NoBorder_270
+  - first:
+      213: 6558558792880409775
+    second: UI_Wood_B_NoBorder_271
+  - first:
+      213: 524431924521971459
+    second: UI_Wood_B_NoBorder_272
+  - first:
+      213: 4836324956111753101
+    second: UI_Wood_B_NoBorder_273
+  - first:
+      213: -7481826831179243920
+    second: UI_Wood_B_NoBorder_274
+  - first:
+      213: -1853521714714369971
+    second: UI_Wood_B_NoBorder_275
+  - first:
+      213: 1799680609216494137
+    second: UI_Wood_B_NoBorder_276
+  - first:
+      213: -2134810630462893916
+    second: UI_Wood_B_NoBorder_277
+  - first:
+      213: -7390591248322822868
+    second: UI_Wood_B_NoBorder_278
+  - first:
+      213: 8860444529538496074
+    second: UI_Wood_B_NoBorder_279
+  - first:
+      213: 654917301691456618
+    second: UI_Wood_B_NoBorder_280
+  - first:
+      213: 4980142558935306772
+    second: UI_Wood_B_NoBorder_281
+  - first:
+      213: 144134229898372586
+    second: UI_Wood_B_NoBorder_282
+  - first:
+      213: -4350402296223389407
+    second: UI_Wood_B_NoBorder_283
+  - first:
+      213: -8183797006071257719
+    second: UI_Wood_B_NoBorder_284
+  - first:
+      213: 8866905208397385535
+    second: UI_Wood_B_NoBorder_285
+  - first:
+      213: -3923837839531444125
+    second: UI_Wood_B_NoBorder_286
+  - first:
+      213: -7328109919457585811
+    second: UI_Wood_B_NoBorder_287
+  - first:
+      213: 1905750869782036681
+    second: UI_Wood_B_NoBorder_288
+  - first:
+      213: -7164161516634842390
+    second: UI_Wood_B_NoBorder_289
+  - first:
+      213: -4193040688423414528
+    second: UI_Wood_B_NoBorder_290
+  - first:
+      213: -7851362747730567329
+    second: UI_Wood_B_NoBorder_291
+  - first:
+      213: -2662315427395072508
+    second: UI_Wood_B_NoBorder_292
+  - first:
+      213: 5863150475684330157
+    second: UI_Wood_B_NoBorder_293
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb34135d21075c9c0800000000000000
+      internalID: -3907593875485539394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 064c621c7ecc12aa0800000000000000
+      internalID: -6187439117280295840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49ccf33f54d2aba0800000000000000
+      internalID: -6079063041637562033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05d796f768e1566f0800000000000000
+      internalID: -692113404719432368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9417096aa851c5cf0800000000000000
+      internalID: -262310993050177207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5446c0e6bc775c250800000000000000
+      internalID: 5964304997130462277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028603069552d0db0800000000000000
+      internalID: -4824158560047831008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c678b32c1e6eea7d0800000000000000
+      internalID: -2905130852306679956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3011caf612b6f90800000000000000
+      internalID: -6959432035659086904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2b39eaea376e9f0800000000000000
+      internalID: -439536719531625780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c6436178f92d3170800000000000000
+      internalID: 8159724246896166593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a172024acdd7a360800000000000000
+      internalID: 7180951991626133923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c9ba2c947045e9f0800000000000000
+      internalID: -439874519018325568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe23f899051fd6a0800000000000000
+      internalID: -6422391412642074891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5797f5783a56d1ec0800000000000000
+      internalID: -3594605174546531979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84f479523c7303a0800000000000000
+      internalID: -6700375264906120051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36dddcd93266c1dc0800000000000000
+      internalID: -3666943693429023389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2016b1a355cb6d8d0800000000000000
+      internalID: -2821861042267922174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_18
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24bdaef9c623a5c0800000000000000
+      internalID: -4205474978030832595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71ca58de9803756d0800000000000000
+      internalID: -3001877257665532905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64fb4d7a434f9010800000000000000
+      internalID: 1197750013112611950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5896e700ad9010ff0800000000000000
+      internalID: -71765287145412219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_22
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 190a6263801e67bd0800000000000000
+      internalID: -2632669506766987119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_23
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cde169de8ee0ea60800000000000000
+      internalID: 7701417660103388608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e61018c579fd4b660800000000000000
+      internalID: 7400785928861581678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_25
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce308a36b0f13f50800000000000000
+      internalID: 6859528372918173383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_26
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f276e9e954671cf40800000000000000
+      internalID: 5747004640887465775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_27
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3269a29d6558abf0800000000000000
+      internalID: -312906245001878980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_28
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ced917851e94b4b0800000000000000
+      internalID: -5425537835776483639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_29
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc37788570864d390800000000000000
+      internalID: -7794490674312154161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_30
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259c1bcbcf7e8cc60800000000000000
+      internalID: 7838770224121891154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_31
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74d354b5282a4880800000000000000
+      internalID: -8626037993870470017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd9b5c7425c13a640800000000000000
+      internalID: 5089943143575828955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_33
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72130262c00563100800000000000000
+      internalID: 87345255889776935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_34
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 511
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b74937314d9f6ed20800000000000000
+      internalID: 3307605665604932731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_35
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 479
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f600906e0e38df0800000000000000
+      internalID: -179052281566564512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b80daeee9f6d910800000000000000
+      internalID: 1861950300501347156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb74c5c00c5cb390800000000000000
+      internalID: -7801259296124798015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a75673635675990800000000000000
+      internalID: -7397332579400713625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_39
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed2d8fef60be3470800000000000000
+      internalID: 8376326351762566639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_40
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6034f582df64b0200800000000000000
+      internalID: 147289465937675014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_41
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4581e828bababa40800000000000000
+      internalID: 5384821604597466444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd536b2e0a03a29a0800000000000000
+      internalID: -6257135264721390116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_43
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5290736da9d963f70800000000000000
+      internalID: 9166687379903678757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0407fba6863e759b0800000000000000
+      internalID: -5091350816112021440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_45
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 986f4e11781e88a90800000000000000
+      internalID: -7311346024798947703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_46
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8222f4aa7f3c7b90800000000000000
+      internalID: -7242844304732708211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_47
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b65f3a344190e8b00800000000000000
+      internalID: 832612963748935019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_48
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe117f71a5f72ef0800000000000000
+      internalID: -132867590007480580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_49
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579d0ab06642e4e50800000000000000
+      internalID: 6795408908449012085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_50
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb12f87fb8b62cc50800000000000000
+      internalID: 6684023045869216188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_51
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea00a0d13d69d370800000000000000
+      internalID: 8347823445028899558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_52
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19fd5b3dcecb13d30800000000000000
+      internalID: 4409513235522641809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_53
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a3c986d8295d2a0800000000000000
+      internalID: -6713298533482743272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_54
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d237b48cbebadcc0800000000000000
+      internalID: -3685423628159601960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_55
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25074b240f1018ac0800000000000000
+      internalID: -3854797674629533614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_56
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a9bf6c41c603380800000000000000
+      internalID: -8993569619365356926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_57
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93cb48b1218eca0d0800000000000000
+      internalID: -3410095653357568967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_58
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c1c47c0b8f1d780800000000000000
+      internalID: -8659867170315166573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_59
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b0660da711eb8ef0800000000000000
+      internalID: -104742674509700939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_60
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cde32713bb0a1850800000000000000
+      internalID: 6348399488547417540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_61
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d4bfdba21fd2d780800000000000000
+      internalID: -8659613862194072367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_62
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c043345c2c5987000800000000000000
+      internalID: 33941660970988556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_63
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c13baa560cad2c730800000000000000
+      internalID: 4018014337442165532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_64
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f8676ad5d1141960800000000000000
+      internalID: 7571696483706562803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_65
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981907e098c773010800000000000000
+      internalID: 1168539556420555145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_66
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c6f141f2be0c9c90800000000000000
+      internalID: -7161833145711331647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_67
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd62817c6c33d7770800000000000000
+      internalID: 8610094991439046367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_68
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f0e9f71ad99aea0800000000000000
+      internalID: -5860980123089629364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_69
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 029f026786a6560b0800000000000000
+      internalID: -5736061553495443168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_70
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 447
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9b655450f97c330800000000000000
+      internalID: 3731125661286709688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_71
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 415
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06abdbaf0d75a4950800000000000000
+      internalID: 6434051572723726944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0339dead87d96370800000000000000
+      internalID: 8316415190440162058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b7ca59cc3a0dbfe0800000000000000
+      internalID: -1171769071853975630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_74
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98fbed36751ced20800000000000000
+      internalID: 3309043423799670940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_75
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5af74faff80ae1e20800000000000000
+      internalID: 3323270115297099685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_76
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89bda6c3d618414b0800000000000000
+      internalID: -5470605341183255656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_77
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf68da292bd82480800000000000000
+      internalID: -8923641691775668280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_78
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f247af7c4760c60800000000000000
+      internalID: 7784037408205713251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_79
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5b9242d64fa6740800000000000000
+      internalID: 5146194273819538859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_80
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337ad7a10c4864f10800000000000000
+      internalID: 2253634624158541619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_81
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 870e3fcce3ca72430800000000000000
+      internalID: 3758161799790452856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_82
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005f94a0d3e1dfc00800000000000000
+      internalID: 935937545077388544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_83
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae5754ac1ec8d3120800000000000000
+      internalID: 2395225478220051946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_84
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617c7d40a35ac53b0800000000000000
+      internalID: -5522357374455134442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_85
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 578266b46848ab2d0800000000000000
+      internalID: -3262149267751032715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_86
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fcbec66897cfd210800000000000000
+      internalID: 1360025069862960372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_87
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ad47b5ce258a080800000000000000
+      internalID: -9175993065667241330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_88
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e836a3d7dd393db0800000000000000
+      internalID: -4811746729690515232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_89
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc8c85d00d4dd490800000000000000
+      internalID: -7719929520265065283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_90
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4254de6c662cdd0800000000000000
+      internalID: -2467296641275321181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_91
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b13f6d0b1c8a7710800000000000000
+      internalID: 1691818657848439225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_92
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82987fe967d589830800000000000000
+      internalID: 4078112226638530856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_93
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e3c647484337500800000000000000
+      internalID: 392715336004943449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_94
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd2cfff3cde279f0800000000000000
+      internalID: -472053584851358283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_95
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a43e58422cefb540800000000000000
+      internalID: 5025995341155939493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_96
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d247414457aff8f00800000000000000
+      internalID: 1121390213798851629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_97
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94435cebcbf8f1150800000000000000
+      internalID: 5845548882167411785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_98
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861d72dad9e9399c0800000000000000
+      internalID: -3921616450457448088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_99
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90ffb6e2c42fd220800000000000000
+      internalID: 2512767536609620126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_100
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d2ebe2d9f1e5800800000000000000
+      internalID: 602954160068767026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_101
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f4acbe4377d6830800000000000000
+      internalID: 4066037107763335008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_102
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0313a17e59c6ac8d0800000000000000
+      internalID: -2825326425138384592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_103
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0434fbf26c40b4400800000000000000
+      internalID: 309346248656110400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_104
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee67adf7d6b9f3a0800000000000000
+      internalID: -6631067937536512285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_105
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc1e8a063a755b60800000000000000
+      internalID: 7734222307602603197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_106
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 383
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cf029e5580f939c0800000000000000
+      internalID: -3946859142805581879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_107
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 351
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dbaf3783c134cd0800000000000000
+      internalID: -2575183533136233083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa105c980e3076940800000000000000
+      internalID: 5289200550288884143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_109
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9847dcbbba2d34b0800000000000000
+      internalID: -5459160187487696738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_110
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed84c4d59ca0e5480800000000000000
+      internalID: -8908671152922277666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_111
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 649d8a2c704508df0800000000000000
+      internalID: -180051592787470010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_112
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a52f47229838a60800000000000000
+      internalID: 7675128971053390411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_113
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3011253bfb0f3860800000000000000
+      internalID: 7511735877033332794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_114
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c95b31d9287f01c0800000000000000
+      internalID: -4535274178739480124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_115
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a771afe217924e90800000000000000
+      internalID: -7042900759668492382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_116
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c8a735bc220e320800000000000000
+      internalID: 2585104442784910465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_117
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d988ffd3dd05c9370800000000000000
+      internalID: 8330622321886726301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_118
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 123d9c3ec93896860800000000000000
+      internalID: 7523689362358915873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_119
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67b128dbaa041740800000000000000
+      internalID: 5121730409408870255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_120
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de79aeaf2721e6230800000000000000
+      internalID: 3633862234379818989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_121
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3531490791e471fb0800000000000000
+      internalID: -4677183816831069357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_122
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae6539815a4e93f20800000000000000
+      internalID: 3403002391188166378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_123
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f710771ef234ed0800000000000000
+      internalID: -2431046728439201990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_124
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77533352a2b48a640800000000000000
+      internalID: 5091402023127168375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_125
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d757af9ca8feac0800000000000000
+      internalID: -3823684958519198452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_126
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd19338847f01e30800000000000000
+      internalID: 4472346320790166962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_127
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb08d364681c54b0800000000000000
+      internalID: -5450454629574243392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_128
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aaaddafb27263510800000000000000
+      internalID: 1528452193384770216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_129
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb21faef7f075fed0800000000000000
+      internalID: -2380872617563319621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_130
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba070a8f737e3fa00800000000000000
+      internalID: 789228587300450475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_131
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 820333102a1ed7670800000000000000
+      internalID: 8538228554485411880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_132
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a4649daf78ab5c0800000000000000
+      internalID: -4198894191112729964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_133
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01bad390e1a3d24b0800000000000000
+      internalID: -5463646872252077296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_134
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa8f1c7ecf6dfc00800000000000000
+      internalID: 936027230199319280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_135
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a817f39a47602230800000000000000
+      internalID: 3612000471158823080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_136
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c79f804dea3bda630800000000000000
+      internalID: 3940002812482091388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_137
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4c4f27706c0aa390800000000000000
+      internalID: -7806413395637351348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_138
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54372f6896639a4d0800000000000000
+      internalID: -3122905039741226171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_139
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b742b4af970ea8a10800000000000000
+      internalID: 1912587806267090043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_140
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1196d65050903400800000000000000
+      internalID: 301899849762509086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_141
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 887d3a45f1ff35d80800000000000000
+      internalID: -8262980381265635448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_142
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 319
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8206f77514a14300800000000000000
+      internalID: 234649067713856141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_143
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 287
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f3a9878c6315580800000000000000
+      internalID: -8840224358906839196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_144
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9430534b7d696f5e0800000000000000
+      internalID: -1876146341567724727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_145
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 214f386c28408f420800000000000000
+      internalID: 2663884139312444434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_146
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d4d75b1d42a0170800000000000000
+      internalID: 8145363359164616049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_147
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea40be1a9bc9720f0800000000000000
+      internalID: -1141771659415714642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_148
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdccab66fd4e79740800000000000000
+      internalID: 5158843546328550619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_149
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40326da42e41c90c0800000000000000
+      internalID: -4567752959909813500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_150
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e50eeff4fc7929d0800000000000000
+      internalID: -2798568301726399002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_151
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c226f1334fac0100800000000000000
+      internalID: 75627996894339781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_152
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eb9eb7935c005310800000000000000
+      internalID: 1391625838025153509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_153
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c9c1f5b00cda2f20800000000000000
+      internalID: 3398770764415093188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_154
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f1f326a6674cfe40800000000000000
+      internalID: 5691502535289074169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_155
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da4fede7d1570fca0800000000000000
+      internalID: -5985155135232346963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_156
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95333e2fdf9cbcf40800000000000000
+      internalID: 5749911441807455065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_157
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ba8990be0c6d160800000000000000
+      internalID: 7050034382405938040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_158
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b9572ba077918450800000000000000
+      internalID: 6089314681345235376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_159
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66189888938fd8770800000000000000
+      internalID: 8614814588217164134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_160
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2db3df76763b2d30800000000000000
+      internalID: 4407676542890786092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_161
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac6595f0f632002f0800000000000000
+      internalID: -1008767356625135926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_162
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44d590180570bce0800000000000000
+      internalID: -1391483607359040437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_163
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dca912d4bc2fa78e0800000000000000
+      internalID: -1694775354765239603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_164
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5028110a66261b0800000000000000
+      internalID: -5664852543604128310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_165
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a55fd585ead4298f0800000000000000
+      internalID: -535279994501466790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_166
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c9658943a58fbf0800000000000000
+      internalID: -290382994024784743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_167
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82cafecf0c72f870800000000000000
+      internalID: 8715164636254225038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_168
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8311cbd34c01a0c60800000000000000
+      internalID: 7785053340898693432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_169
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6569fb393ca1676d0800000000000000
+      internalID: -2993175475041364394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_170
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cba08727a18068790800000000000000
+      internalID: -7528320817420563780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_171
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e5eebd604c624c0800000000000000
+      internalID: -4312544059421991307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_172
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c4d4c4ce49da220800000000000000
+      internalID: 2498817110873820169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_173
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1149f25761430110800000000000000
+      internalID: 1225895435604410651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_174
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f40d36981ce090c0800000000000000
+      internalID: -4570894031437101836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_175
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec05d2b421d2fc70800000000000000
+      internalID: 9003488560616377575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_176
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3c7c667e5454850800000000000000
+      internalID: 6360566908894823351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_177
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05190306710d76940800000000000000
+      internalID: 5289425086186557776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_178
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 255
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70592b69ffd8e1f10800000000000000
+      internalID: 2242385793361548551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_179
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e1cfb2e6e2989a0800000000000000
+      internalID: -6230397558771147185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790ce1bfe28a13340800000000000000
+      internalID: 4841835994135052439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_181
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a99c9ccbc975fbf40800000000000000
+      internalID: 5746407980241897882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_182
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84eeaebfa458b310800000000000000
+      internalID: 1420978796230534287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_183
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a429cbaf1022eb20800000000000000
+      internalID: 3162125208765670569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_184
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36713b61f44cddfd0800000000000000
+      internalID: -2315478789436270749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_185
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390ce0457533e4ec0800000000000000
+      internalID: -3580868203547541357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_186
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd96e41782a181ea0800000000000000
+      internalID: -5901938550667056676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_187
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbe763198aac0e40800000000000000
+      internalID: 5624057540391726038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_188
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8eabf00085e0fb40800000000000000
+      internalID: 5472125885190221453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_189
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11cd9e14c7475410800000000000000
+      internalID: 1465719111385202971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_190
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbb3cb54c572a92b0800000000000000
+      internalID: -5577101911284499524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_191
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d600fdb67544740c0800000000000000
+      internalID: -4591626152818311059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_192
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d63360572eb9a70800000000000000
+      internalID: 8834904086260444512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_193
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ccf53bae61b5a1f0800000000000000
+      internalID: -1034225450534699836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_194
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e344a6b4717a7bc50800000000000000
+      internalID: 6680992290718762046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_195
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc90a0368aa93ac0800000000000000
+      internalID: -3874878511057429250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_196
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b0dfc18231cc3d0800000000000000
+      internalID: -3185149773451818238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_197
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b3d325a0e1f8ad0800000000000000
+      internalID: -2697904622093387006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_198
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5510a509ee52fd2b0800000000000000
+      internalID: -5557681708597640875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_199
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 832d1460e9c63fb20800000000000000
+      internalID: 3166994388937200184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_200
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b960e9172239b3e70800000000000000
+      internalID: 9096025648549201563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_201
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cccd2906e91e2bd60800000000000000
+      internalID: 7904628366329961676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_202
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0822fa8dd74da390800000000000000
+      internalID: -7805503562318731251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_203
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d000391ee0f30b30800000000000000
+      internalID: 4252507378583339225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_204
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e9d5aaa137ad010800000000000000
+      internalID: 1214409607894375941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_205
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e14f654de6d615200800000000000000
+      internalID: 167034983965717534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_206
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c876a4aea71fb3280800000000000000
+      internalID: -9062384314933942388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_207
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496c51c90e82bf7c0800000000000000
+      internalID: -4036587695851059564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_208
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd77a9238103e2000800000000000000
+      internalID: 13000729415022559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_209
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f06c4c142f9e7b0800000000000000
+      internalID: -5194354330907046141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_210
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab7eb328ab53a55c0800000000000000
+      internalID: -4226006225168635974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_211
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c16620402fde7880800000000000000
+      internalID: -8611200107877604920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_212
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a6db18893ca1cc0800000000000000
+      internalID: -3739461480798655876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_213
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 825e8cbfcbb890660800000000000000
+      internalID: 7352561510453404968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_214
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8601fc4e44f08f870800000000000000
+      internalID: 8716733867346563176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_215
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9de664aa3735dc560800000000000000
+      internalID: 7335611124299493081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_216
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d5f0c4fd681dc90800000000000000
+      internalID: -7146782840048362217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_217
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab53149562c37c90800000000000000
+      internalID: -7173176039939286111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_218
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0673ac8479627b550800000000000000
+      internalID: 6176447845165053792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_219
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b67299242677690800000000000000
+      internalID: -7604501407614932155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_220
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bace785f5a86f2060800000000000000
+      internalID: 6930873413544701099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_221
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c5ab6aa7e9e5c80800000000000000
+      internalID: -8332048010968409052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_222
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d5db799f95511b0800000000000000
+      internalID: -5686540025957884602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_223
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdedb84df314b1d80800000000000000
+      internalID: -8278951747585843492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_224
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6593ae4f193b5b0800000000000000
+      internalID: -5353775050925713759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_225
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad23093508a1b67e0800000000000000
+      internalID: -1771292889980063014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_226
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac1669e207eda3b0800000000000000
+      internalID: -5499485570257773399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_227
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eab1c126bf6d8d780800000000000000
+      internalID: -8657933908448633938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_228
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a813b50532211a30800000000000000
+      internalID: 4184163139928135845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_229
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b58c51d6d7981eb0800000000000000
+      internalID: -4748878858170890831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_230
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4adc58b5bddd5d00800000000000000
+      internalID: 963169667879066186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_231
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5738e3a26e4136660800000000000000
+      internalID: 7377763593346777973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_232
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c296ee13e94d654d0800000000000000
+      internalID: -3146093513764083412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_233
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5d2e9ef8bdacdc0800000000000000
+      internalID: -3617837939488008783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_234
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a43f8ce9351c740800000000000000
+      internalID: 5170505788639365742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_235
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e9ce0e3baefa1d80800000000000000
+      internalID: -8279024953533216284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_236
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88d6b479ace7b62c0800000000000000
+      internalID: -4437313599256695416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_237
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a97a8759f9cbcec50800000000000000
+      internalID: 6695934139586619290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_238
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c282171248cd4c730800000000000000
+      internalID: 4018579227576182828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_239
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee412be79eabe7790800000000000000
+      internalID: -7530376014901144338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_240
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33c7e94642d5d9040800000000000000
+      internalID: 4655980000659274803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_241
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b67fc5d31bce9f0800000000000000
+      internalID: -437780186650940579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_242
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaaef1e8f16acb3b0800000000000000
+      internalID: -5495334790840194390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_243
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c496fbc620cdfa0800000000000000
+      internalID: -5774737956104745902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_244
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec5a87f8ca0d011d0800000000000000
+      internalID: -3381973880595241522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_245
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd2fc03cdfb27280800000000000000
+      internalID: -9046957749001310767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_246
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a8d1e6be8eb16dd0800000000000000
+      internalID: -2494503198423656282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_247
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74cb05e668a672240800000000000000
+      internalID: 4766895856203906119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_248
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8dc13cc96cfc8180800000000000000
+      internalID: -9111630414749774449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_249
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e93d3d0249e4f660800000000000000
+      internalID: 7418810956085279207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_250
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 127
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5031681674adf3590800000000000000
+      internalID: -7692189638411807995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_251
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8213b71945c296330800000000000000
+      internalID: 3704540910218588456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_252
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca823c4e4bb6ff030800000000000000
+      internalID: 3530659057558038700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_253
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef51d8b201be89f0800000000000000
+      internalID: -464239086323802140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_254
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66626d62428690b80800000000000000
+      internalID: -8428090723167492506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_255
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f5a7d5a968f4fcd0800000000000000
+      internalID: -2525120358410377739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_256
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae54d454f77ccc210800000000000000
+      internalID: 1354676937369142762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_257
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28370ff657644aa0800000000000000
+      internalID: -6177699165501966292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_258
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bacbeee6e79a37b0800000000000000
+      internalID: -5243711798012818760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_259
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a473ce828cae6b20800000000000000
+      internalID: 3129628467809973413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_260
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873e99455cf5af630800000000000000
+      internalID: 3961584123358339960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_261
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d275ed63698f7d6e0800000000000000
+      internalID: -1812707000944011475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_262
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80aa149243860a180800000000000000
+      internalID: -9106163873303385592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_263
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba517e6b0cd30740800000000000000
+      internalID: 5117175543278688955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_264
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5f06fa5c2fc4fd00800000000000000
+      internalID: 1005656406222049117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_265
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a801c19ff4c20baf0800000000000000
+      internalID: -382757246333087606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_266
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3e09bf756494b5f0800000000000000
+      internalID: -741804874953847233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_267
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965f33db39ade94b0800000000000000
+      internalID: -5431663772492892823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_268
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dbe1cf79c1faff70800000000000000
+      internalID: 9221949034728647635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_269
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2d4a769a5efbe30800000000000000
+      internalID: 4521585066654356153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_270
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c35b0495625f44140800000000000000
+      internalID: 4703153455936615740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_271
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: facc620397ea40b50800000000000000
+      internalID: 6558558792880409775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_272
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30fa10a8e08274700800000000000000
+      internalID: 524431924521971459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_273
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8fc5637ce31e1340800000000000000
+      internalID: 4836324956111753101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_274
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e139033263b2890800000000000000
+      internalID: -7481826831179243920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_275
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d402af222d7f646e0800000000000000
+      internalID: -1853521714714369971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_276
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93af18d9affb9f810800000000000000
+      internalID: 1799680609216494137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_277
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a01884da01af52e0800000000000000
+      internalID: -2134810630462893916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_278
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d7b9baa685f6990800000000000000
+      internalID: -7390591248322822868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_279
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46f13fda5f96fa70800000000000000
+      internalID: 8860444529538496074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_280
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c9394e0dbb61900800000000000000
+      internalID: 654917301691456618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_281
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412d42c75450d1540800000000000000
+      internalID: 4980142558935306772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_282
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae521158151100200800000000000000
+      internalID: 144134229898372586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_283
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 129af87392440a3c0800000000000000
+      internalID: -4350402296223389407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_284
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985a73b8bff4d6e80800000000000000
+      internalID: -8183797006071257719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_285
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f4693ee439d0b70800000000000000
+      internalID: 8866905208397385535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_286
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368fd7a364abb89c0800000000000000
+      internalID: -3923837839531444125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_287
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65d6bfaad25d4a90800000000000000
+      internalID: -7328109919457585811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_288
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c000c7a156927a10800000000000000
+      internalID: 1905750869782036681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_289
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aead477de09c39c90800000000000000
+      internalID: -7164161516634842390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_290
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00553c5a5b35fc5c0800000000000000
+      internalID: -4193040688423414528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_291
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5fd8c2ed2b5a0390800000000000000
+      internalID: -7851362747730567329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_292
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e031e693e8d0bd0800000000000000
+      internalID: -2662315427395072508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wood_B_NoBorder_293
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daab3d71b481e5150800000000000000
+      internalID: 5863150475684330157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Wood_B_NoBorder_0: -3907593875485539394
+      UI_Wood_B_NoBorder_1: -6187439117280295840
+      UI_Wood_B_NoBorder_10: 8159724246896166593
+      UI_Wood_B_NoBorder_100: 602954160068767026
+      UI_Wood_B_NoBorder_101: 4066037107763335008
+      UI_Wood_B_NoBorder_102: -2825326425138384592
+      UI_Wood_B_NoBorder_103: 309346248656110400
+      UI_Wood_B_NoBorder_104: -6631067937536512285
+      UI_Wood_B_NoBorder_105: 7734222307602603197
+      UI_Wood_B_NoBorder_106: -3946859142805581879
+      UI_Wood_B_NoBorder_107: -2575183533136233083
+      UI_Wood_B_NoBorder_108: 5289200550288884143
+      UI_Wood_B_NoBorder_109: -5459160187487696738
+      UI_Wood_B_NoBorder_11: 7180951991626133923
+      UI_Wood_B_NoBorder_110: -8908671152922277666
+      UI_Wood_B_NoBorder_111: -180051592787470010
+      UI_Wood_B_NoBorder_112: 7675128971053390411
+      UI_Wood_B_NoBorder_113: 7511735877033332794
+      UI_Wood_B_NoBorder_114: -4535274178739480124
+      UI_Wood_B_NoBorder_115: -7042900759668492382
+      UI_Wood_B_NoBorder_116: 2585104442784910465
+      UI_Wood_B_NoBorder_117: 8330622321886726301
+      UI_Wood_B_NoBorder_118: 7523689362358915873
+      UI_Wood_B_NoBorder_119: 5121730409408870255
+      UI_Wood_B_NoBorder_12: -439874519018325568
+      UI_Wood_B_NoBorder_120: 3633862234379818989
+      UI_Wood_B_NoBorder_121: -4677183816831069357
+      UI_Wood_B_NoBorder_122: 3403002391188166378
+      UI_Wood_B_NoBorder_123: -2431046728439201990
+      UI_Wood_B_NoBorder_124: 5091402023127168375
+      UI_Wood_B_NoBorder_125: -3823684958519198452
+      UI_Wood_B_NoBorder_126: 4472346320790166962
+      UI_Wood_B_NoBorder_127: -5450454629574243392
+      UI_Wood_B_NoBorder_128: 1528452193384770216
+      UI_Wood_B_NoBorder_129: -2380872617563319621
+      UI_Wood_B_NoBorder_13: -6422391412642074891
+      UI_Wood_B_NoBorder_130: 789228587300450475
+      UI_Wood_B_NoBorder_131: 8538228554485411880
+      UI_Wood_B_NoBorder_132: -4198894191112729964
+      UI_Wood_B_NoBorder_133: -5463646872252077296
+      UI_Wood_B_NoBorder_134: 936027230199319280
+      UI_Wood_B_NoBorder_135: 3612000471158823080
+      UI_Wood_B_NoBorder_136: 3940002812482091388
+      UI_Wood_B_NoBorder_137: -7806413395637351348
+      UI_Wood_B_NoBorder_138: -3122905039741226171
+      UI_Wood_B_NoBorder_139: 1912587806267090043
+      UI_Wood_B_NoBorder_14: -3594605174546531979
+      UI_Wood_B_NoBorder_140: 301899849762509086
+      UI_Wood_B_NoBorder_141: -8262980381265635448
+      UI_Wood_B_NoBorder_142: 234649067713856141
+      UI_Wood_B_NoBorder_143: -8840224358906839196
+      UI_Wood_B_NoBorder_144: -1876146341567724727
+      UI_Wood_B_NoBorder_145: 2663884139312444434
+      UI_Wood_B_NoBorder_146: 8145363359164616049
+      UI_Wood_B_NoBorder_147: -1141771659415714642
+      UI_Wood_B_NoBorder_148: 5158843546328550619
+      UI_Wood_B_NoBorder_149: -4567752959909813500
+      UI_Wood_B_NoBorder_15: -6700375264906120051
+      UI_Wood_B_NoBorder_150: -2798568301726399002
+      UI_Wood_B_NoBorder_151: 75627996894339781
+      UI_Wood_B_NoBorder_152: 1391625838025153509
+      UI_Wood_B_NoBorder_153: 3398770764415093188
+      UI_Wood_B_NoBorder_154: 5691502535289074169
+      UI_Wood_B_NoBorder_155: -5985155135232346963
+      UI_Wood_B_NoBorder_156: 5749911441807455065
+      UI_Wood_B_NoBorder_157: 7050034382405938040
+      UI_Wood_B_NoBorder_158: 6089314681345235376
+      UI_Wood_B_NoBorder_159: 8614814588217164134
+      UI_Wood_B_NoBorder_16: -3666943693429023389
+      UI_Wood_B_NoBorder_160: 4407676542890786092
+      UI_Wood_B_NoBorder_161: -1008767356625135926
+      UI_Wood_B_NoBorder_162: -1391483607359040437
+      UI_Wood_B_NoBorder_163: -1694775354765239603
+      UI_Wood_B_NoBorder_164: -5664852543604128310
+      UI_Wood_B_NoBorder_165: -535279994501466790
+      UI_Wood_B_NoBorder_166: -290382994024784743
+      UI_Wood_B_NoBorder_167: 8715164636254225038
+      UI_Wood_B_NoBorder_168: 7785053340898693432
+      UI_Wood_B_NoBorder_169: -2993175475041364394
+      UI_Wood_B_NoBorder_17: -2821861042267922174
+      UI_Wood_B_NoBorder_170: -7528320817420563780
+      UI_Wood_B_NoBorder_171: -4312544059421991307
+      UI_Wood_B_NoBorder_172: 2498817110873820169
+      UI_Wood_B_NoBorder_173: 1225895435604410651
+      UI_Wood_B_NoBorder_174: -4570894031437101836
+      UI_Wood_B_NoBorder_175: 9003488560616377575
+      UI_Wood_B_NoBorder_176: 6360566908894823351
+      UI_Wood_B_NoBorder_177: 5289425086186557776
+      UI_Wood_B_NoBorder_178: 2242385793361548551
+      UI_Wood_B_NoBorder_179: -6230397558771147185
+      UI_Wood_B_NoBorder_18: -4205474978030832595
+      UI_Wood_B_NoBorder_180: 4841835994135052439
+      UI_Wood_B_NoBorder_181: 5746407980241897882
+      UI_Wood_B_NoBorder_182: 1420978796230534287
+      UI_Wood_B_NoBorder_183: 3162125208765670569
+      UI_Wood_B_NoBorder_184: -2315478789436270749
+      UI_Wood_B_NoBorder_185: -3580868203547541357
+      UI_Wood_B_NoBorder_186: -5901938550667056676
+      UI_Wood_B_NoBorder_187: 5624057540391726038
+      UI_Wood_B_NoBorder_188: 5472125885190221453
+      UI_Wood_B_NoBorder_189: 1465719111385202971
+      UI_Wood_B_NoBorder_19: -3001877257665532905
+      UI_Wood_B_NoBorder_190: -5577101911284499524
+      UI_Wood_B_NoBorder_191: -4591626152818311059
+      UI_Wood_B_NoBorder_192: 8834904086260444512
+      UI_Wood_B_NoBorder_193: -1034225450534699836
+      UI_Wood_B_NoBorder_194: 6680992290718762046
+      UI_Wood_B_NoBorder_195: -3874878511057429250
+      UI_Wood_B_NoBorder_196: -3185149773451818238
+      UI_Wood_B_NoBorder_197: -2697904622093387006
+      UI_Wood_B_NoBorder_198: -5557681708597640875
+      UI_Wood_B_NoBorder_199: 3166994388937200184
+      UI_Wood_B_NoBorder_2: -6079063041637562033
+      UI_Wood_B_NoBorder_20: 1197750013112611950
+      UI_Wood_B_NoBorder_200: 9096025648549201563
+      UI_Wood_B_NoBorder_201: 7904628366329961676
+      UI_Wood_B_NoBorder_202: -7805503562318731251
+      UI_Wood_B_NoBorder_203: 4252507378583339225
+      UI_Wood_B_NoBorder_204: 1214409607894375941
+      UI_Wood_B_NoBorder_205: 167034983965717534
+      UI_Wood_B_NoBorder_206: -9062384314933942388
+      UI_Wood_B_NoBorder_207: -4036587695851059564
+      UI_Wood_B_NoBorder_208: 13000729415022559
+      UI_Wood_B_NoBorder_209: -5194354330907046141
+      UI_Wood_B_NoBorder_21: -71765287145412219
+      UI_Wood_B_NoBorder_210: -4226006225168635974
+      UI_Wood_B_NoBorder_211: -8611200107877604920
+      UI_Wood_B_NoBorder_212: -3739461480798655876
+      UI_Wood_B_NoBorder_213: 7352561510453404968
+      UI_Wood_B_NoBorder_214: 8716733867346563176
+      UI_Wood_B_NoBorder_215: 7335611124299493081
+      UI_Wood_B_NoBorder_216: -7146782840048362217
+      UI_Wood_B_NoBorder_217: -7173176039939286111
+      UI_Wood_B_NoBorder_218: 6176447845165053792
+      UI_Wood_B_NoBorder_219: -7604501407614932155
+      UI_Wood_B_NoBorder_22: -2632669506766987119
+      UI_Wood_B_NoBorder_220: 6930873413544701099
+      UI_Wood_B_NoBorder_221: -8332048010968409052
+      UI_Wood_B_NoBorder_222: -5686540025957884602
+      UI_Wood_B_NoBorder_223: -8278951747585843492
+      UI_Wood_B_NoBorder_224: -5353775050925713759
+      UI_Wood_B_NoBorder_225: -1771292889980063014
+      UI_Wood_B_NoBorder_226: -5499485570257773399
+      UI_Wood_B_NoBorder_227: -8657933908448633938
+      UI_Wood_B_NoBorder_228: 4184163139928135845
+      UI_Wood_B_NoBorder_229: -4748878858170890831
+      UI_Wood_B_NoBorder_23: 7701417660103388608
+      UI_Wood_B_NoBorder_230: 963169667879066186
+      UI_Wood_B_NoBorder_231: 7377763593346777973
+      UI_Wood_B_NoBorder_232: -3146093513764083412
+      UI_Wood_B_NoBorder_233: -3617837939488008783
+      UI_Wood_B_NoBorder_234: 5170505788639365742
+      UI_Wood_B_NoBorder_235: -8279024953533216284
+      UI_Wood_B_NoBorder_236: -4437313599256695416
+      UI_Wood_B_NoBorder_237: 6695934139586619290
+      UI_Wood_B_NoBorder_238: 4018579227576182828
+      UI_Wood_B_NoBorder_239: -7530376014901144338
+      UI_Wood_B_NoBorder_24: 7400785928861581678
+      UI_Wood_B_NoBorder_240: 4655980000659274803
+      UI_Wood_B_NoBorder_241: -437780186650940579
+      UI_Wood_B_NoBorder_242: -5495334790840194390
+      UI_Wood_B_NoBorder_243: -5774737956104745902
+      UI_Wood_B_NoBorder_244: -3381973880595241522
+      UI_Wood_B_NoBorder_245: -9046957749001310767
+      UI_Wood_B_NoBorder_246: -2494503198423656282
+      UI_Wood_B_NoBorder_247: 4766895856203906119
+      UI_Wood_B_NoBorder_248: -9111630414749774449
+      UI_Wood_B_NoBorder_249: 7418810956085279207
+      UI_Wood_B_NoBorder_25: 6859528372918173383
+      UI_Wood_B_NoBorder_250: -7692189638411807995
+      UI_Wood_B_NoBorder_251: 3704540910218588456
+      UI_Wood_B_NoBorder_252: 3530659057558038700
+      UI_Wood_B_NoBorder_253: -464239086323802140
+      UI_Wood_B_NoBorder_254: -8428090723167492506
+      UI_Wood_B_NoBorder_255: -2525120358410377739
+      UI_Wood_B_NoBorder_256: 1354676937369142762
+      UI_Wood_B_NoBorder_257: -6177699165501966292
+      UI_Wood_B_NoBorder_258: -5243711798012818760
+      UI_Wood_B_NoBorder_259: 3129628467809973413
+      UI_Wood_B_NoBorder_26: 5747004640887465775
+      UI_Wood_B_NoBorder_260: 3961584123358339960
+      UI_Wood_B_NoBorder_261: -1812707000944011475
+      UI_Wood_B_NoBorder_262: -9106163873303385592
+      UI_Wood_B_NoBorder_263: 5117175543278688955
+      UI_Wood_B_NoBorder_264: 1005656406222049117
+      UI_Wood_B_NoBorder_265: -382757246333087606
+      UI_Wood_B_NoBorder_266: -741804874953847233
+      UI_Wood_B_NoBorder_267: -5431663772492892823
+      UI_Wood_B_NoBorder_268: 9221949034728647635
+      UI_Wood_B_NoBorder_269: 4521585066654356153
+      UI_Wood_B_NoBorder_27: -312906245001878980
+      UI_Wood_B_NoBorder_270: 4703153455936615740
+      UI_Wood_B_NoBorder_271: 6558558792880409775
+      UI_Wood_B_NoBorder_272: 524431924521971459
+      UI_Wood_B_NoBorder_273: 4836324956111753101
+      UI_Wood_B_NoBorder_274: -7481826831179243920
+      UI_Wood_B_NoBorder_275: -1853521714714369971
+      UI_Wood_B_NoBorder_276: 1799680609216494137
+      UI_Wood_B_NoBorder_277: -2134810630462893916
+      UI_Wood_B_NoBorder_278: -7390591248322822868
+      UI_Wood_B_NoBorder_279: 8860444529538496074
+      UI_Wood_B_NoBorder_28: -5425537835776483639
+      UI_Wood_B_NoBorder_280: 654917301691456618
+      UI_Wood_B_NoBorder_281: 4980142558935306772
+      UI_Wood_B_NoBorder_282: 144134229898372586
+      UI_Wood_B_NoBorder_283: -4350402296223389407
+      UI_Wood_B_NoBorder_284: -8183797006071257719
+      UI_Wood_B_NoBorder_285: 8866905208397385535
+      UI_Wood_B_NoBorder_286: -3923837839531444125
+      UI_Wood_B_NoBorder_287: -7328109919457585811
+      UI_Wood_B_NoBorder_288: 1905750869782036681
+      UI_Wood_B_NoBorder_289: -7164161516634842390
+      UI_Wood_B_NoBorder_29: -7794490674312154161
+      UI_Wood_B_NoBorder_290: -4193040688423414528
+      UI_Wood_B_NoBorder_291: -7851362747730567329
+      UI_Wood_B_NoBorder_292: -2662315427395072508
+      UI_Wood_B_NoBorder_293: 5863150475684330157
+      UI_Wood_B_NoBorder_3: -692113404719432368
+      UI_Wood_B_NoBorder_30: 7838770224121891154
+      UI_Wood_B_NoBorder_31: -8626037993870470017
+      UI_Wood_B_NoBorder_32: 5089943143575828955
+      UI_Wood_B_NoBorder_33: 87345255889776935
+      UI_Wood_B_NoBorder_34: 3307605665604932731
+      UI_Wood_B_NoBorder_35: -179052281566564512
+      UI_Wood_B_NoBorder_36: 1861950300501347156
+      UI_Wood_B_NoBorder_37: -7801259296124798015
+      UI_Wood_B_NoBorder_38: -7397332579400713625
+      UI_Wood_B_NoBorder_39: 8376326351762566639
+      UI_Wood_B_NoBorder_4: -262310993050177207
+      UI_Wood_B_NoBorder_40: 147289465937675014
+      UI_Wood_B_NoBorder_41: 5384821604597466444
+      UI_Wood_B_NoBorder_42: -6257135264721390116
+      UI_Wood_B_NoBorder_43: 9166687379903678757
+      UI_Wood_B_NoBorder_44: -5091350816112021440
+      UI_Wood_B_NoBorder_45: -7311346024798947703
+      UI_Wood_B_NoBorder_46: -7242844304732708211
+      UI_Wood_B_NoBorder_47: 832612963748935019
+      UI_Wood_B_NoBorder_48: -132867590007480580
+      UI_Wood_B_NoBorder_49: 6795408908449012085
+      UI_Wood_B_NoBorder_5: 5964304997130462277
+      UI_Wood_B_NoBorder_50: 6684023045869216188
+      UI_Wood_B_NoBorder_51: 8347823445028899558
+      UI_Wood_B_NoBorder_52: 4409513235522641809
+      UI_Wood_B_NoBorder_53: -6713298533482743272
+      UI_Wood_B_NoBorder_54: -3685423628159601960
+      UI_Wood_B_NoBorder_55: -3854797674629533614
+      UI_Wood_B_NoBorder_56: -8993569619365356926
+      UI_Wood_B_NoBorder_57: -3410095653357568967
+      UI_Wood_B_NoBorder_58: -8659867170315166573
+      UI_Wood_B_NoBorder_59: -104742674509700939
+      UI_Wood_B_NoBorder_6: -4824158560047831008
+      UI_Wood_B_NoBorder_60: 6348399488547417540
+      UI_Wood_B_NoBorder_61: -8659613862194072367
+      UI_Wood_B_NoBorder_62: 33941660970988556
+      UI_Wood_B_NoBorder_63: 4018014337442165532
+      UI_Wood_B_NoBorder_64: 7571696483706562803
+      UI_Wood_B_NoBorder_65: 1168539556420555145
+      UI_Wood_B_NoBorder_66: -7161833145711331647
+      UI_Wood_B_NoBorder_67: 8610094991439046367
+      UI_Wood_B_NoBorder_68: -5860980123089629364
+      UI_Wood_B_NoBorder_69: -5736061553495443168
+      UI_Wood_B_NoBorder_7: -2905130852306679956
+      UI_Wood_B_NoBorder_70: 3731125661286709688
+      UI_Wood_B_NoBorder_71: 6434051572723726944
+      UI_Wood_B_NoBorder_72: 8316415190440162058
+      UI_Wood_B_NoBorder_73: -1171769071853975630
+      UI_Wood_B_NoBorder_74: 3309043423799670940
+      UI_Wood_B_NoBorder_75: 3323270115297099685
+      UI_Wood_B_NoBorder_76: -5470605341183255656
+      UI_Wood_B_NoBorder_77: -8923641691775668280
+      UI_Wood_B_NoBorder_78: 7784037408205713251
+      UI_Wood_B_NoBorder_79: 5146194273819538859
+      UI_Wood_B_NoBorder_8: -6959432035659086904
+      UI_Wood_B_NoBorder_80: 2253634624158541619
+      UI_Wood_B_NoBorder_81: 3758161799790452856
+      UI_Wood_B_NoBorder_82: 935937545077388544
+      UI_Wood_B_NoBorder_83: 2395225478220051946
+      UI_Wood_B_NoBorder_84: -5522357374455134442
+      UI_Wood_B_NoBorder_85: -3262149267751032715
+      UI_Wood_B_NoBorder_86: 1360025069862960372
+      UI_Wood_B_NoBorder_87: -9175993065667241330
+      UI_Wood_B_NoBorder_88: -4811746729690515232
+      UI_Wood_B_NoBorder_89: -7719929520265065283
+      UI_Wood_B_NoBorder_9: -439536719531625780
+      UI_Wood_B_NoBorder_90: -2467296641275321181
+      UI_Wood_B_NoBorder_91: 1691818657848439225
+      UI_Wood_B_NoBorder_92: 4078112226638530856
+      UI_Wood_B_NoBorder_93: 392715336004943449
+      UI_Wood_B_NoBorder_94: -472053584851358283
+      UI_Wood_B_NoBorder_95: 5025995341155939493
+      UI_Wood_B_NoBorder_96: 1121390213798851629
+      UI_Wood_B_NoBorder_97: 5845548882167411785
+      UI_Wood_B_NoBorder_98: -3921616450457448088
+      UI_Wood_B_NoBorder_99: 2512767536609620126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
