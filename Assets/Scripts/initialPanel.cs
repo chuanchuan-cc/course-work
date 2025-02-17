@@ -6,8 +6,7 @@ using TMPro;
 
 public class initialPanelScript : MonoBehaviour
 {
-    public static int playerNumberToGame;
-    public static bool isAIToGame;
+
     public Button initialStart;
     public Button startGame;
     public Button loadMap;
