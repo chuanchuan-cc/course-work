@@ -61,9 +61,9 @@ public class PlayerDetail: MonoBehaviour
        
         playerName.text=player.name;
         playerAssetsValue.text=player.assetsValue.ToString();
-        if(player.assetsList==null || player.assetsList.Count==0){
+        if(player.assetsList.Count==0){
              playerAssets.text="no asset";
-             assetsNumber.text="0";
+            
              return;
 
             
@@ -73,10 +73,10 @@ public class PlayerDetail: MonoBehaviour
             
             string tempAssetslist = string.Join(", ", player.assetsList);
             playerAssets.text = tempAssetslist;
-            assetsNumber.text=player.assetsList.Count.ToString();
+            
         
         }
-        
+        assetsNumber.text=player.assetsList.Count.ToString();
        }
 
     }
