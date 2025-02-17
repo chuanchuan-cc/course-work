@@ -19,8 +19,8 @@ public class RunGame : MonoBehaviour
 
 IEnumerator GameLoop()
 {
-    int playerNumber = GameManager.playerNumberToGame;
-    bool isAI = GameManager.isAIToGame;
+    int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
+    bool isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
 
     point = 0;
 

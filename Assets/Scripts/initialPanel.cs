@@ -38,6 +38,7 @@ public class initialPanelScript : MonoBehaviour
         luckyCardText.text="Default lucky cardpool";
         opportunityCardText.text="Default opportunity cardpool";
         playerNumberSlider.value=1;
+        playerNumber.text = playerNumberSlider.value.ToString();
         AIToggle.onValueChanged.AddListener(toggleBackground);
         toggleBackground(AIToggle.isOn);
         startGame.onClick.AddListener(startNewGame);
@@ -51,8 +52,8 @@ public class initialPanelScript : MonoBehaviour
    
    
     void startNewGame(){
-        playerNumberToGame=(int)playerNumberSlider.value;
-        isAIToGame=AIToggle.isOn;;
+    PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
+    PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
         SceneManager.LoadScene("gameScene");
     }
     void LoadMap(){
@@ -108,6 +109,7 @@ public class initialPanelScript : MonoBehaviour
             yield return null;
         }
         gameObject.transform.localScale = Vector3.one;
+        
 }
 
 
