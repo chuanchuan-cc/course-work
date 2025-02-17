@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class gameBehaviour: MonoBehaviour
 {
+    public Player bank;
  
 
     public List<Board> mapList;
@@ -56,7 +57,7 @@ public class gameBehaviour: MonoBehaviour
     
     public void BuyProperty(Player player,Board board)
     {
-        
+
 
         if (player.money >= board.price)
         {
