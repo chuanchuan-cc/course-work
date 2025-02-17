@@ -38,7 +38,6 @@ public class initialPanelScript : MonoBehaviour
         luckyCardText.text="Default lucky cardpool";
         opportunityCardText.text="Default opportunity cardpool";
         playerNumberSlider.value=1;
-        playerNumber.text = playerNumberSlider.value.ToString();
         AIToggle.onValueChanged.AddListener(toggleBackground);
         toggleBackground(AIToggle.isOn);
         startGame.onClick.AddListener(startNewGame);
@@ -52,8 +51,8 @@ public class initialPanelScript : MonoBehaviour
    
    
     void startNewGame(){
-        playerNumberToGame=getPlayersNumber();
-        isAIToGame=isAI();
+        playerNumberToGame=(int)playerNumberSlider.value;
+        isAIToGame=AIToggle.isOn;;
         SceneManager.LoadScene("gameScene");
     }
     void LoadMap(){
@@ -75,14 +74,8 @@ public class initialPanelScript : MonoBehaviour
 {
     playerNumber.text = ((int)value).ToString();
 }
-    //一个判断是否有ai代理的方法
-    public bool isAI(){
-        return AIToggle.isOn;
-    }
-    //一个返回玩家数的方法
-    public int getPlayersNumber(){
-        return (int)playerNumberSlider.value;
-    }
+  
+   
     public void onClickExit(GameObject gameObject){
        StopAllCoroutines();
         StartCoroutine(hidePanel(gameObject));
