@@ -29,27 +29,34 @@ public class gameBehaviour: MonoBehaviour
     {
         player.isBankrupt = true;
         player.money = 0;
+        player.assetsValue = 0;
+        foreach (Board board in mapList){
+            if(board.owner==player){
+                board.owner=bank;
+            }
+
+        }
+        player.assetsList.Clear();
         Debug.Log($"{player.name} is bankrupt! All assets are repossessed!");
     }
     public void GoToJail(Player player)
     {
-        foreach(var board in mapList){
-            if (board.group == "Go to jail"){
-                player.position = board.position;
-                FreezeTurn(player, 2);
+        
+        player.position = mapList.FindIndex(board=>board.group == "Go to jail");
+        FreezeTurn(player, 2);
 
-        }
-        }
+        
+        
       Debug.Log($"{player.name} is sent to jail!");
     }
-    public void FreezeTurn(Player player, int i){
-        player.freezeTurn = i;
-        player.isFreezed = true;
+    public void FreezeTurn(Player player, int turns){
+        player.freezeTurn = turns;
     }
   
     
     public void BuyProperty(Player player,Board board)
     {
+        
 
         if (player.money >= board.price)
         {
@@ -66,7 +73,7 @@ public class gameBehaviour: MonoBehaviour
         {
             board.owner = player;
             player.assetsValue+=board.price;
-            player.assetsList.add(board.property);
+            player.assetsList.Add(board.property);
 
         }
        
@@ -77,10 +84,10 @@ public class gameBehaviour: MonoBehaviour
             {
                 PayMoney(player, board.rent);       
                 AddMoney(board.owner,board.rent);
-                string _owner=board.owner;
+                string _owner=board.owner.name;
                     
                 
-                Debug.Log($"{player.name} paid £{rentAmount} in rent to {_owner}!");
+                Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
             }
         }
      

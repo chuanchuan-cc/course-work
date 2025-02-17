@@ -27,13 +27,10 @@ public class Main : MonoBehaviour
               int currentPoint=point;
               point=(point+1)%(playersList.Count);
 
-              if(currentPlayer.isFreezed){
-                if(currentPlayer.freezeTurn==1){
-                    currentPlayer.isFreezed=false;
-                }
-                else{      
+              if(currentPlayer.freezeTurn>0){
+                    
                     currentPlayer.freezeTurn-=1;
-                }
+                
                 continue;
                 }
 
