@@ -16,7 +16,7 @@ public class gameBehaviour: MonoBehaviour
     }
     public void PayMoney(Player player,int amount)
     {
-        if (isBankrupt)return;
+        if (player.isBankrupt)return;
         if (player.money >= amount)
         {
             player.money -= amount;
@@ -66,6 +66,7 @@ public class gameBehaviour: MonoBehaviour
         {
             board.owner = player;
             player.assetsValue+=board.price;
+            player.assetsList.add(board.property);
 
         }
        
