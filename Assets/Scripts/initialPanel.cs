@@ -6,7 +6,9 @@ using TMPro;
 
 public class initialPanelScript : MonoBehaviour
 {
-     public Button initialStart;
+    public static int playerNumberToGame;
+    public static bool isAIToGame;
+    public Button initialStart;
     public Button startGame;
     public Button loadMap;
     public Button exitpanel;
@@ -23,13 +25,15 @@ public class initialPanelScript : MonoBehaviour
     public Toggle AIToggle;
     public Image toggleImage;
     public Sprite toggleTrueImage;
-    public Sprite toggleFalseImag;
+    public Sprite toggleFalseImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+      
         initialPanel.transform.localScale = Vector3.zero;
         initialStart.onClick.AddListener(() => onClickStart(initialPanel));
-      
+        playerNumberSlider.onValueChanged.AddListener(UpdatePlayerNumberText);
+        UpdatePlayerNumberText(playerNumberSlider.value);
         mapText.text="Default map";
         luckyCardText.text="Default lucky cardpool";
         opportunityCardText.text="Default opportunity cardpool";
@@ -45,11 +49,11 @@ public class initialPanelScript : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update(){
-    playerNumber.text=playerNumberSlider.value.ToString();
-    }
+   
    
     void startNewGame(){
+        playerNumberToGame=getPlayersNumber();
+        isAIToGame=isAI();
         SceneManager.LoadScene("gameScene");
     }
     void LoadMap(){
@@ -65,13 +69,17 @@ public class initialPanelScript : MonoBehaviour
     opportunityCardText.text="";
     }
     void toggleBackground(bool i){
-        toggleImage.sprite= i? toggleTrueImage:toggleFalseImag;
+        toggleImage.sprite= i? toggleTrueImage:toggleFalseImage;
     }
+    void UpdatePlayerNumberText(float value)
+{
+    playerNumber.text = ((int)value).ToString();
+}
     //一个判断是否有ai代理的方法
     public bool isAI(){
         return AIToggle.isOn;
     }
-    //一个返回玩家数的方法，float形式
+    //一个返回玩家数的方法
     public int getPlayersNumber(){
         return (int)playerNumberSlider.value;
     }
