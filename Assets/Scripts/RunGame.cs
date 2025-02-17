@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Main : MonoBehaviour
 {
+    public Player bank;
     public List<Player> playersList;
     public List<Board> mapList;
 
@@ -38,6 +39,10 @@ public class Main : MonoBehaviour
 
             
             if((currentPlayer.position+roll)>mapList.Count){
+               if(currentPlayer.circle==0){
+                AddMoney(currentPlayer,200);
+                PayMoney(bank,200);
+               }
                currentPlayer.circle+=1;
             }
             currentPlayer.position=(currentPlayer.position+roll)%(mapList.Count);
