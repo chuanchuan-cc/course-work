@@ -1,14 +1,23 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class RunGame : MonoBehaviour
 {
-    public Player bank;
+    public static Player bank;
     public List<Player> playersList;
     public List<Board> mapList;
 
     public bool keepGame=true;
     public int point;
+
+    void Awake(){
+        if(bank==null){
+            bank= new Player("Bank");
+            bank.money=50000;
+        }
+
+    }
 
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,22 +45,21 @@ IEnumerator GameLoop()
             continue;
         }
 
-        int roll = ThrowDice();
+        int roll = 1; //测试用   ThrowDice();
         
         if ((currentPlayer.position + roll) > mapList.Count)
         {
-            if (currentPlayer.circle == 0)
-            {
-                AddMoney(currentPlayer, 200);
-                PayMoney(bank, 200);
-            }
+            
+                //AddMoney(currentPlayer, 200);
+                //PayMoney(bank, 200);
+            
             currentPlayer.circle += 1;
         }
 
         currentPlayer.position = (currentPlayer.position + roll) % mapList.Count;
 
 
-        Check(currentPlayer, mapList);
+        //Check(currentPlayer, mapList);
         //check包含行为判断加执行
 
         if (currentPlayer.isBankrupt)

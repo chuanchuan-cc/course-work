@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class gameBehaviour: MonoBehaviour
+public class GameBehaviour: MonoBehaviour
 {
     public Player bank;
  
@@ -13,7 +13,7 @@ public class gameBehaviour: MonoBehaviour
         
         player.money += amount;
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.money}");
-        player.assetsValue+=amount;
+        player.assetsWorth+=amount;
     }
     public void PayMoney(Player player,int amount)
     {
@@ -22,7 +22,7 @@ public class gameBehaviour: MonoBehaviour
         {
             player.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.money}");
-        player.assetsValue-=amount;
+        player.assetsWorth-=amount;
         }
         
     }
@@ -30,8 +30,8 @@ public class gameBehaviour: MonoBehaviour
     {
         player.isBankrupt = true;
         player.money = 0;
-        player.assetsValue = 0;
-        foreach (Board board in mapList){
+        player.assetsWorth = 0;
+        foreach (estateBoard board in mapList){
             if(board.owner==player){
                 board.owner=bank;
             }
@@ -55,7 +55,7 @@ public class gameBehaviour: MonoBehaviour
     }
   
     
-    public void BuyProperty(Player player,Board board)
+    public void BuyProperty(Player player,estateBoard board)
     {
 
 
@@ -70,16 +70,16 @@ public class gameBehaviour: MonoBehaviour
             Debug.Log($"{player.name} does not have enough money to buy {board.property}!");
 
         }}
-        public void AddProperty(Player player, Board board)
+        public void AddProperty(Player player, estateBoard board)
         {
             board.owner = player;
-            player.assetsValue+=board.price;
+            player.assetsWorth+=board.price;
             player.assetsList.Add(board.property);
 
         }
        
    
-        public void PayRent(Player player, Board board)
+        public void PayRent(Player player, estateBoard board)
         {
             if(!player.isBankrupt)
             {

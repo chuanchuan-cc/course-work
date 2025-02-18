@@ -13,7 +13,7 @@ public class PlayerImage
     public Sprite playerSprite;
 }
 
-public class PlayerDetail: MonoBehaviour
+public class PlayerDisplay: MonoBehaviour
 {
     public Image playerImage;
     public List<PlayerImage> playerImageList;
@@ -22,9 +22,9 @@ public class PlayerDetail: MonoBehaviour
 
 
     public TextMeshProUGUI playerName;
-    public TextMeshProUGUI playerAssetsValue;
+    public TextMeshProUGUI playerWorth;
     public TextMeshProUGUI playerAssets;
-    public TextMeshProUGUI assetsNumber;
+  
    
 
     void Start(){
@@ -40,9 +40,6 @@ public class PlayerDetail: MonoBehaviour
     }
 
 
-    void updateDashBoard(Player player){
-        ShowPlayer(player);
-    }
     void ShowPlayer(Player player)
     {
         if(player==null){
@@ -55,12 +52,12 @@ public class PlayerDetail: MonoBehaviour
         }
         else
         {
-            Debug.LogWarning(" {player.name} have no image");
+            Debug.LogWarning($" {player.name} have no image");
         }
       
        
         playerName.text=player.name;
-        playerAssetsValue.text=player.assetsValue.ToString();
+        playerWorth.text=player.assetsWorth.ToString();
         if(player.assetsList.Count==0){
              playerAssets.text="no asset";
             
@@ -76,7 +73,7 @@ public class PlayerDetail: MonoBehaviour
             
         
         }
-        assetsNumber.text=player.assetsList.Count.ToString();
+        
        }
 
     }
