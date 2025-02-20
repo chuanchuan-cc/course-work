@@ -19,4 +19,7 @@ public class Player{
         assetsWorth=1500;
 
     }
+    public void move(){
+        //
+    }
 }

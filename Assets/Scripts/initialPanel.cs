@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using SFB;
+using System.IO;
 
 public class initialPanelScript : MonoBehaviour
 {
@@ -15,16 +17,15 @@ public class initialPanelScript : MonoBehaviour
     public AnimationCurve Curve;
     public float animationSpeed;
     public TextMeshProUGUI mapText;
-    public Button loadLuckyCard;
-    public Button loadOpportunityCard;
-    public TextMeshProUGUI luckyCardText;
-    public TextMeshProUGUI opportunityCardText;
+    public Button loadCard;
+    public TextMeshProUGUI cardText;
     public Slider playerNumberSlider;
     public TextMeshProUGUI playerNumber;
     public Toggle AIToggle;
     public Image toggleImage;
     public Sprite toggleTrueImage;
     public Sprite toggleFalseImage;
+    public string defaultFolder;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,17 +35,16 @@ public class initialPanelScript : MonoBehaviour
         playerNumberSlider.onValueChanged.AddListener(UpdatePlayerNumberText);
         UpdatePlayerNumberText(playerNumberSlider.value);
         mapText.text="Default map";
-        luckyCardText.text="Default lucky cardpool";
-        opportunityCardText.text="Default opportunity cardpool";
+        cardText.text="Default cardpool";
         playerNumberSlider.value=1;
         playerNumber.text = playerNumberSlider.value.ToString();
         AIToggle.onValueChanged.AddListener(toggleBackground);
         toggleBackground(AIToggle.isOn);
         startGame.onClick.AddListener(startNewGame);
         loadMap.onClick.AddListener(LoadMap);
-        loadLuckyCard.onClick.AddListener(LoadLuckyCard);
-        loadOpportunityCard.onClick.AddListener(LoadOpportunityCard);
+        loadCard.onClick.AddListener(LoadCard);
         exitpanel.onClick.AddListener(() => onClickExit(initialPanel));
+        defaultFolder = Application.dataPath + "/Resources";
 
     }
     // Update is called once per frame
@@ -55,18 +55,7 @@ public class initialPanelScript : MonoBehaviour
     PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
         SceneManager.LoadScene("gameScene");
     }
-    void LoadMap(){
-    // 调用陈良源的地图载入方法，并在文本框打印地图名
-    mapText.text="";
-    }
-    void LoadLuckyCard(){
-    // 调用陈子峰的lucky卡组载入方法，并在文本框打印卡组名
-    luckyCardText.text="";
-    }
-    void LoadOpportunityCard(){
-    // 调用陈子峰的opportunity卡组载入方法，并在文本框打印卡组名
-    opportunityCardText.text="";
-    }
+    
     void toggleBackground(bool i){
         toggleImage.sprite= i? toggleTrueImage:toggleFalseImage;
     }
@@ -108,8 +97,31 @@ public class initialPanelScript : MonoBehaviour
             yield return null;
         }
         gameObject.transform.localScale = Vector3.one;
-        
+
+
 }
+ public void LoadMap()
+    {
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(CSV-formatted file)", defaultFolder+"map", "csv", false);
+        if (paths.Length > 0)
+        {
+            string mapPath=paths[0];
+            PlayerPrefs.SetString("mapPath", mapPath);
+            PlayerPrefs.Save();
+            mapText.text=Path.GetFileName(mapPath);
+        }
+    }
+     public void LoadCard()
+    {
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your card(CSV-formatted file)", defaultFolder+"/card", "csv", false);
+        if (paths.Length > 0)
+        {
+            string cardPath=paths[0];
+            PlayerPrefs.SetString("cardPath", cardPath);
+            PlayerPrefs.Save();
+            cardText.text=Path.GetFileName(cardPath);
+        }
+    }
 
 
 

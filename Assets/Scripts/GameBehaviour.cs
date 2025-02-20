@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+
 
 
 public class GameBehaviour: MonoBehaviour
@@ -90,6 +92,14 @@ public class GameBehaviour: MonoBehaviour
                 
                 Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
             }
+        }
+        public IEnumerator MoveTo(Player player,string boardName){
+          do{
+            player.move();
+            yield return new WaitForSeconds(1f);
+          }while(mapList[player.position].property!=boardName);
+
+
         }
      
     }
