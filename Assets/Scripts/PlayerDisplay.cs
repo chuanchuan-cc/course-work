@@ -7,17 +7,12 @@ using TMPro;
 using System.Text;
 
 [System.Serializable]
-public class PlayerImage
-{
-    public string playerName;
-    public Sprite playerSprite;
-}
+
 
 public class PlayerDisplay: MonoBehaviour
 {
     public Image playerImage;
-    public List<PlayerImage> playerImageList;
-    private Dictionary<string, Sprite> playerImageMap;
+
     public Player player;
 
 
@@ -29,11 +24,7 @@ public class PlayerDisplay: MonoBehaviour
 
     void Start(){
 
-        playerImageMap = new Dictionary<string, Sprite>();
-        foreach (var entry in playerImageList)
-        {
-            playerImageMap[entry.playerName.ToLower()] = entry.playerSprite;
-        }
+
 
         ShowPlayer(player);
 
@@ -46,19 +37,12 @@ public class PlayerDisplay: MonoBehaviour
         Debug.LogError("no player!");
         return;
        }else{
-       if (playerImageMap.TryGetValue(player.name.ToLower(), out Sprite selectedSprite))
-        {
-            playerImage.sprite = selectedSprite;
-        }
-        else
-        {
-            Debug.LogWarning($" {player.name} have no image");
-        }
-      
        
-        playerName.text=player.name;
-        playerWorth.text=player.assetsWorth.ToString();
-        if(player.assetsList.Count==0){
+      
+        playerImage.sprite=player.GetComponent<SpriteRenderer>().sprite;
+        playerName.text=player.playerData.name;
+        playerWorth.text=player.playerData.assetsWorth.ToString();
+        if(player.playerData.assetsList.Count==0){
              playerAssets.text="no asset";
             
              return;
@@ -68,7 +52,7 @@ public class PlayerDisplay: MonoBehaviour
         
       
             
-            string tempAssetslist = string.Join(", ", player.assetsList);
+            string tempAssetslist = string.Join(", ", player.playerData.assetsList);
             playerAssets.text = tempAssetslist;
             
         
