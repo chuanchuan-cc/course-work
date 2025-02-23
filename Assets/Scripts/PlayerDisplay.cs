@@ -40,7 +40,7 @@ public class PlayerDisplay: MonoBehaviour
        
       
         playerImage.sprite=player.GetComponent<SpriteRenderer>().sprite;
-        playerName.text=player.playerData.name;
+        playerName.text=player.name;
         playerWorth.text=player.playerData.assetsWorth.ToString();
         if(player.playerData.assetsList.Count==0){
              playerAssets.text="no asset";

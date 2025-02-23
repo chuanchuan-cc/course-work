@@ -5,6 +5,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    public string name;
     public PlayerData playerData;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     {
         if (playerData != null)
         {
-            Debug.Log($"{playerData.name} successfully loaded data");
+            Debug.Log($"{this.name} successfully loaded data");
         }
     }
 
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
         
         if (!isMoving)
         {
-            Debug.Log($"{playerData.name} 开始移动 {steps} 步");
+            Debug.Log($"{this.name} moves forward {steps} steps");
             isMoving=true;
             StartCoroutine(MovePiece(steps));
         }
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
 
 
-        this.playerData.name = name;
+        this.name = name;
         this.playerData.money = 1500;
         this.playerData.positionNo = 0;
         this.playerData.freezeTurn = 0;
@@ -52,13 +53,12 @@ public class Player : MonoBehaviour
         this.playerData.circle = 0;
         this.playerData.assetsWorth = 1500;
 
-        Debug.Log($" {playerData.name} 初始化成功！");
     }
     public void InitializeBank(){
          this.playerData = ScriptableObject.CreateInstance<PlayerData>();
 
 
-        this.playerData.name = "Bank";
+        this.name = "Bank";
         this.playerData.money = 30000;
         this.playerData.positionNo = 0;
         this.playerData.freezeTurn = 0;
@@ -77,8 +77,6 @@ public class Player : MonoBehaviour
 
         for (int i = 0; i < steps; i++)
         {
-       
-            Debug.Log(playerData.positionNo);
             playerData.positionNo = (playerData.positionNo + 1) % 40;             
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);
@@ -93,7 +91,6 @@ public class Player : MonoBehaviour
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
                 _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y+heightFactor);
                 elapsedTime += Time.deltaTime;
-                Debug.Log(elapsedTime);
                  yield return null;
             }
 

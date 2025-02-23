@@ -119,6 +119,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &149152072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149152073}
+  m_Layer: 0
+  m_Name: PlayersPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &149152073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149152072}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3370178, y: 0.21816546, z: -0.80716664}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1266106893}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275860656
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +628,7 @@ GameObject:
   - component: {fileID: 1266106894}
   - component: {fileID: 1266106895}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,11 +725,11 @@ Transform:
   m_GameObject: {fileID: 1266106889}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.5, y: -2.6, z: 90}
+  m_LocalPosition: {x: 4.162982, y: -2.8181653, z: 90.80717}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 149152073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1266106894
 Animator:
@@ -733,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72d4c3df34790f48a8634281f6c07cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
   playerData: {fileID: 0}
   isMoving: 0
 --- !u!1 &1458952310
@@ -985,7 +1018,7 @@ MonoBehaviour:
   DiceButton: {fileID: 1563336185}
   isEffectiveDice: 0
   BehavioursPool: {fileID: 275860656}
-  testPlayer: {fileID: 1266106895}
+  playersPool: {fileID: 0}
 --- !u!1 &1661302560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,4 +1954,4 @@ SceneRoots:
   - {fileID: 506229649}
   - {fileID: 332973050}
   - {fileID: 432075091}
-  - {fileID: 1266106893}
+  - {fileID: 149152073}

@@ -14,7 +14,7 @@ public class GameBehaviour: MonoBehaviour
     {
         
         player.playerData.money += amount;
-        Debug.Log($"{player.playerData.name} recieved £{amount}, new balance: £{player.playerData.money}");
+        Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
     }
     public void PayMoney(Player player,int amount)
@@ -23,7 +23,7 @@ public class GameBehaviour: MonoBehaviour
         if (player.playerData.money >= amount)
         {
             player.playerData.money -= amount;
-            Debug.Log($"{player.playerData.name} paid £{amount}, remaining balance: £{player.playerData.money}");
+            Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
         }
         
@@ -40,7 +40,7 @@ public class GameBehaviour: MonoBehaviour
 
         }
         player.playerData.assetsList.Clear();
-        Debug.Log($"{player.playerData.name} is bankrupt! All assets are repossessed!");
+        Debug.Log($"{player.name} is bankrupt! All assets are repossessed!");
     }
     public void GoToJail(Player player)
     {
@@ -69,11 +69,11 @@ public class GameBehaviour: MonoBehaviour
         {
             PayMoney(player,board.price);
             AddProperty(player,board);
-            Debug.Log($"{player.playerData.name} bought {board.property}!");
+            Debug.Log($"{player.name} bought {board.property}!");
         }
         else
         {
-            Debug.Log($"{player.playerData.name} does not have enough money to buy {board.property}!");
+            Debug.Log($"{player.name} does not have enough money to buy {board.property}!");
 
         }}
         public void AddProperty(Player player, estateBoard board)
@@ -94,7 +94,7 @@ public class GameBehaviour: MonoBehaviour
                 string _owner=board.owner.name;
                     
                 
-                Debug.Log($"{player.playerData.name} paid £{board.rent} in rent to {_owner}!");
+                Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
             }
         }
         public void MoveTo(Player player, string boardName)

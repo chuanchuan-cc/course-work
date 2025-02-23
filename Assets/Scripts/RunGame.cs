@@ -16,20 +16,32 @@ public class RunGame : MonoBehaviour
     public Button DiceButton;
     public bool isEffectiveDice=false;
     public GameObject BehavioursPool;
+    public GameObject playersPool;
     private GameBehaviour gameBehaviour;
+    private Player lastPlayer=null;
     //测试用玩家
-    public Player testPlayer;
+
     int roll;
     void Awake(){
      
         DiceButton.interactable = false;
         gameBehaviour = BehavioursPool.GetComponent<GameBehaviour>();
+        playersPool=GameObject.Find("PlayersPool");
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         bool isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;     
         point = 0;
         DiceButton.onClick.AddListener(ThrowDice);
-        testPlayer.InitializePlayer("test");
-        playersList.Add(testPlayer);
+        playersPool=GameObject.Find("PlayersPool");
+        foreach(Transform child in playersPool.transform){
+            Player player=child.GetComponent<Player>();
+            player.InitializePlayer(player.gameObject.name);
+            playersList.Add(player);
+            if (player != null)
+    {
+        Debug.Log("find Player:" + child.name);
+    }
+        }
+        
         //初始化version1 测试地图
         for(int i =0;i<40;i++)
         {
@@ -54,16 +66,13 @@ public class RunGame : MonoBehaviour
 IEnumerator GameLoop()
 {
     
-    
     while (keepGame)
     {
         DiceButton.interactable = false;
         //ui显示 玩家xxx的回合
         isEffectiveDice=false;
+        
         Player currentPlayer = playersList[point];
-        //显示玩家
-        Debug.Log("当前玩家为"+currentPlayer.playerData.name);
-        //
         int currentPoint = point;
         point = (point + 1) % playersList.Count;
         
@@ -73,7 +82,7 @@ IEnumerator GameLoop()
             yield return new WaitForSeconds(1f);
             continue;
         }
-        if(currentPlayer.isMoving==false)DiceButton.interactable = true;
+        if(lastPlayer==null||!lastPlayer.isMoving)DiceButton.interactable = true;
        
         if(roll==-1){
             gameBehaviour.GoToJail(currentPlayer);
@@ -121,7 +130,7 @@ IEnumerator GameLoop()
             break;
         }
         */
-
+        lastPlayer=currentPlayer;
         yield return new WaitForSeconds(0.5f);
     }
 }
