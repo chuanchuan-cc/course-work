@@ -112,11 +112,11 @@ public class Player : MonoBehaviour
     private Vector2 GetPosition(int No)
     {
         int newNo = No % 40;
-        if (newNo == 0) return new Vector2(6.5f, -2.6f);
-        else if (newNo <= 14) return new Vector2(6.5f - (float)newNo, -2.6f);
-        else if (newNo <= 20) return new Vector2(-7.5f, (float)newNo - 14f - 2.6f);
-        else if (newNo <= 34) return new Vector2(-7.5f + (float)newNo - 20f, 3.4f);
-        else return new Vector2(6.5f, 3.4f - ((float)newNo - 34));
+        if (newNo == 0) return new Vector2(7.5f, -2.6f);
+        else if (newNo <= 15) return new Vector2(7.5f - (float)newNo, -2.6f);
+        else if (newNo <= 20) return new Vector2(-7.5f, (float)newNo - 15f - 2.6f);
+        else if (newNo <= 35) return new Vector2(-7.5f + (float)newNo - 20f, 2.4f);
+        else return new Vector2(7.5f, 2.4f - ((float)newNo - 35));
     }
 
 }

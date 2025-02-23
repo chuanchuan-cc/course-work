@@ -73,7 +73,7 @@ IEnumerator GameLoop()
             yield return new WaitForSeconds(1f);
             continue;
         }
-        DiceButton.interactable = true;
+        if(currentPlayer.isMoving==false)DiceButton.interactable = true;
        
         if(roll==-1){
             gameBehaviour.GoToJail(currentPlayer);
@@ -82,6 +82,7 @@ IEnumerator GameLoop()
         }
 
         yield return new WaitUntil(() => isEffectiveDice);
+        
 
         if (!currentPlayer.isMoving) 
         {
@@ -90,7 +91,7 @@ IEnumerator GameLoop()
 
         yield return new WaitUntil(() => !currentPlayer.isMoving); 
         
-        
+        DiceButton.interactable = false;
   
        
 
@@ -121,11 +122,12 @@ IEnumerator GameLoop()
         }
         */
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
     }
 }
 
 public void ThrowDice(){
+    DiceButton.interactable = false;
     int roll1;
     int roll2;
     int t=0;
