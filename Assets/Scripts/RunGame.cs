@@ -52,7 +52,7 @@ public class RunGame : MonoBehaviour
         //初始化version1 测试地图
         for(int i =0;i<40;i++)
         {
-            mapList.Add(new Board("test",false));
+            mapList.Add(new Board(i,"test","test","used for test",false));
         }
         }
     }
