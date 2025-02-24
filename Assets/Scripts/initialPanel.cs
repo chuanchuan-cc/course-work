@@ -102,7 +102,7 @@ public class initialPanelScript : MonoBehaviour
 }
  public void LoadMap()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(CSV-formatted file)", defaultFolder+"map", "csv", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(xlsx-formatted file)", defaultFolder+"map", "xlsx", false);
         if (paths.Length > 0)
         {
             string mapPath=paths[0];
@@ -113,7 +113,7 @@ public class initialPanelScript : MonoBehaviour
     }
      public void LoadCard()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("choose your card(CSV-formatted file)", defaultFolder+"/card", "csv", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your card(xlsx-formatted file)", defaultFolder+"/card", "xlsx", false);
         if (paths.Length > 0)
         {
             string cardPath=paths[0];

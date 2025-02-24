@@ -55,7 +55,13 @@ public class RunGame : MonoBehaviour
 {
     string cardPath=PlayerPrefs.GetString("cardPath");
     (List<Card> luckCards,List<Card> opportunityCards)=CardLoader.LoadCards(cardPath);
- 
+    //测试卡组
+    foreach(Card card in luckCards){
+        Debug.Log($"card{card.description} load successful");
+    }
+    foreach(Card card in opportunityCards){
+        Debug.Log($"card{card.description} load successful");
+    }
 
     StartCoroutine(GameLoop());
    

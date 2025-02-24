@@ -59,13 +59,13 @@ public class Player : MonoBehaviour
 
 
         this.name = "Bank";
-        this.playerData.money = 30000;
+        this.playerData.money = 50000;
         this.playerData.positionNo = 0;
         this.playerData.freezeTurn = 0;
         this.playerData.isBankrupt = false;
         this.playerData.assetsList = new List<string>();
         this.playerData.circle = 0;
-        this.playerData.assetsWorth = 30000;
+        this.playerData.assetsWorth = 50000;
     }
 
     private IEnumerator MovePiece(int steps)
