@@ -6,6 +6,8 @@ using System;
 [Serializable]
 public class PlayerData: ScriptableObject
 {
+    public string name;
+    public int freeJail;
     public int money;
     public int positionNo;
     public int freezeTurn;

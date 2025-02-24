@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         isMoving=true;
         _animator.SetBool("isMoving", true);
         float jumpHeight = 0.5f;
-        float jumpDuration = 0.5f;
+
 
         for (int i = 0; i < steps; i++)
         {

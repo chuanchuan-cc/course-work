@@ -139,7 +139,7 @@ public static class CardLoader
             if(c.group.ToUpper()=="POT LUCK")luckCards.Add(c);
             else if(c.group.ToUpper()=="OPPORTUNITY KNOCKS")opportunityCards.Add(c);
         }
-        
+        //此处写检查卡牌有效性办法
         }
         return (luckCards,opportunityCards);
     }

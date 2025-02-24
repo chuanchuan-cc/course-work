@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class RunGame : MonoBehaviour
 {
+    public bool isLoadGame;
     public static Player bank;
     public List<Player> playersList= new List<Player>();
     public List<Board> mapList;
@@ -19,11 +20,17 @@ public class RunGame : MonoBehaviour
     public GameObject playersPool;
     private GameBehaviour gameBehaviour;
     private Player lastPlayer=null;
+    private int diceRolls;
     //测试用玩家
 
     int roll;
     void Awake(){
-     
+        bool isLoadGame = PlayerPrefs.GetInt("IsLoadGame", 0) == 1; 
+        //非load方法，新游戏方法。
+        if(isLoadGame){
+
+        }
+        else{
         DiceButton.interactable = false;
         gameBehaviour = BehavioursPool.GetComponent<GameBehaviour>();
         playersPool=GameObject.Find("PlayersPool");
@@ -47,12 +54,14 @@ public class RunGame : MonoBehaviour
         {
             mapList.Add(new Board("test",false));
         }
+        }
     }
 
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
 {
+    
     string cardPath=PlayerPrefs.GetString("cardPath");
     (List<Card> luckCards,List<Card> opportunityCards)=CardLoader.LoadCards(cardPath);
     //测试卡组
@@ -71,6 +80,7 @@ public class RunGame : MonoBehaviour
 
 IEnumerator GameLoop()
 {
+    diceRolls=0;
     
     while (keepGame)
     {
@@ -85,21 +95,17 @@ IEnumerator GameLoop()
         if (currentPlayer.playerData.freezeTurn > 0)
         {
             currentPlayer.playerData.freezeTurn -= 1;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             continue;
         }
         if(lastPlayer==null||!lastPlayer.isMoving)DiceButton.interactable = true;
-       
+        
+        yield return new WaitUntil(() => isEffectiveDice);
         if(roll==-1){
             gameBehaviour.GoToJail(currentPlayer);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             continue;
-        }
-
-        yield return new WaitUntil(() => isEffectiveDice);
-        
-
-        if (!currentPlayer.isMoving) 
+        }else if (!currentPlayer.isMoving) 
         {
             currentPlayer.Move(roll);
         }
@@ -121,12 +127,12 @@ IEnumerator GameLoop()
     
 
 
-        //Check(currentPlayer, mapList);
-        //check包含行为判断加执行
+        check(currentPlayer);
+      
 
         /*
         此处为停止条件
-        if (currentPlayer.playerData.isBankrupt)
+        if (currentPlayer.isBankrupt)
         {
             playersList.RemoveAt(currentPoint);
         }
@@ -137,32 +143,66 @@ IEnumerator GameLoop()
         }
         */
         lastPlayer=currentPlayer;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
     }
 }
 
-public void ThrowDice(){
+public void ThrowDice()
+{
     DiceButton.interactable = false;
-    int roll1;
-    int roll2;
-    int t=0;
-    do{
-        if(t>=3){
-            roll=-1;
-            isEffectiveDice = false;
-            break;
-        }
-        roll1=Random.Range(1,7);
-        roll2=Random.Range(1,7);
-        t+=1;
-        roll=roll1+roll2;
-    }while(roll%2==0 && t<3);
-    isEffectiveDice = true;
-    
+    int roll1, roll2;
 
+    roll1 = Random.Range(1, 7);
+    roll2 = Random.Range(1, 7);
+    roll = roll1 + roll2;
+    Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
+    if (roll % 2 == 0)
+    {
+        diceRolls++;
+        if (diceRolls == 3)
+        {
+            roll = -1;
+            diceRolls=0;
+            isEffectiveDice = true;
+            return;
+        }else
+        {
+            DiceButton.interactable = true;
+            return;
+        }
+    }else
+    {
+        isEffectiveDice = true;
+        diceRolls=0;
+           
+    }
+   
 
 }
+ 
 
+void check(Player player){
+Board currentBoard=mapList[player.playerData.positionNo];
+if(player.playerData.freeJail>0){
+player.playerData.freeJail--;
+}
+else{
+    if(currentBoard.canBeBought){
+        estateBoard eBoard= currentBoard as estateBoard;
+        if(eBoard!=null){
+            if(eBoard.owner==bank){
+            //此处写是否购买资产方法
+            if(eBoard.owner!=player){
+               gameBehaviour.PayRent(player,eBoard);
+
+            }
+        }
+   
 
   
+       }
+     }
+  }
 }
+}
+
