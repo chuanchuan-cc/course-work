@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class PlayerData: ScriptableObject
+public class PlayerData: ScriptableObject,IOwner
 {
     public string name;
     public int freeJail;
@@ -15,9 +15,16 @@ public class PlayerData: ScriptableObject
     public List<string> assetsList;
     public int circle;
     public int assetsWorth;
+
+    public string GetName(){
+        return name;
+    }
     
 
 
 
     
+}
+public interface IOwner{
+    string GetName();
 }

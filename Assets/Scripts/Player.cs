@@ -5,6 +5,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    public PlayerDisplay playerDisplay;
     public string name;
     public PlayerData playerData;
     private Rigidbody2D _rigidbody;
@@ -41,9 +42,9 @@ public class Player : MonoBehaviour
     public void InitializePlayer(string name)
     {
    
+    
+
         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
-
-
         this.name = name;
         this.playerData.money = 1500;
         this.playerData.positionNo = 0;
@@ -54,19 +55,7 @@ public class Player : MonoBehaviour
         this.playerData.assetsWorth = 1500;
 
     }
-    public void InitializeBank(){
-         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
 
-
-        this.name = "Bank";
-        this.playerData.money = 50000;
-        this.playerData.positionNo = 0;
-        this.playerData.freezeTurn = 0;
-        this.playerData.isBankrupt = false;
-        this.playerData.assetsList = new List<string>();
-        this.playerData.circle = 0;
-        this.playerData.assetsWorth = 50000;
-    }
 
     private IEnumerator MovePiece(int steps)
     {
@@ -115,5 +104,25 @@ public class Player : MonoBehaviour
         else if (newNo <= 35) return new Vector2(-7.5f + (float)newNo - 20f, 2.4f);
         else return new Vector2(7.5f, 2.4f - ((float)newNo - 35));
     }
+    public void UpdateUI()
+    {
+        if (playerDisplay != null)
+        {
+            playerDisplay.ShowPlayer(this);
+        }
+    }
 
+}
+
+public class Bank:IOwner{
+    string name;
+    int money;
+    public Bank(){
+        this.money=50000;
+        this.name="Bank";
+    }
+
+public string GetName(){
+    return "Bank";
+}
 }

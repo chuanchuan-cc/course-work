@@ -9,7 +9,6 @@ public class GameBehaviour: MonoBehaviour
     public Player bank;
  
 
-    public List<Board> mapList;
     public void AddMoney(Player player,int amount)
     {
         
@@ -33,9 +32,9 @@ public class GameBehaviour: MonoBehaviour
         player.playerData.isBankrupt = true;
         player.playerData.money = 0;
         player.playerData.assetsWorth = 0;
-        foreach (estateBoard board in mapList){
+        foreach (estateBoard board in RunGame.mapList){
             if(board.owner==player){
-                board.owner=bank;
+                board.owner=RunGame.bank;
             }
 
         }
@@ -44,8 +43,8 @@ public class GameBehaviour: MonoBehaviour
     }
     public void GoToJail(Player player)
     {
-        if(mapList.FindIndex(board=>board.group == "Go to jail")>0){
-        player.playerData.positionNo = mapList.FindIndex(board=>board.group == "Go to jail");
+        if(RunGame.mapList.FindIndex(board=>board.group == "Go to jail")>0){
+        player.playerData.positionNo = RunGame.mapList.FindIndex(board=>board.group == "Go to jail");
         }
         else {
             Debug.LogError("can't find board Go to jail");
@@ -78,7 +77,7 @@ public class GameBehaviour: MonoBehaviour
         }}
         public void AddProperty(Player player, estateBoard board)
         {
-            board.owner = player;
+            board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board.property);
 
@@ -89,9 +88,13 @@ public class GameBehaviour: MonoBehaviour
         {
             if(!player.playerData.isBankrupt)
             {
-                PayMoney(player, board.rent);       
-                AddMoney(board.owner,board.rent);
-                string _owner=board.owner.name;
+                PayMoney(player, board.rent);
+                foreach(Player cp in RunGame.playersList){
+                    if(cp.name==board.owner.GetName()){
+                        AddMoney(cp,board.rent);
+                    }
+                }
+                string _owner=board.owner.GetName();
                     
                 
                 Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
@@ -99,7 +102,7 @@ public class GameBehaviour: MonoBehaviour
         }
         public void MoveTo(Player player, string boardName)
         {
-            while (mapList[player.playerData.positionNo].property != boardName)
+            while (RunGame.mapList[player.playerData.positionNo].property != boardName)
         {
             player.Move(1); 
         }

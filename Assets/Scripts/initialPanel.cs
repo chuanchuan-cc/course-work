@@ -102,7 +102,7 @@ public class initialPanelScript : MonoBehaviour
 }
  public void LoadMap()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(xlsx-formatted file)", defaultFolder+"map", "xlsx", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(xlsx-formatted file)", defaultFolder+"/map", "xlsx", false);
         if (paths.Length > 0)
         {
             string mapPath=paths[0];

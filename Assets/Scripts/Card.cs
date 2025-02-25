@@ -88,10 +88,10 @@ public static class CardLoader
         using (var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read))
         using (var reader = ExcelReaderFactory.CreateReader(stream)){
         {
-            int rowIndex=0;
+            
             while(reader.Read()){
             if (reader.GetValue(5)==null){
-                rowIndex++;
+             
                 continue;
             }
       

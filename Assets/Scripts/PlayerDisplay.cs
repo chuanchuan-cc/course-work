@@ -31,7 +31,7 @@ public class PlayerDisplay: MonoBehaviour
     }
 
 
-    void ShowPlayer(Player player)
+    public void ShowPlayer(Player player)
     {
         if(player==null){
         Debug.LogError("no player!");

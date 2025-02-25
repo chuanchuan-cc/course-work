@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class RunGame : MonoBehaviour
 {
     public bool isLoadGame;
-    public static Player bank;
-    public List<Player> playersList= new List<Player>();
-    public List<Board> mapList;
-    public List<Card> luckCards;
-    public List<Card> opportunityCards;
+    public static Bank bank;
+    public static List<Player> playersList= new List<Player>();
+    public static List<Board> mapList;
+    public static List<Card> luckCards;
+    public static List<Card> opportunityCards;
+
 
     public bool keepGame=true;
     public int point;
@@ -49,11 +50,9 @@ public class RunGame : MonoBehaviour
     }
         }
         
-        //初始化version1 测试地图
-        for(int i =0;i<40;i++)
-        {
-            mapList.Add(new Board(i,"test","test","used for test",false));
-        }
+        bank=new Bank();
+ 
+       
         }
     }
 
@@ -62,16 +61,30 @@ public class RunGame : MonoBehaviour
    void Start()
 {
     
-    string cardPath=PlayerPrefs.GetString("cardPath");
+    //测试直接写入测试地图位置
+    //string cardPath=PlayerPrefs.GetString("cardPath");
+    //string mapPath=PlayerPrefs.GetString("mapPath");
+    //
+    string mapPath=Application.dataPath+"/Resources/map/testMap.xlsx";
+    string cardPath=Application.dataPath+"/Resources/card/testCard.xlsx";
+    //以上为直接写入的地址
+    //
+    Debug.Log(mapPath);
+    mapList=BoardLoader.LoadBoards(mapPath);
     (List<Card> luckCards,List<Card> opportunityCards)=CardLoader.LoadCards(cardPath);
+    foreach(Board board in mapList){
+        Debug.Log($"Board No.{board.positionNo}, {board.property} load successful");
+    }
     //测试卡组
     foreach(Card card in luckCards){
-        Debug.Log($"card{card.description} load successful");
+        Debug.Log($"card {card.description} load successful");
     }
     foreach(Card card in opportunityCards){
-        Debug.Log($"card{card.description} load successful");
+        Debug.Log($"card {card.description} load successful");
     }
 
+
+    //start
     StartCoroutine(GameLoop());
    
     
@@ -142,6 +155,7 @@ IEnumerator GameLoop()
             break;
         }
         */
+        currentPlayer.UpdateUI();
         lastPlayer=currentPlayer;
         yield return new WaitForSeconds(0.2f);
     }
