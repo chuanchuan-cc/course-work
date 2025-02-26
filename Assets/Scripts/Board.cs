@@ -108,7 +108,7 @@ public static class BoardLoader
                 {
                     
                     
-                    int positionNo = ParseInt(reader.GetValue(0));
+                    int positionNo = ParseInt(reader.GetValue(0))-1;
                     string property = GetString(reader.GetValue(1));
                     string group = GetString(reader.GetValue(3));
                     string action = GetString(reader.GetValue(4));

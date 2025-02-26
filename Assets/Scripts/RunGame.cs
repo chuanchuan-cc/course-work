@@ -12,6 +12,8 @@ public class RunGame : MonoBehaviour
     public static List<Card> luckCards;
     public static List<Card> opportunityCards;
 
+    Player currentPlayer;
+
 
     public bool keepGame=true;
     public int point;
@@ -22,6 +24,8 @@ public class RunGame : MonoBehaviour
     private GameBehaviour gameBehaviour;
     private Player lastPlayer=null;
     private int diceRolls;
+    public static bool setFollow=false;
+    public CameraFollow cameraFollow;
     //测试用玩家
 
     int roll;
@@ -82,6 +86,12 @@ public class RunGame : MonoBehaviour
     foreach(Card card in opportunityCards){
         Debug.Log($"card {card.description} load successful");
     }
+    //相机获取
+    cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.SetTarget(this.transform);
+        }
 
 
     //start
@@ -97,11 +107,14 @@ IEnumerator GameLoop()
     
     while (keepGame)
     {
+        cameraFollow.reset();
+        setFollow=false;
+
         DiceButton.interactable = false;
         //ui显示 玩家xxx的回合
         isEffectiveDice=false;
         
-        Player currentPlayer = playersList[point];
+        currentPlayer = playersList[point];
         int currentPoint = point;
         point = (point + 1) % playersList.Count;
         
@@ -121,6 +134,10 @@ IEnumerator GameLoop()
         }else if (!currentPlayer.isMoving) 
         {
             currentPlayer.Move(roll);
+            setFollow=true;
+
+
+
         }
 
         yield return new WaitUntil(() => !currentPlayer.isMoving); 
@@ -140,7 +157,7 @@ IEnumerator GameLoop()
     
 
 
-        check(currentPlayer);
+        check();
       
 
         /*
@@ -157,6 +174,7 @@ IEnumerator GameLoop()
         */
         currentPlayer.UpdateUI();
         lastPlayer=currentPlayer;
+        cameraFollow.reset();
         yield return new WaitForSeconds(0.2f);
     }
 }
@@ -190,15 +208,28 @@ public void ThrowDice()
         diceRolls=0;
            
     }
+
+        cameraFollow.SetTarget(currentPlayer.transform);
+            Debug.Log("角色位置"+ currentPlayer.transform);
+    StartCoroutine(FollowAndResetCamera(playersList[point], roll));
    
 
 }
  
+private IEnumerator FollowAndResetCamera(Player player, int steps)
+{
+    setFollow = true;
+    player.Move(steps); 
 
-void check(Player player){
-Board currentBoard=mapList[player.playerData.positionNo];
-if(player.playerData.freeJail>0){
-player.playerData.freeJail--;
+    yield return new WaitUntil(() => !player.isMoving); 
+
+    setFollow = false; 
+    cameraFollow.reset(); 
+}
+void check(){
+Board currentBoard=mapList[currentPlayer.playerData.positionNo];
+if(currentPlayer.playerData.freeJail>0){
+currentPlayer.playerData.freeJail--;
 }
 else{
     if(currentBoard.canBeBought){
@@ -206,8 +237,8 @@ else{
         if(eBoard!=null){
             if(eBoard.owner==bank){
             //此处写是否购买资产方法
-            if(eBoard.owner!=player){
-               gameBehaviour.PayRent(player,eBoard);
+            if(eBoard.owner!=currentPlayer){
+               gameBehaviour.PayRent(currentPlayer,eBoard);
 
             }
         }

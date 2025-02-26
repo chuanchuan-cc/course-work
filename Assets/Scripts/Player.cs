@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
         {
             Debug.Log($"{this.name} successfully loaded data");
         }
+      
+       
+       
+        
     }
 
     public void Move(int steps)
@@ -34,9 +38,12 @@ public class Player : MonoBehaviour
         
         if (!isMoving)
         {
+   
             Debug.Log($"{this.name} moves forward {steps} steps");
             isMoving=true;
             StartCoroutine(MovePiece(steps));
+            
+     
         }
     }
     public void InitializePlayer(string name)
@@ -80,7 +87,7 @@ public class Player : MonoBehaviour
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
                 _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y+heightFactor);
                 elapsedTime += Time.deltaTime;
-                 yield return null;
+                yield return null;
             }
 
             _rigidbody.position = targetPos; 
