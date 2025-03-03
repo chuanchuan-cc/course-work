@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_circular_frame_with_gold_relief_decoration-2025-02-20-160143-removebg_0: -1449194388219417966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

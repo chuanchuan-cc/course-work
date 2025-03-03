@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_gold_coin_icon-2025-02-22-221329_0: 8968746899402932539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

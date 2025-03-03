@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_building_icon-2025-02-22-222056_0: 4355690036884534946
+      draw_me_a_building_icon-2025-02-22-222056_1: 7268354741970309980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

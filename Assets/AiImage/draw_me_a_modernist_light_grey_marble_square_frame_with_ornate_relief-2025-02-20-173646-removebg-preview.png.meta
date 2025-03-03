@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_modernist_light_grey_marble_square_frame_with_ornate_relief-2025-02-20-173646-removebg-preview_0: -5522849205458050372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_modern_light_grey_circular_border_with_relief_decorations-2025-02-20-161234__1_-removebg-preview_0: -7162250015706791358
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      draw_me_a_modern_light_grey_rectangular_frame_with_relief_decoration-2025-02-20-162829-removebg-preview_0: -3667293718544599656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
