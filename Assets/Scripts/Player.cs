@@ -84,8 +84,18 @@ public class Player : MonoBehaviour
             {
                 float t = elapsedTime / totalTime;
                 float heightFactor = Mathf.Sin(t * Mathf.PI) * jumpHeight;
+                bool isHorizon=Math.Abs(startPos.x-targetPos.x)>Math.Abs(startPos.y-targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
+                if(isHorizon){
                 _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y+heightFactor);
+
+                }else{
+                    if(startPos.y-targetPos.y<0){
+                        _rigidbody.position = new Vector2(interpolatedPos.x-heightFactor,interpolatedPos.y);
+                    }else{
+                        _rigidbody.position = new Vector2(interpolatedPos.x+heightFactor,interpolatedPos.y);
+                    }
+                }
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }

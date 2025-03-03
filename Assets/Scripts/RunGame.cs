@@ -28,7 +28,7 @@ public class RunGame : MonoBehaviour
     private int diceRolls;
     public CardUI cardUI;  // 新增：控制卡片 UI
     public static bool setFollow=false;
-    public CameraFollow cameraFollow;
+
     //测试用玩家
 
     int roll;
@@ -48,6 +48,7 @@ public class RunGame : MonoBehaviour
 
         // 自动查找并绑定 CardUI
         cardUI = FindObjectOfType<CardUI>();
+    
 
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         bool isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
@@ -100,15 +101,11 @@ public class RunGame : MonoBehaviour
     foreach(Card card in opportunityCards){
         Debug.Log($"card {card.description} load successful");
     }
-    //相机获取
-    cameraFollow = Camera.main.GetComponent<CameraFollow>();
-        if (cameraFollow != null)
-        {
-            cameraFollow.SetTarget(this.transform);
-        }
+        
 
 
     //start
+    
     StartCoroutine(GameLoop());
    
     
@@ -120,18 +117,24 @@ public class RunGame : MonoBehaviour
 
     IEnumerator GameLoop()
 {
+
+    
     diceRolls=0;
     
     while (keepGame)
     {
-        cameraFollow.reset();
+        cardUI.HideCard();
+        
+
         setFollow=false;
+       
 
         DiceButton.interactable = false;
         //ui显示 玩家xxx的回合
         isEffectiveDice=false;
         
         currentPlayer = playersList[point];
+
         int currentPoint = point;
         point = (point + 1) % playersList.Count;
         
@@ -191,8 +194,9 @@ public class RunGame : MonoBehaviour
         */
         currentPlayer.UpdateUI();
         lastPlayer=currentPlayer;
-        cameraFollow.reset();
-        yield return new WaitForSeconds(0.2f);
+
+        yield return new WaitUntil(() => !cardUI.isDisplaying);
+
     }
 }
 
@@ -228,23 +232,12 @@ public void ThrowDice()
            
     }
 
-        cameraFollow.SetTarget(currentPlayer.transform);
-            Debug.Log("角色位置"+ currentPlayer.transform);
-    StartCoroutine(FollowAndResetCamera(playersList[point], roll));
+       
    
 
 }
  
-private IEnumerator FollowAndResetCamera(Player player, int steps)
-{
-    setFollow = true;
-    player.Move(steps); 
 
-    yield return new WaitUntil(() => !player.isMoving); 
-
-    setFollow = false; 
-    cameraFollow.reset(); 
-}
  void check(Player player)
     {
         Board currentBoard = mapList[player.playerData.positionNo];
@@ -307,7 +300,18 @@ private IEnumerator FollowAndResetCamera(Player player, int steps)
 
         // 处理卡片效果
         ApplyCardEffect(player, drawnCard);
-        yield return new WaitForSeconds(1f);
+        float timer = 0f;
+        Player initialPlayer = currentPlayer; 
+    while (timer < 5f)
+    {
+        if (Input.GetMouseButtonDown(0)) // 监听鼠标点击
+        {
+            Debug.Log("点击屏幕，立即关闭卡片 UI");
+            break;
+        }
+        timer += Time.deltaTime;
+        yield return null;   
+    }
         cardUI.HideCard();
         
     }
