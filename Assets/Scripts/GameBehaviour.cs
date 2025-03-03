@@ -15,6 +15,7 @@ public class GameBehaviour: MonoBehaviour
         player.playerData.money += amount;
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
+        player.UpdateUI();
     }
     public void PayMoney(Player player,int amount)
     {
@@ -24,6 +25,7 @@ public class GameBehaviour: MonoBehaviour
             player.playerData.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
+        player.UpdateUI();
         }
         
     }
@@ -80,6 +82,7 @@ public class GameBehaviour: MonoBehaviour
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board.property);
+            player.UpdateUI();
 
         }
        

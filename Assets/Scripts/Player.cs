@@ -122,8 +122,8 @@ public class Player : MonoBehaviour
 }
 
 public class Bank:IOwner{
-    string name;
-    int money;
+    public string name;
+    public int money;
     public Bank(){
         this.money=50000;
         this.name="Bank";
