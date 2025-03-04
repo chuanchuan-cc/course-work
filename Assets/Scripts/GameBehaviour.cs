@@ -61,7 +61,7 @@ public class GameBehaviour: MonoBehaviour
     public void FreezeTurn(Player player, int turns){
         player.playerData.freezeTurn = turns;
     }
-    public void SellProperty(Player player, EstateBoard board)
+    public void SellProperty(Player player, estateBoard board)
 {
     if (player.ownedProperties.Contains(board))
     {
@@ -122,17 +122,19 @@ public class GameBehaviour: MonoBehaviour
         string input = GetPlayerInput(); //这里需要定义 UI?,或者固定加钱
         int bid;
           if (int.TryParse(input, out bid) && bid > currentHighestBid && bid <= playerData.money)
-            }
+            
             return bid;
-        }
+        
         else
         {
             Debug.Log($"{name} entered an invalid bid or chose not to bid.");
             return 0; 
         }
+            }
+        }
         private void StartAuction(estateBoard board, List<Player>allPlayers)
         {
-            Debug.Log(($"Starting auction for {board.property}!")
+            Debug.Log(($"Starting auction for {board.property}!"));
             
             Player highestBidder = null;
             int highestBid = 0;
@@ -142,16 +144,16 @@ public class GameBehaviour: MonoBehaviour
                 Debug.Log($"No eligible players to bid for {board.property}. It remains unsold.");
         return;
     }
-            }
+            
             foreach (var player in eligiblePlayers )
-            (
+            {
                 int bid = player.MakeBid(board, highestBid);
                 if (bid > highestBid && bid <= player.playerData.money)
                 {
                     highestBid = bid;
                     highestBidder = player;
                 }
-                }
+                
                 if (highestBidder != null)
                 {
                     PayMoney(highestBidder, highestBid);
@@ -164,8 +166,8 @@ public class GameBehaviour: MonoBehaviour
         Debug.Log($"No one bid for {board.property}. It remains unsold.");
     }
                 }
-            )
-        }
+            }
+        
         public void AddProperty(Player player, estateBoard board)
         {
             board.owner = player.playerData;
@@ -198,15 +200,15 @@ public class GameBehaviour: MonoBehaviour
             player.Move(1); 
         }
         }
-        public void BuildBuilding(Player player, EstateBoard board)
+        public void BuildBuilding(Player player, estateBoard board)
 {
     if (player.ownedProperties.Contains(board))
     {
         if (PlayerOwnsFullSet(player, board)) // 玩家必须拥有同色套装
-        bool isbuild；
+       { 
         //弹出选择面板，判断bool isbuild
 
-        {
+        bool isbuild;
             if (board.buildingLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
             {
                 int buildCost = board.houseCost;
@@ -239,7 +241,7 @@ public class GameBehaviour: MonoBehaviour
 }
 
 
-private bool PlayerOwnsFullSet(Player player, EstateBoard board)
+private bool PlayerOwnsFullSet(Player player, estateBoard board)
 {
     List<EstateBoard> colorGroup = GetColorGroup(board);
     return colorGroup.All(property => player.ownedProperties.Contains(property));
