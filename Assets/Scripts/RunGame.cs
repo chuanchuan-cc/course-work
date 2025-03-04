@@ -16,7 +16,7 @@ public class RunGame : MonoBehaviour
 
     public bool keepGame = true;
     Player currentPlayer;
-
+    public CGcontrol cgControl;
 
     public int point;
     public Button DiceButton;
@@ -48,6 +48,10 @@ public class RunGame : MonoBehaviour
 
         // 自动查找并绑定 CardUI
         cardUI = FindObjectOfType<CardUI>();
+
+
+        //绑定CG控制器
+        cgControl=  FindObjectOfType<CGcontrol>();
     
 
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
@@ -148,6 +152,7 @@ public class RunGame : MonoBehaviour
         
         yield return new WaitUntil(() => isEffectiveDice);
         if(roll==-1){
+            cgControl.CGDisplay("GoToJail");
             gameBehaviour.GoToJail(currentPlayer);
             yield return new WaitForSeconds(0.5f);
             continue;
@@ -208,8 +213,7 @@ public void ThrowDice()
 
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
-    //roll = roll1 + roll2;
-    roll=7;
+    roll = roll1 + roll2;
     Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
     if (roll % 2 == 0)
     {

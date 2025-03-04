@@ -7,6 +7,7 @@ using System.Collections;
 public class GameBehaviour: MonoBehaviour
 {
     public Player bank;
+    
  
 
     public void AddMoney(Player player,int amount)
@@ -46,7 +47,9 @@ public class GameBehaviour: MonoBehaviour
     public void GoToJail(Player player)
     {
         if(RunGame.mapList.FindIndex(board=>board.group == "Go to jail")>0){
+      
         player.playerData.positionNo = RunGame.mapList.FindIndex(board=>board.group == "Go to jail");
+        
         }
         else {
             Debug.LogError("can't find board Go to jail");

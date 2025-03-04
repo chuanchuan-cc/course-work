@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
             while (elapsedTime < totalTime)
             {
                 float t = elapsedTime / totalTime;
-                float heightFactor = Mathf.Sin(t * Mathf.PI) * jumpHeight;
+                float heightFactor = (-4 * Mathf.Pow(t - 0.5f, 2) + 1)*jumpHeight;
                 bool isHorizon=Math.Abs(startPos.x-targetPos.x)>Math.Abs(startPos.y-targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
                 if(isHorizon){
@@ -91,9 +91,9 @@ public class Player : MonoBehaviour
 
                 }else{
                     if(startPos.y-targetPos.y<0){
-                        _rigidbody.position = new Vector2(interpolatedPos.x-heightFactor,interpolatedPos.y);
+                        _rigidbody.position = new Vector2(interpolatedPos.x-heightFactor*1f,interpolatedPos.y+heightFactor*1f);
                     }else{
-                        _rigidbody.position = new Vector2(interpolatedPos.x+heightFactor,interpolatedPos.y);
+                        _rigidbody.position = new Vector2(interpolatedPos.x+heightFactor*1f,interpolatedPos.y+heightFactor*1f);
                     }
                 }
                 elapsedTime += Time.deltaTime;
