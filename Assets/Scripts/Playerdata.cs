@@ -12,7 +12,7 @@ public class PlayerData: ScriptableObject,IOwner
     public int positionNo;
     public int freezeTurn;
     public bool isBankrupt;
-    public List<string> assetsList;
+    public List<Board> assetsList;
     public int circle;
     public int assetsWorth;
 

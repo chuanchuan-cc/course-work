@@ -11,6 +11,7 @@ public class RunGame : MonoBehaviour
     public static List<Board> mapList;
     public static List<Card> luckCards;
     public static List<Card> opportunityCards;
+    public static bool isAI;
     public int luckNo=0;
     public int OpportunityNo=0;
 
@@ -27,7 +28,7 @@ public class RunGame : MonoBehaviour
     private Player lastPlayer = null;
     private int diceRolls;
     public CardUI cardUI;  // 新增：控制卡片 UI
-    public static bool setFollow=false;
+ 
 
     //测试用玩家
 
@@ -55,7 +56,7 @@ public class RunGame : MonoBehaviour
     
 
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
-        bool isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
+        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
         point = 0;
         DiceButton.onClick.AddListener(ThrowDice);
 
@@ -130,7 +131,7 @@ public class RunGame : MonoBehaviour
         cardUI.HideCard();
         
 
-        setFollow=false;
+
        
 
         DiceButton.interactable = false;
@@ -154,12 +155,13 @@ public class RunGame : MonoBehaviour
         if(roll==-1){
             cgControl.CGDisplay("GoToJail");
             gameBehaviour.GoToJail(currentPlayer);
+            yield return new WaitUntil(()=>!currentPlayer.isMoving);
             yield return new WaitForSeconds(0.5f);
             continue;
         }else if (!currentPlayer.isMoving) 
         {
             currentPlayer.Move(roll);
-            setFollow=true;
+        
 
 
 
@@ -214,6 +216,8 @@ public void ThrowDice()
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
     roll = roll1 + roll2;
+  
+  
     Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
     if (roll % 2 == 0)
     {

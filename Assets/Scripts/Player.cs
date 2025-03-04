@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         this.playerData.positionNo = 0;
         this.playerData.freezeTurn = 0;
         this.playerData.isBankrupt = false;
-        this.playerData.assetsList = new List<string>();
+        this.playerData.assetsList = new List<Board>();
         this.playerData.circle = 0;
         this.playerData.assetsWorth = 1500;
 
@@ -128,8 +128,10 @@ public class Player : MonoBehaviour
             playerDisplay.ShowPlayer(this);
         }
     }
+  
 
 }
+
 
 public class Bank:IOwner{
     public string name;

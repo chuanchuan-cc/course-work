@@ -6,7 +6,7 @@ using System.Collections;
 
 public class GameBehaviour: MonoBehaviour
 {
-    public Player bank;
+   
     
  
 
@@ -46,7 +46,8 @@ public class GameBehaviour: MonoBehaviour
     {
         if(RunGame.mapList.FindIndex(board=>board.group == "Go to jail")>0){
       
-        player.playerData.positionNo = RunGame.mapList.FindIndex(board=>board.group == "Go to jail");
+        int i= RunGame.mapList.FindIndex(board=>board.group == "Go to jail");
+        player.Move(i-player.playerData.positionNo);
         
         }
         else {
@@ -63,13 +64,13 @@ public class GameBehaviour: MonoBehaviour
     }
     public void SellProperty(Player player, estateBoard board)
 {
-    if (player.ownedProperties.Contains(board))
+    if (player.playerData.assetsList.Contains(board))
     {
-        if (board.buildingLevel == 0) 
+        if (board.improvedLevel == 0) 
         {
             int sellPrice = board.price; 
             player.playerData.money += sellPrice;
-            player.ownedProperties.Remove(board);
+            player.playerData.assetsList.Remove(board);
             Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
         }
         else
@@ -86,35 +87,40 @@ public class GameBehaviour: MonoBehaviour
     
     public void BuyProperty(Player player,estateBoard board)
     {
-        if(!plyer.isPassGo)
+        if(player.playerData.circle>0)
         {
             Debug.Log($"{player.name} has not completed a full circuit of the board and cannot buy {board.property} yet!");
         return;
         }
         if(board.owner != null && board.owner != RunGame.bank)
         {
-            Debug.Log($"{board.property} is already owned by {board.owner.name} and cannot be purchased!");
+            Debug.Log($"{board.property} is already owned by {board.owner.GetName()} and cannot be purchased!");
         return;
         }
 
         if (player.playerData.money >= board.price)
         {
             PayMoney(player,board.price);
-            board.owner = player;
+            board.owner = player.playerData;
             AddProperty(player,board);
             Debug.Log($"{player.name} bought {board.property}!");
         }
         else
         {
             Debug.Log($"{player.name} does not have enough money to buy {board.property}!");
-            StartAuction(board, allPlayers, bank);
+            
+            StartAuction(board);
+            
         }}
 
+        /*
         public int MakeBid(Player player, estateBoard board, int currentHighestBid)
         {
-            if (this.isAI)
+            
+            if (RunGame.isAI)
             {
-                return AIBidStrategy(board, currentHighestBid);
+               // 我会写！不是现在搞！
+               // return AIBidStrategy(board, currentHighestBid);
             }
             else
             {
@@ -131,10 +137,12 @@ public class GameBehaviour: MonoBehaviour
             return 0; 
         }
             }
+            
         }
-        private void StartAuction(estateBoard board, List<Player>allPlayers)
+        */
+        private void StartAuction(estateBoard board)
         {
-            Debug.Log(($"Starting auction for {board.property}!"));
+           /* Debug.Log(($"Starting auction for {board.property}!"));
             
             Player highestBidder = null;
             int highestBid = 0;
@@ -166,13 +174,15 @@ public class GameBehaviour: MonoBehaviour
         Debug.Log($"No one bid for {board.property}. It remains unsold.");
     }
                 }
+            */
             }
+            
         
         public void AddProperty(Player player, estateBoard board)
         {
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
-            player.playerData.assetsList.Add(board.property);
+            player.playerData.assetsList.Add(board);
 
         }
        
@@ -202,21 +212,21 @@ public class GameBehaviour: MonoBehaviour
         }
         public void BuildBuilding(Player player, estateBoard board)
 {
-    if (player.ownedProperties.Contains(board))
+    if (player.playerData.assetsList.Contains(board))
     {
         if (PlayerOwnsFullSet(player, board)) // 玩家必须拥有同色套装
        { 
         //弹出选择面板，判断bool isbuild
-
-        bool isbuild;
-            if (board.buildingLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
+        //此处默认为false
+        bool isbuild=false;
+            if (board.improvedLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
             {
-                int buildCost = board.houseCost;
+                int buildCost = board.price;
                 if (player.playerData.money >= buildCost )
                 {
                     PayMoney(player, buildCost);
-                    board.buildingLevel++;
-                    string buildingType = board.buildingLevel == 5 ? "a Hotel" : "a House";
+                    board.improvedLevel++;
+                    string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
                     Debug.Log($"{player.name} built {buildingType} on {board.property}.");
                 }
                 else
@@ -243,8 +253,20 @@ public class GameBehaviour: MonoBehaviour
 
 private bool PlayerOwnsFullSet(Player player, estateBoard board)
 {
-    List<EstateBoard> colorGroup = GetColorGroup(board);
-    return colorGroup.All(property => player.ownedProperties.Contains(property));
+    //List<estateBoard> colorGroup = GetColorGroup(board);
+   // return colorGroup.All(property => player.assetsList.Contains(board.property));
+   bool b=true;
+   foreach(estateBoard i in RunGame.mapList){
+    if(i.group==board.group&&i.owner!=player){
+        b=false;
+        break;
+    }   
+   }
+   return b;
+   
+
+
+
 }
 
      
