@@ -21,13 +21,18 @@ public class RunGame : MonoBehaviour
 
     public int point;
     public Button DiceButton;
+    public Button NextButton;
     public bool isEffectiveDice = false;
-    public GameObject BehavioursPool;
+
     public GameObject playersPool;
     private GameBehaviour gameBehaviour;
     private Player lastPlayer = null;
     private int diceRolls;
     public CardUI cardUI;  // 新增：控制卡片 UI
+    public bool isbehavior;
+    public bool isNext;
+    public broadcast Broadcast;
+  
  
 
     //测试用玩家
@@ -43,8 +48,12 @@ public class RunGame : MonoBehaviour
     }
     else
     {
+
+        
         DiceButton.interactable = false;
-        gameBehaviour = BehavioursPool.GetComponent<GameBehaviour>();
+        gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
+
+        
         playersPool = GameObject.Find("PlayersPool");
 
         // 自动查找并绑定 CardUI
@@ -53,12 +62,18 @@ public class RunGame : MonoBehaviour
 
         //绑定CG控制器
         cgControl=  FindObjectOfType<CGcontrol>();
+
+
+
+        Broadcast = GameObject.Find("broadcast").GetComponent<broadcast>();
+
     
 
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
         point = 0;
         DiceButton.onClick.AddListener(ThrowDice);
+        NextButton.onClick.AddListener(next);
 
         foreach (Transform child in playersPool.transform)
         {
@@ -77,7 +92,9 @@ public class RunGame : MonoBehaviour
  
        
         }
+
     }
+    NextButton.gameObject.SetActive(false);
 }
 
      
@@ -129,16 +146,25 @@ public class RunGame : MonoBehaviour
     while (keepGame)
     {
         cardUI.HideCard();
-        
+        isbehavior=false;
+        isNext=false;
+        DiceButton.gameObject.SetActive(false);
+        NextButton.gameObject.SetActive(true);
+        NextButton.interactable=false;
 
 
        
 
-        DiceButton.interactable = false;
-        //ui显示 玩家xxx的回合
+
+        
         isEffectiveDice=false;
         
         currentPlayer = playersList[point];
+        Broadcast.showBroad(currentPlayer);
+        yield return new WaitForSeconds(1f);
+        Broadcast.closeBroad(currentPlayer);
+        yield return new WaitUntil(()=>!Broadcast.isBroadcasting);
+
 
         int currentPoint = point;
         point = (point + 1) % playersList.Count;
@@ -147,31 +173,47 @@ public class RunGame : MonoBehaviour
         {
             currentPlayer.playerData.freezeTurn -= 1;
             yield return new WaitForSeconds(0.5f);
+
+            NextButton.interactable=true;
+            yield return new WaitUntil(()=>isNext);
             continue;
         }
-        if(lastPlayer==null||!lastPlayer.isMoving)DiceButton.interactable = true;
+        if(lastPlayer==null||!lastPlayer.isMoving){
+            DiceButton.gameObject.SetActive(true);
+            NextButton.gameObject.SetActive(false);
+            DiceButton.interactable = true;
+        }
         
         yield return new WaitUntil(() => isEffectiveDice);
+        
+        
+        
+        
         if(roll==-1){
             cgControl.CGDisplay("GoToJail");
             gameBehaviour.GoToJail(currentPlayer);
             yield return new WaitUntil(()=>!currentPlayer.isMoving);
-            yield return new WaitForSeconds(0.5f);
-            continue;
+            
         }else if (!currentPlayer.isMoving) 
         {
-            currentPlayer.Move(roll);
-        
+           currentPlayer.Move(roll);
 
 
 
         }
+        
+
+        DiceButton.gameObject.SetActive(false);
+        NextButton.gameObject.SetActive(true);
+        NextButton.interactable=false;
+
 
         yield return new WaitUntil(() => !currentPlayer.isMoving); 
         
-        DiceButton.interactable = false;
+        
   
        
+
 
         if ((currentPlayer.playerData.positionNo + roll) > mapList.Count)
         {
@@ -201,8 +243,11 @@ public class RunGame : MonoBehaviour
         */
         currentPlayer.UpdateUI();
         lastPlayer=currentPlayer;
+        yield return new WaitUntil(()=>!cardUI.isDisplaying);
+        NextButton.interactable=true;
 
-        yield return new WaitUntil(() => !cardUI.isDisplaying);
+        yield return new WaitUntil(() => isNext);
+        
 
     }
 }
@@ -210,6 +255,7 @@ public class RunGame : MonoBehaviour
 
 public void ThrowDice()
 {
+    isbehavior=true;
     DiceButton.interactable = false;
     int roll1, roll2;
 
@@ -226,6 +272,7 @@ public void ThrowDice()
         {
             roll = -1;
             diceRolls=0;
+            isbehavior=false;
             isEffectiveDice = true;
             return;
         }else
@@ -235,6 +282,7 @@ public void ThrowDice()
         }
     }else
     {
+        isbehavior=false;
         isEffectiveDice = true;
         diceRolls=0;
            
@@ -360,4 +408,8 @@ public void ThrowDice()
             gameBehaviour.GoToJail(player);
         }
     }
+    public void next(){
+        isNext=true;
+    }
+   
 }
