@@ -69,11 +69,12 @@ public class Player : MonoBehaviour
         isMoving=true;
         _animator.SetBool("isMoving", true);
         float jumpHeight = 0.5f;
+       
+        
 
-
-        for (int i = 0; i < steps; i++)
+        for (int i = 0; i < Math.Abs(steps); i++)
         {
-            playerData.positionNo = (playerData.positionNo + 1) % 40;             
+            playerData.positionNo = (steps>0)?(playerData.positionNo + 1) % 40:(playerData.positionNo - 1) % 40;             
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);
 
@@ -103,6 +104,8 @@ public class Player : MonoBehaviour
             _rigidbody.position = targetPos; 
 
             yield return new WaitForSeconds(0.1f);
+        
+
             
             
         }
@@ -111,6 +114,7 @@ public class Player : MonoBehaviour
         
         isMoving = false;
     }
+   
 
     private Vector2 GetPosition(int No)
     {

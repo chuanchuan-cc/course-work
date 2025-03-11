@@ -17,7 +17,7 @@ public class CardUI : MonoBehaviour
     public void ShowCard(Card card)
     {
         currentCard = card;
-        cardText.text = card.description;  // 显示卡片描述
+        cardText.text = card.description.Replace("?", "").Replace("\"", "");  // 显示卡片描述
         cardPanel.SetActive(true);  // 显示卡片 UI
         isDisplaying=true;
     }

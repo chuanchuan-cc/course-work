@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
 public class RunGame : MonoBehaviour
 {
     public bool isLoadGame;
@@ -113,6 +114,8 @@ public class RunGame : MonoBehaviour
     Debug.Log(mapPath);
     mapList=BoardLoader.LoadBoards(mapPath);
     (luckCards,opportunityCards)=CardLoader.LoadCards(cardPath);
+    Shuffle(luckCards);
+    Shuffle(opportunityCards);
     foreach(Board board in mapList){
         Debug.Log($"Board No.{board.positionNo}, {board.property} load successful");
     }
@@ -376,8 +379,22 @@ public void ThrowDice()
     {
         if (card.isMove)
         {
-            int steps = card.isFoward ? card.moneyAmount : -card.moneyAmount;
-            player.Move(steps);
+            int t;
+                foreach(Board i in mapList){
+                    if(i.property==card.destinationName){
+                        t=i.positionNo-player.playerData.positionNo;
+                      if(card.isFoward)
+                {t=(t>0)?t:40+t;}
+                else
+                {t=(t<0)?t:40-t;}
+                 player.Move(t);
+                 break;
+
+                    }
+                }
+                
+            
+            
         }
         if (card.isPay)
         {
@@ -406,6 +423,15 @@ public void ThrowDice()
         if (card.isGoJail)
         {
             gameBehaviour.GoToJail(player);
+        }
+    }
+    void Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        for (int i = n - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (list[i], list[j]) = (list[j], list[i]); 
         }
     }
     public void next(){
