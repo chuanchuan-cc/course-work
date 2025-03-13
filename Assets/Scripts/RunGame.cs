@@ -36,6 +36,7 @@ public class RunGame : MonoBehaviour
     public int freeParkMoney=0;
     public GameObject dashBoard;
     public dashBoardConstructor BoardConstructor;
+    public playerInteractionPanel interactionPanel;
 
     //测试用玩家
 
@@ -87,6 +88,12 @@ public class RunGame : MonoBehaviour
 
         // 自动查找并绑定 CardUI
         cardUI = FindObjectOfType<CardUI>();
+
+        //绑定操作交互面板
+
+        interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
+        if(interactionPanel==null)Debug.Log("can't find interaction panel");
+        else Debug.Log("already find interaction panel");
         
 
 
@@ -289,7 +296,9 @@ public void ThrowDice()
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
     //roll = roll1 + roll2;
-    roll=7;
+    //测试地产用
+    roll=1;
+
   
   
     Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
@@ -370,7 +379,7 @@ void AIRoll(){
                 {
                     if (eBoard.owner == bank)
                     {
-                        // 玩家可以购买资产
+                        bool isBuy=interactionPanel.showPanel("are you want to buy this estate?");
                     }
                     else if (eBoard.owner != player)
                     {
