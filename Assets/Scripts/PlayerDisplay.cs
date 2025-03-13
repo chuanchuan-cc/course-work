@@ -19,48 +19,55 @@ public class PlayerDisplay: MonoBehaviour
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI playerWorth;
     public TextMeshProUGUI playerAssets;
+    public Transform PlayersPool;
+    
+
+
+
+
   
    
 
-    void Start(){
-
-
-
-        ShowPlayer(player);
-
-    }
-
-
-    public void ShowPlayer(Player player)
+   public void SetPlayer(Player newPlayer)
     {
-        if(player==null){
-        Debug.LogError("no player!");
-        return;
-       }else{
-       
-      
-        playerImage.sprite=player.GetComponent<SpriteRenderer>().sprite;
-        playerName.text=player.name;
-        playerWorth.text=player.playerData.assetsWorth.ToString();
-        if(player.playerData.assetsList.Count==0){
-             playerAssets.text="no asset";
-            
-             return;
-
-            
-           }else{
-        
-      
-            
-            string tempAssetslist = string.Join(", ", player.playerData.assetsList);
-            playerAssets.text = tempAssetslist;
-            
-        
+        if (newPlayer == null)
+        {
+            Debug.LogError("Player is null!");
+            return;
         }
+        PlayersPool=GameObject.Find("PlayersPool").transform;
+
+        player = newPlayer;
+        playerImage.sprite=PlayersPool.Find(player.name).GetComponent<SpriteRenderer>().sprite;
+     
+        UpdateDisplay(player);
+
+
+   
         
        }
 
+    
+    public void UpdateDisplay(Player player)
+    {
+        if (player == null)
+        {
+            Debug.LogError("No player to update!");
+            return;
+        }
+        playerName.text = player.name;
+        playerWorth.text = player.playerData.assetsWorth.ToString();
+
+        if (player.playerData.assetsList.Count == 0)
+        {
+            playerAssets.text = "No asset";
+        }
+        else
+        {
+            playerAssets.text = string.Join(", ", player.playerData.assetsList);
+        }
     }
+
     }
    
   

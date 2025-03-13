@@ -29,12 +29,13 @@ public class RunGame : MonoBehaviour
     private GameBehaviour gameBehaviour;
     private Player lastPlayer = null;
     private int diceRolls;
-    public CardUI cardUI;  // 新增：控制卡片 UI
+    public CardUI cardUI; 
     public bool isbehavior;
     public bool isNext;
     public broadcast Broadcast;
-  
- 
+    public int freeParkMoney=0;
+    public GameObject dashBoard;
+    public dashBoardConstructor BoardConstructor;
 
     //测试用玩家
 
@@ -49,16 +50,44 @@ public class RunGame : MonoBehaviour
     }
     else
     {
+        //initialize players
+        
 
         
         DiceButton.interactable = false;
         gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
 
+        dashBoard = GameObject.Find("DashBoard");
+        BoardConstructor=dashBoard.GetComponent<dashBoardConstructor>();
+
+
         
         playersPool = GameObject.Find("PlayersPool");
 
+        foreach (Transform child in playersPool.transform)
+        {
+            Player player = child.GetComponent<Player>();
+            player.InitializePlayer(player.gameObject.name);
+            playersList.Add(player);
+            if (player != null)
+            {
+                Debug.Log("find Player: " + child.name);
+                
+                
+   
+        }
+        
+        bank=new Bank();
+ 
+       
+        }
+        foreach(Player player in playersList){
+            BoardConstructor.CreateChildren(player);
+        }
+
         // 自动查找并绑定 CardUI
         cardUI = FindObjectOfType<CardUI>();
+        
 
 
         //绑定CG控制器
@@ -76,26 +105,11 @@ public class RunGame : MonoBehaviour
         DiceButton.onClick.AddListener(ThrowDice);
         NextButton.onClick.AddListener(next);
 
-        foreach (Transform child in playersPool.transform)
-        {
-            Player player = child.GetComponent<Player>();
-            player.InitializePlayer(player.gameObject.name);
-            playersList.Add(player);
-            if (player != null)
-            {
-                Debug.Log("find Player: " + child.name);
-    {
-        Debug.Log("find Player:" + child.name);
-    }
-        }
         
-        bank=new Bank();
- 
-       
-        }
 
     }
     NextButton.gameObject.SetActive(false);
+
 }
 
      
@@ -103,32 +117,33 @@ public class RunGame : MonoBehaviour
    void Start()
 {
     
-    //测试直接写入测试地图位置
-    //string cardPath=PlayerPrefs.GetString("cardPath");
-    //string mapPath=PlayerPrefs.GetString("mapPath");
-    //
-    string mapPath=Application.dataPath+"/Resources/map/testMap.xlsx";
-    string cardPath=Application.dataPath+"/Resources/card/testCard.xlsx";
-    //以上为直接写入的地址
-    //
-    Debug.Log(mapPath);
-    mapList=BoardLoader.LoadBoards(mapPath);
-    (luckCards,opportunityCards)=CardLoader.LoadCards(cardPath);
+    //initialize the map and card
+    string cardPath=(PlayerPrefs.GetString("cardPath")==null)? PlayerPrefs.GetString("cardPath"):Application.dataPath+"/Resources/card/testCard.xlsx";
+    string mapPath=(PlayerPrefs.GetString("mapPath")==null)?PlayerPrefs.GetString("mapPath"):Application.dataPath+"/Resources/map/testMap.xlsx";;
+  
+    if(mapPath== null){
+        Debug.LogError("mapPath is null");
+    }else{
+    try{mapList=BoardLoader.LoadBoards(mapPath);
+    }catch(System.Exception e){
+        Debug.LogError("Error happen when initialize the map:"+e.Message);
+    }
+
+    }
+    if(mapPath== null){
+        Debug.LogError("cardPath is null");
+    }else{
+    try{(luckCards,opportunityCards)=CardLoader.LoadCards(cardPath);
+     
     Shuffle(luckCards);
     Shuffle(opportunityCards);
-    foreach(Board board in mapList){
-        Debug.Log($"Board No.{board.positionNo}, {board.property} load successful");
+    }catch(System.Exception e){
+        Debug.LogError("Error happen when initialize the card:"+e.Message);
     }
-    //测试卡组
-    foreach(Card card in luckCards){
-        Debug.Log($"card {card.description} load successful");
-    }
-    foreach(Card card in opportunityCards){
-        Debug.Log($"card {card.description} load successful");
-    }
-        
 
+    }
 
+    
     //start
     
     StartCoroutine(GameLoop());
@@ -143,18 +158,20 @@ public class RunGame : MonoBehaviour
     IEnumerator GameLoop()
 {
 
+
     
     diceRolls=0;
     
     while (keepGame)
     {
+        
         cardUI.HideCard();
         isbehavior=false;
         isNext=false;
         DiceButton.gameObject.SetActive(false);
         NextButton.gameObject.SetActive(true);
         NextButton.interactable=false;
-
+        
 
        
 
@@ -163,6 +180,9 @@ public class RunGame : MonoBehaviour
         isEffectiveDice=false;
         
         currentPlayer = playersList[point];
+        PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
+
+
         Broadcast.showBroad(currentPlayer);
         yield return new WaitForSeconds(1f);
         Broadcast.closeBroad(currentPlayer);
@@ -176,15 +196,19 @@ public class RunGame : MonoBehaviour
         {
             currentPlayer.playerData.freezeTurn -= 1;
             yield return new WaitForSeconds(0.5f);
-
+            if(currentPlayer.playerData.isAI)continue;
+            else{
             NextButton.interactable=true;
             yield return new WaitUntil(()=>isNext);
             continue;
+            }
         }
-        if(lastPlayer==null||!lastPlayer.isMoving){
+        if(!currentPlayer.playerData.isAI){
             DiceButton.gameObject.SetActive(true);
             NextButton.gameObject.SetActive(false);
             DiceButton.interactable = true;
+        }else{
+            AIRoll();
         }
         
         yield return new WaitUntil(() => isEffectiveDice);
@@ -244,7 +268,7 @@ public class RunGame : MonoBehaviour
             break;
         }
         */
-        currentPlayer.UpdateUI();
+        playerDisplay.UpdateDisplay(currentPlayer);
         lastPlayer=currentPlayer;
         yield return new WaitUntil(()=>!cardUI.isDisplaying);
         NextButton.interactable=true;
@@ -264,7 +288,8 @@ public void ThrowDice()
 
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
-    roll = roll1 + roll2;
+    //roll = roll1 + roll2;
+    roll=7;
   
   
     Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
@@ -294,6 +319,27 @@ public void ThrowDice()
        
    
 
+}
+void AIRoll(){
+    isbehavior=true;
+    DiceButton.interactable = false;
+    int roll1, roll2,roll;
+    diceRolls =0;
+    while(diceRolls<3){
+        diceRolls+=1;
+        roll1 = Random.Range(1, 7);
+        roll2 = Random.Range(1, 7);
+        roll = roll1 + roll2;
+    if(roll%2!=0){
+        isbehavior=false;
+        isEffectiveDice = true;
+        return;
+        
+    }    
+    roll=-1;
+    isbehavior=false;
+    isEffectiveDice = true;
+    }
 }
  
 
@@ -413,8 +459,13 @@ public void ThrowDice()
             gameBehaviour.PayMoney(player, card.moneyAmount);
             }
             
-            }
             
+            
+            }
+        if(card.isPayFine){
+            freeParkMoney+=card.moneyAmount;
+
+        }
         
         if (card.isJailFree)
         {

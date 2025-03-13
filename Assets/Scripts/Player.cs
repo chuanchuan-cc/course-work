@@ -125,13 +125,7 @@ public class Player : MonoBehaviour
         else if (newNo <= 35) return new Vector2(-7.5f + (float)newNo - 20f, 2.4f);
         else return new Vector2(7.5f, 2.4f - ((float)newNo - 35));
     }
-    public void UpdateUI()
-    {
-        if (playerDisplay != null)
-        {
-            playerDisplay.ShowPlayer(this);
-        }
-    }
+
   
 
 }

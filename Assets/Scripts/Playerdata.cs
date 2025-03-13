@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class PlayerData: ScriptableObject,IOwner
 {
+    public bool isAI;
     public string name;
     public int freeJail;
     public int money;
