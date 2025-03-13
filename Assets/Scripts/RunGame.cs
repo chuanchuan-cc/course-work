@@ -37,6 +37,7 @@ public class RunGame : MonoBehaviour
     public GameObject dashBoard;
     public dashBoardConstructor BoardConstructor;
     public playerInteractionPanel interactionPanel;
+    public bool isChecking=false;
 
     //测试用玩家
 
@@ -260,7 +261,7 @@ public class RunGame : MonoBehaviour
     
 
 
-        check(currentPlayer);
+        StartCoroutine(check(currentPlayer));
       
 
         /*
@@ -275,9 +276,9 @@ public class RunGame : MonoBehaviour
             break;
         }
         */
+        yield return new WaitUntil(()=>!isChecking);
         playerDisplay.UpdateDisplay(currentPlayer);
         lastPlayer=currentPlayer;
-        yield return new WaitUntil(()=>!cardUI.isDisplaying);
         NextButton.interactable=true;
 
         yield return new WaitUntil(() => isNext);
@@ -352,8 +353,9 @@ void AIRoll(){
 }
  
 
- void check(Player player)
+ IEnumerator check(Player player)
     {
+        isChecking=true;
         Board currentBoard = mapList[player.playerData.positionNo];
       
 
@@ -363,7 +365,7 @@ void AIRoll(){
             Debug.Log("触发drawcard");
             StartCoroutine(DrawCard(player,currentBoard));
             
-            return;
+            yield break;;
         }
 
         if (player.playerData.freeJail > 0)
@@ -379,15 +381,42 @@ void AIRoll(){
                 {
                     if (eBoard.owner == bank)
                     {
-                        bool isBuy=interactionPanel.showPanel("are you want to buy this estate?");
+                        bool? userChoice=null;
+                        interactionPanel.ShowPanel("are you want to buy this estate?",(bool isBuy)=> 
+                        { userChoice=isBuy;});
+                        yield return new WaitUntil(()=>userChoice.HasValue);
+                            if(userChoice.HasValue && userChoice.Value){
+                               
+                            if(player.playerData.money>eBoard.price){
+                                //gameBehaviour.BuyProperty(player,eBoard);
+                                 gameBehaviour.PayMoney(player,eBoard.price);
+                                 eBoard.owner = player.playerData;
+                                 gameBehaviour.AddProperty(player,eBoard);
+                            }else{
+                                //此处执行没钱提示
+                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
+                            }
+
+                                }
+                        else{//此处执行不买地产提示
+                             Debug.Log("触发不买地产");
+                        }
+                        isChecking = false;
+                        yield break;
+                            
+
+                        
+                        
                     }
-                    else if (eBoard.owner != player)
+
+                    else
                     {
                         gameBehaviour.PayRent(player, eBoard);
                     }
                 }
             }
         }
+        isChecking=false;
     }
 
 

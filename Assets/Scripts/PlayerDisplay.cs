@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System.Text;
+using System.Linq; 
 
 [System.Serializable]
 
@@ -38,6 +39,7 @@ public class PlayerDisplay: MonoBehaviour
         PlayersPool=GameObject.Find("PlayersPool").transform;
 
         player = newPlayer;
+        playerName.text = player.name;
         playerImage.sprite=PlayersPool.Find(player.name).GetComponent<SpriteRenderer>().sprite;
      
         UpdateDisplay(player);
@@ -55,7 +57,7 @@ public class PlayerDisplay: MonoBehaviour
             Debug.LogError("No player to update!");
             return;
         }
-        playerName.text = player.name;
+        
         playerWorth.text = player.playerData.assetsWorth.ToString();
 
         if (player.playerData.assetsList.Count == 0)
@@ -64,8 +66,11 @@ public class PlayerDisplay: MonoBehaviour
         }
         else
         {
-            playerAssets.text = string.Join(", ", player.playerData.assetsList);
+            playerAssets.text = string.Join(", ", player.playerData.assetsList.Select(board => board.property));
         }
+
+          playerWorth.ForceMeshUpdate();
+          playerAssets.ForceMeshUpdate();
     }
 
     }

@@ -24,7 +24,7 @@ public class GameBehaviour: MonoBehaviour
         {
             player.playerData.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
-        player.playerData.assetsWorth-=amount;
+            player.playerData.assetsWorth-=amount;
         }
         
     }
