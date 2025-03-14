@@ -38,6 +38,7 @@ public class RunGame : MonoBehaviour
     public dashBoardConstructor BoardConstructor;
     public playerInteractionPanel interactionPanel;
     public bool isChecking=false;
+    public bool isProcessingCard=false;
 
     //测试用玩家
 
@@ -364,8 +365,9 @@ void AIRoll(){
         {
             Debug.Log("触发drawcard");
             StartCoroutine(DrawCard(player,currentBoard));
-            
-            yield break;;
+            yield return new WaitUntil(()=>!isProcessingCard);
+            isChecking = false;
+            yield break;
         }
 
         if (player.playerData.freeJail > 0)
@@ -422,6 +424,8 @@ void AIRoll(){
 
     IEnumerator DrawCard(Player player,Board board)
     {
+        isProcessingCard=true;
+        
         
         Card drawnCard;
         List<Card> deck;
@@ -450,12 +454,14 @@ void AIRoll(){
         if (Input.GetMouseButtonDown(0)) // 监听鼠标点击
         {
             Debug.Log("点击屏幕，立即关闭卡片 UI");
+            isProcessingCard=false;
             break;
         }
         timer += Time.deltaTime;
         yield return null;   
     }
         cardUI.HideCard();
+        isProcessingCard=false;
         
     }
 

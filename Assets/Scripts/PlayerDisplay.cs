@@ -15,6 +15,7 @@ public class PlayerDisplay: MonoBehaviour
     public Image playerImage;
 
     public Player player;
+    public TextMeshProUGUI playerCash;
 
 
     public TextMeshProUGUI playerName;
@@ -57,6 +58,7 @@ public class PlayerDisplay: MonoBehaviour
             Debug.LogError("No player to update!");
             return;
         }
+        playerCash.text= player.playerData.money.ToString();
         
         playerWorth.text = player.playerData.assetsWorth.ToString();
 
