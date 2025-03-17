@@ -280,14 +280,19 @@ public class RunGame : MonoBehaviour
         */
         yield return new WaitUntil(()=>!isChecking);
         
-        foreach(Player p in playersList){
-        playerDisplay.UpdateDisplay(p);
-        Debug.Log($"{p.name}'s money = {p.playerData.money}, worth = {p.playerData.assetsWorth}");
-        foreach(Board b in p.playerData.assetsList){
-        Debug.Log($" {b.property}");
-        }
-        
-        }
+        foreach (Player p in playersList)
+{
+    PlayerDisplay display = dashBoard.transform.Find(p.name).GetComponent<PlayerDisplay>();
+    if (display != null)
+    {
+        display.UpdateDisplay(p);
+    }
+    else
+    {
+        Debug.LogError($"找不到 {p.name} 的 PlayerDisplay！");
+    }
+}
+
         
         
         lastPlayer=currentPlayer;

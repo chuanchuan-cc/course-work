@@ -58,6 +58,7 @@ public class PlayerDisplay: MonoBehaviour
             Debug.LogError("No player to update!");
             return;
         }
+        Debug.Log($"更新 {this.gameObject.name} 的 UI，数据来自 {player.name}，金钱={player.playerData.money}");
         playerCash.text= player.playerData.money.ToString();
         
         playerWorth.text = player.playerData.assetsWorth.ToString();
@@ -71,8 +72,7 @@ public class PlayerDisplay: MonoBehaviour
             playerAssets.text = string.Join(", ", player.playerData.assetsList.Select(board => board.property));
         }
 
-          playerWorth.ForceMeshUpdate();
-          playerAssets.ForceMeshUpdate();
+      
     }
 
     }
