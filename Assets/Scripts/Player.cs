@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
 
         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
         this.name = name;
+        this.playerData.name=name;
         this.playerData.money = 1500;
         this.playerData.positionNo = 0;
         this.playerData.freezeTurn = 0;

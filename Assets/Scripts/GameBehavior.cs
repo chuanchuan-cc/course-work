@@ -234,6 +234,7 @@ public class GameBehaviour: MonoBehaviour
         
         public void AddProperty(Player player, estateBoard board)
         {
+            Debug.Log($"{player.name} buy {board.property}");
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board);

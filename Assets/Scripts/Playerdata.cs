@@ -18,7 +18,7 @@ public class PlayerData: ScriptableObject,IOwner
     public int assetsWorth;
 
     public string GetName(){
-        return name;
+        return this.name;
     }
     
 

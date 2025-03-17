@@ -279,9 +279,16 @@ public class RunGame : MonoBehaviour
         }
         */
         yield return new WaitUntil(()=>!isChecking);
-        Debug.Log($"player's cash is {currentPlayer.playerData.money}, assets worth is {currentPlayer.playerData.assetsWorth}");
-        foreach(Player p in playersList){playerDisplay.UpdateDisplay(p);
+        
+        foreach(Player p in playersList){
+        playerDisplay.UpdateDisplay(p);
+        Debug.Log($"{p.name}'s money = {p.playerData.money}, worth = {p.playerData.assetsWorth}");
+        foreach(Board b in p.playerData.assetsList){
+        Debug.Log($" {b.property}");
         }
+        
+        }
+        
         
         lastPlayer=currentPlayer;
         NextButton.interactable=true;
@@ -386,7 +393,7 @@ void AIRoll(){
             {
                 estateBoard eBoard = currentBoard as estateBoard;
                 if (eBoard != null)
-                {
+                {Debug.Log(eBoard.owner.GetName());
                     if (eBoard.owner == bank)
                     {
                         bool? userChoice=null;
@@ -398,7 +405,6 @@ void AIRoll(){
                             if(player.playerData.money>eBoard.price){
                                 //gameBehaviour.BuyProperty(player,eBoard);
                                  gameBehaviour.PayMoney(player,eBoard.price);
-                                 eBoard.owner = player.playerData;
                                  gameBehaviour.AddProperty(player,eBoard);
                             }else{
                                 //此处执行没钱提示
@@ -406,12 +412,14 @@ void AIRoll(){
                             }
 
                                 }
-                        else{//此处执行不买地产提示
+                        else{//此处执行拍卖
+                        Debug.Log($"地产 {eBoard.property} 开始拍卖");
                             isAuction=true;
 
                              StartCoroutine(auction(eBoard));
                              yield return new WaitUntil(()=>!isAuction);
-                             Debug.Log("触发不买地产");
+                             
+                             isChecking = false;
                              
                         }
                         isChecking = false;
@@ -588,7 +596,6 @@ void AIRoll(){
                             }
                             if(auctionList.Count==1||buyer!=null){
             gameBehaviour.PayMoney(buyer,eBoard.price);
-            eBoard.owner = buyer.playerData;
             gameBehaviour.AddProperty(buyer,eBoard);
             isAuction=false;
             yield break;
