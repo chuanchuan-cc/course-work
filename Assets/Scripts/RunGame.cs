@@ -39,6 +39,7 @@ public class RunGame : MonoBehaviour
     public playerInteractionPanel interactionPanel;
     public bool isChecking=false;
     public bool isProcessingCard=false;
+    public bool isAuction=false;
 
     //测试用玩家
 
@@ -278,7 +279,10 @@ public class RunGame : MonoBehaviour
         }
         */
         yield return new WaitUntil(()=>!isChecking);
-        playerDisplay.UpdateDisplay(currentPlayer);
+        Debug.Log($"player's cash is {currentPlayer.playerData.money}, assets worth is {currentPlayer.playerData.assetsWorth}");
+        foreach(Player p in playersList){playerDisplay.UpdateDisplay(p);
+        }
+        
         lastPlayer=currentPlayer;
         NextButton.interactable=true;
 
@@ -298,8 +302,9 @@ public void ThrowDice()
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
     //roll = roll1 + roll2;
-    //测试地产用
-    roll=1;
+        //测试地产
+        roll=1;
+   
 
   
   
@@ -341,6 +346,7 @@ void AIRoll(){
         roll1 = Random.Range(1, 7);
         roll2 = Random.Range(1, 7);
         roll = roll1 + roll2;
+       
     if(roll%2!=0){
         isbehavior=false;
         isEffectiveDice = true;
@@ -401,7 +407,12 @@ void AIRoll(){
 
                                 }
                         else{//此处执行不买地产提示
+                            isAuction=true;
+
+                             StartCoroutine(auction(eBoard));
+                             yield return new WaitUntil(()=>!isAuction);
                              Debug.Log("触发不买地产");
+                             
                         }
                         isChecking = false;
                         yield break;
@@ -531,6 +542,71 @@ void AIRoll(){
     }
     public void next(){
         isNext=true;
+    }
+    IEnumerator auction(estateBoard eBoard){
+        isAuction=true;
+        int auctionPrice=eBoard.price;
+        int detlaPrice=auctionPrice/10;
+        int totalNum=playersList.Count-1;
+        List<Player> auctionList=new List<Player>();
+        for(int i=0;i<totalNum;i++){
+            int t=(point+i)%playersList.Count;
+            Player p =playersList[t];
+            //圈数检测禁用，测试
+            // if(p.playerData.circle>0) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            else continue;
+        }
+        while(auctionList.Count>0){
+            Player buyer=null;
+            int p=auctionList.Count;
+            for(int i =0; i<p;i++){
+                Player acutionPlayer= auctionList[i];
+            bool? userChoice=null;
+                        interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of this estate board is {auctionPrice}, are you want to buy this estate?",(bool isBuy)=> 
+                        { userChoice=isBuy;
+                      ;
+                        });
+                        yield return new WaitUntil(()=>userChoice.HasValue);
+                            if(userChoice.HasValue && userChoice.Value){
+                                if(acutionPlayer.playerData.money<=eBoard.price){
+                                    //此处加拍卖没钱ui
+                                    Debug.Log("拍卖没钱");
+                                    auctionList.RemoveAt(i);
+                                    continue;
+                                }
+                                else{ auctionPrice+=detlaPrice;
+                                buyer=acutionPlayer;
+                                }
+                               
+                            }else
+                                auctionList.RemoveAt(i);
+                                
+                                
+                            
+                            
+                            }
+                            if(auctionList.Count==1||buyer!=null){
+            gameBehaviour.PayMoney(buyer,eBoard.price);
+            eBoard.owner = buyer.playerData;
+            gameBehaviour.AddProperty(buyer,eBoard);
+            isAuction=false;
+            yield break;
+
+            }
+            if(auctionList.Count==0||buyer==null){
+                isAuction=false;
+                yield break;
+            }
+      
+
+        }
+        
+        
+        
+
+        
+
     }
    
 }

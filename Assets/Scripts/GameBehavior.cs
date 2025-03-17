@@ -24,7 +24,7 @@ public class GameBehaviour: MonoBehaviour
         {
             player.playerData.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
-            player.playerData.assetsWorth-=amount;
+        player.playerData.assetsWorth-=amount;
         }
         
     }
@@ -140,42 +140,96 @@ public class GameBehaviour: MonoBehaviour
             
         }
         */
-        private void StartAuction(estateBoard board)
+     private void StartAuction(estateBoard board)
+{
+    Debug.Log($"Starting auction for {board.property}!");
+
+    List<Player> bidders = new List<Player>();  
+
+    foreach (Player player in RunGame.playersList)
+    {
+        if (player.playerData.circle > 0 && player.playerData.money > 0) 
         {
-           /* Debug.Log(($"Starting auction for {board.property}!"));
-            
-            Player highestBidder = null;
-            int highestBid = 0;
-            List<Player>eligiblePlayers = allPlayers.Where(p => p.isPassGo && playerData.money > 0).ToList();
-            if(eligiblePlayers.Count == 0)
-            {
-                Debug.Log($"No eligible players to bid for {board.property}. It remains unsold.");
+            bidders.Add(player);
+        }
+    }
+
+    if (bidders.Count == 0)
+    {
+        Debug.Log($"No eligible players to bid for {board.property}. It remains unsold.");
         return;
     }
-            
-            foreach (var player in eligiblePlayers )
+
+    int highestBid = 0;
+    Player highestBidder = null;
+
+    while (bidders.Count > 0)
+    {
+        List<Player> nextRoundBidders = new List<Player>();
+
+        foreach (Player player in bidders)
+        {
+            int bid = GetPlayerBid(player, board, highestBid);
+
+            if (bid > highestBid)
             {
-                int bid = player.MakeBid(board, highestBid);
-                if (bid > highestBid && bid <= player.playerData.money)
-                {
-                    highestBid = bid;
-                    highestBidder = player;
-                }
-                
-                if (highestBidder != null)
-                {
-                    PayMoney(highestBidder, highestBid);
-                    board.owner = highestBidder;
-                    highestBidder.ownedProperties.Add(board);
-                    Debug.Log($"{highestBidder.name} won the auction for {board.property} at £{highestBid}!");
+                highestBid = bid;
+                highestBidder = player;
+            }
+
+            if (bid > 0)
+            {
+                nextRoundBidders.Add(player);
+            }
+        }
+
+        if (nextRoundBidders.Count <= 1)
+        {
+            break;
+        }
+
+        bidders = nextRoundBidders;
+    }
+
+    if (highestBidder != null)
+    {
+        PayMoney(highestBidder, highestBid);  
+        board.owner = highestBidder.playerData;
+        AddProperty(highestBidder, board);  
+        Debug.Log($"{highestBidder.name} won the auction for {board.property} at £{highestBid}!");
     }
     else
     {
-        Debug.Log($"No one bid for {board.property}. It remains unsold.");
+        Debug.Log($"No one placed a valid bid. {board.property} remains unsold.");
     }
-                }
-            */
-            }
+}
+
+        private int GetPlayerBid(Player player, estateBoard board, int currentHighestBid)
+        {
+             int bid = GetUserInputBid(player);
+    
+    if (bid > currentHighestBid && bid <= player.playerData.money)
+    {
+        return bid;
+    }
+
+    Debug.Log($"{player.name} entered an invalid bid or chose not to bid.");
+    return 0;
+        }
+
+        private int GetUserInputBid(Player player)
+{
+    int bid = 0;
+    string input = "200"; // 这里得用 UI 获取输入
+    if (int.TryParse(input, out bid))
+    {
+        return bid;
+    }
+    return 0;
+}
+
+
+
             
         
         public void AddProperty(Player player, estateBoard board)

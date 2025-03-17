@@ -34,20 +34,22 @@ public class playerInteractionPanel : MonoBehaviour
 
     public void ShowPanel(string message, System.Action<bool> callback)
     {
+        StopAllCoroutines();
+
         panel.SetActive(true);
-        isResult = false;
         title.text = message;
         this.callback = callback;
-        
-
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(() => { SetResult(true); });
         noButton.onClick.AddListener(() => { SetResult(false); });
-
         StartCoroutine(PanelDisplay());
+        isResult = false;
     }
 
     private IEnumerator PanelDisplay()
     {
+        isResult = false;
         yield return StartCoroutine(FadeIn());
         yield return new WaitUntil(() => isResult);
         yield return StartCoroutine(FadeOut());
@@ -56,12 +58,15 @@ public class playerInteractionPanel : MonoBehaviour
 
     void SetResult(bool result)
     {
+       
         isResult = true;
         callback?.Invoke(result);
     }
 
     private IEnumerator FadeIn()
     {
+     
+
         float duration = 0.25f;
         float elapsedTime = 0f;
 
@@ -69,13 +74,14 @@ public class playerInteractionPanel : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
 
         while (elapsedTime < duration)
-        {
+        {  
             canvasGroup.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
+      
         canvasGroup.alpha = 1;
+       
     }
 
     private IEnumerator FadeOut()
@@ -94,5 +100,6 @@ public class playerInteractionPanel : MonoBehaviour
         }
 
         canvasGroup.alpha = 0;
+      
     }
 }
