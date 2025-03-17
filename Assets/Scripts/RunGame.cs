@@ -402,7 +402,7 @@ void AIRoll(){
                     if (eBoard.owner == bank)
                     {
                         bool? userChoice=null;
-                        interactionPanel.ShowPanel("are you want to buy this estate?",(bool isBuy)=> 
+                        interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;});
                         yield return new WaitUntil(()=>userChoice.HasValue);
                             if(userChoice.HasValue && userChoice.Value){
@@ -576,7 +576,7 @@ void AIRoll(){
             for(int i =0; i<p;i++){
                 Player acutionPlayer= auctionList[i];
             bool? userChoice=null;
-                        interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of this estate board is {auctionPrice}, are you want to buy this estate?",(bool isBuy)=> 
+                        interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of {eBoard.property} is {auctionPrice}, are you want to buy this estate?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;
                       ;
                         });

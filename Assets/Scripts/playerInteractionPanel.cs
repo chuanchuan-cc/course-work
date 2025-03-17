@@ -8,6 +8,9 @@ public class playerInteractionPanel : MonoBehaviour
     public GameObject panel;
     public CanvasGroup canvasGroup; 
     public TextMeshProUGUI title;
+    public TextMeshProUGUI group;
+    public TextMeshProUGUI price;
+    public TextMeshProUGUI rent;
     public Button yesButton;
     public Button noButton;
     private System.Action<bool> callback; 
@@ -33,12 +36,40 @@ public class playerInteractionPanel : MonoBehaviour
     }
 
     public void ShowPanel(string message, System.Action<bool> callback)
+{
+    ShowPanel(message, null, null, null, callback);
+}
+
+ public void ShowPanel(string message,string _group, int? _price,int? _rent,System.Action<bool> callback)
     {
         StopAllCoroutines();
 
         panel.SetActive(true);
         title.text = message;
         this.callback = callback;
+        if (_group == null) group.gameObject.SetActive(false);
+    else
+    {
+        group.gameObject.SetActive(true);
+        group.text="group: "+_group;
+    }
+
+    if (_price == null) price.gameObject.SetActive(false);
+    else
+    {
+        price.gameObject.SetActive(true);
+        price.text="price: "+_price.Value.ToString();
+    }
+
+    if (_rent == null) rent.gameObject.SetActive(false);
+    else
+    {
+        rent.gameObject.SetActive(true);
+        rent.text="rent: "+_rent.Value.ToString();
+    }
+        
+        
+        
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
         yesButton.onClick.AddListener(() => { SetResult(true); });
@@ -46,7 +77,6 @@ public class playerInteractionPanel : MonoBehaviour
         StartCoroutine(PanelDisplay());
         isResult = false;
     }
-
     private IEnumerator PanelDisplay()
     {
         isResult = false;
