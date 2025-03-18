@@ -40,6 +40,7 @@ public class RunGame : MonoBehaviour
     public bool isChecking=false;
     public bool isProcessingCard=false;
     public bool isAuction=false;
+    public Button BankButton;
 
     //测试用玩家
 
@@ -98,6 +99,8 @@ public class RunGame : MonoBehaviour
         if(interactionPanel==null)Debug.Log("can't find interaction panel");
         else Debug.Log("already find interaction panel");
         
+        //绑定bank
+        BankButton=GameObject.Find("BankButton").GetComponent<Button>();
 
 
         //绑定CG控制器
@@ -313,9 +316,8 @@ public void ThrowDice()
 
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
-    //roll = roll1 + roll2;
-        //测试地产
-        roll=1;
+    roll = roll1 + roll2;
+       
    
 
   
@@ -543,6 +545,7 @@ void AIRoll(){
         {
             gameBehaviour.GoToJail(player);
         }
+        
     }
     void Shuffle<T>(List<T> list)
     {
