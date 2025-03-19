@@ -26,10 +26,13 @@ public class initialPanelScript : MonoBehaviour
     public Sprite toggleTrueImage;
     public Sprite toggleFalseImage;
     public string defaultFolder;
+    public Slider difficultySlider;
+    public GameObject difficultyOutput;
+    public TextMeshProUGUI difficultyText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-      
+        
         initialPanel.transform.localScale = Vector3.zero;
         initialStart.onClick.AddListener(() => onClickStart(initialPanel));
         playerNumberSlider.onValueChanged.AddListener(UpdatePlayerNumberText);
@@ -38,8 +41,10 @@ public class initialPanelScript : MonoBehaviour
         cardText.text="Default cardpool";
         playerNumberSlider.value=1;
         playerNumber.text = playerNumberSlider.value.ToString();
-        AIToggle.onValueChanged.AddListener(toggleBackground);
-        toggleBackground(AIToggle.isOn);
+        difficultySlider.gameObject.SetActive(false);
+        difficultyOutput.gameObject.SetActive(false);
+        AIToggle.onValueChanged.AddListener(toggleClick);
+        toggleClick(AIToggle.isOn);
         startGame.onClick.AddListener(startNewGame);
         loadMap.onClick.AddListener(LoadMap);
         loadCard.onClick.AddListener(LoadCard);
@@ -48,27 +53,61 @@ public class initialPanelScript : MonoBehaviour
 
     }
     // Update is called once per frame
+
+
+
    
    
     void startNewGame(){
     PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
     PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
+    PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
         SceneManager.LoadScene("gameScene");
     }
     
-    void toggleBackground(bool i){
+    void toggleClick(bool i){
         toggleImage.sprite= i? toggleTrueImage:toggleFalseImage;
+        if(i){
+                       difficultySlider.gameObject.SetActive(true);
+            difficultyOutput.gameObject.SetActive(true);
+           difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
+           UpdatePlayerNumberText(difficultySlider.value);
+           difficultyText.text = "easy";
+          
+
+        }else{
+            difficultySlider.gameObject.SetActive(false);
+            difficultyOutput.gameObject.SetActive(false);
+
+        
+        }
+        
     }
     void UpdatePlayerNumberText(float value)
 {
     playerNumber.text = ((int)value).ToString();
 }
   
+      void UpdateDifficultyText(float value)
+{
+    switch(value){
+    case 1:
+        difficultyText.text = "easy";
+        break;
+    case 2:
+        difficultyText.text = "normal";
+        break;
+    case 3:
+        difficultyText.text = "difficult";
+        break;
+
+}
+}
    
     public void onClickExit(GameObject gameObject){
        StopAllCoroutines();
         StartCoroutine(hidePanel(gameObject));
-        //请陈良源和陈子峰在此处添加清空已加载的地图和卡组的方法
+        
     }
         IEnumerator hidePanel(GameObject gameObject){
           float timer = 0;

@@ -8,7 +8,7 @@ public class RunGame : MonoBehaviour
 {
     public bool isLoadGame;
     public static Bank bank;
-    public static List<Player> playersList = new List<Player>();
+    public static List<Player> playersList;
     public static List<Board> mapList;
     public static List<Card> luckCards;
     public static List<Card> opportunityCards;
@@ -41,6 +41,7 @@ public class RunGame : MonoBehaviour
     public bool isProcessingCard=false;
     public bool isAuction=false;
     public Button BankButton;
+    public int difficulty;
 
     //测试用玩家
 
@@ -55,8 +56,14 @@ public class RunGame : MonoBehaviour
     }
     else
     {
+        // read the input from last scene
+        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
+        difficulty=PlayerPrefs.GetInt("difficulty",0);
+        int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
+        playerNumber=(isAI)? playerNumber+1:playerNumber;
+        Debug.Log($"isAi: {isAI}, difficulty: {difficulty}, playerNumber: {playerNumber}");
         //initialize players
-        
+        point = 0;
 
         
         DiceButton.interactable = false;
@@ -68,11 +75,14 @@ public class RunGame : MonoBehaviour
 
         
         playersPool = GameObject.Find("PlayersPool");
+        playersList= new List<Player>(playerNumber);
 
         foreach (Transform child in playersPool.transform)
         {
+            
             Player player = child.GetComponent<Player>();
             player.InitializePlayer(player.gameObject.name);
+            if(playersList.Count<=playerNumber){
             playersList.Add(player);
             if (player != null)
             {
@@ -80,7 +90,11 @@ public class RunGame : MonoBehaviour
                 
                 
    
+        }}else return;
+        if(isAI){
+            playersList[playerNumber-1].playerData.isAI=true;
         }
+
         
         bank=new Bank();
  
@@ -112,9 +126,7 @@ public class RunGame : MonoBehaviour
 
     
 
-        int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
-        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
-        point = 0;
+
         DiceButton.onClick.AddListener(ThrowDice);
         NextButton.onClick.AddListener(next);
 
