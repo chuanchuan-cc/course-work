@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
    
     
-
+        
         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
         this.name = name;
         this.playerData.name=name;
@@ -61,8 +61,10 @@ public class Player : MonoBehaviour
         this.playerData.assetsList = new List<Board>();
         this.playerData.circle = 0;
         this.playerData.assetsWorth = 1500;
+     
 
     }
+ 
 
 
     private IEnumerator MovePiece(int steps)

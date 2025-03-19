@@ -55,13 +55,23 @@ public class RunGame : MonoBehaviour
         // 加载游戏的逻辑
     }
     else
-    {
+    {   
         // read the input from last scene
+
+        
         isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
         difficulty=PlayerPrefs.GetInt("difficulty",0);
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         playerNumber=(isAI)? playerNumber+1:playerNumber;
-        Debug.Log($"isAi: {isAI}, difficulty: {difficulty}, playerNumber: {playerNumber}");
+
+
+
+        
+        isAI=false;
+        difficulty=0;
+        playerNumber=2;
+        
+
         //initialize players
         point = 0;
 
@@ -79,27 +89,33 @@ public class RunGame : MonoBehaviour
 
         foreach (Transform child in playersPool.transform)
         {
-            
             Player player = child.GetComponent<Player>();
-            player.InitializePlayer(player.gameObject.name);
-            if(playersList.Count<=playerNumber){
-            playersList.Add(player);
+            if(playersList.Count>=playerNumber)
+            player.gameObject.SetActive(false);
+            else{
+            
             if (player != null)
             {
                 Debug.Log("find Player: " + child.name);
                 
                 
    
-        }}else return;
-        if(isAI){
-            playersList[playerNumber-1].playerData.isAI=true;
-        }
+        
+            player.InitializePlayer(player.gameObject.name);
+            
+            playersList.Add(player);
+            }
+            }}
+        
 
+        if(isAI) playersList[playerNumber-1].playerData.isAI=true;
+        
         
         bank=new Bank();
- 
+        
        
-        }
+       
+        
         foreach(Player player in playersList){
             BoardConstructor.CreateChildren(player);
         }
@@ -432,6 +448,7 @@ void AIRoll(){
 
                                 }
                         else{//此处执行拍卖
+
                         Debug.Log($"地产 {eBoard.property} 开始拍卖");
                             isAuction=true;
 
