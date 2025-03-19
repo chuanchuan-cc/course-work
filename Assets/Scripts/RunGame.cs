@@ -42,6 +42,7 @@ public class RunGame : MonoBehaviour
     public bool isAuction=false;
     public Button BankButton;
     public int difficulty;
+    bool isApplyCard=false;
 
     //测试用玩家
 
@@ -101,7 +102,7 @@ public class RunGame : MonoBehaviour
                 
    
         
-            player.InitializePlayer(player.gameObject.name);
+            player.InitializePlayer(player.gameObject.name,0);
             
             playersList.Add(player);
             }
@@ -405,6 +406,8 @@ void AIRoll(){
  IEnumerator check(Player player)
     {
         isChecking=true;
+        yield return new WaitForSeconds(0.5f);
+        
         Board currentBoard = mapList[player.playerData.positionNo];
       
 
@@ -500,11 +503,12 @@ void AIRoll(){
         // 显示卡片 UI
         cardUI.ShowCard(drawnCard);
 
+
         // 处理卡片效果
         ApplyCardEffect(player, drawnCard);
         float timer = 0f;
         Player initialPlayer = currentPlayer; 
-    while (timer < 5f)
+    while (timer < 5f||isApplyCard)
     {
         if (Input.GetMouseButtonDown(0)) // 监听鼠标点击
         {
@@ -522,6 +526,7 @@ void AIRoll(){
 
     void ApplyCardEffect(Player player, Card card)
     {
+        isApplyCard=true;
         if (card.isMove)
         {
             int t;
@@ -533,7 +538,8 @@ void AIRoll(){
                 else
                 {t=(t<0)?t:40-t;}
                  player.Move(t);
-                 break;
+                 isApplyCard=false;
+                 return;
 
                     }
                 }
@@ -546,6 +552,7 @@ void AIRoll(){
             if(card.payee=="player"&&card.payer=="Bank"){
                bank.money-=card.moneyAmount;
                gameBehaviour.AddMoney(player, card.moneyAmount);
+               
             }
             else if(card.payee=="player"&&card.isPayByAll){
                 foreach(Player i in playersList){
@@ -574,6 +581,7 @@ void AIRoll(){
         {
             gameBehaviour.GoToJail(player);
         }
+        isApplyCard=false;
         
     }
     void Shuffle<T>(List<T> list)

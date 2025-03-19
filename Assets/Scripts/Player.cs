@@ -15,11 +15,11 @@ public class Player : MonoBehaviour
     public bool isMoving = false;
    
 
-    void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-    }
+void Awake()
+{
+    _rigidbody = GetComponent<Rigidbody2D>();
+    _animator = GetComponent<Animator>();
+}
 
     void Start()
     {
@@ -27,9 +27,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log($"{this.name} successfully loaded data");
         }
-      
-       
-       
+
         
     }
 
@@ -46,11 +44,11 @@ public class Player : MonoBehaviour
      
         }
     }
-    public void InitializePlayer(string name)
+    public void InitializePlayer(string name,int n)
     {
    
     
-        
+        if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody2D>();
         this.playerData = ScriptableObject.CreateInstance<PlayerData>();
         this.name = name;
         this.playerData.name=name;
@@ -61,10 +59,12 @@ public class Player : MonoBehaviour
         this.playerData.assetsList = new List<Board>();
         this.playerData.circle = 0;
         this.playerData.assetsWorth = 1500;
-     
+        this.positionInitialize(n);
 
     }
- 
+    private void positionInitialize(int n){
+        _rigidbody.position= GetPosition(n);
+    }
 
 
     private IEnumerator MovePiece(int steps)
