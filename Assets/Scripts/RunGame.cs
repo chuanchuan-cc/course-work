@@ -72,7 +72,7 @@ public class RunGame : MonoBehaviour
         
         isAI=false;
         difficulty=0;
-        playerNumber=2;
+        playerNumber=3;
         
 
         //initialize players
