@@ -2016,7 +2016,7 @@ MonoBehaviour:
     tile: {fileID: 11400000, guid: a2eced051434f484294936b72e7ee242, type: 2}
   - tileType: opportunityknocks
     tile: {fileID: 11400000, guid: 5a79abd4ac6368f4996aca82b948ff78, type: 2}
-  - tileType: freepark
+  - tileType: freeparking
     tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
   - tileType: incometax
     tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}

@@ -61,7 +61,7 @@ public class TileGenerator : MonoBehaviour
             TileBase tile;
             string mapkey;
             // 1. 获取 Tile 资源
-            if (board.group == null) { mapkey=board.property.ToLower().Replace(" ", ""); }
+            if (board.group == "") { mapkey=board.property.ToLower().Replace(" ", ""); }
             else {mapkey=board.group.ToLower().Replace(" ", ""); }
             tile = GetTileByType(mapkey);
 
@@ -95,7 +95,7 @@ public class TileGenerator : MonoBehaviour
     {
         if (no == 0) return new Vector3Int(7, -3, 0);
         else if (no <= 15) return new Vector3Int(7 - no, -3, 0);
-        else if (no <= 20) return new Vector3Int(-8, no - 15 - 2, 0);
+        else if (no <= 20) return new Vector3Int(-8, no - 15 - 3, 0);
         else if (no <= 35) return new Vector3Int(-8 + no - 20, 2, 0);
         else return new Vector3Int(7, 2 - (no - 35), 0);
     }
