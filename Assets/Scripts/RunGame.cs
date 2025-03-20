@@ -43,6 +43,7 @@ public class RunGame : MonoBehaviour
     public Button BankButton;
     public int difficulty;
     bool isApplyCard=false;
+    public TileGenerator generator;
 
     //测试用玩家
 
@@ -82,6 +83,8 @@ public class RunGame : MonoBehaviour
 
         dashBoard = GameObject.Find("DashBoard");
         BoardConstructor=dashBoard.GetComponent<dashBoardConstructor>();
+
+
 
 
         
@@ -185,6 +188,14 @@ public class RunGame : MonoBehaviour
 
     }
 
+    foreach( Board board in mapList){
+        string mapkey=(board.group==null)? board.group.ToLower():board.property.ToLower();
+        Debug.Log($"maplist索引为：{mapkey},来自rungame脚本");
+
+    }
+    generator=GameObject.Find("Map").GetComponent<TileGenerator>();
+    generator.GenerateMapFromList(mapList);
+
     
     //start
     
@@ -287,8 +298,8 @@ public class RunGame : MonoBehaviour
         if ((currentPlayer.playerData.positionNo + roll) > mapList.Count)
         {
             
-               // gameBehaviour.AddMoney(currentPlayer, 200);
-                //gameBehaviour.PayMoney(bank, 200);
+               gameBehaviour.AddMoney(currentPlayer, 200);
+               bank.money-=200;
             
             currentPlayer.playerData.circle += 1;
         }
@@ -426,7 +437,18 @@ void AIRoll(){
             player.playerData.freeJail--;
         }
         else
-        {
+        {if(currentBoard.property=="Free Parking"){
+            gameBehaviour.AddMoney(currentPlayer,freeParkMoney);
+        }
+        if(currentBoard.property=="Go to Jail"){
+            gameBehaviour.GoToJail(currentPlayer);
+        }
+        if(currentBoard.property=="Income Tax"){
+            gameBehaviour.PayMoney(currentPlayer,200);
+        }
+        if(currentBoard.property=="Super Tax"){
+            gameBehaviour.PayMoney(currentPlayer,100);
+        }
             if (currentBoard.canBeBought)
             {
                 estateBoard eBoard = currentBoard as estateBoard;
