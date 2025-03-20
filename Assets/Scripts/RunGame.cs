@@ -44,6 +44,7 @@ public class RunGame : MonoBehaviour
     public int difficulty;
     bool isApplyCard=false;
     public TileGenerator generator;
+    public bankPanel bankpanel;
 
     //测试用玩家
 
@@ -116,6 +117,13 @@ public class RunGame : MonoBehaviour
         
         
         bank=new Bank();
+
+            bankpanel=GameObject.Find("bankPanel").GetComponent<bankPanel>();
+        if(bankpanel==null){
+            Debug.Log("bankpanel初始化失败");
+        }
+
+        
         
        
        
@@ -190,11 +198,17 @@ public class RunGame : MonoBehaviour
 
     foreach( Board board in mapList){
         string mapkey=(board.group==null)? board.group.ToLower():board.property.ToLower();
-        Debug.Log($"maplist索引为：{mapkey},来自rungame脚本");
+        
 
     }
     generator=GameObject.Find("Map").GetComponent<TileGenerator>();
     generator.GenerateMapFromList(mapList);
+    BankButton.onClick.AddListener(showBankPanel);
+    BankButton.interactable=false;
+
+    bankpanel.ClosePanel();
+
+
 
     
     //start
@@ -240,6 +254,7 @@ public class RunGame : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Broadcast.closeBroad(currentPlayer);
         yield return new WaitUntil(()=>!Broadcast.isBroadcasting);
+        BankButton.interactable=true;
 
 
         int currentPoint = point;
@@ -681,6 +696,10 @@ void AIRoll(){
 
         
 
+    }
+    private void showBankPanel(){
+        bankpanel.ShowPanel();
+        
     }
    
 }

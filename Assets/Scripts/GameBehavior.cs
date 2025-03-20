@@ -44,9 +44,9 @@ public class GameBehaviour: MonoBehaviour
     }
     public void GoToJail(Player player)
     {
-        if(RunGame.mapList.FindIndex(board=>board.group == "Jail/Just visiting")>0){
+        if(RunGame.mapList.FindIndex(board=>board.property == "Jail/Just visiting")>0){
       
-        int i= RunGame.mapList.FindIndex(board=>board.group == "Jail/Just visiting");
+        int i= RunGame.mapList.FindIndex(board=>board.property == "Jail/Just visiting");
         player.Move(i-player.playerData.positionNo);
         
         }
