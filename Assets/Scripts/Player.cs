@@ -86,10 +86,33 @@ void Awake()
 
             while (elapsedTime < totalTime)
             {
+
+
                 float t = elapsedTime / totalTime;
                 float heightFactor = (-4 * Mathf.Pow(t - 0.5f, 2) + 1)*jumpHeight;
                 bool isHorizon=Math.Abs(startPos.x-targetPos.x)>Math.Abs(startPos.y-targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
+                if(name=="ship"){
+                    
+                    _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y);
+                    elapsedTime += Time.deltaTime;
+                yield return null;
+                    
+      
+                    
+
+
+
+            
+                }else
+                {
+                  
+                
+                
+
+
+
+
                 if(isHorizon){
                 _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y+heightFactor);
 
@@ -99,10 +122,16 @@ void Awake()
                     }else{
                         _rigidbody.position = new Vector2(interpolatedPos.x+heightFactor*1f,interpolatedPos.y+heightFactor*1f);
                     }
+
                 }
-                elapsedTime += Time.deltaTime;
+                                    elapsedTime += Time.deltaTime;
                 yield return null;
+                
+            
+        
             }
+            }
+
 
             _rigidbody.position = targetPos; 
 
