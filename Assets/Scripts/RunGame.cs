@@ -324,9 +324,8 @@ public class RunGame : MonoBehaviour
         StartCoroutine(check(currentPlayer));
       
 
-        /*
-        此处为停止条件
-        if (currentPlayer.isBankrupt)
+        
+        if (currentPlayer.playerData.isBankrupt)
         {
             playersList.RemoveAt(currentPoint);
         }
@@ -335,7 +334,7 @@ public class RunGame : MonoBehaviour
         {
             break;
         }
-        */
+      
         yield return new WaitUntil(()=>!isChecking);
         
         foreach (Player p in playersList)
@@ -469,7 +468,9 @@ void AIRoll(){
                 estateBoard eBoard = currentBoard as estateBoard;
                 if (eBoard != null)
                 {Debug.Log(eBoard.owner.GetName());
-                    if (eBoard.owner == bank)
+                    if (eBoard.owner == bank 
+                    //&&currentPlayer.playerData.circle>0
+                    )
                     {
                         bool? userChoice=null;
                         interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
@@ -478,7 +479,7 @@ void AIRoll(){
                             if(userChoice.HasValue && userChoice.Value){
                                
                             if(player.playerData.money>eBoard.price){
-                                //gameBehaviour.BuyProperty(player,eBoard);
+
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
                             }else{
@@ -647,46 +648,43 @@ void AIRoll(){
             if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
             else continue;
         }
-        while(auctionList.Count>0){
+
             Player buyer=null;
-            int p=auctionList.Count;
-            for(int i =0; i<p;i++){
-                Player acutionPlayer= auctionList[i];
+            int n =0;
+            while(auctionList.Count>0){
+                Player acutionPlayer= auctionList[n];
             bool? userChoice=null;
                         interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of {eBoard.property} is {auctionPrice}, are you want to buy this estate?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;
                       ;
                         });
+                        if(acutionPlayer.playerData.money<=auctionPrice){
+                        interactionPanel.yesButton.interactable=false;}
                         yield return new WaitUntil(()=>userChoice.HasValue);
                             if(userChoice.HasValue && userChoice.Value){
-                                if(acutionPlayer.playerData.money<=eBoard.price){
-                                    //此处加拍卖没钱ui
-                                    Debug.Log("拍卖没钱");
-                                    auctionList.RemoveAt(i);
-                                    continue;
-                                }
-                                else{ auctionPrice+=detlaPrice;
+                                auctionPrice+=detlaPrice;
                                 buyer=acutionPlayer;
                                 }
                                
-                            }else
-                                auctionList.RemoveAt(i);
-                                
+                            else
+                                auctionList.RemoveAt(n);
+                               if(auctionList.Count==1&&buyer!=null){
+                            gameBehaviour.PayMoney(buyer,auctionPrice);
+                            gameBehaviour.AddProperty(buyer,eBoard);
+                            isAuction=false;
+                            yield break; }
+                             if(auctionList.Count==0&&buyer==null){
+                isAuction=false;
+                yield break;
+            }
+
+                            n=(n+1) %auctionList.Count;
                                 
                             
                             
                             }
-                            if(auctionList.Count==1||buyer!=null){
-            gameBehaviour.PayMoney(buyer,eBoard.price);
-            gameBehaviour.AddProperty(buyer,eBoard);
-            isAuction=false;
-            yield break;
-
-            }
-            if(auctionList.Count==0||buyer==null){
-                isAuction=false;
-                yield break;
-            }
+                           
+           
       
 
         }
@@ -696,7 +694,7 @@ void AIRoll(){
 
         
 
-    }
+    
     private void showBankPanel(){
         bankpanel.ShowPanel();
         
