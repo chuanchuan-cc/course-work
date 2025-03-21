@@ -2814,41 +2814,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tilePrefabs:
   - tileType: brown
-    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
-  - tileType: station
-    tile: {fileID: 11400000, guid: dd2036ed5e7cc8c46a0ef68b2dca3149, type: 2}
-  - tileType: blue
     tile: {fileID: 11400000, guid: 90d3ba4584c3456428fc598376153fca, type: 2}
-  - tileType: purple
-    tile: {fileID: 11400000, guid: acf215bab8a89bb4f93b0aad472f4865, type: 2}
-  - tileType: utilities
-    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
-  - tileType: orange
-    tile: {fileID: 11400000, guid: 5171e2aae87d99e4ca09fbd51919685d, type: 2}
-  - tileType: red
-    tile: {fileID: 11400000, guid: aadb706ae44816a4bbd35cfb53c2a5d2, type: 2}
-  - tileType: yellow
-    tile: {fileID: 11400000, guid: 365ae32229d3df745ace8b943c4f95ef, type: 2}
-  - tileType: gotojail
-    tile: {fileID: 11400000, guid: e12f1b09b4867074a961349007f21a49, type: 2}
-  - tileType: go
-    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
-  - tileType: potluck
-    tile: {fileID: 11400000, guid: e56df6b7ac1c97845814563a4f25b33d, type: 2}
-  - tileType: jail/justvisiting
-    tile: {fileID: 11400000, guid: a2eced051434f484294936b72e7ee242, type: 2}
-  - tileType: opportunityknocks
+  - tileType: station
     tile: {fileID: 11400000, guid: 5a79abd4ac6368f4996aca82b948ff78, type: 2}
-  - tileType: freeparking
-    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
-  - tileType: incometax
-    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
-  - tileType: supertax
-    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
-  - tileType: deepblue
-    tile: {fileID: 11400000, guid: df01f994d55f759428d30a6bb54ab132, type: 2}
-  - tileType: green
+  - tileType: blue
+    tile: {fileID: 11400000, guid: aadb706ae44816a4bbd35cfb53c2a5d2, type: 2}
+  - tileType: purple
     tile: {fileID: 11400000, guid: 28df5e64fa1bb3a4981a2d5bbcbb6d3c, type: 2}
+  - tileType: utilities
+    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
+  - tileType: orange
+    tile: {fileID: 11400000, guid: acf215bab8a89bb4f93b0aad472f4865, type: 2}
+  - tileType: red
+    tile: {fileID: 11400000, guid: 365ae32229d3df745ace8b943c4f95ef, type: 2}
+  - tileType: yellow
+    tile: {fileID: 11400000, guid: a2eced051434f484294936b72e7ee242, type: 2}
+  - tileType: gotojail
+    tile: {fileID: 11400000, guid: dd2036ed5e7cc8c46a0ef68b2dca3149, type: 2}
+  - tileType: go
+    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
+  - tileType: potluck
+    tile: {fileID: 11400000, guid: cd665478bfb8aa6409bdffd996ca14b7, type: 2}
+  - tileType: jail/justvisiting
+    tile: {fileID: 11400000, guid: e12f1b09b4867074a961349007f21a49, type: 2}
+  - tileType: opportunityknocks
+    tile: {fileID: 11400000, guid: e56df6b7ac1c97845814563a4f25b33d, type: 2}
+  - tileType: freeparking
+    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
+  - tileType: incometax
+    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
+  - tileType: supertax
+    tile: {fileID: 11400000, guid: cc2661b48ea7d934e95e1507b9d84971, type: 2}
+  - tileType: deepblue
+    tile: {fileID: 11400000, guid: 5171e2aae87d99e4ca09fbd51919685d, type: 2}
+  - tileType: green
+    tile: {fileID: 11400000, guid: df01f994d55f759428d30a6bb54ab132, type: 2}
 --- !u!1 &447249673
 GameObject:
   m_ObjectHideFlags: 0
