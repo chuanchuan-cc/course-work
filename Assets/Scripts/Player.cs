@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using JetBrains.Annotations;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
 
 
     public bool isMoving = false;
+    public float inputX, inputY;
+    public float facex;
    
 
 void Awake()
@@ -62,7 +65,8 @@ void Awake()
         this.positionInitialize(n);
 
     }
-    private void positionInitialize(int n){
+    private void positionInitialize(int n)
+    {
         _rigidbody.position= GetPosition(n);
     }
 
@@ -92,34 +96,51 @@ void Awake()
                 float heightFactor = (-4 * Mathf.Pow(t - 0.5f, 2) + 1)*jumpHeight;
                 bool isHorizon=Math.Abs(startPos.x-targetPos.x)>Math.Abs(startPos.y-targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
-                if(name=="ship"){
+                if(name=="ship")
+                {
                     
                     _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y);
                     elapsedTime += Time.deltaTime;
                 yield return null;
-                    
-      
-                    
-
-
-
-            
-                }else
+                }
+                else
                 {
-                  
-                
-                
-
-
-
-
-                if(isHorizon){
+                if(isHorizon)
+                {
                 _rigidbody.position = new Vector2(interpolatedPos.x,interpolatedPos.y+heightFactor);
+                if(playerData.positionNo<=15)
+                {
+                    inputX=-1;
+                    inputY=0;
 
-                }else{
-                    if(startPos.y-targetPos.y<0){
+                }else if(
+                    playerData.positionNo<=20)
+                    {
+                    inputX=0;
+                    inputY=1;}
+                else if(playerData.positionNo<=35)
+                {
+                    inputX=1;
+                    inputY=0;
+                }
+                else
+                {
+                    inputX=0;
+                    inputY=-1;
+                }
+                facex=inputX;
+                _animator.SetFloat("inputX",inputX);
+                _animator.SetFloat("inputY",inputY);
+                }
+                
+                else
+                {
+                    if(startPos.y-targetPos.y<0)
+                    {
                         _rigidbody.position = new Vector2(interpolatedPos.x-heightFactor*1f,interpolatedPos.y+heightFactor*1f);
-                    }else{
+                    }
+                    else
+                    {
                         _rigidbody.position = new Vector2(interpolatedPos.x+heightFactor*1f,interpolatedPos.y+heightFactor*1f);
                     }
 
@@ -163,15 +184,20 @@ void Awake()
 }
 
 
-public class Bank:IOwner{
+public class Bank:IOwner
+{
     public string name;
     public int money;
-    public Bank(){
+    public Bank()
+    {
         this.money=50000;
         this.name="Bank";
     }
 
-public string GetName(){
+public string GetName()
+{
     return "Bank";
 }
+
 }
+
