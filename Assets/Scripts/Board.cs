@@ -60,30 +60,26 @@ public class estateBoard:Board{
             throw new ArgumentException("Invalid improved rents array length");
     }
 }
-    [Serializable]
-public class StationBoard : Board {
-    public int price;
-    public IOwner owner;
-    
-
-    public StationBoard(int positionNo, string property, int price) 
-    : base(positionNo, property, "Station", "", true) {
-        this.price = price;
-        this.owner = RunGame.bank;
-    }
-}
 
 [Serializable]
-public class UtilityBoard : Board {
+public class BuyableBoard : Board
+{
     public int price;
     public IOwner owner;
+    public int rent;
 
-    public UtilityBoard(int positionNo, string property, int price) 
-        : base(positionNo, property, "Utilities","", true) {
+    public BuyableBoard(int positionNo, string property, string group, int price)
+        : base(positionNo, property, group, "", true)
+    {
         this.price = price;
         this.owner = RunGame.bank;
+        if(group=="Station")this.rent=25;
+    }
+    public void setRent(int _rent){
+        this.rent=_rent;
     }
 }
+
 
 public static class BoardLoader
 {
@@ -116,17 +112,11 @@ public static class BoardLoader
 
                     try
                     {
-                        if (IsStation(group))
-                        {
-                            int price = ParseCurrency(reader.GetValue(7));
-                            ValidateStation(reader);
-                            boards.Add(new StationBoard(positionNo, property, price));
-                        }
-                        else if (IsUtility(group))
-                        {
-                            int price = ParseCurrency(reader.GetValue(7));
-                            boards.Add(new UtilityBoard(positionNo, property, price));
-                        }
+                        if (IsStation(group) || IsUtility(group))
+{
+    int price = ParseCurrency(reader.GetValue(7));
+    boards.Add(new BuyableBoard(positionNo, property, group, price));
+}
                         else if (canBeBought)
                         {
                             var (price, baseRent, improvedRents) = ParsePropertyData(reader);
@@ -182,11 +172,7 @@ public static class BoardLoader
     private static bool IsUtility(string group) => 
         group.Equals("Utilities", StringComparison.OrdinalIgnoreCase);
 
-    private static void ValidateStation(IExcelDataReader reader)
-    {
-        if (ParseCurrency(reader.GetValue(8)) != 0)
-            Debug.LogWarning("车站不应有基础租金数值");
-    }
+ 
 
     private static (int price, int baseRent, int[] improvedRents) ParsePropertyData(IExcelDataReader reader)
     {
@@ -219,10 +205,7 @@ public static class BoardLoader
                         Debug.LogError($"地产 {estate.property} 标记不可购买");
                     break;
                 
-                case StationBoard station:
-                    if (station.price <= 0)
-                        Debug.LogError($"车站 {station.property} 价格无效");
-                    break;
+
             }
         }
     }

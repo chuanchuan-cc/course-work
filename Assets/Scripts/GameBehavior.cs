@@ -240,9 +240,34 @@ public class GameBehaviour: MonoBehaviour
             player.playerData.assetsList.Add(board);
 
         }
+        public void AddBuyable(Player player, BuyableBoard board)
+        {
+            Debug.Log($"{player.name} buy {board.property}");
+            board.owner = player.playerData;
+            player.playerData.assetsWorth+=board.price;
+            player.playerData.assetsList.Add(board);
+
+        }
        
    
         public void PayRent(Player player, estateBoard board)
+        {
+            if(!player.playerData.isBankrupt)
+            {
+                PayMoney(player, board.rent);
+                foreach(Player cp in RunGame.playersList){
+                    if(cp.name==board.owner.GetName()){
+                        AddMoney(cp,board.rent);
+                    }
+                }
+                string _owner=board.owner.GetName();
+                    
+                
+                Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
+            }
+        }
+        
+          public void PayBuyableRent(Player player, BuyableBoard board)
         {
             if(!player.playerData.isBankrupt)
             {

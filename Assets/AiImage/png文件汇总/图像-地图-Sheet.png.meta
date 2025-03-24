@@ -459,7 +459,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_0": -1802026220009622126
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_1": -6944078773046916195
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_10": -2565615926969883889
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_11": -6125798454823936001
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_12": 1320493602201104431
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_13": 7140841117610865830
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_2": -4152269118619026778
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_3": 4497088739508704580
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_4": -3458776847655620429
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_5": -5123932097817595753
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_6": -1231545493590818054
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_7": -5533204392772758986
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_8": 2642269531580053054
+      "\u56FE\u50CF-\u5730\u56FE-Sheet_9": -51301222289425859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

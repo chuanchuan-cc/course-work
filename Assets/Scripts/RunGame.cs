@@ -71,7 +71,7 @@ public class RunGame : MonoBehaviour
 
         
         isAI=true;
-        difficulty=0;
+        difficulty=1;
         playerNumber=2;
         
 
@@ -469,66 +469,14 @@ void AIRoll(){
             {
                 estateBoard eBoard = currentBoard as estateBoard;
                 if (eBoard != null)
-                {Debug.Log(eBoard.owner.GetName());
-                    if (eBoard.owner == bank 
-                    //&&currentPlayer.playerData.circle>0
-                    )
-                    {if(player.playerData.isAI){
-                        if(player.playerData.money>=eBoard.price&&AIBuyProperty(player)){
-                                 gameBehaviour.PayMoney(player,eBoard.price);
-                                 gameBehaviour.AddProperty(player,eBoard);                            
-                        }else{
-                            Debug.Log($"地产 {eBoard.property} 开始拍卖");
-                            isAuction=true;
-
-                             StartCoroutine(auction(eBoard));
-                             yield return new WaitUntil(()=>!isAuction);
-                             
-                             isChecking = false;
-
+                {
+                    yield return HandleEstate(player, eBoard);
+                }
+                else{
+                    BuyableBoard bBoard = currentBoard as BuyableBoard;{
+                        if(bBoard!=null){
+                            yield return HadleBuyable(player,bBoard);
                         }
-
-                    }
-                    else{
-                        bool? userChoice=null;
-                        interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
-                        { userChoice=isBuy;});
-                        yield return new WaitUntil(()=>userChoice.HasValue);
-                            if(userChoice.HasValue && userChoice.Value){
-                               
-                            if(player.playerData.money>eBoard.price){
-
-                                 gameBehaviour.PayMoney(player,eBoard.price);
-                                 gameBehaviour.AddProperty(player,eBoard);
-                            }else{
-                                //此处执行没钱提示
-                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
-                            }
-
-                                }
-                        else{//此处执行拍卖
-
-                        Debug.Log($"地产 {eBoard.property} 开始拍卖");
-                            isAuction=true;
-
-                             StartCoroutine(auction(eBoard));
-                             yield return new WaitUntil(()=>!isAuction);
-                             
-                             isChecking = false;
-                             
-                        }
-                    }
-                        isChecking = false;
-                        yield break;
-                            
-
-                        
-                        
-                    }
-
-                    else
-                    {
-                        gameBehaviour.PayRent(player, eBoard);
                     }
                 }
             }
@@ -564,9 +512,13 @@ void AIRoll(){
         // 处理卡片效果
         ApplyCardEffect(player, drawnCard);
         float timer = 0f;
-        Player initialPlayer = currentPlayer; 
+  
     while (timer < 5f||isApplyCard)
     {
+        if(currentPlayer.playerData.isAI){
+            isProcessingCard=false;
+            break;
+        }
         if (Input.GetMouseButtonDown(0)) // 监听鼠标点击
         {
             Debug.Log("点击屏幕，立即关闭卡片 UI");
@@ -700,7 +652,7 @@ void AIRoll(){
                             else
                                 auctionList.RemoveAt(n);
                 }else {
-                if(acutionPlayer.playerData.money>=auctionPrice&&AIauction(acutionPlayer)){
+                if(acutionPlayer.playerData.money>=auctionPrice&&AIauction(acutionPlayer,auctionPrice)){
                      auctionPrice+=detlaPrice;
                                 buyer=acutionPlayer;
 
@@ -729,6 +681,75 @@ void AIRoll(){
       
 
         }
+    IEnumerator BuyableAuction(BuyableBoard bBoard){
+        isAuction=true;
+        int auctionPrice=bBoard.price;
+        int detlaPrice=auctionPrice/10;
+        int totalNum=playersList.Count-1;
+        List<Player> auctionList=new List<Player>();
+        for(int i=0;i<totalNum;i++){
+            int t=(point+i)%playersList.Count;
+            Player p =playersList[t];
+            //圈数检测禁用，测试
+            // if(p.playerData.circle>0) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            else continue;
+        }
+
+            Player buyer=null;
+            int n =0;
+            while(auctionList.Count>0){
+                Player acutionPlayer= auctionList[n];
+                if (acutionPlayer.playerData.isAI==false){
+            bool? userChoice=null;
+                        interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of {bBoard.property} is {auctionPrice}, are you want to buy this estate?",bBoard.group,bBoard.price,null,(bool isBuy)=> 
+                        { userChoice=isBuy;
+                      ;
+                        });
+                        if(acutionPlayer.playerData.money<auctionPrice){
+                        interactionPanel.yesButton.interactable=false;}
+                        yield return new WaitUntil(()=>userChoice.HasValue);
+                            if(userChoice.HasValue && userChoice.Value){
+                                auctionPrice+=detlaPrice;
+                                buyer=acutionPlayer;
+                                }
+                               
+                            else
+                                auctionList.RemoveAt(n);
+                }else {
+                if(acutionPlayer.playerData.money>=auctionPrice&&AIauction(acutionPlayer,auctionPrice)){
+                     auctionPrice+=detlaPrice;
+                                buyer=acutionPlayer;
+
+                }else{
+                    auctionList.RemoveAt(n);
+
+                }
+                }
+                            if(auctionList.Count==1&&buyer!=null){
+                            gameBehaviour.PayMoney(buyer,auctionPrice);
+                            gameBehaviour.AddBuyable(buyer,bBoard);
+                            if(bBoard.group=="Utilities"){
+                                int rent=4*rollRent();
+                                 Debug.Log($"你摇出了rent {rent}");
+                                 bBoard.setRent(rent);  }    
+                            isAuction=false;
+                            yield break; }
+                             if(auctionList.Count==0&&buyer==null){
+                isAuction=false;
+                yield break;
+            }
+
+                            n=(n+1) %auctionList.Count;
+                                
+                            
+                            
+                            }
+                           
+           
+      
+
+        }
         
         
         
@@ -740,13 +761,14 @@ void AIRoll(){
         bankpanel.ShowPanel();
         
     }
-    private bool AIauction(Player player){
+    private bool AIauction(Player player,int price){
         if(player.playerData.isAI=true){
             if(difficulty==0){
                 return UnityEngine.Random.Range(0, 2) == 0;
             }else if (difficulty==1){
-                //中间难度执行布尔值
+                if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth)
                 return true;
+                else return false;
             }else{
                 //难布尔值
                 return true;
@@ -756,13 +778,14 @@ void AIRoll(){
             return false;
         }
     }
-    private bool AIBuyProperty(Player player){
+    private bool AIBuyProperty(Player player,int price){
         if(player.playerData.isAI=true){
             if(difficulty==0){
                 return UnityEngine.Random.Range(0, 2) == 0;
             }else if (difficulty==1){
-                //中间难度执行布尔值
+                              if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth)
                 return true;
+                else return false;
             }else{
                 //难布尔值
                 return true;
@@ -771,6 +794,141 @@ void AIRoll(){
             Debug.LogError($"player {player.name} is not AI");
             return false;
         }
+    }
+
+
+    IEnumerator HandleEstate(Player player,estateBoard eBoard){
+        Debug.Log(eBoard.owner.GetName());
+                    if (eBoard.owner == bank 
+                    //&&currentPlayer.playerData.circle>0
+                    )
+                    {if(player.playerData.isAI){
+                        if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
+                                 gameBehaviour.PayMoney(player,eBoard.price);
+                                 gameBehaviour.AddProperty(player,eBoard);                            
+                        }else{
+                            Debug.Log($"地产 {eBoard.property} 开始拍卖");
+                            isAuction=true;
+
+                             StartCoroutine(auction(eBoard));
+                             yield return new WaitUntil(()=>!isAuction);
+                             
+                             isChecking = false;
+
+                        }
+
+                    }
+                    else{
+                        bool? userChoice=null;
+                        interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
+                        { userChoice=isBuy;});
+                        yield return new WaitUntil(()=>userChoice.HasValue);
+                            if(userChoice.HasValue && userChoice.Value){
+                               
+                            if(player.playerData.money>eBoard.price){
+
+                                 gameBehaviour.PayMoney(player,eBoard.price);
+                                 gameBehaviour.AddProperty(player,eBoard);
+                            }else{
+                                //此处执行没钱提示
+                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
+                            }
+
+                                }
+                        else{//此处执行拍卖
+
+                        Debug.Log($"地产 {eBoard.property} 开始拍卖");
+                            isAuction=true;
+
+                             StartCoroutine(auction(eBoard));
+                             yield return new WaitUntil(()=>!isAuction);
+                             
+                             isChecking = false;
+                             
+                        }
+                    }
+                        isChecking = false;
+                        yield break;
+                            
+
+                        
+                        
+                    }
+
+                    else
+                    {
+                        gameBehaviour.PayRent(player, eBoard);
+                    }
+    }
+        IEnumerator HadleBuyable(Player player,BuyableBoard bBoard){
+        Debug.Log(bBoard.owner.GetName());
+                    if (bBoard.owner == bank 
+                    //&&currentPlayer.playerData.circle>0
+                    )
+                    {if(player.playerData.isAI){
+                        if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){
+                                 gameBehaviour.PayMoney(player,bBoard.price);
+                                 gameBehaviour.AddBuyable(player,bBoard);   
+                            if(bBoard.group=="Utilities"){
+                                int rent=4*rollRent();
+                                 Debug.Log($"你摇出了rent {rent}");
+                                 bBoard.setRent(rent);  }                         
+                        }else{
+                            Debug.Log($"地产 {bBoard.property} 开始拍卖");
+                            isAuction=true;
+
+                             StartCoroutine(BuyableAuction(bBoard));
+                             yield return new WaitUntil(()=>!isAuction);
+                             
+                             isChecking = false;
+
+                        }
+
+                    }
+                    else{
+                        bool? userChoice=null;
+                        interactionPanel.ShowPanel($"are you want to buy {bBoard.property}?",bBoard.group,bBoard.price,bBoard.rent,(bool isBuy)=> 
+                        { userChoice=isBuy;});
+                        yield return new WaitUntil(()=>userChoice.HasValue);
+                            if(userChoice.HasValue && userChoice.Value){
+                               
+                            if(player.playerData.money>bBoard.price){
+
+                                 gameBehaviour.PayMoney(player,bBoard.price);
+                                 gameBehaviour.AddBuyable(player,bBoard);
+                            }else{
+                                //此处执行没钱提示
+                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
+                            }
+
+                                }
+                        else{//此处执行拍卖
+
+                        Debug.Log($"地产 {bBoard.property} 开始拍卖");
+                            isAuction=true;
+
+                             StartCoroutine(BuyableAuction(bBoard));
+                             yield return new WaitUntil(()=>!isAuction);
+                             
+                             isChecking = false;
+                             
+                        }
+                    }
+                        isChecking = false;
+                        yield break;
+                            
+
+                        
+                        
+                    }
+
+                    else
+                    {
+                        gameBehaviour.PayBuyableRent(player, bBoard);
+                    }
+    }
+    private int rollRent(){
+        return Random.Range(1, 7);
     }
    
 }

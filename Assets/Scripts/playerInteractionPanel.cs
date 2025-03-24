@@ -61,7 +61,10 @@ public class playerInteractionPanel : MonoBehaviour
         price.text="price: "+_price.Value.ToString();
     }
 
-    if (_rent == null) rent.gameObject.SetActive(false);
+    if (_rent == null) {
+        rent.text = "";
+        rent.gameObject.SetActive(false);
+        }
     else
     {
         rent.gameObject.SetActive(true);
