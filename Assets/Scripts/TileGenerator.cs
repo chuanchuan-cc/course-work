@@ -1,17 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TileGenerator : MonoBehaviour
 {
-    [System.Serializable]
-    public class TilePrefabConfig
-    {
-        public string tileType;         
-        public GameObject tilePrefab;    
-    }
+    
+   
 
     [SerializeField] private List<TilePrefabConfig> _tilePrefabs = new List<TilePrefabConfig>();
     private Dictionary<string, GameObject> _tileDict = new Dictionary<string, GameObject>(); 
+    private List<GameObject> tileList=new List<GameObject>();
 
     void Start()
     {
@@ -27,12 +25,9 @@ public class TileGenerator : MonoBehaviour
             if (!_tileDict.ContainsKey(key))
             {
                 _tileDict.Add(key, config.tilePrefab);
-                Debug.Log($"成功生成 tile prefab，索引为: {key}");
+
             }
-            else
-            {
-                Debug.LogWarning($"重复的格子类型: {key}");
-            }
+
         }
     }
 
@@ -56,16 +51,53 @@ public class TileGenerator : MonoBehaviour
                 Debug.LogError($"未找到匹配的 tile prefab，跳过生成: {board.property}，资源索引为 {mapkey}");
                 continue;
             }
-
+           
+            
             Vector3Int tilePosition = BoardGetPosition(board.positionNo);
             Vector3 worldPosition = new Vector3(tilePosition.x + 0.5f, tilePosition.y + 0.5f, 0f); 
 
             GameObject tile = Instantiate(prefab, worldPosition, Quaternion.identity);
+            tileList.Add(tile);
             tile.name = $"Tile_{board.positionNo}_{mapkey}";
             tile.transform.SetParent(this.transform);
-        }
+            if(board.canBeBought){
+                
+            estatePrefabConfig config = tile.GetComponent<estatePrefabConfig>();
+            if (config!=null){
+                estateBoard eBoard= board as estateBoard;
+                if (eBoard!=null)config.updateConfigEstate(eBoard);
+                else {
+                    BuyableBoard bBoard= board as BuyableBoard;
+                    config.updateConfigBuyable(bBoard);
+                }                
+            }
+            }
+
+
+            
+            }
+            
+        
+    
     }
 
+public void updateTile(Board board){
+    Debug.Log($"更新格子 {board.positionNo}");
+            GameObject tile=tileList[board.positionNo];
+                
+            estatePrefabConfig config = tile.GetComponent<estatePrefabConfig>();
+            if (config!=null){
+                estateBoard eBoard= board as estateBoard;
+                if (eBoard!=null)config.updateConfigEstate(eBoard);
+                else {
+                    BuyableBoard bBoard= board as BuyableBoard;
+                    config.updateConfigBuyable(bBoard);
+                }                
+            
+            }
+                
+
+}
 
     private Vector3Int BoardGetPosition(int no)
     {

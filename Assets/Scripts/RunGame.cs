@@ -196,11 +196,7 @@ public class RunGame : MonoBehaviour
 
     }
 
-    foreach( Board board in mapList){
-        string mapkey=(board.group==null)? board.group.ToLower():board.property.ToLower();
-        
 
-    }
     generator=GameObject.Find("Map").GetComponent<TileGenerator>();
     generator.GenerateMapFromList(mapList);
     BankButton.onClick.AddListener(showBankPanel);
@@ -578,6 +574,7 @@ void AIRoll(){
                 foreach(Player i in playersList){
                     gameBehaviour.PayMoney(i,card.moneyAmount);
                     gameBehaviour.AddMoney(player,card.moneyAmount);
+
                 }
             }
            
@@ -664,6 +661,7 @@ void AIRoll(){
                             if(auctionList.Count==1&&buyer!=null){
                             gameBehaviour.PayMoney(buyer,auctionPrice);
                             gameBehaviour.AddProperty(buyer,eBoard);
+                            generator.updateTile(eBoard);
                             isAuction=false;
                             yield break; }
                              if(auctionList.Count==0&&buyer==null){
@@ -729,6 +727,7 @@ void AIRoll(){
                             if(auctionList.Count==1&&buyer!=null){
                             gameBehaviour.PayMoney(buyer,auctionPrice);
                             gameBehaviour.AddBuyable(buyer,bBoard);
+                            generator.updateTile(bBoard);
                             if(bBoard.group=="Utilities"){
                                 int rent=4*rollRent();
                                  Debug.Log($"你摇出了rent {rent}");
@@ -805,7 +804,8 @@ void AIRoll(){
                     {if(player.playerData.isAI){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
                                  gameBehaviour.PayMoney(player,eBoard.price);
-                                 gameBehaviour.AddProperty(player,eBoard);                            
+                                 gameBehaviour.AddProperty(player,eBoard);  
+                                 generator.updateTile(eBoard);                          
                         }else{
                             Debug.Log($"地产 {eBoard.property} 开始拍卖");
                             isAuction=true;
@@ -829,6 +829,8 @@ void AIRoll(){
 
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
+                                 generator.updateTile(eBoard);
+                                 
                             }else{
                                 //此处执行没钱提示
                                 Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
@@ -869,6 +871,7 @@ void AIRoll(){
                         if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){
                                  gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);   
+                                 generator.updateTile(bBoard);
                             if(bBoard.group=="Utilities"){
                                 int rent=4*rollRent();
                                  Debug.Log($"你摇出了rent {rent}");
@@ -896,6 +899,7 @@ void AIRoll(){
 
                                  gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);
+                                 generator.updateTile(bBoard);
                             }else{
                                 //此处执行没钱提示
                                 Debug.Log("余额不足，请联系游戏管理员以获得充值方法");

@@ -2812,42 +2812,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilePrefabs:
-  - tileType: brown
-    tilePrefab: {fileID: 2963755062880218437, guid: 56507f89b574322428178d92fe7bc5e2, type: 3}
-  - tileType: station
-    tilePrefab: {fileID: 2963755062880218437, guid: 282f6832dd398694581f6868c2c4beb7, type: 3}
-  - tileType: blue
-    tilePrefab: {fileID: 2963755062880218437, guid: cee5f5ce384309a498e0826696571cbc, type: 3}
-  - tileType: purple
-    tilePrefab: {fileID: 2963755062880218437, guid: 3a156255d7a07444f825435a88e1f025, type: 3}
-  - tileType: utilities
-    tilePrefab: {fileID: 2963755062880218437, guid: 05d51ee29e1b5634588082f5196fa628, type: 3}
-  - tileType: orange
-    tilePrefab: {fileID: 2963755062880218437, guid: e059f7e44e6c6a243bcba61d87ede00f, type: 3}
-  - tileType: red
-    tilePrefab: {fileID: 2963755062880218437, guid: c51fdc155a3362644b03165e990aa68f, type: 3}
-  - tileType: yellow
-    tilePrefab: {fileID: 2963755062880218437, guid: a091a2bfe5b0bf34e9ca568648909e0b, type: 3}
-  - tileType: gotojail
-    tilePrefab: {fileID: 2963755062880218437, guid: 221a97cdec3bfe343a850764371e93a5, type: 3}
-  - tileType: go
-    tilePrefab: {fileID: 2963755062880218437, guid: d974c2d6f9c8a954f969dcda10e88c5f, type: 3}
-  - tileType: potluck
-    tilePrefab: {fileID: 2963755062880218437, guid: fe6dacb1ef0d8f34ca6b96293b2f0de1, type: 3}
-  - tileType: jail/justvisiting
-    tilePrefab: {fileID: 2963755062880218437, guid: d5d6e15062d65924fb991577a6cbb867, type: 3}
-  - tileType: opportunityknocks
-    tilePrefab: {fileID: 2963755062880218437, guid: cb3c35735b5e5ed428eda4ba86169821, type: 3}
-  - tileType: freeparking
-    tilePrefab: {fileID: 2963755062880218437, guid: b15021e6de469f84cbb971c6c243dcde, type: 3}
-  - tileType: incometax
-    tilePrefab: {fileID: 2963755062880218437, guid: 24b578f83f21869439bfb56936881ef7, type: 3}
-  - tileType: supertax
-    tilePrefab: {fileID: 2963755062880218437, guid: b88c7024b34725c4ab4abb9c626c909d, type: 3}
-  - tileType: deepblue
-    tilePrefab: {fileID: 2963755062880218437, guid: cd0b3aeb5dd91024e93e9c60cfb11057, type: 3}
-  - tileType: green
-    tilePrefab: {fileID: 2963755062880218437, guid: e838579863a141f42aeb706d7c208861, type: 3}
+  - {fileID: 3028435947140963318, guid: cee5f5ce384309a498e0826696571cbc, type: 3}
+  - {fileID: 3028435947140963318, guid: f3110a6bfc0918e4888f9af532d87d34, type: 3}
+  - {fileID: 3028435947140963318, guid: 6594ab2d2bc58fa4cb6cd40696efc6df, type: 3}
+  - {fileID: 8903209608144931473, guid: b15021e6de469f84cbb971c6c243dcde, type: 3}
+  - {fileID: 4254449873794477946, guid: d974c2d6f9c8a954f969dcda10e88c5f, type: 3}
+  - {fileID: -7626584096304641688, guid: 221a97cdec3bfe343a850764371e93a5, type: 3}
+  - {fileID: 3028435947140963318, guid: c088bb82caf771942b45589a7c8f9d65, type: 3}
+  - {fileID: 782564006929156197, guid: 24b578f83f21869439bfb56936881ef7, type: 3}
+  - {fileID: -7830896455372817884, guid: d5d6e15062d65924fb991577a6cbb867, type: 3}
+  - {fileID: -1376964486135161427, guid: fe6dacb1ef0d8f34ca6b96293b2f0de1, type: 3}
+  - {fileID: 858128086719987193, guid: cb3c35735b5e5ed428eda4ba86169821, type: 3}
+  - {fileID: 3028435947140963318, guid: 0765c32f78e993f40b90211707f3908e, type: 3}
+  - {fileID: 3028435947140963318, guid: bec1bf57b1002c64bac260e8c01b335f, type: 3}
+  - {fileID: 3028435947140963318, guid: f19b44056363b3e4787e8708fdaeb18e, type: 3}
+  - {fileID: 6198781474173357413, guid: 282f6832dd398694581f6868c2c4beb7, type: 3}
+  - {fileID: -5997343354825294286, guid: b88c7024b34725c4ab4abb9c626c909d, type: 3}
+  - {fileID: 6367252915713155523, guid: 05d51ee29e1b5634588082f5196fa628, type: 3}
+  - {fileID: 3028435947140963318, guid: 2cb5e4f6a247a884695b0dee59a93c7a, type: 3}
 --- !u!1 &447249673
 GameObject:
   m_ObjectHideFlags: 0
