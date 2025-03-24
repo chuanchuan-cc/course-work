@@ -70,9 +70,9 @@ public class RunGame : MonoBehaviour
 
 
         
-        isAI=false;
+        isAI=true;
         difficulty=0;
-        playerNumber=3;
+        playerNumber=2;
         
 
         //initialize players
@@ -364,6 +364,7 @@ public class RunGame : MonoBehaviour
 
 public void ThrowDice()
 {
+    roll=0;
     isbehavior=true;
     DiceButton.interactable = false;
     int roll1, roll2;
@@ -405,9 +406,10 @@ public void ThrowDice()
 
 }
 void AIRoll(){
+    roll=0;
     isbehavior=true;
     DiceButton.interactable = false;
-    int roll1, roll2,roll;
+    int roll1, roll2;
     diceRolls =0;
     while(diceRolls<3){
         diceRolls+=1;
@@ -471,7 +473,23 @@ void AIRoll(){
                     if (eBoard.owner == bank 
                     //&&currentPlayer.playerData.circle>0
                     )
-                    {
+                    {if(player.playerData.isAI){
+                        if(player.playerData.money>=eBoard.price&&AIBuyProperty(player)){
+                                 gameBehaviour.PayMoney(player,eBoard.price);
+                                 gameBehaviour.AddProperty(player,eBoard);                            
+                        }else{
+                            Debug.Log($"地产 {eBoard.property} 开始拍卖");
+                            isAuction=true;
+
+                             StartCoroutine(auction(eBoard));
+                             yield return new WaitUntil(()=>!isAuction);
+                             
+                             isChecking = false;
+
+                        }
+
+                    }
+                    else{
                         bool? userChoice=null;
                         interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;});
@@ -499,6 +517,7 @@ void AIRoll(){
                              isChecking = false;
                              
                         }
+                    }
                         isChecking = false;
                         yield break;
                             
@@ -570,20 +589,31 @@ void AIRoll(){
             int t;
                 foreach(Board i in mapList){
                     if(i.property==card.destinationName){
+                        Debug.Log($"已探测到格子{i.property}");
                         t=i.positionNo-player.playerData.positionNo;
                       if(card.isFoward)
-                {t=(t>0)?t:40+t;}
+                {t=(t>0)?t:40+t;
+                Debug.Log($"向前行走 {t}");
+                player.Move(t);
+
+                }
                 else
-                {t=(t<0)?t:40-t;}
-                 player.Move(t);
-                 isApplyCard=false;
-                 return;
+                {t=(t<0)?t:40-t;
+                player.Move(t);
+                Debug.Log($"向后行走 {t}");
+
+                }
+                 
+                 
 
                     }
-                }
+                
+                isApplyCard=false;
+                 return;
                 
             
             
+        }
         }
         if (card.isPay)
         {
@@ -653,12 +683,13 @@ void AIRoll(){
             int n =0;
             while(auctionList.Count>0){
                 Player acutionPlayer= auctionList[n];
+                if (acutionPlayer.playerData.isAI==false){
             bool? userChoice=null;
                         interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of {eBoard.property} is {auctionPrice}, are you want to buy this estate?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;
                       ;
                         });
-                        if(acutionPlayer.playerData.money<=auctionPrice){
+                        if(acutionPlayer.playerData.money<auctionPrice){
                         interactionPanel.yesButton.interactable=false;}
                         yield return new WaitUntil(()=>userChoice.HasValue);
                             if(userChoice.HasValue && userChoice.Value){
@@ -668,7 +699,17 @@ void AIRoll(){
                                
                             else
                                 auctionList.RemoveAt(n);
-                               if(auctionList.Count==1&&buyer!=null){
+                }else {
+                if(acutionPlayer.playerData.money>=auctionPrice&&AIauction(acutionPlayer)){
+                     auctionPrice+=detlaPrice;
+                                buyer=acutionPlayer;
+
+                }else{
+                    auctionList.RemoveAt(n);
+
+                }
+                }
+                            if(auctionList.Count==1&&buyer!=null){
                             gameBehaviour.PayMoney(buyer,auctionPrice);
                             gameBehaviour.AddProperty(buyer,eBoard);
                             isAuction=false;
@@ -698,6 +739,38 @@ void AIRoll(){
     private void showBankPanel(){
         bankpanel.ShowPanel();
         
+    }
+    private bool AIauction(Player player){
+        if(player.playerData.isAI=true){
+            if(difficulty==0){
+                return UnityEngine.Random.Range(0, 2) == 0;
+            }else if (difficulty==1){
+                //中间难度执行布尔值
+                return true;
+            }else{
+                //难布尔值
+                return true;
+            }
+        }else{
+            Debug.LogError($"player {player.name} is not AI");
+            return false;
+        }
+    }
+    private bool AIBuyProperty(Player player){
+        if(player.playerData.isAI=true){
+            if(difficulty==0){
+                return UnityEngine.Random.Range(0, 2) == 0;
+            }else if (difficulty==1){
+                //中间难度执行布尔值
+                return true;
+            }else{
+                //难布尔值
+                return true;
+            }
+        }else{
+            Debug.LogError($"player {player.name} is not AI");
+            return false;
+        }
     }
    
 }
