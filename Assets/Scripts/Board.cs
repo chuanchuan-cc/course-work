@@ -35,6 +35,7 @@ public class estateBoard:Board{
     public int rent;
     public bool isMortgage;
     public IOwner owner;
+    public int initialPrice;
     public estateBoard(int positionNo, string property, string group, 
                       int price, int baseRent, int[] improvedRents) 
         : base(positionNo, property, group, "", true)
@@ -46,8 +47,9 @@ public class estateBoard:Board{
         this.baseRent = baseRent;
         this.improvedRents = improvedRents;
         this.owner = RunGame.bank;
-        this.rent=baseRent+improvedRents[improvedLevel];
+        this.rent=baseRent;
         this.isMortgage=false;
+        this.initialPrice=price;
     
 
     }
@@ -58,6 +60,10 @@ public class estateBoard:Board{
         
         if (improvedRents.Length != 5)
             throw new ArgumentException("Invalid improved rents array length");
+    }
+      public void ResetRent( int i){
+        this.rent=this.improvedRents[i];
+        
     }
 }
 
@@ -212,5 +218,6 @@ public static class BoardLoader
         }
     }
     #endregion
+  
 }
 

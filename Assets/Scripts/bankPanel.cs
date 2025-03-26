@@ -100,6 +100,10 @@ public class bankPanel : MonoBehaviour
 
         StartCoroutine(behaviourFadeIn());
         behaviourQuit.onClick.AddListener(quitBehaviour);
+          while (generateZone.transform.childCount > 0)
+    {
+        GameObject.DestroyImmediate(generateZone.transform.GetChild(0).gameObject);
+    }
         
 
     }
@@ -108,6 +112,7 @@ public class bankPanel : MonoBehaviour
 
         ShowBehaviourPanel("which estate you are willing to sell");
         generateAssets(false);
+        generateAssets(true);
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeSell"));
       
@@ -165,10 +170,7 @@ public class bankPanel : MonoBehaviour
        
     }
 private void generateAssets(bool i){
-        while (generateZone.transform.childCount > 0)
-    {
-        GameObject.DestroyImmediate(generateZone.transform.GetChild(0).gameObject);
-    }
+      
 
         
             foreach(Board _board in player.playerData.assetsList){
@@ -185,6 +187,7 @@ private void generateAssets(bool i){
                 TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
                 property.text=$"property: {bBoard.property}";
 
@@ -192,9 +195,14 @@ private void generateAssets(bool i){
 
                 rent.text=$"rent: {bBoard.rent}";
                 group.text=$"group: {bBoard.group}";
-                }
-            
+                 if(bBoard.isMortgage){
+                    mortgageState.text="mortgaged";}
+                    else{
+                        mortgageState.text="unmortgaged";
                     }
+                }}
+            
+                    
                     else
                     {if(eBoard.isMortgage==i){
                         GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
@@ -203,23 +211,27 @@ private void generateAssets(bool i){
                     TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
                     property.text=$"property: {eBoard.property}";
 
                     price.text=$"price: {eBoard.price}";
 
                     rent.text=$"rent: {eBoard.rent}";
-                    group.text=$"color: {eBoard.group}";}}
-            }
+                    group.text=$"color: {eBoard.group}";
+                    if(eBoard.isMortgage){
+                    mortgageState.text="mortgaged";}
+                    else{
+                        mortgageState.text="unmortgaged";
+                    }
+                    }
+                    }
+                    }
+            
             
 
 
-        }
-
-    
-
-    }
-
+        }}
 
     private IEnumerator FadeOut()
     {

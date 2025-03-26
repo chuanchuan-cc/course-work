@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public bool isMoving = false;
     public float inputX, inputY;
     public float facex;
+    public bool isFading=false;
    
 
 void Awake()
@@ -33,6 +34,69 @@ void Awake()
 
         
     }
+    public void directlyMove(Board board){
+        Debug.Log($"已触发直接移动，目的地为{board.property}");
+        StartCoroutine(DirectMoveRoutine(board));
+
+    }
+    
+private IEnumerator DirectMoveRoutine(Board board)
+{
+    yield return StartCoroutine(FadeOut(0.5f));
+
+    yield return new WaitUntil(()=>!isFading);
+    _rigidbody.position = GetPosition(board.positionNo);
+    playerData.positionNo = board.positionNo;
+
+    yield return StartCoroutine(FadeIn(0.5f, _rigidbody.position));
+}
+    IEnumerator FadeOut( float duration)
+{
+    yield return new WaitUntil(()=>!isFading);
+    isFading=true;
+    SpriteRenderer  renderer = this.GetComponent<SpriteRenderer >();
+    Color color = renderer.material.color;
+
+    float startAlpha = color.a;
+    float elapsed = 0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float newAlpha = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
+        color.a = newAlpha;
+        renderer.material.color = color;
+        yield return null;
+    }
+
+    color.a = 0f;
+    renderer.material.color = color;
+    isFading=false;
+}
+    IEnumerator FadeIn( float duration,Vector2 v)
+{
+    yield return new WaitUntil(()=>!isFading);
+    _rigidbody.position=v;
+    isFading=true;
+    SpriteRenderer  renderer = this.GetComponent<SpriteRenderer >();
+    Color color = renderer.material.color;
+
+    float startAlpha = color.a;
+    float elapsed = 0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float newAlpha = Mathf.Lerp(startAlpha, 1f, elapsed / duration);
+        color.a = newAlpha;
+        renderer.material.color = color;
+        yield return null;
+    }
+
+    color.a = 1f;
+    renderer.material.color = color;
+    isFading=false;
+}
 
     public void Move(int steps)
     {

@@ -6,7 +6,12 @@ using System.Collections;
 
 public class GameBehaviour: MonoBehaviour
 {
+    public playerInteractionPanel interactionPanel;
    
+   void Start(){
+    interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
+    if(interactionPanel==null)Debug.Log("can't find interaction panel");
+   }
     
  
 
@@ -44,10 +49,12 @@ public class GameBehaviour: MonoBehaviour
     }
     public void GoToJail(Player player)
     {
-        if(RunGame.mapList.FindIndex(board=>board.property == "Jail/Just visiting")>0){
+        Board b=RunGame.mapList.Find(board=>board.property == "Jail/Just visiting");
+
+        if(b!=null){
       
-        int i= RunGame.mapList.FindIndex(board=>board.property == "Jail/Just visiting");
-        player.Move(i-player.playerData.positionNo);
+        player.directlyMove(b);
+        
         
         }
         else {
@@ -68,24 +75,46 @@ public class GameBehaviour: MonoBehaviour
     {
         if (board.improvedLevel == 0) 
         {
-            int sellPrice = board.price; 
+              int sellPrice;
+            if(board.isMortgage){
+                sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+            }
+            else {sellPrice = board.price; }
             player.playerData.money += sellPrice;
             player.playerData.assetsList.Remove(board);
             Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
         }
         else
         {
+            int sellPrice;
+            if(board.isMortgage){
+                sellPrice=((board.price-board.initialPrice)%2==0)? (board.price-board.initialPrice)/2:((board.price-board.initialPrice)-1)/2;
+
+            }
+            else {sellPrice = board.price-board.initialPrice; }
+            player.playerData.money += sellPrice;
+            board.price=board.initialPrice;
+            board.rent=board.baseRent;
+            board.improvedLevel=0;
+
             Debug.Log($"{player.name} cannot sell {board.property} because it has buildings on it!");
         }
     }
     else
     {
+        
         Debug.Log($"{player.name} does not own {board.property}, so they cannot sell it!");
     }
 
 }
 public void SellBuyableBoard(Player player,BuyableBoard board){
-                int sellPrice = board.price; 
+            int sellPrice;
+            if(board.isMortgage){
+                sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+            }
+            else {sellPrice = board.price; }
             player.playerData.money += sellPrice;
             player.playerData.assetsList.Remove(board);
             Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
@@ -174,94 +203,9 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
             
         }
         */
-     private void StartAuction(estateBoard board)
-{
-    Debug.Log($"Starting auction for {board.property}!");
-
-    List<Player> bidders = new List<Player>();  
-
-    foreach (Player player in RunGame.playersList)
-    {
-        if (player.playerData.circle > 0 && player.playerData.money > 0) 
-        {
-            bidders.Add(player);
-        }
-    }
-
-    if (bidders.Count == 0)
-    {
-        Debug.Log($"No eligible players to bid for {board.property}. It remains unsold.");
-        return;
-    }
-
-    int highestBid = 0;
-    Player highestBidder = null;
-
-    while (bidders.Count > 0)
-    {
-        List<Player> nextRoundBidders = new List<Player>();
-
-        foreach (Player player in bidders)
-        {
-            int bid = GetPlayerBid(player, board, highestBid);
-
-            if (bid > highestBid)
-            {
-                highestBid = bid;
-                highestBidder = player;
-            }
-
-            if (bid > 0)
-            {
-                nextRoundBidders.Add(player);
-            }
-        }
-
-        if (nextRoundBidders.Count <= 1)
-        {
-            break;
-        }
-
-        bidders = nextRoundBidders;
-    }
-
-    if (highestBidder != null)
-    {
-        PayMoney(highestBidder, highestBid);  
-        board.owner = highestBidder.playerData;
-        AddProperty(highestBidder, board);  
-        Debug.Log($"{highestBidder.name} won the auction for {board.property} at £{highestBid}!");
-    }
-    else
-    {
-        Debug.Log($"No one placed a valid bid. {board.property} remains unsold.");
-    }
-}
-
-        private int GetPlayerBid(Player player, estateBoard board, int currentHighestBid)
-        {
-             int bid = GetUserInputBid(player);
     
-    if (bid > currentHighestBid && bid <= player.playerData.money)
-    {
-        return bid;
-    }
 
-    Debug.Log($"{player.name} entered an invalid bid or chose not to bid.");
-    return 0;
-        }
-
-        private int GetUserInputBid(Player player)
-{
-    int bid = 0;
-    string input = "200"; // 这里得用 UI 获取输入
-    if (int.TryParse(input, out bid))
-    {
-        return bid;
-    }
-    return 0;
-}
-
+        
 
 
             
@@ -317,22 +261,55 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
                 Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
             }
         }
-        public void MoveTo(Player player, string boardName)
-        {
-            while (RunGame.mapList[player.playerData.positionNo].property != boardName)
-        {
-            player.Move(1); 
-        }
-        }
-        public void BuildBuilding(Player player, estateBoard board)
+
+public IEnumerator BuildBuilding(Player player, estateBoard board)
 {
-    if (player.playerData.assetsList.Contains(board))
-    {
+    
         if (PlayerOwnsFullSet(player, board)) // 玩家必须拥有同色套装
        { 
-        //弹出选择面板，判断bool isbuild
-        //此处默认为false
-        bool isbuild=false;
+        bool? userChoice=null;
+        int buildCost = costCalculer(board);
+
+        interactionPanel.ShowPanel($"are you want to build? you will pay {buildCost} to update you property",board.group,board.price,board.rent,(bool isBuild)=> 
+        { userChoice=isBuild;});
+        yield return new WaitUntil(()=>userChoice.HasValue);
+        if(board.improvedLevel < 5){
+         if(userChoice.HasValue && userChoice.Value ){
+            
+                               
+      if(player.playerData.money>buildCost){
+         PayMoney(player, buildCost);
+                    board.improvedLevel++;
+                    board.ResetRent(board.improvedLevel);
+                    board.price+=buildCost;
+                    string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
+                    Debug.Log($"{player.name} built {buildingType} on {board.property}.");
+
+                                 
+          }else{
+             Debug.Log($"{player.name} does not have enough money to build on {board.property}!");
+                                
+                     
+              }
+
+             }
+     else{
+              //不升级
+                      
+
+                             
+                       
+         }}else{
+            Debug.Log($"{board.property} is already fully developed with a Hotel!");
+         }
+
+       }else{
+        Debug.Log($"{player.name} cannot build on {board.property} because they do not own all properties in this color set!");
+       }
+
+    
+}
+         /*
             if (board.improvedLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
             {
                 int buildCost = board.price;
@@ -363,36 +340,90 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
         Debug.Log($"{player.name} does not own {board.property}, so they cannot build on it!");
     }
 }
+*/
 
 
 private bool PlayerOwnsFullSet(Player player, estateBoard board)
 {
-    //List<estateBoard> colorGroup = GetColorGroup(board);
-   // return colorGroup.All(property => player.assetsList.Contains(board.property));
-   bool b=true;
-   foreach(estateBoard i in RunGame.mapList){
-    if(i.group==board.group&&i.owner!=player){
-        b=false;
-        break;
-    }   
-   }
-   return b;
-   
-
-
-
-}
-public void bankSell(Board board){
-
-
-}
-public void bankMortgage(Board board){
-
-}
-public void bankRedmeem(Board board){
-
+    foreach (estateBoard i in RunGame.mapList)
+    {
+        if (i.group == board.group && i.owner != player)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
+/*IEnumerator buildingPanel(){
+        bool? userChoice=null;
+        interactionPanel.ShowPanel($"are you want to build? you will pay {} to update you property",eBoard.group,eBoard.price,eBoard.rent,(bool isBuilding)=> 
+        { userChoice=isBuilding;});
+        yield return new WaitUntil(()=>userChoice.HasValue);
+         if(userChoice.HasValue && userChoice.Value){
+                               
+      if(player.playerData.money>eBoard.price){
+
+                                 
+          }else{
+                                
+                     
+              }
+
+             }
+     else{
+
+                      
+
+                             
+                       
+         }
+}
+*/
+private int costCalculer(estateBoard board){
+    if(board.group.ToLower()=="brown"||board.group.ToLower()=="blue"){
+        if(board.improvedLevel<5){
+return 50;
+        }else{
+return 50+board.improvedRents[4];
+        }
      
     }
+    else    if(board.group.ToLower()=="purple"||board.group.ToLower()=="orange"){
+        if(board.improvedLevel<5){
+return 100;
+        }else{
+return 100+board.improvedRents[4];
+        }
+     
+    }
+    else    if(board.group.ToLower()=="red"||board.group.ToLower()=="yellow"){
+        if(board.improvedLevel<5){
+return 150;
+        }else{
+return 150+board.improvedRents[4];
+        }
+
+    
+}else    if(board.group.ToLower()=="green"||board.group.ToLower()=="deepblue"){
+        if(board.improvedLevel<5){
+return 200;
+        }else{
+return 200+board.improvedRents[4];
+        }
+
+    }
+    else {Debug.Log($"can't match you estateBoard, which group is {board.group}");
+        return 9999999;
+    }
+}
+
+
+
+
+
+
+
+
+}
 

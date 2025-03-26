@@ -334,7 +334,10 @@ public class RunGame : MonoBehaviour
       
         yield return new WaitUntil(()=>!isChecking);
         
-        totalUpdate();
+                    foreach (Player p in playersList)
+{
+playerUpdate(p);
+}
 
         
         
@@ -346,9 +349,8 @@ public class RunGame : MonoBehaviour
 
     }
 }
-public void totalUpdate(){
-            foreach (Player p in playersList)
-{
+public void playerUpdate(Player p){
+
     PlayerDisplay display = dashBoard.transform.Find(p.name).GetComponent<PlayerDisplay>();
     if (display != null)
     {
@@ -358,7 +360,7 @@ public void totalUpdate(){
     {
         Debug.LogError($"找不到 {p.name} 的 PlayerDisplay！");
     }
-}
+
 }
 
 
@@ -417,6 +419,7 @@ void AIRoll(){
         roll1 = Random.Range(1, 7);
         roll2 = Random.Range(1, 7);
         roll = roll1 + roll2;
+
        
     if(roll%2!=0){
         isbehavior=false;
@@ -543,17 +546,21 @@ void AIRoll(){
                 foreach(Board i in mapList){
                     if(i.property==card.destinationName){
                         Debug.Log($"已探测到格子{i.property}");
-                        t=i.positionNo-player.playerData.positionNo;
+                        int n=currentPlayer.playerData.positionNo;
                       if(card.isFoward)
-                {t=(t>0)?t:40+t;
-                Debug.Log($"向前行走 {t}");
-                player.Move(t);
+                {
+                    currentPlayer.directlyMove(i);
+                    if(currentPlayer.playerData.positionNo<n){
+                        currentPlayer.playerData.circle++;
+                    }
 
                 }
                 else
-                {t=(t<0)?t:40-t;
-                player.Move(t);
-                Debug.Log($"向后行走 {t}");
+                {
+                    currentPlayer.directlyMove(i);
+                    if(currentPlayer.playerData.positionNo<n){
+                        currentPlayer.playerData.circle--;
+                    }
 
                 }
                  
@@ -778,7 +785,7 @@ private IEnumerator showBankPanel(){
         }if(NextButton &&NextButton.interactable ==false){
             NextButton.interactable =true;
         }
-        totalUpdate();
+        playerUpdate(currentPlayer);
         
     }
 
@@ -877,6 +884,9 @@ private IEnumerator showBankPanel(){
 
                         
                         
+                    }else if(player.playerData.assetsList.Contains(eBoard)){
+                        gameBehaviour.BuildBuilding(player,eBoard);
+
                     }
 
                     else
