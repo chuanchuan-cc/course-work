@@ -16,7 +16,7 @@ public class estatePrefabConfig :  TilePrefabConfig{
         if(board.rent!=null){
         rent.text=$"rent : {board.rent.ToString()}";}
         owner.text=$"owner : {board.owner.GetName()}";
-        improvedLevel.text=$"improve level : {board.improvedLevel.ToString()}";
+        improvedLevel.text=$"building level : {board.improvedLevel.ToString()}";
 
     }
         public void updateConfigBuyable(BuyableBoard board){

@@ -67,6 +67,7 @@ public class BuyableBoard : Board
     public int price;
     public IOwner owner;
     public int rent;
+    public bool isMortgage;
 
     public BuyableBoard(int positionNo, string property, string group, int price)
         : base(positionNo, property, group, "", true)
@@ -74,6 +75,7 @@ public class BuyableBoard : Board
         this.price = price;
         this.owner = RunGame.bank;
         if(group=="Station")this.rent=25;
+        isMortgage=false;
     }
     public void setRent(int _rent){
         this.rent=_rent;

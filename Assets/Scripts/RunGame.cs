@@ -17,7 +17,7 @@ public class RunGame : MonoBehaviour
     public int OpportunityNo=0;
 
     public bool keepGame = true;
-    Player currentPlayer;
+    public Player currentPlayer;
     public CGcontrol cgControl;
 
     public int point;
@@ -199,7 +199,7 @@ public class RunGame : MonoBehaviour
 
     generator=GameObject.Find("Map").GetComponent<TileGenerator>();
     generator.GenerateMapFromList(mapList);
-    BankButton.onClick.AddListener(showBankPanel);
+    BankButton.onClick.AddListener(showbankPanel);
     BankButton.interactable=false;
 
     bankpanel.ClosePanel();
@@ -210,6 +210,7 @@ public class RunGame : MonoBehaviour
     //start
     
     StartCoroutine(GameLoop());
+    bankpanel.setmap(mapList);
    
     
 
@@ -333,7 +334,20 @@ public class RunGame : MonoBehaviour
       
         yield return new WaitUntil(()=>!isChecking);
         
-        foreach (Player p in playersList)
+        totalUpdate();
+
+        
+        
+        lastPlayer=currentPlayer;
+        NextButton.interactable=true;
+
+        yield return new WaitUntil(() => isNext);
+        
+
+    }
+}
+public void totalUpdate(){
+            foreach (Player p in playersList)
 {
     PlayerDisplay display = dashBoard.transform.Find(p.name).GetComponent<PlayerDisplay>();
     if (display != null)
@@ -345,16 +359,6 @@ public class RunGame : MonoBehaviour
         Debug.LogError($"找不到 {p.name} 的 PlayerDisplay！");
     }
 }
-
-        
-        
-        lastPlayer=currentPlayer;
-        NextButton.interactable=true;
-
-        yield return new WaitUntil(() => isNext);
-        
-
-    }
 }
 
 
@@ -367,7 +371,8 @@ public void ThrowDice()
 
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
-    roll = roll1 + roll2;
+    //roll = roll1 + roll2;
+    roll=9;
        
    
 
@@ -752,14 +757,31 @@ void AIRoll(){
         
         
         
+private void showbankPanel(){
+    StartCoroutine(showBankPanel());
 
+}
         
 
-    
-    private void showBankPanel(){
+
+private IEnumerator showBankPanel(){
+        if(DiceButton &&DiceButton.interactable ==true){
+            DiceButton.interactable =false;
+        }if(NextButton &&NextButton.interactable ==true){
+            NextButton.interactable=false;
+        }
         bankpanel.ShowPanel();
+        bankpanel.setPlayer(currentPlayer);
+        yield return new WaitUntil(()=>!bankpanel.isbanking);
+        if(DiceButton &&DiceButton.interactable  ==false){
+            DiceButton.interactable =true;
+        }if(NextButton &&NextButton.interactable ==false){
+            NextButton.interactable =true;
+        }
+        totalUpdate();
         
     }
+
     private bool AIauction(Player player,int price){
         if(player.playerData.isAI=true){
             if(difficulty==0){
@@ -934,5 +956,6 @@ void AIRoll(){
     private int rollRent(){
         return Random.Range(1, 7);
     }
+
    
 }

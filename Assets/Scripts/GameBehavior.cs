@@ -62,7 +62,7 @@ public class GameBehaviour: MonoBehaviour
     public void FreezeTurn(Player player, int turns){
         player.playerData.freezeTurn = turns;
     }
-    public void SellProperty(Player player, estateBoard board)
+    public void SellEstateBoard(Player player, estateBoard board)
 {
     if (player.playerData.assetsList.Contains(board))
     {
@@ -82,9 +82,43 @@ public class GameBehaviour: MonoBehaviour
     {
         Debug.Log($"{player.name} does not own {board.property}, so they cannot sell it!");
     }
+
 }
-  
+public void SellBuyableBoard(Player player,BuyableBoard board){
+                int sellPrice = board.price; 
+            player.playerData.money += sellPrice;
+            player.playerData.assetsList.Remove(board);
+            Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
+
+
+}
+public void mortageEstateBoard(Player player,estateBoard board){
+    board.isMortgage=true;
+    player.playerData.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+
+}
+public void mortageBuyableBoard(Player player,BuyableBoard board){
+    board.isMortgage=true;
+    player.playerData.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+    }
     
+    public void remdeemEstateBoard(Player player,estateBoard board){
+    board.isMortgage=false;
+    player.playerData.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+
+}
+public void remdeemBuyableBoard(Player player,BuyableBoard board){
+    board.isMortgage=false;
+    player.playerData.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
+
+}
+
+  
+ /*   
     public void BuyProperty(Player player,estateBoard board)
     {
         if(player.playerData.circle>0)
@@ -113,7 +147,7 @@ public class GameBehaviour: MonoBehaviour
             
         }}
 
-        /*
+        
         public int MakeBid(Player player, estateBoard board, int currentHighestBid)
         {
             
@@ -346,6 +380,16 @@ private bool PlayerOwnsFullSet(Player player, estateBoard board)
    
 
 
+
+}
+public void bankSell(Board board){
+
+
+}
+public void bankMortgage(Board board){
+
+}
+public void bankRedmeem(Board board){
 
 }
 
