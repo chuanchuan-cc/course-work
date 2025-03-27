@@ -304,7 +304,7 @@ private void generateAssets(bool i){
       
     }
     void quitBehaviour(){
-         ClosePanel();
+         StartCoroutine(behaviourFadeOut());
 
     }
     

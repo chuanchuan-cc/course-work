@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class RunGame : MonoBehaviour
 {
+    public static RunGame instance;
     public bool isLoadGame;
     public static Bank bank;
     public static List<Player> playersList;
@@ -46,6 +47,8 @@ public class RunGame : MonoBehaviour
     public TileGenerator generator;
     public bankPanel bankpanel;
     public testMenus testmenus;
+    public Button buildingButton;
+    private int cheatStep=0;
 
     //测试用玩家
 
@@ -53,6 +56,7 @@ public class RunGame : MonoBehaviour
 
    void Awake()
 {
+    instance = this;
     bool isLoadGame = PlayerPrefs.GetInt("IsLoadGame", 0) == 1;
     if (isLoadGame)
     {
@@ -158,6 +162,7 @@ public class RunGame : MonoBehaviour
 
         DiceButton.onClick.AddListener(ThrowDice);
         NextButton.onClick.AddListener(next);
+        buildingButton.onClick.AddListener(build);
 
         
 
@@ -170,6 +175,7 @@ public class RunGame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
 {
+    
     
     //initialize the map and card
     string cardPath=(PlayerPrefs.GetString("cardPath")==null)? PlayerPrefs.GetString("cardPath"):Application.dataPath+"/Resources/card/testCard.xlsx";
@@ -239,6 +245,7 @@ void Update()
 {
 
 
+
     
     diceRolls=0;
     
@@ -251,6 +258,7 @@ void Update()
         DiceButton.gameObject.SetActive(false);
         NextButton.gameObject.SetActive(true);
         NextButton.interactable=false;
+        buildingButton.gameObject.SetActive(false);
         
 
        
@@ -293,6 +301,9 @@ void Update()
         }
         
         yield return new WaitUntil(() => isEffectiveDice);
+
+        //作弊菜单
+        roll=(cheatStep!=0)? cheatStep: roll;
         
         
         
@@ -389,8 +400,8 @@ public void ThrowDice()
 
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
-    //roll = roll1 + roll2;
-    roll=1;
+    roll = roll1 + roll2;
+    
        
    
 
@@ -756,10 +767,7 @@ void AIRoll(){
                             gameBehaviour.PayMoney(buyer,auctionPrice);
                             gameBehaviour.AddBuyable(buyer,bBoard);
                             generator.updateTile(bBoard);
-                            if(bBoard.group=="Utilities"){
-                                int rent=4*rollRent();
-                                 Debug.Log($"你摇出了rent {rent}");
-                                 bBoard.setRent(rent);  }    
+  
                             isAuction=false;
                             yield break; }
                              if(auctionList.Count==0&&buyer==null){
@@ -854,6 +862,7 @@ private IEnumerator showBankPanel(){
                         }else{
                             Debug.Log($"地产 {eBoard.property} 开始拍卖");
                             isAuction=true;
+                            
 
                              StartCoroutine(auction(eBoard));
                              yield return new WaitUntil(()=>!isAuction);
@@ -902,7 +911,15 @@ private IEnumerator showBankPanel(){
                         
                     }else if(player.playerData.assetsList.Contains(eBoard)){
                         Debug.Log("调用建筑脚本");
-                        gameBehaviour.BuildBuilding(player,eBoard);
+                        if(PlayerOwnsFullSet(player,eBoard)){
+                            buildingButton.gameObject.SetActive(true);
+                            
+                            
+
+                        }else{
+        Debug.Log($"{player.name} cannot build on {eBoard.property} because they do not own all properties in this color set!");
+       }
+                        
 
                     }
 
@@ -980,7 +997,7 @@ private IEnumerator showBankPanel(){
                         gameBehaviour.PayBuyableRent(player, bBoard);
                     }
     }
-    private int rollRent(){
+    public int rollRent(){
         return Random.Range(1, 7);
     }
     IEnumerator CheatingUppdate(){
@@ -989,6 +1006,36 @@ private IEnumerator showBankPanel(){
         yield return null;
         }
     }
+private bool PlayerOwnsFullSet(Player player, estateBoard board)
+{
+    Debug.Log("同色套装判断");
+    foreach (Board b in RunGame.mapList)
+    {estateBoard i = b as estateBoard;
+    if(i!=null){
+        if (i.group == board.group && i.owner.GetName() != player.playerData.name)
+        {
+            Debug.Log($"同色判断失败，对比组owner为 {board.owner.GetName()} , 失败者为{i.owner.GetName()} ");
+            return false;
+            break;
+        }
+       
+    }else{
+        continue;
+    }
+    }
+    
+    return true;
+}
+private void build(){
+        estateBoard eBoard=mapList[currentPlayer.playerData.positionNo] as estateBoard;
+    StartCoroutine(gameBehaviour.BuildBuilding(currentPlayer,eBoard));
+
+    buildingButton.gameObject.SetActive(false);
+}
+public void cheatRoll(int i){
+    cheatStep=i;
+
+}
 
 
 

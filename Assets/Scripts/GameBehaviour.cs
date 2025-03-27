@@ -7,6 +7,9 @@ using System.Collections;
 public class GameBehaviour: MonoBehaviour
 {
     public playerInteractionPanel interactionPanel;
+
+
+
    
    void Start(){
     interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
@@ -224,6 +227,9 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board);
+            if(board.group=="Utilities"){
+                board.setRent(4*RunGame.instance.rollRent());
+            }
 
         }
        
@@ -264,19 +270,19 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)
 {
-    Debug.Log("建筑脚本已被调用");
-    bool b=PlayerOwnsFullSet(player, board);
-    Debug.Log($"调用同色判断，结果为{b}");
-        if (b) // 玩家必须拥有同色套装
-       { 
+
+
+
+
         Debug.Log("调用建筑特化操作面板");
         bool? userChoice=null;
+        if(board.improvedLevel < 5){
         int buildCost = costCalculer(board);
-
-        interactionPanel.ShowPanel($"are you want to build? you will pay {buildCost} to update you property",board.group,board.price,board.rent,(bool isBuild)=> 
+        
+        interactionPanel.ShowPanel($"are you want to pay {buildCost} to update you property? after that, this board price will be {board.price+buildCost}, rent will be {board.improvedRents[board.improvedLevel+1]}",board.group,board.price,board.rent,(bool isBuild)=> 
         { userChoice=isBuild;});
         yield return new WaitUntil(()=>userChoice.HasValue);
-        if(board.improvedLevel < 5){
+        
          if(userChoice.HasValue && userChoice.Value ){
             
                                
@@ -287,28 +293,29 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
                     board.price+=buildCost;
                     string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
                     Debug.Log($"{player.name} built {buildingType} on {board.property}.");
+                    
 
-                                 
+                                
           }else{
              Debug.Log($"{player.name} does not have enough money to build on {board.property}!");
                                 
                      
               }
-
+             
              }
      else{
               //不升级
                       
-
+          RunGame.instance.buildingButton.gameObject.SetActive(true);
                              
                        
          }}else{
             Debug.Log($"{board.property} is already fully developed with a Hotel!");
-         }
+         
 
-       }else{
-        Debug.Log($"{player.name} cannot build on {board.property} because they do not own all properties in this color set!");
        }
+  
+       
 
     
 }
@@ -346,18 +353,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
 */
 
 
-private bool PlayerOwnsFullSet(Player player, estateBoard board)
-{
-    Debug.Log("同色套装判断");
-    foreach (estateBoard i in RunGame.mapList)
-    {
-        if (i.group == board.group && i.owner != player)
-        {
-            return false;
-        }
-    }
-    return true;
-}
+
 
 /*IEnumerator buildingPanel(){
         bool? userChoice=null;

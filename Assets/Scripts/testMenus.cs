@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 public class testMenus : MonoBehaviour
 {
 
@@ -9,6 +10,8 @@ public class testMenus : MonoBehaviour
     public Button showMeTheMoney;
     public Button operationCWAL;
     public Button modifyThePhaseVariance;
+    public TMP_InputField inputtext;
+    public Button CheatRollButton;
     public GameObject menus;
     public CanvasGroup canvasGroup;
     public GameBehaviour gameBehaviour;
@@ -45,6 +48,7 @@ private void showMenus(Player _player){
     showMeTheMoney.onClick.AddListener(ShowMeTheMoney);
     operationCWAL.onClick.AddListener(OperationCWAL);
     modifyThePhaseVariance.onClick.AddListener(ModifyThePhaseVariance);
+    CheatRollButton.onClick.AddListener(CheatRoll);
     isCheating=true;
 }
 
@@ -119,6 +123,20 @@ private void ModifyThePhaseVariance(){
     player.playerData.money=inMoney;
 
 
+}
+private void CheatRoll(){
+    int result;
+
+    if (int.TryParse(inputtext.text, out result))
+{
+    RunGame.instance.cheatRoll(result);
+}
+else
+{
+    Debug.Log("注入步长失败，注意格式");
+}
+ 
+    
 }
 
 }
