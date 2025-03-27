@@ -47,10 +47,11 @@ public class bankPanel : MonoBehaviour
             {
                 interactionCanvasGroup = behaviourPanel.AddComponent<CanvasGroup>(); 
             }
-            gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
+            
        
        }
        mapList=RunGame.mapList;
+       gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
 
 
 

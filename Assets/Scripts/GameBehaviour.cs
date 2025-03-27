@@ -264,9 +264,12 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)
 {
-    
-        if (PlayerOwnsFullSet(player, board)) // 玩家必须拥有同色套装
+    Debug.Log("建筑脚本已被调用");
+    bool b=PlayerOwnsFullSet(player, board);
+    Debug.Log($"调用同色判断，结果为{b}");
+        if (b) // 玩家必须拥有同色套装
        { 
+        Debug.Log("调用建筑特化操作面板");
         bool? userChoice=null;
         int buildCost = costCalculer(board);
 
@@ -345,6 +348,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
 
 private bool PlayerOwnsFullSet(Player player, estateBoard board)
 {
+    Debug.Log("同色套装判断");
     foreach (estateBoard i in RunGame.mapList)
     {
         if (i.group == board.group && i.owner != player)
@@ -416,6 +420,10 @@ return 200+board.improvedRents[4];
     else {Debug.Log($"can't match you estateBoard, which group is {board.group}");
         return 9999999;
     }
+}
+public int cheatGetcost(estateBoard eBoard){
+    return costCalculer(eBoard);
+
 }
 
 

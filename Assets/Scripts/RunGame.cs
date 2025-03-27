@@ -45,6 +45,7 @@ public class RunGame : MonoBehaviour
     bool isApplyCard=false;
     public TileGenerator generator;
     public bankPanel bankpanel;
+    public testMenus testmenus;
 
     //测试用玩家
 
@@ -211,10 +212,25 @@ public class RunGame : MonoBehaviour
     
     StartCoroutine(GameLoop());
     bankpanel.setmap(mapList);
+
+    testmenus.setmap(mapList);
+
    
     
 
 }
+void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            testmenus.cheating(currentPlayer);
+        }
+        StartCoroutine(CheatingUppdate());
+
+
+    }
+
 
 
 
@@ -374,7 +390,7 @@ public void ThrowDice()
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
     //roll = roll1 + roll2;
-    roll=9;
+    roll=1;
        
    
 
@@ -885,6 +901,7 @@ private IEnumerator showBankPanel(){
                         
                         
                     }else if(player.playerData.assetsList.Contains(eBoard)){
+                        Debug.Log("调用建筑脚本");
                         gameBehaviour.BuildBuilding(player,eBoard);
 
                     }
@@ -966,6 +983,13 @@ private IEnumerator showBankPanel(){
     private int rollRent(){
         return Random.Range(1, 7);
     }
+    IEnumerator CheatingUppdate(){
+        if(testmenus.isCheating){
+        playerUpdate(currentPlayer);
+        yield return null;
+        }
+    }
 
-   
+
+
 }
