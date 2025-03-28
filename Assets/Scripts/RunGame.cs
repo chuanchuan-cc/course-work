@@ -50,6 +50,7 @@ public class RunGame : MonoBehaviour
     public Button buildingButton;
     private int cheatStep=0;
 
+
     //测试用玩家
 
     int roll;
@@ -190,18 +191,23 @@ public class RunGame : MonoBehaviour
     }
 
     }
-    if(mapPath== null){
+    if(cardPath== null){
         Debug.LogError("cardPath is null");
     }else{
-    try{(luckCards,opportunityCards)=CardLoader.LoadCards(cardPath);
+        try{
+    (luckCards,opportunityCards)=CardLoader.LoadCards(cardPath);
+    } catch(System.Exception e){
+        Debug.LogError("Error happen when initialize the card:"+e.Message);
+    }
      
     Shuffle(luckCards);
     Shuffle(opportunityCards);
-    }catch(System.Exception e){
-        Debug.LogError("Error happen when initialize the card:"+e.Message);
     }
+    
+   
+    
 
-    }
+    
 
 
     generator=GameObject.Find("Map").GetComponent<TileGenerator>();
@@ -361,17 +367,15 @@ void Update()
       
         yield return new WaitUntil(()=>!isChecking);
         
-                    foreach (Player p in playersList)
-{
-playerUpdate(p);
-}
+        foreach (Player p in playersList)
+        {playerUpdate(p);}
 
         
         
-        lastPlayer=currentPlayer;
+        
         NextButton.interactable=true;
 
-        yield return new WaitUntil(() => isNext);
+        yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI);
         
 
     }
@@ -393,6 +397,7 @@ public void playerUpdate(Player p){
 
 public void ThrowDice()
 {
+    diceRolls=0;
     roll=0;
     isbehavior=true;
     DiceButton.interactable = false;
@@ -455,6 +460,7 @@ void AIRoll(){
         
     }    
     roll=-1;
+    diceRolls=0;
     isbehavior=false;
     isEffectiveDice = true;
     }
@@ -519,6 +525,7 @@ void AIRoll(){
     IEnumerator DrawCard(Player player,Board board)
     {
         isProcessingCard=true;
+        bool isInteracting=false;
         
         
         Card drawnCard;
@@ -538,6 +545,48 @@ void AIRoll(){
 
         // 显示卡片 UI
         cardUI.ShowCard(drawnCard);
+
+
+        if(drawnCard.isInteractable){
+            isInteracting=true;
+
+
+                 bool? userChoice=null;
+                 string[] parts=drawnCard.description.Split(" or ");
+            interactionPanel.ShowPanel($"are you want to {parts[1]}, instead of {parts[0]}?",(bool Result)=> 
+          { userChoice=Result;
+                
+          });
+
+          yield return new WaitUntil(()=>userChoice.HasValue);
+               if(userChoice.Value){
+                Board b;
+                foreach(Board i in mapList){
+                    if(i.property=="Opportunity Knocks"){
+
+                        StartCoroutine(DrawCard(currentPlayer,i));
+                   
+
+                        yield break;
+
+
+                    }
+
+                }
+
+                
+
+               
+                                }
+                    
+                   isInteracting=false;            
+                           
+                                
+                
+
+        }
+
+        yield return new WaitUntil(()=>!isInteracting);
 
 
         // 处理卡片效果
@@ -560,15 +609,19 @@ void AIRoll(){
         yield return null;   
     }
         cardUI.HideCard();
+        yield return new WaitUntil(()=>!isApplyCard);
         isProcessingCard=false;
         
     }
 
+
     void ApplyCardEffect(Player player, Card card)
     {
         isApplyCard=true;
+       
         if (card.isMove)
         {
+            Debug.Log($"前往{card.destinationName}");
             int t;
                 foreach(Board i in mapList){
                     if(i.property==card.destinationName){
@@ -578,7 +631,9 @@ void AIRoll(){
                 {
                     currentPlayer.directlyMove(i);
                     if(currentPlayer.playerData.positionNo<n){
+                        if(!card.collectGo)
                         currentPlayer.playerData.circle++;
+                        
                     }
 
                 }
@@ -603,7 +658,7 @@ void AIRoll(){
         }
         }
         if (card.isPay)
-        {
+        {Debug.Log($"触发{card.payer}付{card.payee} {card.moneyAmount}");
             if(card.payee=="player"&&card.payer=="Bank"){
                bank.money-=card.moneyAmount;
                gameBehaviour.AddMoney(player, card.moneyAmount);
@@ -625,18 +680,26 @@ void AIRoll(){
             
             }
         if(card.isPayFine){
+        Debug.Log($"触发{player.name}付{card.moneyAmount}给免费停车");
+            
             freeParkMoney+=card.moneyAmount;
+            gameBehaviour.PayMoney(player,card.moneyAmount);
 
         }
         
+
+        
         if (card.isJailFree)
         {
+            Debug.Log($"触发给{player.name}免死金牌");
             player.playerData.freeJail += 1;
         }
         if (card.isGoJail)
         {
+            Debug.Log($"触发{player.name}进监狱");
             gameBehaviour.GoToJail(player);
         }
+        playerUpdate(player);
         isApplyCard=false;
         
     }
@@ -675,12 +738,12 @@ void AIRoll(){
             bool? userChoice=null;
                         interactionPanel.ShowPanel($"{acutionPlayer.name}, the auction price of {eBoard.property} is {auctionPrice}, are you want to buy this estate?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;
-                      ;
+                      
                         });
                         if(acutionPlayer.playerData.money<auctionPrice){
                         interactionPanel.yesButton.interactable=false;}
                         yield return new WaitUntil(()=>userChoice.HasValue);
-                            if(userChoice.HasValue && userChoice.Value){
+                            if(userChoice.Value){
                                 auctionPrice+=detlaPrice;
                                 buyer=acutionPlayer;
                                 }
