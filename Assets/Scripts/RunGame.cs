@@ -28,7 +28,7 @@ public class RunGame : MonoBehaviour
 
     public GameObject playersPool;
     private GameBehaviour gameBehaviour;
-    private Player lastPlayer = null;
+
     private int diceRolls;
     public CardUI cardUI; 
     public bool isbehavior;
@@ -270,6 +270,10 @@ void Update()
         NextButton.gameObject.SetActive(true);
         NextButton.interactable=false;
         buildingButton.gameObject.SetActive(false);
+        if(cameraController.canBeDragging)
+        changeCameraMode();
+
+        
         
 
        
@@ -382,6 +386,7 @@ void Update()
         NextButton.interactable=true;
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI);
+
         
 
     }
@@ -566,7 +571,7 @@ void AIRoll(){
 
           yield return new WaitUntil(()=>userChoice.HasValue);
                if(userChoice.Value){
-                Board b;
+                
                 foreach(Board i in mapList){
                     if(i.property=="Opportunity Knocks"){
 
@@ -628,7 +633,7 @@ void AIRoll(){
         if (card.isMove)
         {
             Debug.Log($"前往{card.destinationName}");
-            int t;
+            
                 foreach(Board i in mapList){
                     if(i.property==card.destinationName){
                         Debug.Log($"已探测到格子{i.property}");
@@ -883,7 +888,7 @@ private IEnumerator showBankPanel(){
     }
 
     private bool AIauction(Player player,int price){
-        if(player.playerData.isAI=true){
+        if(player.playerData.isAI){
             if(difficulty==0){
                 return UnityEngine.Random.Range(0, 2) == 0;
             }else if (difficulty==1){
@@ -900,7 +905,7 @@ private IEnumerator showBankPanel(){
         }
     }
     private bool AIBuyProperty(Player player,int price){
-        if(player.playerData.isAI=true){
+        if(player.playerData.isAI){
             if(difficulty==0){
                 return UnityEngine.Random.Range(0, 2) == 0;
             }else if (difficulty==1){
@@ -1085,7 +1090,7 @@ private bool PlayerOwnsFullSet(Player player, estateBoard board)
         {
             Debug.Log($"同色判断失败，对比组owner为 {board.owner.GetName()} , 失败者为{i.owner.GetName()} ");
             return false;
-            break;
+ 
         }
        
     }else{
