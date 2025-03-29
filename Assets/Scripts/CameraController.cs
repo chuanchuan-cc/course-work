@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CameraController : MonoBehaviour
 {
@@ -11,8 +14,9 @@ public class CameraController : MonoBehaviour
 
 
     public float zoomSpeed = 5f;
-    public float minZ = -8f;
-    public float maxZ = -3f;
+    private float minZ = -8f;
+    private float maxZ = -3f;
+    public bool isCameraMoving=false;
 
     void Update()
     {
@@ -61,7 +65,24 @@ public class CameraController : MonoBehaviour
 
     }
     public void resetPosition(){
-        Camera.main.transform.position=initialPosition;
+        StartCoroutine(movePosition(initialPosition));
+    }
+    private IEnumerator movePosition(Vector3 vs3){
+        isCameraMoving=true;
+        Vector3 iniPos=Camera.main.transform.position;
+        float total=0.3f;
+        float time=0;
+        while(time<total){
+            Vector3 curPosition=Vector3.Lerp(iniPos,vs3,time/total);
+            Camera.main.transform.position=curPosition;
+            time+=Time.deltaTime;
+            yield return null;
+
+        }
+        Camera.main.transform.position=vs3;
+        isCameraMoving=false;
+
+
     }
      }
 

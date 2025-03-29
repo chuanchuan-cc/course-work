@@ -270,8 +270,11 @@ void Update()
         NextButton.gameObject.SetActive(true);
         NextButton.interactable=false;
         buildingButton.gameObject.SetActive(false);
-        if(cameraController.canBeDragging)
+        if(cameraController.canBeDragging){
         changeCameraMode();
+        yield return new WaitUntil(()=>!cameraController.isCameraMoving);
+        }
+        
 
         
         
@@ -408,7 +411,7 @@ public void playerUpdate(Player p){
 
 public void ThrowDice()
 {
-    diceRolls=0;
+  
     roll=0;
     isbehavior=true;
     DiceButton.interactable = false;
@@ -417,12 +420,7 @@ public void ThrowDice()
     roll1 = Random.Range(1, 7);
     roll2 = Random.Range(1, 7);
     roll = roll1 + roll2;
-    
-       
-   
 
-  
-  
     Debug.Log($"roll1={roll1}, roll2={roll2}, roll={roll}, diceRolls={diceRolls}");
     if (roll % 2 == 0)
     {
@@ -437,6 +435,7 @@ public void ThrowDice()
         }else
         {
             DiceButton.interactable = true;
+            diceRolls=0;
             return;
         }
     }else
@@ -456,7 +455,7 @@ void AIRoll(){
     isbehavior=true;
     DiceButton.interactable = false;
     int roll1, roll2;
-    diceRolls =0;
+    
     while(diceRolls<3){
         diceRolls+=1;
         roll1 = Random.Range(1, 7);
@@ -467,6 +466,7 @@ void AIRoll(){
     if(roll%2!=0){
         isbehavior=false;
         isEffectiveDice = true;
+        diceRolls=0;
         return;
         
     }    
@@ -736,8 +736,10 @@ void AIRoll(){
             int t=(point+i)%playersList.Count;
             Player p =playersList[t];
             //圈数检测禁用，测试
-            // if(p.playerData.circle>0) auctionList.Add(playersList[t]);
-            if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            // if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+
+            //开启检测
+            if(p.playerData.circle>0) auctionList.Add(playersList[t]);
             else continue;
         }
 
@@ -802,8 +804,9 @@ void AIRoll(){
             int t=(point+i)%playersList.Count;
             Player p =playersList[t];
             //圈数检测禁用，测试
-            // if(p.playerData.circle>0) auctionList.Add(playersList[t]);
-            if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            // if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            //开启检测
+            if(p.playerData.circle>0) auctionList.Add(playersList[t]);
             else continue;
         }
 
@@ -926,7 +929,7 @@ private IEnumerator showBankPanel(){
     IEnumerator HandleEstate(Player player,estateBoard eBoard){
         Debug.Log(eBoard.owner.GetName());
                     if (eBoard.owner == bank 
-                    //&&currentPlayer.playerData.circle>0
+                    &&currentPlayer.playerData.circle>0
                     )
                     {if(player.playerData.isAI){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
@@ -1005,7 +1008,7 @@ private IEnumerator showBankPanel(){
         IEnumerator HadleBuyable(Player player,BuyableBoard bBoard){
         Debug.Log(bBoard.owner.GetName());
                     if (bBoard.owner == bank 
-                    //&&currentPlayer.playerData.circle>0
+                    &&currentPlayer.playerData.circle>0
                     )
                     {if(player.playerData.isAI){
                         if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){

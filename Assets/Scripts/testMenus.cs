@@ -105,22 +105,8 @@ private void OperationCWAL(){
 
 }
 private void ModifyThePhaseVariance(){
-    Board board=maplist[player.playerData.positionNo];
-    estateBoard eBoard=board as estateBoard;
-    int inMoney=player.playerData.money;
-    if(eBoard!=null){
-    if(player.playerData.assetsList.Contains(eBoard)){
-        int improvedLevel=eBoard.improvedLevel;
-        for(int i=0;i<5-improvedLevel;i++){
-
-
-        gameBehaviour.BuildBuilding(player,eBoard);}
-    }else{
-        Debug.Log("未拥有此地产");
-    }}else{
-        Debug.Log("此地产不可建造");
-    }
-    player.playerData.money=inMoney;
+    Debug.Log($"原玩家圈数为 {player.playerData.circle}, 改后为 {player.playerData.circle+1}");
+    player.playerData.circle++;
 
 
 }
