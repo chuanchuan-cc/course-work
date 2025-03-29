@@ -49,6 +49,8 @@ public class RunGame : MonoBehaviour
     public testMenus testmenus;
     public Button buildingButton;
     private int cheatStep=0;
+    public CameraController cameraController;
+    public Button viewButton;
 
 
     //测试用玩家
@@ -87,6 +89,7 @@ public class RunGame : MonoBehaviour
         
         DiceButton.interactable = false;
         gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
+        cameraController= GameObject.Find("Main Camera").GetComponent<CameraController>();
 
         dashBoard = GameObject.Find("DashBoard");
         BoardConstructor=dashBoard.GetComponent<dashBoardConstructor>();
@@ -214,6 +217,8 @@ public class RunGame : MonoBehaviour
     generator.GenerateMapFromList(mapList);
     BankButton.onClick.AddListener(showbankPanel);
     BankButton.interactable=false;
+    viewButton.onClick.AddListener(changeCameraMode);
+    viewButton.interactable=false;
 
     bankpanel.ClosePanel();
 
@@ -282,6 +287,7 @@ void Update()
         Broadcast.closeBroad(currentPlayer);
         yield return new WaitUntil(()=>!Broadcast.isBroadcasting);
         BankButton.interactable=true;
+        viewButton.interactable=true;
 
 
         int currentPoint = point;
@@ -1098,6 +1104,23 @@ private void build(){
 public void cheatRoll(int i){
     cheatStep=i;
 
+}
+private void changeCameraMode(){
+    if(cameraController==null){
+        Debug.Log("camera controller does not exist");
+    }else{
+        if(cameraController.canBeDragging==false){
+            cameraController.setInitialPosition();
+            cameraController.canBeDragging=true;
+            viewButton.GetComponent<Image>().color = new Color(187f/255f, 136f/255f, 54f/255f, 1f);
+            
+        }else{
+            cameraController.canBeDragging=false;
+            cameraController.resetPosition();
+            viewButton.GetComponent<Image>().color = new Color(220f/255f, 250f/255f, 247f/255f, 1f);
+            
+        }
+    }
 }
 
 
