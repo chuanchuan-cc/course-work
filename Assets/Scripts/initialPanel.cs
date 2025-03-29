@@ -29,6 +29,7 @@ public class initialPanelScript : MonoBehaviour
     public Slider difficultySlider;
     public GameObject difficultyOutput;
     public TextMeshProUGUI difficultyText;
+    public Button loadgame;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +51,7 @@ public class initialPanelScript : MonoBehaviour
         loadCard.onClick.AddListener(LoadCard);
         exitpanel.onClick.AddListener(() => onClickExit(initialPanel));
         defaultFolder = Application.dataPath + "/Resources";
+        loadgame.onClick.AddListener(loadGame);
 
     }
     // Update is called once per frame
@@ -160,6 +162,17 @@ public class initialPanelScript : MonoBehaviour
             PlayerPrefs.Save();
             cardText.text=Path.GetFileName(cardPath);
         }
+    }
+    public void loadGame(){
+         var paths = StandaloneFileBrowser.OpenFilePanel("choose your save document", defaultFolder+"/save", "json", false);
+        if (paths.Length > 0)
+        {
+            string savePath=paths[0];
+            PlayerPrefs.SetString("savePath", savePath);
+            PlayerPrefs.Save();
+            startNewGame();
+        }
+
     }
 
 

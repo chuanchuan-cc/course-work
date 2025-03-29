@@ -5952,6 +5952,7 @@ MonoBehaviour:
   difficultySlider: {fileID: 328105042}
   difficultyOutput: {fileID: 1841335824}
   difficultyText: {fileID: 1585969135}
+  loadgame: {fileID: 235315111}
 --- !u!114 &2144903516
 MonoBehaviour:
   m_ObjectHideFlags: 0

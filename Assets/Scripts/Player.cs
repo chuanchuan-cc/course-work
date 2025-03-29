@@ -111,12 +111,12 @@ private IEnumerator DirectMoveRoutine(Board board)
      
         }
     }
-    public void InitializePlayer(string name,int n)
+    public void InitializePlayer(string name)
     {
    
     
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody2D>();
-        this.playerData = ScriptableObject.CreateInstance<PlayerData>();
+        this.playerData = new PlayerData(); 
         this.name = name;
         this.playerData.name=name;
         this.playerData.money = 1500;
@@ -126,12 +126,20 @@ private IEnumerator DirectMoveRoutine(Board board)
         this.playerData.assetsList = new List<Board>();
         this.playerData.circle = 0;
         this.playerData.assetsWorth = 1500;
-        this.positionInitialize(n);
+        this.positionInitialize(0);
 
     }
+    public void loadPlayer(PlayerData pd){
+            if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody2D>();
+            this.playerData=pd;
+            this.name=pd.name;
+            this.positionInitialize(pd.positionNo);
+    }
+
     private void positionInitialize(int n)
     {
         _rigidbody.position= GetPosition(n);
+        Debug.Log($"将{this.name}初始化指第{n}格");
     }
 
 

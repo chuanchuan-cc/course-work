@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RunGame : MonoBehaviour
 {
     public static RunGame instance;
-    public bool isLoadGame;
+    public bool isLoadGame=false;
     public static Bank bank;
     public static List<Player> playersList;
     public static List<Board> mapList;
@@ -28,6 +28,7 @@ public class RunGame : MonoBehaviour
 
     public GameObject playersPool;
     private GameBehaviour gameBehaviour;
+    
 
     private int diceRolls;
     public CardUI cardUI; 
@@ -51,6 +52,13 @@ public class RunGame : MonoBehaviour
     private int cheatStep=0;
     public CameraController cameraController;
     public Button viewButton;
+    public Button menusButton;
+    public GameObject menus;
+    public Button menusQuit;
+    public Button menusSave;
+    public Button menusBack;
+    public int currentPoint;
+    
 
 
     //测试用玩家
@@ -60,31 +68,11 @@ public class RunGame : MonoBehaviour
    void Awake()
 {
     instance = this;
-    bool isLoadGame = PlayerPrefs.GetInt("IsLoadGame", 0) == 1;
-    if (isLoadGame)
-    {
-        // 加载游戏的逻辑
-    }
-    else
-    {   
-        // read the input from last scene
-
-        
-        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
-        difficulty=PlayerPrefs.GetInt("difficulty",0);
-        int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
-        playerNumber=(isAI)? playerNumber+1:playerNumber;
-
-
-
-        
-        isAI=true;
-        difficulty=1;
-        playerNumber=2;
+    isLoadGame = PlayerPrefs.GetInt("IsLoadGame", 0) == 1;
+   
         
 
-        //initialize players
-        point = 0;
+        
 
         
         DiceButton.interactable = false;
@@ -99,30 +87,9 @@ public class RunGame : MonoBehaviour
 
         
         playersPool = GameObject.Find("PlayersPool");
-        playersList= new List<Player>(playerNumber);
-
-        foreach (Transform child in playersPool.transform)
-        {
-            Player player = child.GetComponent<Player>();
-            if(playersList.Count>=playerNumber)
-            player.gameObject.SetActive(false);
-            else{
-            
-            if (player != null)
-            {
-                Debug.Log("find Player: " + child.name);
-                
-                
-   
-        
-            player.InitializePlayer(player.gameObject.name,0);
-            
-            playersList.Add(player);
-            }
-            }}
         
 
-        if(isAI) playersList[playerNumber-1].playerData.isAI=true;
+
         
         
         bank=new Bank();
@@ -137,9 +104,7 @@ public class RunGame : MonoBehaviour
        
        
         
-        foreach(Player player in playersList){
-            BoardConstructor.CreateChildren(player);
-        }
+       
 
         // 自动查找并绑定 CardUI
         cardUI = FindObjectOfType<CardUI>();
@@ -170,8 +135,9 @@ public class RunGame : MonoBehaviour
 
         
 
-    }
+    
     NextButton.gameObject.SetActive(false);
+
 
 }
 
@@ -179,6 +145,113 @@ public class RunGame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
 {
+
+
+
+     if (isLoadGame)
+    {
+        string path = PlayerPrefs.GetString("savepath");
+    if (!System.IO.File.Exists(path))
+    {
+        Debug.LogWarning("没有找到保存文件！");
+        return;
+    }
+
+    string json = System.IO.File.ReadAllText(path);
+    SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+    playersList=new List<Player>(saveData.allPlayers.Count);
+    foreach(PlayerData pd in saveData.allPlayers){
+        foreach (Transform child in playersPool.transform)
+        {
+            Player player = child.GetComponent<Player>();
+            if(playersList.Count>=saveData.allPlayers.Count)
+            player.gameObject.SetActive(false);
+            else{
+            
+            if (player != null &&player.gameObject.name==pd.name)
+            {
+                
+                
+   
+        
+            player.loadPlayer(pd);
+            
+            playersList.Add(player);
+            }
+            }}
+            foreach (Player p in playersList)
+        {playerUpdate(p);}
+
+    }
+
+    luckCards=saveData.lCards;
+    luckNo=saveData.luckNo;
+    opportunityCards=saveData.oCards;
+    OpportunityNo=saveData.OpportunityNo;
+    mapList = saveData.allBoards;
+    point=saveData.cPoint;
+    isAI=saveData.isai;
+    difficulty=saveData.diff;
+
+
+
+    freeParkMoney = saveData.freeParkingMoney;
+
+
+    Debug.Log("游戏已读取！");
+    }
+    else
+    {   
+        // read the input from last scene
+
+        
+        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
+        difficulty=PlayerPrefs.GetInt("difficulty",0);
+        int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
+        playerNumber=(isAI)? playerNumber+1:playerNumber;
+        
+
+
+
+        //测试用
+        isAI=true;
+        difficulty=1;
+        playerNumber=2;
+
+
+
+        point = 0;
+    //initialize player
+
+
+        playersList= new List<Player>(playerNumber);
+            foreach (Transform child in playersPool.transform)
+        {
+            Player player = child.GetComponent<Player>();
+            if(playersList.Count>=playerNumber)
+            player.gameObject.SetActive(false);
+            else{
+            
+            if (player != null)
+            {
+                Debug.Log("find Player: " + child.name);
+                
+                
+   
+        
+            player.InitializePlayer(player.gameObject.name);
+            
+            playersList.Add(player);
+            }
+            }}
+        
+
+        if(isAI) playersList[playerNumber-1].playerData.isAI=true;
+         foreach(Player player in playersList){
+            BoardConstructor.CreateChildren(player);
+        }
+
     
     
     //initialize the map and card
@@ -206,6 +279,7 @@ public class RunGame : MonoBehaviour
     Shuffle(luckCards);
     Shuffle(opportunityCards);
     }
+    }
     
    
     
@@ -219,6 +293,11 @@ public class RunGame : MonoBehaviour
     BankButton.interactable=false;
     viewButton.onClick.AddListener(changeCameraMode);
     viewButton.interactable=false;
+    menusButton.onClick.AddListener(showMenus);
+    menusButton.interactable=false;
+    menusBack.onClick.AddListener(closeMenus);
+    menusQuit.onClick.AddListener(quitGame);
+    menusSave.onClick.AddListener(SaveGame);
 
     bankpanel.ClosePanel();
 
@@ -262,6 +341,7 @@ void Update()
     
     while (keepGame)
     {
+        menus.gameObject.SetActive(false);
         
         cardUI.HideCard();
         isbehavior=false;
@@ -284,8 +364,9 @@ void Update()
 
         
         isEffectiveDice=false;
-        
+
         currentPlayer = playersList[point];
+
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
 
 
@@ -295,9 +376,10 @@ void Update()
         yield return new WaitUntil(()=>!Broadcast.isBroadcasting);
         BankButton.interactable=true;
         viewButton.interactable=true;
+        menusButton.interactable=true;
 
 
-        int currentPoint = point;
+        currentPoint = point;
         point = (point + 1) % playersList.Count;
         
         if (currentPlayer.playerData.freezeTurn > 0)
@@ -435,7 +517,7 @@ public void ThrowDice()
         }else
         {
             DiceButton.interactable = true;
-            diceRolls=0;
+           
             return;
         }
     }else
@@ -928,8 +1010,9 @@ private IEnumerator showBankPanel(){
 
     IEnumerator HandleEstate(Player player,estateBoard eBoard){
         Debug.Log(eBoard.owner.GetName());
+        if(currentPlayer.playerData.circle>0){
                     if (eBoard.owner == bank 
-                    &&currentPlayer.playerData.circle>0
+                    
                     )
                     {if(player.playerData.isAI){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
@@ -1003,12 +1086,13 @@ private IEnumerator showBankPanel(){
                     else
                     {
                         gameBehaviour.PayRent(player, eBoard);
-                    }
+                        }}
     }
         IEnumerator HadleBuyable(Player player,BuyableBoard bBoard){
         Debug.Log(bBoard.owner.GetName());
+        if(currentPlayer.playerData.circle>0){
                     if (bBoard.owner == bank 
-                    &&currentPlayer.playerData.circle>0
+                    
                     )
                     {if(player.playerData.isAI){
                         if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){
@@ -1072,7 +1156,7 @@ private IEnumerator showBankPanel(){
                     else
                     {
                         gameBehaviour.PayBuyableRent(player, bBoard);
-                    }
+                    }}
     }
     public int rollRent(){
         return Random.Range(1, 7);
@@ -1130,7 +1214,79 @@ private void changeCameraMode(){
         }
     }
 }
+private void showMenus(){
+    menus.gameObject.SetActive(true);
+
+}
+private void closeMenus(){
+    menus.gameObject.SetActive(false);
+
+}
+private  void quitGame(){
+     #if UNITY_EDITOR
+         UnityEditor.EditorApplication.isPlaying=false;
+     #else
+        Application.quit();
+     #endif
+    }
+
+public void SaveGame()
+{
+    SaveData saveData = new SaveData();
+    saveData.allPlayers = new List<PlayerData>();
+    foreach (Player p in playersList)
+    {
+        saveData.allPlayers.Add(p.playerData); 
+        Debug.Log($"已存入{p.playerData.name}, 在{p.playerData.positionNo}号格子，有{p.playerData.money}钱");
+    }
+
+    saveData.allBoards = new List<Board>();
+    foreach (Board b in mapList)
+    {
+        saveData.allBoards.Add(b); 
+    }
+        saveData.lCards = new List<Card>();
+    foreach (Card c in luckCards)
+    {
+        saveData.lCards.Add(c); 
+    }
+     saveData.oCards = new List<Card>();
+    foreach (Card c in opportunityCards)
+    {
+        saveData.oCards.Add(c); 
+    }
+
+    saveData.cPoint = currentPoint;
+    saveData.freeParkingMoney = freeParkMoney;
+    saveData.luckNo=luckNo;
+    saveData.OpportunityNo=OpportunityNo;
+    saveData.isai=isAI;
+    saveData.diff=difficulty;
+
+    string json = JsonUtility.ToJson(saveData, true);
+    string path = Application.dataPath+ "/save/savegame.json";
+    System.IO.File.WriteAllText(path, json);
+
+    Debug.Log("游戏已保存到：" + path);
+}
 
 
 
+
+}
+[System.Serializable]
+public class SaveData
+{
+    public List<PlayerData> allPlayers;
+    public List<Board> allBoards;
+
+    public int cPoint;
+
+    public int freeParkingMoney;
+    public int luckNo;
+    public int OpportunityNo;
+    public List<Card> lCards;
+    public List<Card> oCards;
+    public bool isai;
+    public int diff;
 }

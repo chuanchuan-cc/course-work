@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class PlayerData: ScriptableObject,IOwner
+public class PlayerData: IOwner
 {
     public bool isAI;
     public string name;
