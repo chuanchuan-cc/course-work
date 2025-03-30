@@ -15,23 +15,33 @@ public class estatePrefabConfig : TilePrefabConfig
 
     public void updateConfigEstate(estateBoard board)
     {
+        if (board != null)
+    {
+       
+    
         property.text = board.property.ToString();
         price.text = $"price : {board.price}";
         rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
         owner.text = $"owner : {board.owner.GetName()}";
         improvedLevel.text = $"build level : {board.improvedLevel}";
 
-        ApplyZOffsetAndForceRender();
+        ApplyZOffsetAndForceRender();}
     }
 
     public void updateConfigBuyable(BuyableBoard board)
     {
+        if (board != null)
+    {
+   
+       
+    
         property.text = board.property.ToString();
         price.text = $"price : {board.price}";
         rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
         owner.text = $"owner : {board.owner.GetName()}";
 
         ApplyZOffsetAndForceRender();
+    }
     }
 
     private void ApplyZOffsetAndForceRender()

@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.IO;
 using ExcelDataReader;
+using Newtonsoft.Json;
 
 
 [Serializable]
@@ -34,6 +35,7 @@ public class estateBoard:Board{
     public int[] improvedRents;
     public int rent;
     public bool isMortgage;
+    [JsonIgnore]
     public IOwner owner;
     public int initialPrice;
     public estateBoard(int positionNo, string property, string group, 
@@ -71,6 +73,7 @@ public class estateBoard:Board{
 public class BuyableBoard : Board
 {
     public int price;
+    [JsonIgnore]
     public IOwner owner;
     public int rent;
     public bool isMortgage;

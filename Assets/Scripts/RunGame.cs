@@ -2,12 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Newtonsoft.Json;
+
+
 
 
 public class RunGame : MonoBehaviour
 {
     public static RunGame instance;
-    public bool isLoadGame=false;
+    public bool isLoadGame;
     public static Bank bank;
     public static List<Player> playersList;
     public static List<Board> mapList;
@@ -68,7 +71,9 @@ public class RunGame : MonoBehaviour
    void Awake()
 {
     instance = this;
-    isLoadGame = PlayerPrefs.GetInt("IsLoadGame", 0) == 1;
+    isLoadGame = PlayerPrefs.GetInt("isLoadGame", 0) == 1;
+        PlayerPrefs.SetInt("isLoadGame", 0);
+    PlayerPrefs.Save();
    
         
 
@@ -150,7 +155,8 @@ public class RunGame : MonoBehaviour
 
      if (isLoadGame)
     {
-        string path = PlayerPrefs.GetString("savepath");
+        Debug.Log("读取游戏");
+        string path = PlayerPrefs.GetString("savePath");
     if (!System.IO.File.Exists(path))
     {
         Debug.LogWarning("没有找到保存文件！");
@@ -158,7 +164,22 @@ public class RunGame : MonoBehaviour
     }
 
     string json = System.IO.File.ReadAllText(path);
-    SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerializerSettings
+{
+    TypeNameHandling = TypeNameHandling.Auto
+});
+    luckCards=saveData.lCards;
+    luckNo=saveData.luckNo;
+    opportunityCards=saveData.oCards;
+    OpportunityNo=saveData.OpportunityNo;
+    mapList = saveData.allBoards;
+    point=saveData.cPoint;
+    isAI=saveData.isai;
+    difficulty=saveData.diff;
+
+
+
+    freeParkMoney = saveData.freeParkingMoney;
 
     playersList=new List<Player>(saveData.allPlayers.Count);
     foreach(PlayerData pd in saveData.allPlayers){
@@ -176,30 +197,38 @@ public class RunGame : MonoBehaviour
    
         
             player.loadPlayer(pd);
+
+
+            player.playerData.assetsList.Clear();
+
+            foreach(Board b in mapList){
+                if(player.playerData.assetsName.Contains(b.property)){
+                    estateBoard eb= b as estateBoard;
+                    if(eb!=null){
+                        gameBehaviour.AddProperty(player,eb);
+                        Debug.Log($"已将{eb.property}添加至玩家资产列表");
+
+                    }else{
+                        BuyableBoard bb= b as BuyableBoard;
+                        if(bb!=null){
+                            gameBehaviour.AddBuyable(player,bb);
+                            Debug.Log($"已将{bb.property}添加至玩家资产列表");
+                        }
+                    }
+                }
+            }
+            
             
             playersList.Add(player);
             }
             }}
-            foreach (Player p in playersList)
-        {playerUpdate(p);}
+
 
     }
 
-    luckCards=saveData.lCards;
-    luckNo=saveData.luckNo;
-    opportunityCards=saveData.oCards;
-    OpportunityNo=saveData.OpportunityNo;
-    mapList = saveData.allBoards;
-    point=saveData.cPoint;
-    isAI=saveData.isai;
-    difficulty=saveData.diff;
 
 
-
-    freeParkMoney = saveData.freeParkingMoney;
-
-
-    Debug.Log("游戏已读取！");
+    
     }
     else
     {   
@@ -248,9 +277,7 @@ public class RunGame : MonoBehaviour
         
 
         if(isAI) playersList[playerNumber-1].playerData.isAI=true;
-         foreach(Player player in playersList){
-            BoardConstructor.CreateChildren(player);
-        }
+
 
     
     
@@ -280,6 +307,11 @@ public class RunGame : MonoBehaviour
     Shuffle(opportunityCards);
     }
     }
+
+             foreach(Player player in playersList){
+            BoardConstructor.CreateChildren(player);
+        }
+                
     
    
     
@@ -1236,6 +1268,10 @@ public void SaveGame()
     saveData.allPlayers = new List<PlayerData>();
     foreach (Player p in playersList)
     {
+        foreach (Board b in p.playerData.assetsList)
+        {
+            p.playerData.assetsName.Add(b.property);
+        }
         saveData.allPlayers.Add(p.playerData); 
         Debug.Log($"已存入{p.playerData.name}, 在{p.playerData.positionNo}号格子，有{p.playerData.money}钱");
     }
@@ -1245,30 +1281,27 @@ public void SaveGame()
     {
         saveData.allBoards.Add(b); 
     }
-        saveData.lCards = new List<Card>();
-    foreach (Card c in luckCards)
-    {
-        saveData.lCards.Add(c); 
-    }
-     saveData.oCards = new List<Card>();
-    foreach (Card c in opportunityCards)
-    {
-        saveData.oCards.Add(c); 
-    }
 
+    saveData.lCards = new List<Card>(luckCards);
+    saveData.oCards = new List<Card>(opportunityCards);
     saveData.cPoint = currentPoint;
     saveData.freeParkingMoney = freeParkMoney;
-    saveData.luckNo=luckNo;
-    saveData.OpportunityNo=OpportunityNo;
-    saveData.isai=isAI;
-    saveData.diff=difficulty;
+    saveData.luckNo = luckNo;
+    saveData.OpportunityNo = OpportunityNo;
+    saveData.isai = isAI;
+    saveData.diff = difficulty;
 
-    string json = JsonUtility.ToJson(saveData, true);
-    string path = Application.dataPath+ "/save/savegame.json";
+    string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings
+    {
+        TypeNameHandling = TypeNameHandling.Auto
+    });
+
+    string path = Application.dataPath + "/save/savegame.json";
     System.IO.File.WriteAllText(path, json);
 
     Debug.Log("游戏已保存到：" + path);
 }
+
 
 
 
@@ -1278,7 +1311,9 @@ public void SaveGame()
 public class SaveData
 {
     public List<PlayerData> allPlayers;
+
     public List<Board> allBoards;
+  
 
     public int cPoint;
 

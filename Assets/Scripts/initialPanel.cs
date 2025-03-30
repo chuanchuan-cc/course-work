@@ -168,6 +168,7 @@ public class initialPanelScript : MonoBehaviour
         if (paths.Length > 0)
         {
             string savePath=paths[0];
+            PlayerPrefs.SetInt("isLoadGame", 1);
             PlayerPrefs.SetString("savePath", savePath);
             PlayerPrefs.Save();
             startNewGame();

@@ -91,7 +91,9 @@ public void updateTile(Board board){
                 if (eBoard!=null)config.updateConfigEstate(eBoard);
                 else {
                     BuyableBoard bBoard= board as BuyableBoard;
+                    if(bBoard!=null)
                     config.updateConfigBuyable(bBoard);
+                    
                 }                
             
             }

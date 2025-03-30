@@ -13,9 +13,10 @@ public class PlayerData: IOwner
     public int positionNo;
     public int freezeTurn;
     public bool isBankrupt;
-    public List<Board> assetsList;
+    public List<Board> assetsList=new List<Board>();
     public int circle;
     public int assetsWorth;
+    public List<string> assetsName=new List<string>();
 
     public string GetName(){
         return this.name;
