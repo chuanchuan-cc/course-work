@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Newtonsoft.Json;
+
 
 [Serializable]
 public class PlayerData: IOwner
@@ -20,6 +22,18 @@ public class PlayerData: IOwner
 
     public string GetName(){
         return this.name;
+    }
+    public PlayerData DeepCopy()
+    {
+
+        string json = JsonConvert.SerializeObject(this, new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.Auto
+        });
+        return JsonConvert.DeserializeObject<PlayerData>(json, new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.Auto
+        });
     }
     
 

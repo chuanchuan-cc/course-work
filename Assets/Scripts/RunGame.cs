@@ -60,7 +60,9 @@ public class RunGame : MonoBehaviour
     public Button menusQuit;
     public Button menusSave;
     public Button menusBack;
-    public int currentPoint;
+
+
+    private SaveData cachedSaveData; 
     
 
 
@@ -386,6 +388,8 @@ void Update()
         changeCameraMode();
         yield return new WaitUntil(()=>!cameraController.isCameraMoving);
         }
+        AutoSaveGame();
+
         
 
         
@@ -411,7 +415,7 @@ void Update()
         menusButton.interactable=true;
 
 
-        currentPoint = point;
+   
         point = (point + 1) % playersList.Count;
         
         if (currentPlayer.playerData.freezeTurn > 0)
@@ -484,7 +488,7 @@ void Update()
         
         if (currentPlayer.playerData.isBankrupt)
         {
-            playersList.RemoveAt(currentPoint);
+            playersList.RemoveAt((point-1)%playersList.Count);
         }
 
         if (playersList.Count == 1)
@@ -1262,36 +1266,46 @@ private  void quitGame(){
      #endif
     }
 
-public void SaveGame()
+public void AutoSaveGame()
 {
-    SaveData saveData = new SaveData();
-    saveData.allPlayers = new List<PlayerData>();
+    
+    cachedSaveData = new SaveData();
+    cachedSaveData.allPlayers = new List<PlayerData>();
     foreach (Player p in playersList)
     {
-        foreach (Board b in p.playerData.assetsList)
+
+        PlayerData copy = p.playerData.DeepCopy(); 
+        foreach (Board b in copy.assetsList)
         {
-            p.playerData.assetsName.Add(b.property);
+            copy.assetsName.Add(b.property);
         }
-        saveData.allPlayers.Add(p.playerData); 
-        Debug.Log($"已存入{p.playerData.name}, 在{p.playerData.positionNo}号格子，有{p.playerData.money}钱");
+        cachedSaveData.allPlayers.Add(copy); 
+        Debug.Log($"自动缓存：{copy.name}, 在{copy.positionNo}号格子，有{copy.money}钱");
     }
 
-    saveData.allBoards = new List<Board>();
-    foreach (Board b in mapList)
+    cachedSaveData.allBoards = new List<Board>(mapList);
+
+
+    cachedSaveData.lCards = new List<Card>(luckCards);
+    cachedSaveData.oCards = new List<Card>(opportunityCards);
+    cachedSaveData.cPoint = point;
+    cachedSaveData.freeParkingMoney = freeParkMoney;
+    cachedSaveData.luckNo = luckNo;
+    cachedSaveData.OpportunityNo = OpportunityNo;
+    cachedSaveData.isai = isAI;
+    cachedSaveData.diff = difficulty;
+
+   
+    }
+
+public void SaveGame(){
+     if (cachedSaveData == null)
     {
-        saveData.allBoards.Add(b); 
+        Debug.LogWarning("还没有缓存的自动存档，无法手动保存！");
+        return;
     }
 
-    saveData.lCards = new List<Card>(luckCards);
-    saveData.oCards = new List<Card>(opportunityCards);
-    saveData.cPoint = currentPoint;
-    saveData.freeParkingMoney = freeParkMoney;
-    saveData.luckNo = luckNo;
-    saveData.OpportunityNo = OpportunityNo;
-    saveData.isai = isAI;
-    saveData.diff = difficulty;
-
-    string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings
+    string json = JsonConvert.SerializeObject(cachedSaveData, Formatting.Indented, new JsonSerializerSettings
     {
         TypeNameHandling = TypeNameHandling.Auto
     });
@@ -1300,13 +1314,15 @@ public void SaveGame()
     System.IO.File.WriteAllText(path, json);
 
     Debug.Log("游戏已保存到：" + path);
+
+}
 }
 
 
 
 
 
-}
+
 [System.Serializable]
 public class SaveData
 {
