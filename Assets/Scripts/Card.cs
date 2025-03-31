@@ -28,7 +28,8 @@ public class Card
     public int moneyAmount=0;
     public string destinationName=null;
     public bool isInteractable=false;
-    public bool collectGo=true;
+    public bool collectGo=false;
+    public int steps;
 
     public Card() { }
 
@@ -50,6 +51,10 @@ public class Card
         if (description.ToLower().Contains("go to jail"))
         {
             isGoJail = true;
+            if(description.ToLower().Contains("not collect"))
+            collectGo=false;
+            else
+            collectGo=true;
         }
         else if (action.Contains("moves"))
         {
@@ -60,13 +65,37 @@ public class Card
             
             if(action.Contains("forwards")){
                 isFoward=true;
-                destinationName = action.Replace("player moves forwards to ", "").Trim();
+
+                destinationName = action.Trim().Split(" to ")[1];
             }else if(action.Contains("backwards")){isFoward=false;
-            destinationName = action.Replace("player token moves backwards to ", "").Trim();
+            destinationName = action.Trim().Split(" to ")[1];
             }else if (action=="player moves token"){
-                description.Replace("advance to ", "").Trim();
-                string[] parts = description.Split('.');
-                destinationName=parts[0];
+                if(description.Contains("to")){
+      
+
+                string[] parts = description.Trim().Split(". ");
+                string[] parts2=parts[0].Split(" to ");
+                destinationName=parts2[1].Replace("\"", "");
+                
+                }
+
+
+
+
+                else if(description.Contains("go back")){
+                    string[] parts=description.Split(' ');
+                                    foreach (string n in parts)
+                    {
+                   if (int.TryParse(n, out int amount))
+               {
+                             steps = -1*amount;
+                      break;
+
+                 }
+        }
+                    
+
+                }
 
 
             }
@@ -78,13 +107,26 @@ public class Card
             action=action.Replace("£","");
             string[] parts = action.Split(' ');
             int amount;
-            if(action=="player pays money to the bank"){
-                description.Replace("You are assessed for repairs","" ).Replace("/house","").Replace("/hotel","").Replace("£","");
-                string[] _parts=description.Split(", ");
+            if(description.Contains("repairs")){
+                
+                string[] _parts=description.Replace("You are assessed for repairs","" ).Replace("/house"," ").Replace("/hotel"," ").Replace("£"," ").Split(", ");
                if (_parts.Length >= 2)
             {
-            int.TryParse(_parts[0], out houseRepair);
-            int.TryParse(_parts[1], out hotelRepair);
+           foreach (string n in _parts)
+        {
+            string clean = n.Trim().Replace("\"", "");
+            if (int.TryParse(clean, out amount))
+            {
+                if(houseRepair==0)
+                houseRepair = amount;
+                else{
+                    hotelRepair=amount;
+                    break;
+                    
+                }
+
+            }
+        }
                 isRepair = true;
                     }
                 isRepair=true;
@@ -95,21 +137,35 @@ public class Card
 
             else if (parts[0]=="bank" )
             {
-                if(parts.Length>=4){
-                int.TryParse(parts[3], out amount);
+                foreach (string n in parts)
+        {
+            if (int.TryParse(n, out amount))
+            {
+                moneyAmount = amount;
+                break;
+
+            }
+        }
                 payer="bank";
                 payee="player";
-                moneyAmount = amount;
+                
                 }
-            }
+            
             else if (parts[0]=="player")
             {
-                if(parts.Length>=3){
-                    int.TryParse(parts[2], out amount);
+                foreach (string n in parts)
+        {
+            if (int.TryParse(n, out amount))
+            {
+                moneyAmount = amount;
+                break;
+
+            }
+        }
                 payer = "player";
                 payee = "bank";
-                moneyAmount=amount;
-                }
+
+                
         }}
         else if (action.Contains("each player"))
         {
@@ -118,12 +174,15 @@ public class Card
             int amount;
             action=action.Replace("£","");
             string[] parts = action.Split(' ');
-            if (parts.Length >= 3){
-
-            if (int.TryParse(parts[2], out amount))
+           foreach (string n in parts)
+        {
+            if (int.TryParse(n, out amount))
             {
                 moneyAmount = amount;
-            }}}
+                break;
+
+            }
+        }}
             
         
         else if (action.Contains("free parking")){
@@ -135,17 +194,31 @@ public class Card
         
             isPayFine=true;
 
-            if(parts.Length >= 3 && int.TryParse(parts[2], out amount)){
+           
             
-            moneyAmount=amount;
-            }
+            
+            
             if(description.Contains("or")){
                 isInteractable=true;
+               
+
+
             }
+            foreach (string n in parts)
+        {
+            if (int.TryParse(n, out  amount))
+            {
+                moneyAmount = amount;
+                break;
+
+            }
+        }
+
+            
             
         
         }
-        else if (description=="get out of jail free"){
+        else if (description.ToLower().Contains("jail free")){
             isJailFree=true;
         }
     
@@ -173,10 +246,12 @@ public static class CardLoader
         using (var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read))
         using (var reader = ExcelReaderFactory.CreateReader(stream))
         {
+            int rowIndex=0;
             bool isStarted = false;
             var currentGroup = Group.None;
             while(reader.Read())
             {
+                rowIndex++;
                
    
         if (reader.FieldCount < 4 || reader.GetValue(0) == null)
@@ -205,20 +280,28 @@ public static class CardLoader
             continue;
         }
 
+              try
+            {
                 string description = reader.GetValue(0)?.ToString() ?? "Unknown";
                 string action = reader.GetValue(3)?.ToString() ?? "Unknown";
-                
 
                 Card card = new Card(description, action);
 
-                if (currentGroup==Group.PotLuck) {
-                    card.group="Pot Luck";
-                    luckCards.Add(card);}
-                else if (currentGroup==Group.OpportunityKnocks) {
-                    card.group="Opportunity Knocks";
-                    opportunityCards.Add(card);
-                
+                if (currentGroup == Group.PotLuck)
+                {
+                    card.group = "Pot Luck";
+                    luckCards.Add(card);
                 }
+                else if (currentGroup == Group.OpportunityKnocks)
+                {
+                    card.group = "Opportunity Knocks";
+                    opportunityCards.Add(card);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error parsing card at row {rowIndex}: {ex.Message}");
+            }
             }
         }
 
