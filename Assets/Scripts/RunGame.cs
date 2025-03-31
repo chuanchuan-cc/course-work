@@ -480,8 +480,8 @@ void Update()
         if (oldPosNo+PassGoNum>=40)
         {
             Debug.Log("通过起点加钱");
-               gameBehaviour.AddMoney(currentPlayer, 200);
-               bank.money-=200;
+            bank2player(currentPlayer,200);
+
             
             currentPlayer.playerData.circle += 1;
         }
@@ -768,8 +768,11 @@ void AIRoll(){
                 {
                     currentPlayer.directlyMove(i);
                     if(currentPlayer.playerData.positionNo<oldPosNo){
-                        if(!card.collectGo)
                         currentPlayer.playerData.circle++;
+                        if(!card.collectGo)
+                        bank2player(currentPlayer,200);
+                        
+                        
                         
                     }
 
@@ -777,7 +780,7 @@ void AIRoll(){
                 else
                 {
                     currentPlayer.directlyMove(i);
-                    if(currentPlayer.playerData.positionNo<oldPosNo){
+                    if(currentPlayer.playerData.positionNo>oldPosNo){
                         currentPlayer.playerData.circle--;
                     }
 
@@ -993,6 +996,14 @@ void AIRoll(){
         
 private void showbankPanel(){
     StartCoroutine(showBankPanel());
+
+}
+private void bank2player(Player player, int i){
+    if(i>0)
+                   gameBehaviour.AddMoney(player, i);
+
+            else gameBehaviour.PayMoney(player,-i);
+               bank.money-=i;
 
 }
         
