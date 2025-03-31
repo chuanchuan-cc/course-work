@@ -124,7 +124,7 @@ private IEnumerator DirectMoveRoutine(Board board)
         this.playerData.freezeTurn = 0;
         this.playerData.isBankrupt = false;
         this.playerData.assetsList = new List<Board>();
-        this.playerData.circle = 0;
+        this.playerData.circle = 1;
         this.playerData.assetsWorth = 1500;
         this.positionInitialize(0);
 

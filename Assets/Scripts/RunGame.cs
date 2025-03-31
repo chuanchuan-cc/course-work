@@ -60,6 +60,8 @@ public class RunGame : MonoBehaviour
     public Button menusQuit;
     public Button menusSave;
     public Button menusBack;
+    public int oldPosNo;
+ 
 
 
     private SaveData cachedSaveData; 
@@ -227,6 +229,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
     }
+
 
 
 
@@ -441,7 +444,8 @@ void Update()
 
         //作弊菜单
         roll=(cheatStep!=0)? cheatStep: roll;
-        
+        oldPosNo=currentPlayer.playerData.positionNo;
+        int PassGoNum=(roll>0)? roll:0;
         
         
         
@@ -452,7 +456,9 @@ void Update()
             
         }else if (!currentPlayer.isMoving) 
         {
+         
            currentPlayer.Move(roll);
+
 
 
 
@@ -471,9 +477,9 @@ void Update()
        
 
 
-        if ((currentPlayer.playerData.positionNo + roll) > mapList.Count)
+        if (oldPosNo+PassGoNum>=40)
         {
-            
+            Debug.Log("通过起点加钱");
                gameBehaviour.AddMoney(currentPlayer, 200);
                bank.money-=200;
             
@@ -505,6 +511,7 @@ void Update()
         
         
         NextButton.interactable=true;
+        Debug.Log($"{currentPlayer.playerData.name}当前圈数为{currentPlayer.playerData.circle}");
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI);
 
@@ -518,6 +525,7 @@ public void playerUpdate(Player p){
     if (display != null)
     {
         display.UpdateDisplay(p);
+  
     }
     else
     {
@@ -759,7 +767,7 @@ void AIRoll(){
                       if(card.isFoward)
                 {
                     currentPlayer.directlyMove(i);
-                    if(currentPlayer.playerData.positionNo<n){
+                    if(currentPlayer.playerData.positionNo<oldPosNo){
                         if(!card.collectGo)
                         currentPlayer.playerData.circle++;
                         
@@ -769,7 +777,7 @@ void AIRoll(){
                 else
                 {
                     currentPlayer.directlyMove(i);
-                    if(currentPlayer.playerData.positionNo<n){
+                    if(currentPlayer.playerData.positionNo<oldPosNo){
                         currentPlayer.playerData.circle--;
                     }
 
@@ -854,10 +862,10 @@ void AIRoll(){
             int t=(point+i)%playersList.Count;
             Player p =playersList[t];
             //圈数检测禁用，测试
-            // if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
 
             //开启检测
-            if(p.playerData.circle>0) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>1) auctionList.Add(playersList[t]);
             else continue;
         }
 
@@ -922,9 +930,9 @@ void AIRoll(){
             int t=(point+i)%playersList.Count;
             Player p =playersList[t];
             //圈数检测禁用，测试
-            // if(p.playerData.circle>=0) auctionList.Add(playersList[t]);
+            // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
             //开启检测
-            if(p.playerData.circle>0) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>1) auctionList.Add(playersList[t]);
             else continue;
         }
 
@@ -1046,11 +1054,13 @@ private IEnumerator showBankPanel(){
 
     IEnumerator HandleEstate(Player player,estateBoard eBoard){
         Debug.Log(eBoard.owner.GetName());
-        if(currentPlayer.playerData.circle>0){
+        
                     if (eBoard.owner == bank 
                     
                     )
-                    {if(player.playerData.isAI){
+                    {
+                        if(currentPlayer.playerData.circle>1){
+                        if(player.playerData.isAI){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);  
@@ -1066,9 +1076,11 @@ private IEnumerator showBankPanel(){
                              isChecking = false;
 
                         }
+                        
 
                     }
                     else{
+               
                         bool? userChoice=null;
                         interactionPanel.ShowPanel($"are you want to buy {eBoard.property}?",eBoard.group,eBoard.price,eBoard.rent,(bool isBuy)=> 
                         { userChoice=isBuy;});
@@ -1101,11 +1113,12 @@ private IEnumerator showBankPanel(){
                     }
                         isChecking = false;
                         yield break;
+                        }
                             
 
                         
                         
-                    }else if(player.playerData.assetsList.Contains(eBoard)){
+                    }else if(eBoard.owner.GetName()==player.playerData.name){
                         Debug.Log("调用建筑脚本");
                         if(PlayerOwnsFullSet(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
@@ -1122,24 +1135,25 @@ private IEnumerator showBankPanel(){
                     else
                     {
                         gameBehaviour.PayRent(player, eBoard);
-                        }}
+                        }
     }
+
+
         IEnumerator HadleBuyable(Player player,BuyableBoard bBoard){
         Debug.Log(bBoard.owner.GetName());
-        if(currentPlayer.playerData.circle>0){
+        
                     if (bBoard.owner == bank 
                     
                     )
-                    {if(player.playerData.isAI){
+                    {
+                        if(currentPlayer.playerData.circle>1){
+
+                        if(player.playerData.isAI){
                         if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){
                                  gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);   
-                                 generator.updateTile(bBoard);
-                            if(bBoard.group=="Utilities"){
-                                int rent=4*rollRent();
-                                 Debug.Log($"你摇出了rent {rent}");
-                                 bBoard.setRent(rent);  }                         
-                        }else{
+                                 generator.updateTile(bBoard);}
+                           else{
                             Debug.Log($"地产 {bBoard.property} 开始拍卖");
                             isAuction=true;
 
@@ -1187,16 +1201,14 @@ private IEnumerator showBankPanel(){
 
                         
                         
-                    }
+                    }}
 
                     else
                     {
                         gameBehaviour.PayBuyableRent(player, bBoard);
-                    }}
+                    }
     }
-    public int rollRent(){
-        return Random.Range(1, 7);
-    }
+
     IEnumerator CheatingUppdate(){
         if(testmenus.isCheating){
         playerUpdate(currentPlayer);

@@ -149,63 +149,7 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
 
 }
 
-  
- /*   
-    public void BuyProperty(Player player,estateBoard board)
-    {
-        if(player.playerData.circle>0)
-        {
-            Debug.Log($"{player.name} has not completed a full circuit of the board and cannot buy {board.property} yet!");
-        return;
-        }
-        if(board.owner != null && board.owner != RunGame.bank)
-        {
-            Debug.Log($"{board.property} is already owned by {board.owner.GetName()} and cannot be purchased!");
-        return;
-        }
 
-        if (player.playerData.money >= board.price)
-        {
-            PayMoney(player,board.price);
-            board.owner = player.playerData;
-            AddProperty(player,board);
-            Debug.Log($"{player.name} bought {board.property}!");
-        }
-        else
-        {
-            Debug.Log($"{player.name} does not have enough money to buy {board.property}!");
-            
-            StartAuction(board);
-            
-        }}
-
-        
-        public int MakeBid(Player player, estateBoard board, int currentHighestBid)
-        {
-            
-            if (RunGame.isAI)
-            {
-               // 我会写！不是现在搞！
-               // return AIBidStrategy(board, currentHighestBid);
-            }
-            else
-            {
-                Debug.Log($"{name}, please enter your bid for {board.property}. The current highest bid is £{currentHighestBid}.");
-        string input = GetPlayerInput(); //这里需要定义 UI?,或者固定加钱
-        int bid;
-          if (int.TryParse(input, out bid) && bid > currentHighestBid && bid <= playerData.money)
-            
-            return bid;
-        
-        else
-        {
-            Debug.Log($"{name} entered an invalid bid or chose not to bid.");
-            return 0; 
-        }
-            }
-            
-        }
-        */
     
 
         
@@ -224,12 +168,40 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
         public void AddBuyable(Player player, BuyableBoard board)
         {
             Debug.Log($"{player.name} buy {board.property}");
+
+            if(board.group=="Utilities"){
+              if(NumberOfOwnAssets(player,board)==0){
+                 int rent=4*rollRent();
+                 Debug.Log($"你摇出了rent {rent}");
+                 board.setRent(rent);  
+
+                     }    else{       
+        int rent=10*rollRent();
+                       Debug.Log($"你摇出了rent {rent}");
+                                 board.setRent(rent);
+           }  
+            }else if(board.group=="Station"){
+                switch (NumberOfOwnAssets(player,board)){
+                    case 0:
+                    board.setRent(25);
+                    break;
+                    case 1:
+                    board.setRent(50);
+                    break;
+                    case 2:
+                    board.setRent(100);
+                    break;
+                    case 3:
+                    board.setRent(200);
+                    break;
+                   
+
+                }
+            }
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board);
-            if(board.group=="Utilities"){
-                board.setRent(4*RunGame.instance.rollRent());
-            }
+
 
         }
        
@@ -319,6 +291,9 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
 
     
 }
+    private int rollRent(){
+        return Random.Range(1, 7);
+    }
          /*
             if (board.improvedLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
             {
@@ -405,7 +380,7 @@ return 150+board.improvedRents[4];
         }
 
     
-}else    if(board.group.ToLower()=="green"||board.group.ToLower()=="deepblue"){
+}else    if(board.group.ToLower()=="green"||board.group.Replace(" ","").ToLower()=="deepblue"){
         if(board.improvedLevel<5){
 return 200;
         }else{
@@ -413,14 +388,29 @@ return 200+board.improvedRents[4];
         }
 
     }
-    else {Debug.Log($"can't match you estateBoard, which group is {board.group}");
-        return 9999999;
+    else {Debug.Log($"can't match you estateBoard, which group is {board.group.Replace(" ","").ToLower()}");
+        return 0;
     }
 }
 public int cheatGetcost(estateBoard eBoard){
     return costCalculer(eBoard);
 
 }
+    private int NumberOfOwnAssets(Player player,Board b){
+        
+        int n =0;
+        foreach(Board i in RunGame.mapList){
+            BuyableBoard bB=i as BuyableBoard;
+            if(bB!=null){
+            if(bB.group==b.group&&bB.owner.GetName()==player.playerData.name){
+                n++;
+            }
+        } 
+        
+        }
+        return n;
+       
+    }
 
 
 

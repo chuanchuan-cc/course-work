@@ -1510,7 +1510,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0
@@ -3075,7 +3086,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0
@@ -3142,8 +3164,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -262.61002, y: 6.0000057}
-  m_SizeDelta: {x: 234.067, y: 51.279}
+  m_AnchoredPosition: {x: -213.47, y: 6.0000057}
+  m_SizeDelta: {x: 338.741, y: 51.279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &481571715
 MonoBehaviour:
@@ -3439,7 +3461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: 6.0000057}
+  m_AnchoredPosition: {x: 72.933, y: 6.0000057}
   m_SizeDelta: {x: 234.067, y: 51.279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513073206
@@ -5788,7 +5810,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0
@@ -6768,7 +6801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 261, y: 6}
+  m_AnchoredPosition: {x: 307, y: 6}
   m_SizeDelta: {x: 234.067, y: 51.279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336018032
@@ -8702,7 +8735,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0
@@ -9673,7 +9717,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0
@@ -10382,7 +10437,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDisplay: {fileID: 0}
   name: 
-  playerData: {fileID: 0}
+  playerData:
+    isAI: 0
+    name: 
+    freeJail: 0
+    money: 0
+    positionNo: 0
+    freezeTurn: 0
+    isBankrupt: 0
+    assetsList: []
+    circle: 0
+    assetsWorth: 0
+    assetsName: []
   isMoving: 0
   inputX: 0
   inputY: 0

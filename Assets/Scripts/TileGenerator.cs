@@ -62,15 +62,7 @@ public class TileGenerator : MonoBehaviour
             tile.transform.SetParent(this.transform);
             if(board.canBeBought){
                 
-            estatePrefabConfig config = tile.GetComponent<estatePrefabConfig>();
-            if (config!=null){
-                estateBoard eBoard= board as estateBoard;
-                if (eBoard!=null)config.updateConfigEstate(eBoard);
-                else {
-                    BuyableBoard bBoard= board as BuyableBoard;
-                    config.updateConfigBuyable(bBoard);
-                }                
-            }
+           updateTile(board);
             }
 
 
