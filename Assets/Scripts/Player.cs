@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float inputX, inputY;
     public float facex;
     public bool isFading=false;
+    public TileGenerator tileGenerator;
    
 
 void Awake()
@@ -227,8 +228,13 @@ private IEnumerator DirectMoveRoutine(Board board)
 
 
             _rigidbody.position = targetPos; 
+            //播放格子下沉动画
+            //将等待改为动画播放完毕
+            StartCoroutine(moveBoardAnimation());
+            StartCoroutine(tileGenerator.BoardAnimation(playerData.positionNo));
+            yield return new WaitUntil(()=>!tileGenerator.isAnimationBoard);
 
-            yield return new WaitForSeconds(0.1f);
+            //yield return new WaitForSeconds(0.2f);
         
 
             
@@ -250,6 +256,33 @@ private IEnumerator DirectMoveRoutine(Board board)
         else if (newNo <= 35) return new Vector2(-7.5f + (float)newNo - 20f, 2.4f);
         else return new Vector2(7.5f, 2.4f - ((float)newNo - 35));
     }
+    public IEnumerator moveBoardAnimation(){
+  
+    float total = 0.15f;
+    float time=0f;
+    Vector2 iniVect= _rigidbody.position;
+    Vector2 target= new Vector3(iniVect.x,iniVect.y-0.04f);
+    Vector2 velocity = Vector2.zero;
+    while(time<total){
+         _rigidbody.position = Vector2.SmoothDamp( _rigidbody.position, target, ref velocity, total - time);
+        time+=Time.deltaTime;
+         yield return  null;
+    } 
+
+    time=0f;
+    velocity = Vector2.zero;
+       while(time<total){
+         _rigidbody.position = Vector2.SmoothDamp( _rigidbody.position, iniVect, ref velocity, total - time);
+        time+=Time.deltaTime;
+         yield return  null;
+    }
+     _rigidbody.position=iniVect;
+
+
+
+
+
+}
 
   
 

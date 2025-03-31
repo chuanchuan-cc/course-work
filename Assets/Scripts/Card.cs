@@ -198,7 +198,7 @@ public class Card
             
             
             
-            if(description.Contains("or")){
+            if(description.Contains(" or")){
                 isInteractable=true;
                
 

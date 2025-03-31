@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class TileGenerator : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TileGenerator : MonoBehaviour
     [SerializeField] private List<TilePrefabConfig> _tilePrefabs = new List<TilePrefabConfig>();
     private Dictionary<string, GameObject> _tileDict = new Dictionary<string, GameObject>(); 
     private List<GameObject> tileList=new List<GameObject>();
+    public bool isAnimationBoard=false;
 
     void Start()
     {
@@ -90,6 +92,34 @@ public void updateTile(Board board){
             
             }
                 
+
+}
+public IEnumerator BoardAnimation(int no){
+    isAnimationBoard=true;
+    GameObject tile = tileList[no];
+    float total = 0.15f;
+    float time=0f;
+    Vector3 iniVect=tile.transform.position;
+    Vector3 target= new Vector3(iniVect.x,iniVect.y-0.04f,iniVect.z);
+    Vector3 velocity = Vector3.zero;
+    while(time<total){
+        tile.transform.position = Vector3.SmoothDamp(tile.transform.position, target, ref velocity, total - time);
+        time+=Time.deltaTime;
+         yield return  null;
+    } 
+
+    time=0f;
+    velocity = Vector3.zero;
+       while(time<total){
+        tile.transform.position = Vector3.SmoothDamp(tile.transform.position, iniVect, ref velocity, total - time);
+        time+=Time.deltaTime;
+        yield return  null;
+    }
+    tile.transform.position=iniVect;
+    isAnimationBoard=false;
+
+
+
 
 }
 

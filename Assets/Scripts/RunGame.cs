@@ -690,6 +690,7 @@ void AIRoll(){
 
                  bool? userChoice=null;
                  string[] parts=drawnCard.description.Split(" or ");
+               
             interactionPanel.ShowPanel($"are you want to {parts[1]}, instead of {parts[0]}?",(bool Result)=> 
           { userChoice=Result;
                 

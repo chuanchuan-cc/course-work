@@ -1527,6 +1527,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!1 &257861627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,6 +2738,7 @@ MonoBehaviour:
   - {fileID: -5997343354825294286, guid: b88c7024b34725c4ab4abb9c626c909d, type: 3}
   - {fileID: 6367252915713155523, guid: 05d51ee29e1b5634588082f5196fa628, type: 3}
   - {fileID: 3028435947140963318, guid: 2cb5e4f6a247a884695b0dee59a93c7a, type: 3}
+  isAnimationBoard: 0
 --- !u!1 &437675729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3105,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!50 &458165280
 Rigidbody2D:
   serializedVersion: 5
@@ -5827,6 +5830,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!50 &872788636
 Rigidbody2D:
   serializedVersion: 5
@@ -8396,6 +8400,7 @@ MonoBehaviour:
   menusQuit: {fileID: 11445943}
   menusSave: {fileID: 218979680}
   menusBack: {fileID: 616574491}
+  oldPosNo: 0
 --- !u!1 &1605426554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8752,6 +8757,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!95 &1637901785
 Animator:
   serializedVersion: 7
@@ -9734,6 +9740,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!1 &1836929328
 GameObject:
   m_ObjectHideFlags: 0
@@ -10454,6 +10461,7 @@ MonoBehaviour:
   inputY: 0
   facex: 0
   isFading: 0
+  tileGenerator: {fileID: 432075092}
 --- !u!95 &1941276149
 Animator:
   serializedVersion: 7
