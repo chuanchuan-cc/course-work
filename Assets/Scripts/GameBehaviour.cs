@@ -63,7 +63,9 @@ public class GameBehaviour: MonoBehaviour
         else {
             Debug.LogError("can't find board Go to jail");
         }
+        if(player.playerData.freeJail==0)
         FreezeTurn(player, 2);
+
 
         
         

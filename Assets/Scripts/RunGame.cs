@@ -655,7 +655,9 @@ void AIRoll(){
                 }
             }
         }
+        playerUpdate(currentPlayer);
         isChecking=false;
+        
     }
 
 
@@ -689,7 +691,7 @@ void AIRoll(){
 
 
                  bool? userChoice=null;
-                 string[] parts=drawnCard.description.Split(" or ");
+                 string[] parts=drawnCard.description.Replace("\"","").Split(" or ");
                
             interactionPanel.ShowPanel($"are you want to {parts[1]}, instead of {parts[0]}?",(bool Result)=> 
           { userChoice=Result;
@@ -759,19 +761,36 @@ void AIRoll(){
        
         if (card.isMove)
         {
-            Debug.Log($"前往{card.destinationName}");
+            if(card.steps!=0){
+                Board target= mapList[player.playerData.positionNo+card.steps];
             
+                player.directlyMove(target);
+                if(player.playerData.positionNo<oldPosNo&&card.steps>0)
+                    player.playerData.circle++;
+                if(player.playerData.positionNo>oldPosNo&&card.steps<0)
+                player.playerData.circle--;
+
+                
+            }
+            else{
+            Debug.Log($"前往{card.destinationName}，card匹配值{card.destinationName.ToLower()}");
+   
                 foreach(Board i in mapList){
-                    if(i.property==card.destinationName){
+                    if(i.property.ToLower()==card.destinationName.ToLower()){
                         Debug.Log($"已探测到格子{i.property}");
-                        int n=currentPlayer.playerData.positionNo;
+                        player.directlyMove(i);
+                        break;
+                    }
+               
+                    
+
                       if(card.isFoward)
                 {
-                    currentPlayer.directlyMove(i);
-                    if(currentPlayer.playerData.positionNo<oldPosNo){
-                        currentPlayer.playerData.circle++;
+                    
+                    if(player.playerData.positionNo<oldPosNo){
+                        player.playerData.circle++;
                         if(!card.collectGo)
-                        bank2player(currentPlayer,200);
+                        bank2player(player,200);
                         
                         
                         
@@ -780,41 +799,44 @@ void AIRoll(){
                 }
                 else
                 {
-                    currentPlayer.directlyMove(i);
-                    if(currentPlayer.playerData.positionNo>oldPosNo){
-                        currentPlayer.playerData.circle--;
+             
+                    if(player.playerData.positionNo>oldPosNo){
+                        player.playerData.circle--;
                     }
 
                 }
                  
                  
 
-                    }
+                    }}
                 
+
+
+                StartCoroutine(moveCheck(player));
                 isApplyCard=false;
                  return;
                 
             
             
         }
-        }
+        
         if (card.isPay)
         {Debug.Log($"触发{card.payer}付{card.payee} {card.moneyAmount}");
-            if(card.payee=="player"&&card.payer=="Bank"){
+            if(card.payee=="player"&&card.payer=="bank"){
                bank.money-=card.moneyAmount;
                gameBehaviour.AddMoney(player, card.moneyAmount);
                
             }
-            else if(card.payee=="player"&&card.isPayByAll){
-                foreach(Player i in playersList){
-                    gameBehaviour.PayMoney(i,card.moneyAmount);
-                    gameBehaviour.AddMoney(player,card.moneyAmount);
 
-                }
-            }
            
-            else if(card.payee=="Bank"&&card.payer=="player"){bank.money+=card.moneyAmount;
+            else if(card.payee=="bank"&&card.payer=="player"){bank.money+=card.moneyAmount;
             gameBehaviour.PayMoney(player, card.moneyAmount);
+            }
+            else if(card.isPayByAll){
+                foreach(Player p in playersList){
+                    gameBehaviour.AddMoney(player,card.moneyAmount);
+                    gameBehaviour.PayMoney(p,card.moneyAmount);
+                }
             }
             
             
@@ -824,6 +846,7 @@ void AIRoll(){
         Debug.Log($"触发{player.name}付{card.moneyAmount}给免费停车");
             
             freeParkMoney+=card.moneyAmount;
+            Debug.Log($"免费停车总额{freeParkMoney}");
             gameBehaviour.PayMoney(player,card.moneyAmount);
 
         }
@@ -839,6 +862,22 @@ void AIRoll(){
         {
             Debug.Log($"触发{player.name}进监狱");
             gameBehaviour.GoToJail(player);
+        }
+        if(card.isRepair){
+            int houseNum=0;
+            int hotelNum=0;
+            foreach(Board b in player.playerData.assetsList){
+                estateBoard eb= b as estateBoard;
+                if(eb!=null){
+                    if(eb.improvedLevel>0&&eb.improvedLevel<5)
+                    houseNum++;
+                    if(eb.improvedLevel==5)
+                    hotelNum++;
+
+                }
+            }
+            Debug.Log($"有{houseNum}个房子，{hotelNum}个酒店");
+            gameBehaviour.PayMoney(player,card.houseRepair*houseNum+card.hotelRepair*hotelNum);
         }
         playerUpdate(player);
         isApplyCard=false;
@@ -1289,6 +1328,11 @@ private  void quitGame(){
         Application.quit();
      #endif
     }
+    private IEnumerator moveCheck(Player player){
+        yield return new WaitUntil(()=>!player.isMoving);
+        StartCoroutine(check(player));
+
+    }
 
 public void AutoSaveGame()
 {
@@ -1304,7 +1348,7 @@ public void AutoSaveGame()
             copy.assetsName.Add(b.property);
         }
         cachedSaveData.allPlayers.Add(copy); 
-        Debug.Log($"自动缓存：{copy.name}, 在{copy.positionNo}号格子，有{copy.money}钱");
+    
     }
 
     cachedSaveData.allBoards = new List<Board>(mapList);

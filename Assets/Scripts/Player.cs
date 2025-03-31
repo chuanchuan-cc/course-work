@@ -38,11 +38,12 @@ void Awake()
     public void directlyMove(Board board){
         Debug.Log($"已触发直接移动，目的地为{board.property}");
         StartCoroutine(DirectMoveRoutine(board));
+        
 
     }
     
 private IEnumerator DirectMoveRoutine(Board board)
-{
+{   isMoving=true;
     yield return StartCoroutine(FadeOut(0.5f));
 
     yield return new WaitUntil(()=>!isFading);
@@ -50,6 +51,7 @@ private IEnumerator DirectMoveRoutine(Board board)
     playerData.positionNo = board.positionNo;
 
     yield return StartCoroutine(FadeIn(0.5f, _rigidbody.position));
+    isMoving=false;
 }
     IEnumerator FadeOut( float duration)
 {
