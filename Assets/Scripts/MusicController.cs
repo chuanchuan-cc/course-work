@@ -43,6 +43,7 @@ public class MusicController : MonoBehaviour
 
         jumpAudioSource = gameObject.AddComponent<AudioSource>();
         jumpAudioSource.clip = jumpBgm;
+        jumpAudioSource.volume *= 0.25f;
         jumpAudioSource.playOnAwake = false;
 
         moneyAudioSource = gameObject.AddComponent<AudioSource>();
@@ -86,6 +87,7 @@ public class MusicController : MonoBehaviour
     }
     public void PlayJumpSound()
 {
+    
     jumpAudioSource.PlayOneShot(jumpBgm);
 }
 
