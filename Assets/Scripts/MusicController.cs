@@ -2,22 +2,37 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
+    public static MusicController Instance;
 
     public AudioClip bgm;
 
     public AudioClip jumpBgm;
     public AudioClip moneyBgm;
     public AudioClip jailBgm;
+    public AudioClip movedirectlyBgm;
+    public AudioClip cardBgm;
     private AudioSource audioSource;
     private AudioSource jumpAudioSource;
 
     private AudioSource moneyAudioSource;
     private AudioSource jailAudioSource;
+    private AudioSource movedirectlyAudioSource;
+    private AudioSource cardAudioSource;
 
 
     void Awake()
     {
+        if (Instance == null)
+    {
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+        return;
+    }
+
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = bgm;
         audioSource.loop = true;
@@ -37,6 +52,16 @@ public class MusicController : MonoBehaviour
         jailAudioSource = gameObject.AddComponent<AudioSource>();
         jailAudioSource.clip = jailBgm;
         jailAudioSource.playOnAwake = false;
+        
+        
+        movedirectlyAudioSource = gameObject.AddComponent<AudioSource>();
+        movedirectlyAudioSource.clip = movedirectlyBgm;
+        movedirectlyAudioSource.playOnAwake = false;
+
+
+        cardAudioSource = gameObject.AddComponent<AudioSource>();
+        cardAudioSource.clip = cardBgm;
+        cardAudioSource.playOnAwake = false;
     }
     public void changeThemeMode(){
         if(audioSource.isPlaying)
@@ -59,5 +84,30 @@ public class MusicController : MonoBehaviour
 
         
     }
+    public void PlayJumpSound()
+{
+    jumpAudioSource.PlayOneShot(jumpBgm);
+}
+
+public void PlayMoneySound()
+{
+    moneyAudioSource.PlayOneShot(moneyBgm);
+}
+
+public void PlayJailSound()
+{
+    jailAudioSource.PlayOneShot(jailBgm);
+}
+
+public void PlayMoveDirectlySound()
+{
+    movedirectlyAudioSource.PlayOneShot(movedirectlyBgm);
+}
+    public void PlayCardSound()
+{
+    jumpAudioSource.PlayOneShot(cardBgm);
+}
+
+
 
 }

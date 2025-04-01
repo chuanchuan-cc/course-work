@@ -10,12 +10,14 @@ public class GameBehaviour: MonoBehaviour
 
 
 
+
    
    void Start(){
     interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
     if(interactionPanel==null)Debug.Log("can't find interaction panel");
-   }
     
+   }
+
  
 
     public void AddMoney(Player player,int amount)
@@ -24,6 +26,7 @@ public class GameBehaviour: MonoBehaviour
         player.playerData.money += amount;
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
+        MusicController.Instance.PlayMoneySound();
     }
     public void PayMoney(Player player,int amount)
     {
@@ -33,6 +36,7 @@ public class GameBehaviour: MonoBehaviour
             player.playerData.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
+        MusicController.Instance.PlayMoneySound();
         }
         
     }
@@ -52,9 +56,15 @@ public class GameBehaviour: MonoBehaviour
     }
     public void GoToJail(Player player)
     {
+        
+        
+        
         Board b=RunGame.mapList.Find(board=>board.property == "Jail/Just visiting");
 
         if(b!=null){
+            if(player.playerData.freeJail==0){
+            MusicController.Instance.PlayJailSound();
+             FreezeTurn(player, 2);}
       
         player.directlyMove(b);
         
@@ -63,8 +73,8 @@ public class GameBehaviour: MonoBehaviour
         else {
             Debug.LogError("can't find board Go to jail");
         }
-        if(player.playerData.freeJail==0)
-        FreezeTurn(player, 2);
+        
+       
 
 
         

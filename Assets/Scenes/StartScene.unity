@@ -5534,9 +5534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 8300000, guid: a14474440216bdc429c1981ca9628912, type: 3}
-  jumpBgm: {fileID: 0}
-  moneyBgm: {fileID: 0}
-  jailBgm: {fileID: 0}
+  jumpBgm: {fileID: 8300000, guid: 10797b3cb28980c4fb6969414cfda1ab, type: 3}
+  moneyBgm: {fileID: 8300000, guid: 3d6bee9a7647d014bb26f4c217f623f9, type: 3}
+  jailBgm: {fileID: 8300000, guid: 3df09d0287af57a42baddd48bedd4477, type: 3}
+  movedirectlyBgm: {fileID: 8300000, guid: d477b4b9427de58458c4884298181f22, type: 3}
+  cardBgm: {fileID: 8300000, guid: d42fa3c846f21d14e8ec6222cf1c689b, type: 3}
 --- !u!4 &2002038895
 Transform:
   m_ObjectHideFlags: 0

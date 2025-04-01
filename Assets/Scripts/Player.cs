@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float facex;
     public bool isFading=false;
     public TileGenerator tileGenerator;
+
    
 
 void Awake()
@@ -32,11 +33,15 @@ void Awake()
         {
             Debug.Log($"{this.name} successfully loaded data");
         }
+       
 
         
     }
+
     public void directlyMove(Board board){
         Debug.Log($"已触发直接移动，目的地为{board.property}");
+        if(this.playerData.freezeTurn==0)
+        MusicController.Instance.PlayMoveDirectlySound();
         StartCoroutine(DirectMoveRoutine(board));
         
 
@@ -156,6 +161,7 @@ private IEnumerator DirectMoveRoutine(Board board)
 
         for (int i = 0; i < Math.Abs(steps); i++)
         {
+            MusicController.Instance.PlayJumpSound();
             playerData.positionNo = (steps>0)?(playerData.positionNo + 1) % 40:(playerData.positionNo - 1) % 40;             
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);

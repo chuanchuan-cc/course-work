@@ -61,7 +61,7 @@ public class RunGame : MonoBehaviour
     public Button menusSave;
     public Button menusBack;
     public int oldPosNo;
-    public MusicController musicController;
+
 
     public Slider musicSlider;
  
@@ -144,6 +144,8 @@ public class RunGame : MonoBehaviour
         DiceButton.onClick.AddListener(ThrowDice);
         NextButton.onClick.AddListener(next);
         buildingButton.onClick.AddListener(build);
+        
+        
 
         
 
@@ -338,8 +340,8 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     menusBack.onClick.AddListener(closeMenus);
     menusQuit.onClick.AddListener(quitGame);
     menusSave.onClick.AddListener(SaveGame);
-    MusicController musicController = FindObjectOfType<MusicController>();
-    musicSlider.onValueChanged.AddListener((value) => musicController.setThemeVolume(value));
+    
+    musicSlider.onValueChanged.AddListener((value) => MusicController.Instance.setThemeVolume(value));
 
     bankpanel.ClosePanel();
 
@@ -612,7 +614,7 @@ void AIRoll(){
  IEnumerator check(Player player)
     {
         isChecking=true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         
         Board currentBoard = mapList[player.playerData.positionNo];
       
@@ -621,8 +623,13 @@ void AIRoll(){
         if (currentBoard.property == "Opportunity Knocks" || currentBoard.property == "Pot Luck")
         {
             Debug.Log("触发drawcard");
+            
             StartCoroutine(DrawCard(player,currentBoard));
+
+
             yield return new WaitUntil(()=>!isProcessingCard);
+            
+            
             isChecking = false;
             yield break;
         }
@@ -670,6 +677,8 @@ void AIRoll(){
     {
         isProcessingCard=true;
         bool isInteracting=false;
+                   
+  
         
         
         Card drawnCard;
@@ -689,6 +698,30 @@ void AIRoll(){
 
         // 显示卡片 UI
         cardUI.ShowCard(drawnCard);
+     
+                  MusicController.Instance.PlayCardSound();
+             
+        
+                float timer = 0f;
+  
+    while (timer < 5f)
+    {
+        if(currentPlayer.playerData.isAI){
+            isProcessingCard=false;
+            break;
+        }
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Debug.Log("点击屏幕，立即关闭卡片 UI");
+            isProcessingCard=false;
+            break;
+        }
+        timer += Time.deltaTime;
+        yield return null;   
+    }
+        cardUI.HideCard();
+
+        yield return new WaitUntil(()=>!cardUI.isDisplaying);
 
 
         if(drawnCard.isInteractable){
@@ -736,24 +769,7 @@ void AIRoll(){
 
         // 处理卡片效果
         ApplyCardEffect(player, drawnCard);
-        float timer = 0f;
-  
-    while (timer < 5f||isApplyCard)
-    {
-        if(currentPlayer.playerData.isAI){
-            isProcessingCard=false;
-            break;
-        }
-        if (Input.GetMouseButtonDown(0)) // 监听鼠标点击
-        {
-            Debug.Log("点击屏幕，立即关闭卡片 UI");
-            isProcessingCard=false;
-            break;
-        }
-        timer += Time.deltaTime;
-        yield return null;   
-    }
-        cardUI.HideCard();
+
         yield return new WaitUntil(()=>!isApplyCard);
         isProcessingCard=false;
         

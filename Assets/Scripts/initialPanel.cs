@@ -55,7 +55,7 @@ public class initialPanelScript : MonoBehaviour
         exitpanel.onClick.AddListener(() => onClickExit(initialPanel));
         defaultFolder = Application.dataPath + "/Resources";
         loadgame.onClick.AddListener(loadGame);
-        musicButton.onClick.AddListener(musicController.changeThemeMode);
+        musicButton.onClick.AddListener(MusicController.Instance.changeThemeMode);
 
     }
     // Update is called once per frame
