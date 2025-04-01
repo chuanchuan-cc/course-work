@@ -22,7 +22,9 @@ public class MusicController : MonoBehaviour
         audioSource.clip = bgm;
         audioSource.loop = true;
         audioSource.playOnAwake = false;
+        setThemeVolume(0.5f);
         audioSource.Play();
+
 
         jumpAudioSource = gameObject.AddComponent<AudioSource>();
         jumpAudioSource.clip = jumpBgm;
