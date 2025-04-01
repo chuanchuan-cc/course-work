@@ -30,6 +30,9 @@ public class initialPanelScript : MonoBehaviour
     public GameObject difficultyOutput;
     public TextMeshProUGUI difficultyText;
     public Button loadgame;
+
+    public Button musicButton;
+    public MusicController musicController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +55,7 @@ public class initialPanelScript : MonoBehaviour
         exitpanel.onClick.AddListener(() => onClickExit(initialPanel));
         defaultFolder = Application.dataPath + "/Resources";
         loadgame.onClick.AddListener(loadGame);
+        musicButton.onClick.AddListener(musicController.changeThemeMode);
 
     }
     // Update is called once per frame

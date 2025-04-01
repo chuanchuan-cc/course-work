@@ -61,6 +61,9 @@ public class RunGame : MonoBehaviour
     public Button menusSave;
     public Button menusBack;
     public int oldPosNo;
+    public MusicController musicController;
+
+    public Slider musicSlider;
  
 
 
@@ -335,6 +338,8 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     menusBack.onClick.AddListener(closeMenus);
     menusQuit.onClick.AddListener(quitGame);
     menusSave.onClick.AddListener(SaveGame);
+    MusicController musicController = FindObjectOfType<MusicController>();
+    musicSlider.onValueChanged.AddListener((value) => musicController.setThemeVolume(value));
 
     bankpanel.ClosePanel();
 
