@@ -5534,7 +5534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 8300000, guid: a14474440216bdc429c1981ca9628912, type: 3}
-  jumpBgm: {fileID: 8300000, guid: 10797b3cb28980c4fb6969414cfda1ab, type: 3}
+  jumpBgm: {fileID: 8300000, guid: 4c12804b241eca8438b0b6df1af7d078, type: 3}
   moneyBgm: {fileID: 8300000, guid: 3d6bee9a7647d014bb26f4c217f623f9, type: 3}
   jailBgm: {fileID: 8300000, guid: 3df09d0287af57a42baddd48bedd4477, type: 3}
   movedirectlyBgm: {fileID: 8300000, guid: d477b4b9427de58458c4884298181f22, type: 3}
