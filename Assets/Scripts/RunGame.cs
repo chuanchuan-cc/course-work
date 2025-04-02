@@ -62,6 +62,7 @@ public class RunGame : MonoBehaviour
     public Button menusBack;
     public int oldPosNo;
 
+    private bool isAIsell=false;
 
     public Slider musicSlider;
  
@@ -256,7 +257,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         //测试用
         isAI=true;
         difficulty=1;
-        playerNumber=2;
+        playerNumber=6;
 
 
 
@@ -287,6 +288,12 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         
 
         if(isAI) playersList[playerNumber-1].playerData.isAI=true;
+
+
+        //测试用除1号全ai
+        for(int i=1;i<playerNumber-1;i++){
+            playersList[i].playerData.isAI=true;
+        }
 
 
     
@@ -444,7 +451,10 @@ void Update()
             NextButton.gameObject.SetActive(false);
             DiceButton.interactable = true;
         }else{
+            AISell();
+            yield return new WaitUntil(()=>!isAIsell);
             AIRoll();
+
         }
         
         yield return new WaitUntil(() => isEffectiveDice);
@@ -1405,12 +1415,82 @@ public void SaveGame(){
     Debug.Log("游戏已保存到：" + path);
 
 }
+private void AISell(){
+if(difficulty==0){
+    if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
+        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
+    estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
+    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
+}
+
+
+    }
+
+}
+else if(difficulty==1){
+if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
+List<int>l2 = MortagageState(currentPlayer);
+if(l2.Count==0){
+    if(currentPlayer.playerData.assetsList.Count>0){
+        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
+        estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
+    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
+}
+
+    }
+
+
+}
+else{
+int n1=Random.Range(0,l2.Count);
+estateBoard eBoard= currentPlayer.playerData.assetsList[l2[n1]] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.SellEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n1] as BuyableBoard;
+    gameBehaviour.SellBuyableBoard(currentPlayer,bBoard);
+}
+
+
+}
+}
+
+
 }
 
 
 
 
 
+}
+private List<int> MortagageState(Player player){
+    List<int> l1=new List<int>();
+    int t=0;
+foreach(Board board in currentPlayer.playerData.assetsList){
+estateBoard eBoard= board as estateBoard;
+if(eBoard!=null){
+    if(eBoard.isMortgage)
+    l1.Add(t);
+}else{
+BuyableBoard bBoard= board as BuyableBoard;
+if(bBoard.isMortgage)
+l1.Add(t);
+
+}
+t++;
+}
+
+return l1;
+}
+}
 
 [System.Serializable]
 public class SaveData
