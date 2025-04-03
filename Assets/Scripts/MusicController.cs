@@ -19,6 +19,9 @@ public class MusicController : MonoBehaviour
     private AudioSource movedirectlyAudioSource;
     private AudioSource cardAudioSource;
 
+    private AudioSource shipAudioSource;
+    public AudioClip shipBgm;
+
 
     void Awake()
     {
@@ -63,6 +66,10 @@ public class MusicController : MonoBehaviour
         cardAudioSource = gameObject.AddComponent<AudioSource>();
         cardAudioSource.clip = cardBgm;
         cardAudioSource.playOnAwake = false;
+
+        shipAudioSource = gameObject.AddComponent<AudioSource>();
+        shipAudioSource.clip = shipBgm;
+        shipAudioSource.playOnAwake = false;
     }
     public void changeThemeMode(){
         if(audioSource.isPlaying)
@@ -89,6 +96,9 @@ public class MusicController : MonoBehaviour
 {
     
     jumpAudioSource.PlayOneShot(jumpBgm);
+}
+public void PlayShipSound(){
+    shipAudioSource.PlayOneShot(shipBgm);
 }
 
 public void PlayMoneySound()
