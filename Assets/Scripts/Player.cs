@@ -164,7 +164,12 @@ public class Player : MonoBehaviour
 
         for (int i = 0; i < Math.Abs(steps); i++)
         {
+            if(name=="ship")
+            MusicController.Instance.PlayShipSound();
+            else
             MusicController.Instance.PlayJumpSound();
+
+            
             playerData.positionNo = (steps > 0) ? (playerData.positionNo + 1) % 40 : (playerData.positionNo - 1) % 40;
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);
@@ -181,7 +186,7 @@ public class Player : MonoBehaviour
                 bool isHorizon = Math.Abs(startPos.x - targetPos.x) > Math.Abs(startPos.y - targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
                 if (name == "ship")
-                {
+                { 
 
                     _rigidbody.position = new Vector2(interpolatedPos.x, interpolatedPos.y);
                     elapsedTime += Time.deltaTime;
@@ -221,6 +226,7 @@ public class Player : MonoBehaviour
 
                     else
                     {
+                       
                         if (startPos.y - targetPos.y < 0)
                         {
                             _rigidbody.position = new Vector2(interpolatedPos.x - heightFactor * 1f, interpolatedPos.y + heightFactor * 1f);

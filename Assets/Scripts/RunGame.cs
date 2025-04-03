@@ -62,6 +62,7 @@ public class RunGame : MonoBehaviour
     public Button menusBack;
     public int oldPosNo;
 
+    private bool isAIsell=false;
 
     public Slider musicSlider;
 
@@ -249,8 +250,33 @@ public class RunGame : MonoBehaviour
 
 
 
+<<<<<<< HEAD
         }
         else
+=======
+        
+        isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
+        difficulty=PlayerPrefs.GetInt("difficulty",0);
+        int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
+        playerNumber=(isAI)? playerNumber+1:playerNumber;
+        
+
+
+
+        //测试用
+        isAI=true;
+        difficulty=1;
+        playerNumber=6;
+
+
+
+        point = 0;
+    //initialize player
+
+
+        playersList= new List<Player>(playerNumber);
+            foreach (Transform child in playersPool.transform)
+>>>>>>> e217c3af32b51cbb7d58cd532c200caa2c6524d0
         {
             // read the input from last scene
 
@@ -298,7 +324,29 @@ public class RunGame : MonoBehaviour
             }
 
 
+<<<<<<< HEAD
             if (isAI) playersList[playerNumber - 1].playerData.isAI = true;
+=======
+        //测试用除1号全ai
+        for(int i=1;i<playerNumber-1;i++){
+            playersList[i].playerData.isAI=true;
+        }
+
+
+    
+    
+    //initialize the map and card
+    string cardPath=(PlayerPrefs.GetString("cardPath")==null)? PlayerPrefs.GetString("cardPath"):Application.dataPath+"/Resources/card/testCard.xlsx";
+    string mapPath=(PlayerPrefs.GetString("mapPath")==null)?PlayerPrefs.GetString("mapPath"):Application.dataPath+"/Resources/map/testMap.xlsx";;
+  
+    if(mapPath== null){
+        Debug.LogError("mapPath is null");
+    }else{
+    try{mapList=BoardLoader.LoadBoards(mapPath);
+    }catch(System.Exception e){
+        Debug.LogError("Error happen when initialize the map:"+e.Message);
+    }
+>>>>>>> e217c3af32b51cbb7d58cd532c200caa2c6524d0
 
 
             //测试用除1号全ai
@@ -432,7 +480,23 @@ public class RunGame : MonoBehaviour
                 changeCameraMode();
                 yield return new WaitUntil(() => !cameraController.isCameraMoving);
             }
+<<<<<<< HEAD
             AutoSaveGame();
+=======
+        }
+        if(!currentPlayer.playerData.isAI){
+            DiceButton.gameObject.SetActive(true);
+            NextButton.gameObject.SetActive(false);
+            DiceButton.interactable = true;
+        }else{
+            AISell();
+            yield return new WaitUntil(()=>!isAIsell);
+            AIRoll();
+
+        }
+        
+        yield return new WaitUntil(() => isEffectiveDice);
+>>>>>>> e217c3af32b51cbb7d58cd532c200caa2c6524d0
 
 
 
@@ -1594,12 +1658,97 @@ public class RunGame : MonoBehaviour
         Debug.Log("游戏已保存到：" + path);
 
     }
+<<<<<<< HEAD
+=======
+
+    string json = JsonConvert.SerializeObject(cachedSaveData, Formatting.Indented, new JsonSerializerSettings
+    {
+        TypeNameHandling = TypeNameHandling.Auto
+    });
+
+    string path = Application.dataPath + "/save/savegame.json";
+    System.IO.File.WriteAllText(path, json);
+
+    Debug.Log("游戏已保存到：" + path);
+
+}
+private void AISell(){
+if(difficulty==0){
+    if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
+        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
+    estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
+    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
+}
+
+
+    }
+
+}
+else if(difficulty==1){
+if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
+List<int>l2 = MortagageState(currentPlayer);
+if(l2.Count==0){
+    if(currentPlayer.playerData.assetsList.Count>0){
+        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
+        estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
+    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
+}
+
+    }
+
+
+}
+else{
+int n1=Random.Range(0,l2.Count);
+estateBoard eBoard= currentPlayer.playerData.assetsList[l2[n1]] as estateBoard;
+if(eBoard!=null)
+gameBehaviour.SellEstateBoard(currentPlayer,eBoard);
+else{
+    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n1] as BuyableBoard;
+    gameBehaviour.SellBuyableBoard(currentPlayer,bBoard);
+}
+
+
+}
+}
+
+
+>>>>>>> e217c3af32b51cbb7d58cd532c200caa2c6524d0
 }
 
 
 
 
 
+}
+private List<int> MortagageState(Player player){
+    List<int> l1=new List<int>();
+    int t=0;
+foreach(Board board in currentPlayer.playerData.assetsList){
+estateBoard eBoard= board as estateBoard;
+if(eBoard!=null){
+    if(eBoard.isMortgage)
+    l1.Add(t);
+}else{
+BuyableBoard bBoard= board as BuyableBoard;
+if(bBoard.isMortgage)
+l1.Add(t);
+
+}
+t++;
+}
+
+return l1;
+}
+}
 
 [System.Serializable]
 public class SaveData

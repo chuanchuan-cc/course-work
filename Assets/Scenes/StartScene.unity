@@ -5539,6 +5539,7 @@ MonoBehaviour:
   jailBgm: {fileID: 8300000, guid: 3df09d0287af57a42baddd48bedd4477, type: 3}
   movedirectlyBgm: {fileID: 8300000, guid: d477b4b9427de58458c4884298181f22, type: 3}
   cardBgm: {fileID: 8300000, guid: d42fa3c846f21d14e8ec6222cf1c689b, type: 3}
+  shipBgm: {fileID: 8300000, guid: 7b63ccdb74cad7344819f055a96a8a48, type: 3}
 --- !u!4 &2002038895
 Transform:
   m_ObjectHideFlags: 0
