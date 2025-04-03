@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: cad96de11c9534f46a7a6b00c89f4f65
+guid: cad353ad271270945b2372f639a89082
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2119336335862086239
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_0"
+      213: -3203640915443265523
+    second: phone1-Sheet_0
   - first:
-      213: -8454743271553656000
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_1"
+      213: 5609416903126210531
+    second: phone1-Sheet_1
   - first:
-      213: 4041531446048836416
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_2"
-  - first:
-      213: -2037104450225166863
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_3"
-  - first:
-      213: 6842258792150663148
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_4"
-  - first:
-      213: -1334449235740589751
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_5"
-  - first:
-      213: -3242280745194347527
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_6"
+      213: 5184348672175457103
+    second: phone1-Sheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_0"
+      name: phone1-Sheet_0
       rect:
         serializedVersion: 2
-        x: 208
-        y: 5
-        width: 80
-        height: 86
+        x: 8
+        y: 0
+        width: 52
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a5cc5dc4da9692e0800000000000000
-      internalID: -2119336335862086239
+      spriteID: d00d81f9f816a83d0800000000000000
+      internalID: -3203640915443265523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_2"
+      name: phone1-Sheet_1
       rect:
         serializedVersion: 2
-        x: 298
-        y: 4
-        width: 102
-        height: 96
+        x: 72
+        y: 0
+        width: 65
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,52 +156,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 04bcf4eef67661830800000000000000
-      internalID: 4041531446048836416
+      spriteID: 3e7d8e314f6a8dd40800000000000000
+      internalID: 5609416903126210531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_4"
+      name: phone1-Sheet_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 15
-        width: 64
-        height: 57
+        x: 144
+        y: 0
+        width: 65
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ceffe6f9e1694fe50800000000000000
-      internalID: 6842258792150663148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_5"
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 4
-        width: 71
-        height: 73
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 94104e48d751b7de0800000000000000
-      internalID: -1334449235740589751
+      spriteID: f4349c446a182f740800000000000000
+      internalID: 5184348672175457103
       vertices: []
       indices: 
       edges: []
@@ -222,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6874fee6a7236a74786a5530394cc654
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -231,14 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_0": -2119336335862086239
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_1": -8454743271553656000
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_2": 4041531446048836416
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_3": -2037104450225166863
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_4": 6842258792150663148
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_5": -1334449235740589751
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_6": -3242280745194347527
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

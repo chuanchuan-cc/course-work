@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: cad96de11c9534f46a7a6b00c89f4f65
+guid: 484a26f7e10b5d64ab4ad842b96e29a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2119336335862086239
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_0"
+      213: 5298812042273589833
+    second: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_0"
   - first:
-      213: -8454743271553656000
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_1"
+      213: 4268781680809709995
+    second: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_1"
   - first:
-      213: 4041531446048836416
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_2"
+      213: 6185934960896216528
+    second: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_2"
   - first:
-      213: -2037104450225166863
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_3"
-  - first:
-      213: 6842258792150663148
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_4"
-  - first:
-      213: -1334449235740589751
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_5"
-  - first:
-      213: -3242280745194347527
-    second: "\u56FE\u50CF-\u94B1\u5305-Sheet_6"
+      213: 8530091424840926238
+    second: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_3"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,89 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_0"
+      name: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_0"
       rect:
         serializedVersion: 2
-        x: 208
-        y: 5
-        width: 80
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a5cc5dc4da9692e0800000000000000
-      internalID: -2119336335862086239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_2"
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 4
-        width: 102
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 04bcf4eef67661830800000000000000
-      internalID: 4041531446048836416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_4"
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 15
-        width: 64
+        x: 20
+        y: 22
+        width: 53
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ceffe6f9e1694fe50800000000000000
-      internalID: 6842258792150663148
+      spriteID: 94a87476a79298940800000000000000
+      internalID: 5298812042273589833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u56FE\u50CF-\u94B1\u5305-Sheet_5"
+      name: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_1"
       rect:
         serializedVersion: 2
-        x: 114
-        y: 4
-        width: 71
-        height: 73
+        x: 120
+        y: 22
+        width: 53
+        height: 53
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94104e48d751b7de0800000000000000
-      internalID: -1334449235740589751
+      spriteID: ba19b5c5252cd3b30800000000000000
+      internalID: 4268781680809709995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_2"
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 32
+        width: 53
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd83eb821bd8d550800000000000000
+      internalID: 6185934960896216528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u56FE\u50CF-\u5E3D\u5B502-Sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 22
+        width: 53
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e14cf3fd4f8f06670800000000000000
+      internalID: 8530091424840926238
       vertices: []
       indices: 
       edges: []
@@ -222,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6874fee6a7236a74786a5530394cc654
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -231,14 +222,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_0": -2119336335862086239
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_1": -8454743271553656000
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_2": 4041531446048836416
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_3": -2037104450225166863
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_4": 6842258792150663148
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_5": -1334449235740589751
-      "\u56FE\u50CF-\u94B1\u5305-Sheet_6": -3242280745194347527
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

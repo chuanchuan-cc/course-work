@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "source tree.sln"
+    "dotnet.defaultSolution": "monopoly.sln"
 }
