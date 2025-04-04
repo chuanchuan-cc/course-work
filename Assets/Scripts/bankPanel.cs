@@ -27,6 +27,10 @@ public class bankPanel : MonoBehaviour
   public GameBehaviour gameBehaviour;
   private List<string> operationList= new List<string>();
   private List<Board> mapList;
+  public GameObject bankruptPanel;
+  public Button brSellButton;
+  public Button brmortgageButton;
+  public CanvasGroup brCanvasGroup;
     
 
     void Start()
@@ -50,6 +54,16 @@ public class bankPanel : MonoBehaviour
             
        
        }
+         if (brCanvasGroup == null){
+            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
+       
+            if (brCanvasGroup == null)
+            {
+                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
+            }
+            
+       
+       }
        mapList=RunGame.mapList;
        gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
 
@@ -66,12 +80,21 @@ public class bankPanel : MonoBehaviour
     {
         choosePanel.SetActive(false);
         behaviourPanel.SetActive(false);
+        bankruptPanel.SetActive(false);
         isbanking=false;
     }
     public void setPlayer(Player _player){
         player=_player;
     }
 
+
+public void showbankruptPanel(){
+    bankruptPanel.SetActive(true);
+    StartCoroutine(FadeIn(brCanvasGroup));
+    brmortgageButton.onClick.AddListener(mortgage);
+    brSellButton.onClick.AddListener(sell);
+
+}
 
  public void ShowPanel()
     {
@@ -81,7 +104,7 @@ public class bankPanel : MonoBehaviour
         
 
 
-        StartCoroutine(FadeIn());
+        StartCoroutine(FadeIn(bankCanvasGroup));
 
         sellButton.onClick.AddListener(sell);
         mortgageButton.onClick.AddListener(mortgage);
@@ -99,7 +122,7 @@ public class bankPanel : MonoBehaviour
         
 
 
-        StartCoroutine(behaviourFadeIn());
+        StartCoroutine(FadeIn(interactionCanvasGroup));
         behaviourQuit.onClick.AddListener(quitBehaviour);
           while (generateZone.transform.childCount > 0)
     {
@@ -131,14 +154,14 @@ public class bankPanel : MonoBehaviour
         confirmButton.onClick.AddListener(()=>confirm("makeRemdeem"));
     }
     private void quit(){
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeOut(bankCanvasGroup));
     }
     private IEnumerator PanelDisplay()
     {
         isResult = false;
-        yield return StartCoroutine(FadeIn());
+        yield return StartCoroutine(FadeIn(bankCanvasGroup));
         yield return new WaitUntil(() => isResult);
-        yield return StartCoroutine(FadeOut());
+        yield return StartCoroutine(FadeOut(bankCanvasGroup));
         choosePanel.SetActive(false);
     }
 
@@ -149,7 +172,7 @@ public class bankPanel : MonoBehaviour
         callback?.Invoke(result);
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn(CanvasGroup cg)
     {
         isbanking=true;
      
@@ -157,17 +180,17 @@ public class bankPanel : MonoBehaviour
         float duration = 0.25f;
         float elapsedTime = 0f;
 
-        bankCanvasGroup.interactable = true;
-        bankCanvasGroup.blocksRaycasts = true;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
 
         while (elapsedTime < duration)
         {  
-            bankCanvasGroup.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
+            cg.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
       
-        bankCanvasGroup.alpha = 1;
+        cg.alpha = 1;
        
     }
 private void generateAssets(bool i){
@@ -234,22 +257,22 @@ private void generateAssets(bool i){
 
         }}
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(CanvasGroup cg)
     {
         float duration = 0.25f;
         float elapsedTime = 0f;
 
-        bankCanvasGroup.interactable = false;
-        bankCanvasGroup.blocksRaycasts = false;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
 
         while (elapsedTime < duration)
         {
-            bankCanvasGroup.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
+            cg.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        bankCanvasGroup.alpha = 0;
+        cg.alpha = 0;
         isbanking=false;
      
       
@@ -257,54 +280,14 @@ private void generateAssets(bool i){
         private IEnumerator behaviourPanelDisplay()
     {
         isResult = false;
-        yield return StartCoroutine(behaviourFadeIn());
+        yield return StartCoroutine(FadeIn(interactionCanvasGroup));
         yield return new WaitUntil(() => isResult);
-        yield return StartCoroutine(behaviourFadeOut());
+        yield return StartCoroutine(FadeOut(interactionCanvasGroup));
         behaviourPanel.SetActive(false);
     }
-    private IEnumerator behaviourFadeIn()
-    {
-        isbanking=true;
-     
-
-        float duration = 0.25f;
-        float elapsedTime = 0f;
-
-        interactionCanvasGroup.interactable = true;
-        interactionCanvasGroup.blocksRaycasts = true;
-
-        while (elapsedTime < duration)
-        {  
-            interactionCanvasGroup.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-      
-        interactionCanvasGroup.alpha = 1;
-       
-    }
-
-    private IEnumerator behaviourFadeOut()
-    {
-        float duration = 0.25f;
-        float elapsedTime = 0f;
-
-        interactionCanvasGroup.interactable = false;
-        interactionCanvasGroup.blocksRaycasts = false;
-
-        while (elapsedTime < duration)
-        {
-            interactionCanvasGroup.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        interactionCanvasGroup.alpha = 0;
-        isbanking=false;
-      
-    }
+   
     void quitBehaviour(){
-         StartCoroutine(behaviourFadeOut());
+         StartCoroutine(FadeOut(interactionCanvasGroup));
 
     }
     

@@ -509,7 +509,10 @@ void Update()
       
 
         
-        if (currentPlayer.playerData.isBankrupt)
+
+      
+        yield return new WaitUntil(()=>!isChecking);
+                if (currentPlayer.playerData.isBankrupt)
         {
             playersList.RemoveAt((point-1)%playersList.Count);
         }
@@ -517,10 +520,9 @@ void Update()
         if (playersList.Count == 1)
         {
             break;
+            
         }
-      
-        yield return new WaitUntil(()=>!isChecking);
-        
+
         foreach (Player p in playersList)
         {playerUpdate(p);}
 
@@ -535,6 +537,10 @@ void Update()
         
 
     }
+}
+public void win(){
+    string winner=playersList[0].playerData.name;
+    Broadcast.win(winner);
 }
 public void playerUpdate(Player p){
 
@@ -1215,8 +1221,31 @@ private IEnumerator showBankPanel(){
                     }
 
                     else
-                    {
-                        gameBehaviour.PayRent(player, eBoard);
+                    {if(player.playerData.isAI){
+                        if(player.playerData.money>eBoard.rent){
+                        gameBehaviour.PayRent(player, eBoard);}
+                        else{
+                            AISell();
+
+                        }
+
+                    }
+                    else{
+                        if(player.playerData.money>eBoard.rent){
+                        gameBehaviour.PayRent(player, eBoard);}
+                        else{
+                            if(player.playerData.assetsWorth>eBoard.rent){
+                            bankpanel.showbankruptPanel();
+                            yield return new WaitUntil(()=>player.playerData.money>eBoard.rent);
+                            gameBehaviour.PayRent(player, eBoard);
+                            }
+                            else{
+                                gameBehaviour.bankrupt(player);
+                            }
+
+                        }
+                    }
+                        
                         }
     }
 

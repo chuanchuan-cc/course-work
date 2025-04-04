@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class broadcast : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class broadcast : MonoBehaviour
     public TextMeshProUGUI Text;
     public Player player;
     public bool isBroadcasting;
+    
+    public TextMeshProUGUI wintext;
+    public GameObject winb;
+    public Button goBack;
 
     void Start()
     {
@@ -23,6 +28,18 @@ public class broadcast : MonoBehaviour
         
         SetAlpha(0); 
         gameObject.SetActive(false);
+        goBack.onClick.AddListener(goback);
+        winb.SetActive(false);
+    }
+    private void goback(){
+        SceneManager.LoadScene("StartScene");
+    }
+    public void win(string n){
+        winb.SetActive(true);
+
+        wintext.text=$"{n} is the winner!";
+
+
     }
 
     public void showBroad(Player player)

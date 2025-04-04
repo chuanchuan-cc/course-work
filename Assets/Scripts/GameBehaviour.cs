@@ -17,6 +17,21 @@ public class GameBehaviour: MonoBehaviour
     if(interactionPanel==null)Debug.Log("can't find interaction panel");
     
    }
+    public void bankrupt(Player player){
+        player.playerData.isBankrupt=true;
+        foreach(Board b in player.playerData.assetsList){
+            estateBoard eb = b as estateBoard;
+            if(eb!=null)
+                eb.owner=RunGame.bank;
+            else{
+                BuyableBoard bb = b as BuyableBoard;
+                bb.owner=RunGame.bank;
+            }
+            
+
+        }
+
+    }
 
  
 
@@ -40,20 +55,7 @@ public class GameBehaviour: MonoBehaviour
         }
         
     }
-    private void HandleBankruptcy(Player player)
-    {
-        player.playerData.isBankrupt = true;
-        player.playerData.money = 0;
-        player.playerData.assetsWorth = 0;
-        foreach (estateBoard board in RunGame.mapList){
-            if(board.owner==player){
-                board.owner=RunGame.bank;
-            }
 
-        }
-        player.playerData.assetsList.Clear();
-        Debug.Log($"{player.name} is bankrupt! All assets are repossessed!");
-    }
     public void GoToJail(Player player)
     {
         
@@ -98,6 +100,7 @@ public class GameBehaviour: MonoBehaviour
             else {sellPrice = board.price; }
             player.playerData.money += sellPrice;
             player.playerData.assetsList.Remove(board);
+            board.owner=RunGame.bank;
             Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
         }
         else
@@ -112,6 +115,7 @@ public class GameBehaviour: MonoBehaviour
             board.price=board.initialPrice;
             board.rent=board.baseRent;
             board.improvedLevel=0;
+            board.owner=RunGame.bank;
 
             Debug.Log($"{player.name} cannot sell {board.property} because it has buildings on it!");
         }
@@ -125,6 +129,7 @@ public class GameBehaviour: MonoBehaviour
 }
 public void SellBuyableBoard(Player player,BuyableBoard board){
             int sellPrice;
+            board.owner=RunGame.bank;
             if(board.isMortgage){
                 sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
