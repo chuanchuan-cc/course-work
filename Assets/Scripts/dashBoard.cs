@@ -29,6 +29,15 @@ public class dashBoardConstructor: MonoBehaviour
           
         
     }
+    public void deletePlayer(Player player){
+        DashBoard=GameObject.Find("DashBoard");
+        foreach(Transform child in DashBoard.transform){
+            if(child.name==player.name){
+                Destroy(child.gameObject);
+            }
+        }
+
+    }
 }
 
 

@@ -8,6 +8,8 @@ public class GameBehaviour: MonoBehaviour
 {
     public playerInteractionPanel interactionPanel;
     public bankPanel bankpanel;
+    public dashBoardConstructor dashBoard;
+
 
 
 
@@ -20,7 +22,11 @@ public class GameBehaviour: MonoBehaviour
     
    }
     public void bankrupt(Player player){
+
         player.playerData.isBankrupt=true;
+        dashBoard.deletePlayer(player);
+        Destroy(player.gameObject);
+        RunGame.instance.deletePlayer(player);
         foreach(Board b in player.playerData.assetsList){
             estateBoard eb = b as estateBoard;
             if(eb!=null)
@@ -32,6 +38,8 @@ public class GameBehaviour: MonoBehaviour
             
 
         }
+        RunGame.instance.forceNext();
+
 
     }
 

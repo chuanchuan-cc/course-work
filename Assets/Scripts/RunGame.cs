@@ -511,14 +511,11 @@ void Update()
 
       
         yield return new WaitUntil(()=>!isChecking);
-                if (currentPlayer.playerData.isBankrupt)
-        {
-            playersList.RemoveAt((point-1+playersList.Count)%playersList.Count);
-        }
+        
 
         if (playersList.Count == 1)
         {
-            break;
+            win();
             
         }
 
@@ -537,6 +534,7 @@ void Update()
 
     }
 }
+
 public void win(){
     string winner=playersList[0].playerData.name;
     Broadcast.win(winner);
@@ -553,6 +551,10 @@ public void playerUpdate(Player p){
     {
         Debug.LogError($"找不到 {p.name} 的 PlayerDisplay！");
     }
+
+}
+public void deletePlayer(Player player){
+    playersList.Remove(player);
 
 }
 
@@ -682,9 +684,14 @@ void AIRoll(){
                 }
             }
         }
+        if(currentPlayer!=null)
         playerUpdate(currentPlayer);
         isChecking=false;
         
+    }
+    public void forceNext(){
+        isNext=true;
+        currentPlayer=null;
     }
 
 
@@ -1113,7 +1120,7 @@ private IEnumerator showBankPanel(){
                 else return false;
             }else{
                 //难布尔值
-                return true;
+                return false;
             }
         }else{
             Debug.LogError($"player {player.name} is not AI");
@@ -1130,7 +1137,7 @@ private IEnumerator showBankPanel(){
                 else return false;
             }else{
                 //难布尔值
-                return true;
+                return false;
             }
         }else{
             Debug.LogError($"player {player.name} is not AI");
