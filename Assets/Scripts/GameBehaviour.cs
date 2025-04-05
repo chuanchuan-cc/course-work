@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-
+using UnityEngine.UI;
 
 
 public class GameBehaviour: MonoBehaviour
 {
     public playerInteractionPanel interactionPanel;
+    public bankPanel bankpanel;
+
 
 
 
@@ -45,16 +47,123 @@ public class GameBehaviour: MonoBehaviour
     }
     public void PayMoney(Player player,int amount)
     {
-        if (player.playerData.isBankrupt)return;
+        if (player.playerData.isBankrupt)
+        Debug.LogError("payer is bankrupted");
         if (player.playerData.money >= amount)
         {
             player.playerData.money -= amount;
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
         MusicController.Instance.PlayMoneySound();
-        }
+        }else{
+            StartCoroutine(lackcash(player,amount));
+            
+                    }
+            
+
+        
         
     }
+private IEnumerator lackcash(Player player, int amount){
+    if(player.playerData.isAI){ 
+        if(player.playerData.assetsWorth>amount){                   
+                            while(player.playerData.money<amount)
+                            AISell(player);
+                            PayMoney(player, amount);}
+                            else{
+                            bankrupt(player);}
+                    }
+                    else{
+                        
+                            if(player.playerData.assetsWorth>amount){
+                            bankpanel.showbankruptPanel(player,amount);
+                            yield return new WaitUntil(()=>player.playerData.money>amount);
+                            PayMoney(player, amount);
+                            }
+                            else{
+                                bankrupt(player);
+                            }
+
+                        }
+}
+    public void AISell(Player player){
+        if (player.playerData.assetsList.Count == 0 || player.playerData.assetsWorth <= player.playerData.money) {
+        bankrupt(player);
+        return;}
+else if(RunGame.instance.difficulty==0){
+    if(player.playerData.money<0.15*player.playerData.assetsWorth){
+        int n=Random.Range(0,player.playerData.assetsList.Count);
+    estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+mortageEstateBoard(eBoard);
+else{
+    BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+    mortageBuyableBoard(bBoard);
+}
+
+
+    }
+
+}
+else if(RunGame.instance.difficulty==1){
+if(player.playerData.money<0.15*player.playerData.assetsWorth){
+List<int>l2 = MortagageState(player);
+if(l2.Count==0){
+    if(player.playerData.assetsList.Count>0){
+        int n=Random.Range(0,player.playerData.assetsList.Count);
+        estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
+if(eBoard!=null)
+mortageEstateBoard(eBoard);
+else{
+    BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+    mortageBuyableBoard(bBoard);
+}
+
+    }
+
+
+}
+else{
+int n1=Random.Range(0,l2.Count);
+estateBoard eBoard= player.playerData.assetsList[l2[n1]] as estateBoard;
+if(eBoard!=null)
+SellEstateBoard(eBoard);
+else{
+    BuyableBoard bBoard= player.playerData.assetsList[n1] as BuyableBoard;
+    SellBuyableBoard(bBoard);
+}
+
+
+}
+}
+
+
+}
+
+
+
+
+
+}
+private List<int> MortagageState(Player player){
+    List<int> l1=new List<int>();
+    int t=0;
+foreach(Board board in player.playerData.assetsList){
+estateBoard eBoard= board as estateBoard;
+if(eBoard!=null){
+    if(eBoard.isMortgage)
+    l1.Add(t);
+}else{
+BuyableBoard bBoard= board as BuyableBoard;
+if(bBoard.isMortgage)
+l1.Add(t);
+
+}
+t++;
+}
+
+return l1;
+}
 
     public void GoToJail(Player player)
     {
@@ -86,9 +195,10 @@ public class GameBehaviour: MonoBehaviour
     public void FreezeTurn(Player player, int turns){
         player.playerData.freezeTurn = turns;
     }
-    public void SellEstateBoard(Player player, estateBoard board)
+    public void SellEstateBoard(estateBoard board)
 {
-    if (player.playerData.assetsList.Contains(board))
+    if (board.owner is PlayerData playerOwner){
+    if (playerOwner.assetsList.Contains(board))
     {
         if (board.improvedLevel == 0) 
         {
@@ -98,70 +208,64 @@ public class GameBehaviour: MonoBehaviour
 
             }
             else {sellPrice = board.price; }
-            player.playerData.money += sellPrice;
-            player.playerData.assetsList.Remove(board);
+            playerOwner.money += sellPrice;
+            playerOwner.assetsList.Remove(board);
             board.owner=RunGame.bank;
-            Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
+            Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");
         }
         else
         {
-            int sellPrice;
-            if(board.isMortgage){
-                sellPrice=((board.price-board.initialPrice)%2==0)? (board.price-board.initialPrice)/2:((board.price-board.initialPrice)-1)/2;
-
-            }
-            else {sellPrice = board.price-board.initialPrice; }
-            player.playerData.money += sellPrice;
-            board.price=board.initialPrice;
-            board.rent=board.baseRent;
-            board.improvedLevel=0;
-            board.owner=RunGame.bank;
-
-            Debug.Log($"{player.name} cannot sell {board.property} because it has buildings on it!");
+            tearBuilding(board);
+          
         }
     }
     else
     {
         
-        Debug.Log($"{player.name} does not own {board.property}, so they cannot sell it!");
-    }
+        Debug.Log($"{playerOwner.name} does not own {board.property}, so they cannot sell it!");
+    }}
 
 }
-public void SellBuyableBoard(Player player,BuyableBoard board){
+public void SellBuyableBoard(BuyableBoard board){
             int sellPrice;
-            board.owner=RunGame.bank;
+            if( board.owner is PlayerData playerOwner){
             if(board.isMortgage){
                 sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
             }
             else {sellPrice = board.price; }
-            player.playerData.money += sellPrice;
-            player.playerData.assetsList.Remove(board);
-            Debug.Log($"{player.name} sold {board.property} for £{sellPrice}.");
+            playerOwner.money += sellPrice;
+            playerOwner.assetsList.Remove(board);
+            Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");}
+board.owner=RunGame.bank;
+
+}
+public void mortageEstateBoard(estateBoard board){
+
+    board.isMortgage=true;
+    if( board.owner is PlayerData playerOwner)
+    playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
 
 }
-public void mortageEstateBoard(Player player,estateBoard board){
+public void mortageBuyableBoard(BuyableBoard board){
     board.isMortgage=true;
-    player.playerData.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
-
-
-}
-public void mortageBuyableBoard(Player player,BuyableBoard board){
-    board.isMortgage=true;
-    player.playerData.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    if( board.owner is PlayerData playerOwner)
+    playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
     }
     
-    public void remdeemEstateBoard(Player player,estateBoard board){
+    public void remdeemEstateBoard(estateBoard board){
     board.isMortgage=false;
-    player.playerData.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    if( board.owner is PlayerData playerOwner)
+    playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
 
 }
-public void remdeemBuyableBoard(Player player,BuyableBoard board){
+public void remdeemBuyableBoard(BuyableBoard board){
     board.isMortgage=false;
-    player.playerData.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    if( board.owner is PlayerData playerOwner)
+    playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
 
 }
@@ -255,6 +359,12 @@ public void remdeemBuyableBoard(Player player,BuyableBoard board){
                 
                 Debug.Log($"{player.name} paid £{board.rent} in rent to {_owner}!");
             }
+        }
+        public void tearBuilding(estateBoard board){
+            board.improvedLevel-=1;
+            if(board.owner is PlayerData playerOwner)
+            playerOwner.money+=(costCalculer(board))/2;
+            RunGame.bank.money-=(costCalculer(board))/2;
         }
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)

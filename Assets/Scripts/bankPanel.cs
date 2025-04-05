@@ -31,6 +31,8 @@ public class bankPanel : MonoBehaviour
   public Button brSellButton;
   public Button brmortgageButton;
   public CanvasGroup brCanvasGroup;
+  public TextMeshProUGUI brtext;
+
     
 
     void Start()
@@ -88,11 +90,23 @@ public class bankPanel : MonoBehaviour
     }
 
 
-public void showbankruptPanel(){
+public void showbankruptPanel(Player p,int i){
+    brtext.text=$"lack of cash, {p.name}, you need at least {i}$";
     bankruptPanel.SetActive(true);
+    StartCoroutine(sbp(p,i));
+
+
+}
+private IEnumerator sbp(Player p,int i){
+    Player saveplayer=player;
+    player=p;
     StartCoroutine(FadeIn(brCanvasGroup));
     brmortgageButton.onClick.AddListener(mortgage);
     brSellButton.onClick.AddListener(sell);
+    yield return new WaitUntil(()=>p.playerData.money>i);
+    StartCoroutine(FadeOut(brCanvasGroup));
+    player=saveplayer;
+    bankruptPanel.SetActive(false);
 
 }
 
@@ -135,8 +149,7 @@ public void showbankruptPanel(){
         
 
         ShowBehaviourPanel("which estate you are willing to sell");
-        generateAssets(false);
-        generateAssets(true);
+        generateSellableAssets();
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeSell"));
       
@@ -257,6 +270,88 @@ private void generateAssets(bool i){
 
         }}
 
+        private void generateSellableAssets(){
+            List<estateBoard> el=new List<estateBoard>();
+            foreach(Board _board in player.playerData.assetsList){
+             
+            estateBoard eB = _board as estateBoard;
+            if(eB!=null){
+                
+            el.RemoveAll(old => old.group == eB.group && old.improvedLevel < eB.improvedLevel);
+
+            bool hasHigher = el.Exists(old => old.group == eB.group && old.improvedLevel > eB.improvedLevel);
+            if (!hasHigher) {
+                el.Add(eB);
+            }
+                    
+                
+            
+            
+            
+            
+            }
+            else{
+           
+
+            BuyableBoard bBoard = _board as BuyableBoard;
+                GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
+                o.name = bBoard.property;
+                
+                TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+
+                property.text=$"property: {bBoard.property}";
+
+                price.text=$"price: {bBoard.price}";
+
+                rent.text=$"rent: {bBoard.rent}";
+                group.text=$"group: {bBoard.group}";
+                 if(bBoard.isMortgage){
+                    mortgageState.text="mortgaged";}
+                    else{
+                        mortgageState.text="unmortgaged";
+                    }}
+            
+            
+            
+            
+            
+            }
+          
+            
+            foreach(estateBoard eBoard in el){
+            GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
+                        o.name = eBoard.property;
+                    TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+
+                    property.text=$"property: {eBoard.property}";
+
+                    price.text=$"price: {eBoard.price}";
+
+                    rent.text=$"rent: {eBoard.rent}";
+                    group.text=$"color: {eBoard.group}";
+                    if(eBoard.isMortgage){
+                    mortgageState.text="mortgaged";}
+                    else{
+                        mortgageState.text="unmortgaged";
+                    }
+            }
+            
+            
+            
+            
+            
+            }
+
+
+
     private IEnumerator FadeOut(CanvasGroup cg)
     {
         float duration = 0.25f;
@@ -315,11 +410,13 @@ private void generateAssets(bool i){
                         estateBoard eBoard = board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
-                        gameBehaviour.SellBuyableBoard(player,bBoard);}
-                        else{
-                            gameBehaviour.SellEstateBoard(player,eBoard);
+                        gameBehaviour.SellBuyableBoard(bBoard);}
+                        else if(eBoard.improvedLevel!=0){
+                            gameBehaviour.tearBuilding(eBoard);
                             
                         }
+                        else
+                        gameBehaviour.SellEstateBoard(eBoard);
 
 
                     
@@ -338,9 +435,9 @@ private void generateAssets(bool i){
                         estateBoard eBoard = board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
-                        gameBehaviour.mortageBuyableBoard(player,bBoard);}
+                        gameBehaviour.mortageBuyableBoard(bBoard);}
                         else{
-                            gameBehaviour.mortageEstateBoard(player,eBoard);
+                            gameBehaviour.mortageEstateBoard(eBoard);
                             
                         }
 
@@ -359,9 +456,9 @@ private void generateAssets(bool i){
                         estateBoard eBoard = board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
-                        gameBehaviour.remdeemBuyableBoard(player,bBoard);}
+                        gameBehaviour.remdeemBuyableBoard(bBoard);}
                         else{
-                            gameBehaviour.remdeemEstateBoard(player,eBoard);
+                            gameBehaviour.remdeemEstateBoard(eBoard);
                             
                         }
 

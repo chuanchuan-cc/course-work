@@ -2116,6 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPanel: {fileID: 1781051939}
+  bankpanel: {fileID: 0}
 --- !u!4 &275860658
 Transform:
   m_ObjectHideFlags: 0
@@ -6425,6 +6426,7 @@ MonoBehaviour:
   brSellButton: {fileID: 1158466344}
   brmortgageButton: {fileID: 1748824542}
   brCanvasGroup: {fileID: 0}
+  brtext: {fileID: 60913895}
 --- !u!1 &802199563
 GameObject:
   m_ObjectHideFlags: 0

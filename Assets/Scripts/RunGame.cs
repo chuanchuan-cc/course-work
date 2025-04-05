@@ -62,7 +62,7 @@ public class RunGame : MonoBehaviour
     public Button menusBack;
     public int oldPosNo;
 
-    private bool isAIsell=false;
+    
 
     public Slider musicSlider;
  
@@ -451,8 +451,7 @@ void Update()
             NextButton.gameObject.SetActive(false);
             DiceButton.interactable = true;
         }else{
-            AISell();
-            yield return new WaitUntil(()=>!isAIsell);
+            gameBehaviour.AISell(currentPlayer);
             AIRoll();
 
         }
@@ -514,7 +513,7 @@ void Update()
         yield return new WaitUntil(()=>!isChecking);
                 if (currentPlayer.playerData.isBankrupt)
         {
-            playersList.RemoveAt((point-1)%playersList.Count);
+            playersList.RemoveAt((point-1+playersList.Count)%playersList.Count);
         }
 
         if (playersList.Count == 1)
@@ -799,7 +798,7 @@ void AIRoll(){
         if (card.isMove)
         {
             if(card.steps!=0){
-                Board target= mapList[player.playerData.positionNo+card.steps];
+                Board target= mapList[(player.playerData.positionNo+card.steps)%40];
             
                 player.directlyMove(target);
                 if(player.playerData.positionNo<oldPosNo&&card.steps>0)
@@ -1208,7 +1207,7 @@ private IEnumerator showBankPanel(){
                         
                     }else if(eBoard.owner.GetName()==player.playerData.name){
                         Debug.Log("调用建筑脚本");
-                        if(PlayerOwnsFullSet(player,eBoard)){
+                        if(canBuild(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
                             
                             
@@ -1221,30 +1220,8 @@ private IEnumerator showBankPanel(){
                     }
 
                     else
-                    {if(player.playerData.isAI){
-                        if(player.playerData.money>eBoard.rent){
-                        gameBehaviour.PayRent(player, eBoard);}
-                        else{
-                            AISell();
-
-                        }
-
-                    }
-                    else{
-                        if(player.playerData.money>eBoard.rent){
-                        gameBehaviour.PayRent(player, eBoard);}
-                        else{
-                            if(player.playerData.assetsWorth>eBoard.rent){
-                            bankpanel.showbankruptPanel();
-                            yield return new WaitUntil(()=>player.playerData.money>eBoard.rent);
-                            gameBehaviour.PayRent(player, eBoard);
-                            }
-                            else{
-                                gameBehaviour.bankrupt(player);
-                            }
-
-                        }
-                    }
+                    {
+                        gameBehaviour.PayRent(currentPlayer,eBoard);
                         
                         }
     }
@@ -1326,25 +1303,33 @@ private IEnumerator showBankPanel(){
         yield return null;
         }
     }
-private bool PlayerOwnsFullSet(Player player, estateBoard board)
+private bool canBuild(Player player, estateBoard board)
 {
+    int minlevel=5;
     Debug.Log("同色套装判断");
     foreach (Board b in RunGame.mapList)
     {estateBoard i = b as estateBoard;
     if(i!=null){
-        if (i.group == board.group && i.owner.GetName() != player.playerData.name)
+        if (i.group == board.group)
         {
-            Debug.Log($"同色判断失败，对比组owner为 {board.owner.GetName()} , 失败者为{i.owner.GetName()} ");
+           
+            minlevel=(minlevel>i.improvedLevel)?i.improvedLevel:minlevel;
+            if(i.owner.GetName() != player.playerData.name)
             return false;
- 
+
         }
        
     }else{
+        
         continue;
     }
     }
-    
+    if (board.improvedLevel >= 5)
+    return false;
+    else if( board.improvedLevel<minlevel+1)
     return true;
+    else
+    return false;
 }
 private void build(){
         estateBoard eBoard=mapList[currentPlayer.playerData.positionNo] as estateBoard;
@@ -1444,81 +1429,8 @@ public void SaveGame(){
     Debug.Log("游戏已保存到：" + path);
 
 }
-private void AISell(){
-if(difficulty==0){
-    if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
-        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
-    estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
-if(eBoard!=null)
-gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
-else{
-    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
-    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
-}
 
 
-    }
-
-}
-else if(difficulty==1){
-if(currentPlayer.playerData.money<0.15*currentPlayer.playerData.assetsWorth){
-List<int>l2 = MortagageState(currentPlayer);
-if(l2.Count==0){
-    if(currentPlayer.playerData.assetsList.Count>0){
-        int n=Random.Range(0,currentPlayer.playerData.assetsList.Count);
-        estateBoard eBoard= currentPlayer.playerData.assetsList[n] as estateBoard;
-if(eBoard!=null)
-gameBehaviour.mortageEstateBoard(currentPlayer,eBoard);
-else{
-    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n] as BuyableBoard;
-    gameBehaviour.mortageBuyableBoard(currentPlayer,bBoard);
-}
-
-    }
-
-
-}
-else{
-int n1=Random.Range(0,l2.Count);
-estateBoard eBoard= currentPlayer.playerData.assetsList[l2[n1]] as estateBoard;
-if(eBoard!=null)
-gameBehaviour.SellEstateBoard(currentPlayer,eBoard);
-else{
-    BuyableBoard bBoard= currentPlayer.playerData.assetsList[n1] as BuyableBoard;
-    gameBehaviour.SellBuyableBoard(currentPlayer,bBoard);
-}
-
-
-}
-}
-
-
-}
-
-
-
-
-
-}
-private List<int> MortagageState(Player player){
-    List<int> l1=new List<int>();
-    int t=0;
-foreach(Board board in currentPlayer.playerData.assetsList){
-estateBoard eBoard= board as estateBoard;
-if(eBoard!=null){
-    if(eBoard.isMortgage)
-    l1.Add(t);
-}else{
-BuyableBoard bBoard= board as BuyableBoard;
-if(bBoard.isMortgage)
-l1.Add(t);
-
-}
-t++;
-}
-
-return l1;
-}
 }
 
 [System.Serializable]
