@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
                 { 
 
                     _rigidbody.position = new Vector2(interpolatedPos.x, interpolatedPos.y);
-                    elapsedTime += Time.deltaTime;
+                    elapsedTime += Time.deltaTime/2;
                     yield return null;
                 }
                 else
@@ -254,9 +254,10 @@ public class Player : MonoBehaviour
             _rigidbody.position = targetPos;
             //播放格子下沉动画
             //将等待改为动画播放完毕
+            if(this.name!="ship"){
             StartCoroutine(moveBoardAnimation());
             StartCoroutine(tileGenerator.BoardAnimation(playerData.positionNo));
-            yield return new WaitUntil(() => !tileGenerator.isAnimationBoard);
+            yield return new WaitUntil(() => !tileGenerator.isAnimationBoard);}
 
             //yield return new WaitForSeconds(0.2f);
 

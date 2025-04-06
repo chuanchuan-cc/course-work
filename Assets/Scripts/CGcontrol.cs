@@ -36,7 +36,7 @@ public class CGcontrol : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("点击屏幕，立即关闭卡片 UI");
+                Debug.Log("click, close the display");
                 break;
             }
             timer += Time.deltaTime;

@@ -6870,7 +6870,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886988666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000033639}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000013933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6880,7 +6880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0012202, y: 0.000027396}
+  m_AnchoredPosition: {x: -9.0131, y: 363}
   m_SizeDelta: {x: 1424.99, y: 338.006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886988669
@@ -7572,8 +7572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 453.18, y: 663.8401}
-  m_SizeDelta: {x: 1653.619, y: 124.464}
+  m_AnchoredPosition: {x: 389.188, y: 663.8401}
+  m_SizeDelta: {x: 1525.633, y: 124.464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082690163
 MonoBehaviour:
@@ -7606,7 +7606,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 2
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 460}
@@ -10036,7 +10036,6 @@ MonoBehaviour:
   keepGame: 1
   currentPlayer: {fileID: 0}
   cgControl: {fileID: 0}
-  point: 0
   DiceButton: {fileID: 1563336185}
   NextButton: {fileID: 1605426556}
   isEffectiveDice: 0
@@ -10066,6 +10065,7 @@ MonoBehaviour:
   menusSave: {fileID: 218979680}
   menusBack: {fileID: 616574491}
   oldPosNo: 0
+  nextPlayer: {fileID: 0}
   musicSlider: {fileID: 407040372}
 --- !u!1 &1605426554
 GameObject:

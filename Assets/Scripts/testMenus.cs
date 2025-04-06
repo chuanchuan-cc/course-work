@@ -18,6 +18,7 @@ public class testMenus : MonoBehaviour
     public bool isCheating=false;
     private Player player;
     private List<Board> maplist;
+    private List<Player>playerlist;
 
 
 
@@ -57,11 +58,14 @@ public void cheating(Player _player){
         close();
     }else{
         showMenus(_player);
+        RunGame.instance.cheat();
     }
 
 }
-public void setmap(List<Board> _maplist){
+public void setmapplayer(List<Board> _maplist,List<Player> _playerlist){
     maplist=_maplist;
+    playerlist=_playerlist;
+
 }
 private void SomethingForNothing(){
     foreach(Board board in maplist){
@@ -85,6 +89,7 @@ private void ShowMeTheMoney(){
 
 }
 private void OperationCWAL(){
+    /*
     Board board=maplist[player.playerData.positionNo];
     estateBoard eBoard=board as estateBoard;
     int inMoney=player.playerData.money;
@@ -101,6 +106,20 @@ private void OperationCWAL(){
         Debug.Log("can not build in this property");
     }
     player.playerData.money=inMoney;
+    */
+    foreach(Player p in playerlist){
+        if(p.name!=player.name){
+            if(p.playerData.money>=100){
+            p.playerData.money-=100;
+            p.playerData.assetsWorth-=100;}
+            else{
+                p.playerData.money-=10;
+            p.playerData.assetsWorth-=10;
+            }
+        }
+    }
+
+
 
 
 }

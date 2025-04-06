@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class dashBoardConstructor: MonoBehaviour
 {
@@ -7,7 +9,7 @@ public class dashBoardConstructor: MonoBehaviour
     public GameObject DashBoard; 
     
 
-    void start(){
+    void Start(){
         
     }
 
@@ -29,15 +31,20 @@ public class dashBoardConstructor: MonoBehaviour
           
         
     }
-    public void deletePlayer(Player player){
-        DashBoard=GameObject.Find("DashBoard");
-        foreach(Transform child in DashBoard.transform){
-            if(child.name==player.name){
-                Destroy(child.gameObject);
-            }
-        }
+    public void RebuildLayout()
+{
+    if (DashBoard==null) return;
+    RectTransform rt=DashBoard.GetComponent<RectTransform>();
+    if (rt!=null)
+        StartCoroutine(RebuildCoroutine(rt));
+}
 
-    }
+private IEnumerator RebuildCoroutine(RectTransform rt)
+{
+    yield return null;
+    LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+}
+
 }
 
 

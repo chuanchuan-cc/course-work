@@ -389,7 +389,7 @@ private void generateAssets(bool i){
     void confirm(string i){
         if (operationList == null)
     {
-        Debug.LogError("operationList 未初始化！");
+
         return;
     }
         foreach (Transform child in generateZone.transform)
@@ -397,7 +397,7 @@ private void generateAssets(bool i){
             Toggle toggle = child.GetComponent<Toggle>();
             if (toggle != null && toggle.isOn)
             {
-                Debug.Log($"已添加 {child.name} 进入操作列表");
+    
                 operationList.Add(child.name); 
             }
         }
@@ -470,7 +470,7 @@ private void generateAssets(bool i){
 
            break;
            default:
-        Debug.LogWarning($"bankPanelConfirmError: {i}");
+
         break;
             
         }

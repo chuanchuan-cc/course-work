@@ -8,7 +8,7 @@ public class GameBehaviour: MonoBehaviour
 {
     public playerInteractionPanel interactionPanel;
     public bankPanel bankpanel;
-    public dashBoardConstructor dashBoard;
+
 
 
 
@@ -24,7 +24,7 @@ public class GameBehaviour: MonoBehaviour
     public void bankrupt(Player player){
 
         player.playerData.isBankrupt=true;
-        dashBoard.deletePlayer(player);
+        player.gameObject.SetActive(false);
         Destroy(player.gameObject);
         RunGame.instance.deletePlayer(player);
         foreach(Board b in player.playerData.assetsList){
@@ -38,7 +38,7 @@ public class GameBehaviour: MonoBehaviour
             
 
         }
-        RunGame.instance.forceNext();
+
 
 
     }
@@ -301,12 +301,12 @@ public void remdeemBuyableBoard(BuyableBoard board){
             if(board.group=="Utilities"){
               if(NumberOfOwnAssets(player,board)==0){
                  int rent=4*rollRent();
-                 Debug.Log($"你摇出了rent {rent}");
+                 Debug.Log($"roll rent {rent}");
                  board.setRent(rent);  
 
                      }    else{       
         int rent=10*rollRent();
-                       Debug.Log($"你摇出了rent {rent}");
+                       Debug.Log($"roll rent {rent}");
                                  board.setRent(rent);
            }  
             }else if(board.group=="Station"){
@@ -386,7 +386,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
 
 
 
-        Debug.Log("调用建筑特化操作面板");
+      
         bool? userChoice=null;
         if(board.improvedLevel < 5){
         int buildCost = costCalculer(board);

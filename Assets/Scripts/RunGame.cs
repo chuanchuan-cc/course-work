@@ -24,7 +24,7 @@ public class RunGame : MonoBehaviour
     public Player currentPlayer;
     public CGcontrol cgControl;
 
-    public int point;
+
     public Button DiceButton;
     public Button NextButton;
     public bool isEffectiveDice = false;
@@ -61,6 +61,7 @@ public class RunGame : MonoBehaviour
     public Button menusSave;
     public Button menusBack;
     public int oldPosNo;
+    public Player nextPlayer=null;
 
     
 
@@ -183,7 +184,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     opportunityCards=saveData.oCards;
     OpportunityNo=saveData.OpportunityNo;
     mapList = saveData.allBoards;
-    point=saveData.cPoint;
+    nextPlayer=saveData.savePlayer;
     isAI=saveData.isai;
     difficulty=saveData.diff;
 
@@ -257,11 +258,11 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         //测试用
         isAI=true;
         difficulty=1;
-        playerNumber=6;
+        playerNumber=3;
 
 
 
-        point = 0;
+     
     //initialize player
 
 
@@ -360,7 +361,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     StartCoroutine(GameLoop());
     bankpanel.setmap(mapList);
 
-    testmenus.setmap(mapList);
+    
 
    
     
@@ -417,8 +418,12 @@ void Update()
 
         
         isEffectiveDice=false;
-
-        currentPlayer = playersList[point];
+        if(nextPlayer==null)
+        currentPlayer = playersList[0];
+        else
+        currentPlayer=nextPlayer;
+        nextPlayer=playersList[(playersList.IndexOf(currentPlayer)+1)%playersList.Count];
+        Debug.Log($"currently player is {currentPlayer.name}");
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
 
@@ -433,7 +438,7 @@ void Update()
 
 
    
-        point = (point + 1) % playersList.Count;
+
         
         if (currentPlayer.playerData.freezeTurn > 0)
         {
@@ -451,7 +456,7 @@ void Update()
             NextButton.gameObject.SetActive(false);
             DiceButton.interactable = true;
         }else{
-            gameBehaviour.AISell(currentPlayer);
+          
             AIRoll();
 
         }
@@ -468,7 +473,7 @@ void Update()
         if(roll==-1){
             cgControl.CGDisplay("GoToJail");
             gameBehaviour.GoToJail(currentPlayer);
-            yield return new WaitUntil(()=>!currentPlayer.isMoving);
+          
             
         }else if (!currentPlayer.isMoving) 
         {
@@ -526,9 +531,8 @@ void Update()
         
         
         NextButton.interactable=true;
-        Debug.Log($"{currentPlayer.playerData.name}当前圈数为{currentPlayer.playerData.circle}");
 
-        yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI);
+        yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI||currentPlayer.playerData.isBankrupt);
 
         
 
@@ -549,13 +553,19 @@ public void playerUpdate(Player p){
     }
     else
     {
-        Debug.LogError($"can not find  {p.name}'s PlayerDisplay！");
+        Debug.LogError($"can not find  {p.name}'s PlayerDisplay");
     }
 
 }
+
 public void deletePlayer(Player player){
     playersList.Remove(player);
-
+Transform child = dashBoard.transform.Find(player.name);
+if (child != null)
+{
+    Destroy(child.gameObject);
+}
+BoardConstructor.RebuildLayout();
 }
 
 
@@ -689,10 +699,7 @@ void AIRoll(){
         isChecking=false;
         
     }
-    public void forceNext(){
-        isNext=true;
-        currentPlayer=null;
-    }
+
 
 
     IEnumerator DrawCard(Player player,Board board)
@@ -944,14 +951,13 @@ void AIRoll(){
         int detlaPrice=auctionPrice/10;
         int totalNum=playersList.Count-1;
         List<Player> auctionList=new List<Player>();
-        for(int i=0;i<totalNum;i++){
-            int t=(point+i)%playersList.Count;
-            Player p =playersList[t];
+        foreach(Player p in playersList){
+            
             //圈数检测禁用，测试
             // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
 
             //开启检测
-            if(p.playerData.circle>1) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>1 && p.name!=currentPlayer.name) auctionList.Add(p);
             else continue;
         }
 
@@ -1012,13 +1018,12 @@ void AIRoll(){
         int detlaPrice=auctionPrice/10;
         int totalNum=playersList.Count-1;
         List<Player> auctionList=new List<Player>();
-        for(int i=0;i<totalNum;i++){
-            int t=(point+i)%playersList.Count;
-            Player p =playersList[t];
+        foreach(Player p in playersList){
+            
             //圈数检测禁用，测试
             // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
             //开启检测
-            if(p.playerData.circle>1) auctionList.Add(playersList[t]);
+            if(p.playerData.circle>1 && p.name!=currentPlayer.name) auctionList.Add(p);
             else continue;
         }
 
@@ -1408,7 +1413,7 @@ public void AutoSaveGame()
 
     cachedSaveData.lCards = new List<Card>(luckCards);
     cachedSaveData.oCards = new List<Card>(opportunityCards);
-    cachedSaveData.cPoint = point;
+    cachedSaveData.savePlayer = currentPlayer;
     cachedSaveData.freeParkingMoney = freeParkMoney;
     cachedSaveData.luckNo = luckNo;
     cachedSaveData.OpportunityNo = OpportunityNo;
@@ -1436,6 +1441,9 @@ public void SaveGame(){
     Debug.Log("game was saved in" + path);
 
 }
+public void cheat(){
+    testmenus.setmapplayer(mapList,playersList);
+}
 
 
 }
@@ -1448,7 +1456,7 @@ public class SaveData
     public List<Board> allBoards;
   
 
-    public int cPoint;
+    public Player savePlayer;
 
     public int freeParkingMoney;
     public int luckNo;
