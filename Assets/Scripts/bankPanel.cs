@@ -225,9 +225,9 @@ private void generateAssets(bool i){
                 GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
                 o.name = bBoard.property;
                 
-                TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI property= o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
@@ -242,13 +242,11 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                Toggle toggle = o.GetComponent<Toggle>();
-                Image bgImage = o.GetComponent<Image>();
-                Color originalColor = bgImage.color;
-                Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
-                toggle.onValueChanged.AddListener((isOn) => {
-                bgImage.color = isOn ? highlightColor : originalColor;
-                });  
+                    Toggle toggle= o.GetComponent<Toggle>();
+                    Image bgImage= o.GetComponent<Image>();
+                    Color originalColor= bgImage.color;
+                    Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});   
                 }}
             
                     
@@ -257,8 +255,8 @@ private void generateAssets(bool i){
                         GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
                         o.name = eBoard.property;
                     TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
@@ -273,13 +271,11 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                    Toggle toggle = o.GetComponent<Toggle>();
-                    Image bgImage = o.GetComponent<Image>();
-                    Color originalColor = bgImage.color;
-                    Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
-                    toggle.onValueChanged.AddListener((isOn) => {
-                    bgImage.color = isOn ? highlightColor : originalColor;
-                    });  
+                    Toggle toggle= o.GetComponent<Toggle>();
+                    Image bgImage= o.GetComponent<Image>();
+                    Color originalColor= bgImage.color;
+                    Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});    
                     }
                     }
                     }
@@ -321,9 +317,9 @@ private void generateAssets(bool i){
                 GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
                 o.name = bBoard.property;
                 
-                TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI property= o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
@@ -338,13 +334,11 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                Toggle toggle = o.GetComponent<Toggle>();
-                Image bgImage = o.GetComponent<Image>();
-                Color originalColor = bgImage.color;
-                Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
-                toggle.onValueChanged.AddListener((isOn) => {
-                bgImage.color = isOn ? highlightColor : originalColor;
-                });      
+                    Toggle toggle= o.GetComponent<Toggle>();
+                    Image bgImage= o.GetComponent<Image>();
+                    Color originalColor= bgImage.color;
+                    Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});    
                     
                     
                     }
@@ -361,8 +355,8 @@ private void generateAssets(bool i){
                     GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
                     o.name = eBoard.property;
                     TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
 
@@ -377,13 +371,11 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                    Toggle toggle = o.GetComponent<Toggle>();
-                    Image bgImage = o.GetComponent<Image>();
-                    Color originalColor = bgImage.color;
-                    Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
-                    toggle.onValueChanged.AddListener((isOn) => {
-                    bgImage.color = isOn ? highlightColor : originalColor;
-                    });  
+                    Toggle toggle= o.GetComponent<Toggle>();
+                    Image bgImage= o.GetComponent<Image>();
+                    Color originalColor= bgImage.color;
+                    Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});  
             }
             
             
