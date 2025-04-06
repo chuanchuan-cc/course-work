@@ -566,6 +566,7 @@ if (child != null)
     Destroy(child.gameObject);
 }
 BoardConstructor.RebuildLayout();
+isNext=true;
 }
 
 

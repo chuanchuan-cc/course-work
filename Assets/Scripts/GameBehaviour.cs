@@ -38,6 +38,7 @@ public class GameBehaviour: MonoBehaviour
             
 
         }
+        RunGame.instance.isNext = true;
 
 
 
