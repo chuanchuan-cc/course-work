@@ -289,14 +289,16 @@ public void remdeemBuyableBoard(BuyableBoard board){
         
         public void AddProperty(Player player, estateBoard board)
         {
+            if(!player.playerData.assetsList.Contains(board)){
             Debug.Log($"{player.name} buy {board.property}");
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
-            player.playerData.assetsList.Add(board);
+            player.playerData.assetsList.Add(board);}
 
         }
         public void AddBuyable(Player player, BuyableBoard board)
         {
+            if(!player.playerData.assetsList.Contains(board)){
             Debug.Log($"{player.name} buy {board.property}");
 
             if(board.group=="Utilities"){
@@ -333,7 +335,7 @@ public void remdeemBuyableBoard(BuyableBoard board){
             player.playerData.assetsList.Add(board);
 
 
-        }
+        }}
        
    
         public void PayRent(Player player, estateBoard board)

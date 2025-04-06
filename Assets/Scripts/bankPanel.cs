@@ -33,6 +33,7 @@ public class bankPanel : MonoBehaviour
   public CanvasGroup brCanvasGroup;
   public TextMeshProUGUI brtext;
 
+
     
 
     void Start()
@@ -207,7 +208,11 @@ private IEnumerator sbp(Player p,int i){
        
     }
 private void generateAssets(bool i){
-      
+            
+            foreach (Transform child in generateZone.transform)
+            {
+            Destroy(child.gameObject);
+            }
 
         
             foreach(Board _board in player.playerData.assetsList){
@@ -237,6 +242,13 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
+                Toggle toggle = o.GetComponent<Toggle>();
+                Image bgImage = o.GetComponent<Image>();
+                Color originalColor = bgImage.color;
+                Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
+                toggle.onValueChanged.AddListener((isOn) => {
+                bgImage.color = isOn ? highlightColor : originalColor;
+                });  
                 }}
             
                     
@@ -261,6 +273,13 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
+                    Toggle toggle = o.GetComponent<Toggle>();
+                    Image bgImage = o.GetComponent<Image>();
+                    Color originalColor = bgImage.color;
+                    Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
+                    toggle.onValueChanged.AddListener((isOn) => {
+                    bgImage.color = isOn ? highlightColor : originalColor;
+                    });  
                     }
                     }
                     }
@@ -271,6 +290,11 @@ private void generateAssets(bool i){
         }}
 
         private void generateSellableAssets(){
+            foreach (Transform child in generateZone.transform)
+            {
+            Destroy(child.gameObject);
+            }
+            
             List<estateBoard> el=new List<estateBoard>();
             foreach(Board _board in player.playerData.assetsList){
              
@@ -313,7 +337,18 @@ private void generateAssets(bool i){
                     mortgageState.text="mortgaged";}
                     else{
                         mortgageState.text="unmortgaged";
-                    }}
+                    }
+                Toggle toggle = o.GetComponent<Toggle>();
+                Image bgImage = o.GetComponent<Image>();
+                Color originalColor = bgImage.color;
+                Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
+                toggle.onValueChanged.AddListener((isOn) => {
+                bgImage.color = isOn ? highlightColor : originalColor;
+                });      
+                    
+                    
+                    }
+                
             
             
             
@@ -323,8 +358,8 @@ private void generateAssets(bool i){
           
             
             foreach(estateBoard eBoard in el){
-            GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
-                        o.name = eBoard.property;
+                    GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
+                    o.name = eBoard.property;
                     TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI price = o.transform.Find("price").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI rent = o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
@@ -342,6 +377,13 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
+                    Toggle toggle = o.GetComponent<Toggle>();
+                    Image bgImage = o.GetComponent<Image>();
+                    Color originalColor = bgImage.color;
+                    Color highlightColor = new Color(254f / 255f, 225f / 255f, 131f / 255f);
+                    toggle.onValueChanged.AddListener((isOn) => {
+                    bgImage.color = isOn ? highlightColor : originalColor;
+                    });  
             }
             
             
@@ -387,11 +429,13 @@ private void generateAssets(bool i){
     }
     
     void confirm(string i){
+        
         if (operationList == null)
     {
 
         return;
     }
+    operationList.Clear();
         foreach (Transform child in generateZone.transform)
         {
             Toggle toggle = child.GetComponent<Toggle>();
@@ -425,8 +469,8 @@ private void generateAssets(bool i){
 
             }
 
-
-                 break;
+                generateSellableAssets();
+                break;
                         
             case "makeMortgage":
                foreach( string str in operationList){
@@ -446,7 +490,7 @@ private void generateAssets(bool i){
                 }
 
             }
-
+            generateAssets(false);
             break;
             
             case "makeRemdeem":
@@ -467,7 +511,7 @@ private void generateAssets(bool i){
                 }
 
             }
-
+           generateAssets(true);
            break;
            default:
 
