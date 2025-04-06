@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     public void directlyMove(Board board)
     {
-        Debug.Log($"已触发直接移动，目的地为{board.property}");
+        Debug.Log($"directly move to {board.property}");
         if (this.playerData.freezeTurn == 0)
             MusicController.Instance.PlayMoveDirectlySound();
         StartCoroutine(DirectMoveRoutine(board));
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     private void positionInitialize(int n)
     {
         _rigidbody.position = GetPosition(n);
-        Debug.Log($"将{this.name}初始化指第{n}格");
+       
     }
 
 

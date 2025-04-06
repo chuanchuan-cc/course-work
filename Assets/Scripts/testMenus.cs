@@ -96,16 +96,16 @@ private void OperationCWAL(){
         
 
     }else{
-        Debug.Log("未拥有此地产");
+        Debug.Log("it is not your property");
     }}else{
-        Debug.Log("此地产不可建造");
+        Debug.Log("can not build in this property");
     }
     player.playerData.money=inMoney;
 
 
 }
 private void ModifyThePhaseVariance(){
-    Debug.Log($"原玩家圈数为 {player.playerData.circle}, 改后为 {player.playerData.circle+1}");
+    Debug.Log($"original circle is {player.playerData.circle}, now is {player.playerData.circle+1}");
     player.playerData.circle++;
 
 
@@ -119,7 +119,7 @@ private void CheatRoll(){
 }
 else
 {
-    Debug.Log("注入步长失败，注意格式");
+    Debug.Log("fail to set step");
 }
  
     

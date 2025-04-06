@@ -38,7 +38,7 @@ public class TileGenerator : MonoBehaviour
     {
         if (maplist == null || maplist.Count == 0)
         {
-            Debug.LogError("maplist 为空，无法生成地图！");
+            Debug.LogError("maplist is null");
             return;
         }
 
@@ -50,7 +50,7 @@ public class TileGenerator : MonoBehaviour
 
             if (!_tileDict.TryGetValue(mapkey, out GameObject prefab))
             {
-                Debug.LogError($"未找到匹配的 tile prefab，跳过生成: {board.property}，资源索引为 {mapkey}");
+                Debug.LogError($"can find match tile prefab, skip: {board.property}, which key is {mapkey}");
                 continue;
             }
            
@@ -76,7 +76,7 @@ public class TileGenerator : MonoBehaviour
     }
 
 public void updateTile(Board board){
-    Debug.Log($"更新格子 {board.positionNo}");
+    Debug.Log($"update tile {board.positionNo}");
             GameObject tile=tileList[board.positionNo];
                 
             estatePrefabConfig config = tile.GetComponent<estatePrefabConfig>();

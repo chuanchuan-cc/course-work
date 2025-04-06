@@ -109,7 +109,7 @@ public class RunGame : MonoBehaviour
 
             bankpanel=GameObject.Find("bankPanel").GetComponent<bankPanel>();
         if(bankpanel==null){
-            Debug.Log("bankpanel初始化失败");
+            Debug.Log("bankpanel fail to initialize");
         }
 
         
@@ -165,11 +165,11 @@ public class RunGame : MonoBehaviour
 
      if (isLoadGame)
     {
-        Debug.Log("读取游戏");
+        Debug.Log("load game");
         string path = PlayerPrefs.GetString("savePath");
     if (!System.IO.File.Exists(path))
     {
-        Debug.LogWarning("没有找到保存文件！");
+        Debug.LogWarning("can not find the save file");
         return;
     }
 
@@ -216,13 +216,13 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
                     estateBoard eb= b as estateBoard;
                     if(eb!=null){
                         gameBehaviour.AddProperty(player,eb);
-                        Debug.Log($"已将{eb.property}添加至玩家资产列表");
+                       
 
                     }else{
                         BuyableBoard bb= b as BuyableBoard;
                         if(bb!=null){
                             gameBehaviour.AddBuyable(player,bb);
-                            Debug.Log($"已将{bb.property}添加至玩家资产列表");
+                           
                         }
                     }
                 }
@@ -495,7 +495,7 @@ void Update()
 
         if (oldPosNo+PassGoNum>=40)
         {
-            Debug.Log("通过起点加钱");
+           
             bank2player(currentPlayer,200);
 
             
@@ -549,7 +549,7 @@ public void playerUpdate(Player p){
     }
     else
     {
-        Debug.LogError($"找不到 {p.name} 的 PlayerDisplay！");
+        Debug.LogError($"can not find  {p.name}'s PlayerDisplay！");
     }
 
 }
@@ -639,7 +639,7 @@ void AIRoll(){
         // 判断是否踩到抽卡格子
         if (currentBoard.property == "Opportunity Knocks" || currentBoard.property == "Pot Luck")
         {
-            Debug.Log("触发drawcard");
+            Debug.Log("drawcard");
             
             StartCoroutine(DrawCard(player,currentBoard));
 
@@ -708,13 +708,13 @@ void AIRoll(){
         if(board.property=="Pot Luck"){
             deck = luckCards;
          drawnCard = deck[luckNo];
-        Debug.Log($"{player.name} 抽到了卡片: {drawnCard.description}");
+        Debug.Log($"{player.name} draw {drawnCard.description}");
         luckNo=(luckNo+1)%deck.Count;
         }
         else{
              deck =opportunityCards;
            drawnCard = deck[OpportunityNo];
-        Debug.Log($"{player.name} 抽到了卡片: {drawnCard.description}");
+        Debug.Log($"{player.name} draw {drawnCard.description}");
         OpportunityNo=(OpportunityNo+1)%deck.Count;  
         }
 
@@ -734,7 +734,7 @@ void AIRoll(){
         }
         if (Input.GetMouseButtonDown(0)) 
         {
-            Debug.Log("点击屏幕，立即关闭卡片 UI");
+            Debug.Log("click, close the ui");
             isProcessingCard=false;
             break;
         }
@@ -816,11 +816,11 @@ void AIRoll(){
                 
             }
             else{
-            Debug.Log($"前往{card.destinationName}，card匹配值{card.destinationName.ToLower()}");
+          
    
                 foreach(Board i in mapList){
                     if(i.property.ToLower()==card.destinationName.ToLower()){
-                        Debug.Log($"已探测到格子{i.property}");
+                        
                         player.directlyMove(i);
                         break;
                     }
@@ -864,7 +864,7 @@ void AIRoll(){
         }
         
         if (card.isPay)
-        {Debug.Log($"触发{card.payer}付{card.payee} {card.moneyAmount}");
+        {
             if(card.payee=="player"&&card.payer=="bank"){
                bank.money-=card.moneyAmount;
                gameBehaviour.AddMoney(player, card.moneyAmount);
@@ -886,10 +886,10 @@ void AIRoll(){
             
             }
         if(card.isPayFine){
-        Debug.Log($"触发{player.name}付{card.moneyAmount}给免费停车");
+       
             
             freeParkMoney+=card.moneyAmount;
-            Debug.Log($"免费停车总额{freeParkMoney}");
+          
             gameBehaviour.PayMoney(player,card.moneyAmount);
 
         }
@@ -898,12 +898,12 @@ void AIRoll(){
         
         if (card.isJailFree)
         {
-            Debug.Log($"触发给{player.name}免死金牌");
+           
             player.playerData.freeJail += 1;
         }
         if (card.isGoJail)
         {
-            Debug.Log($"触发{player.name}进监狱");
+           
             gameBehaviour.GoToJail(player);
         }
         if(card.isRepair){
@@ -919,7 +919,7 @@ void AIRoll(){
 
                 }
             }
-            Debug.Log($"有{houseNum}个房子，{hotelNum}个酒店");
+         
             gameBehaviour.PayMoney(player,card.houseRepair*houseNum+card.hotelRepair*hotelNum);
         }
         playerUpdate(player);
@@ -1160,7 +1160,7 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.AddProperty(player,eBoard);  
                                  generator.updateTile(eBoard);                          
                         }else{
-                            Debug.Log($"地产 {eBoard.property} 开始拍卖");
+                            Debug.Log($"{eBoard.property} start auction");
                             isAuction=true;
                             
 
@@ -1189,13 +1189,13 @@ private IEnumerator showBankPanel(){
                                  
                             }else{
                                 //此处执行没钱提示
-                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
+                             
                             }
 
                                 }
                         else{//此处执行拍卖
 
-                        Debug.Log($"地产 {eBoard.property} 开始拍卖");
+                        Debug.Log($"{eBoard.property} actuion");
                             isAuction=true;
 
                              StartCoroutine(auction(eBoard));
@@ -1213,7 +1213,7 @@ private IEnumerator showBankPanel(){
                         
                         
                     }else if(eBoard.owner.GetName()==player.playerData.name){
-                        Debug.Log("调用建筑脚本");
+              
                         if(canBuild(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
                             
@@ -1249,7 +1249,7 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.AddBuyable(player,bBoard);   
                                  generator.updateTile(bBoard);}
                            else{
-                            Debug.Log($"地产 {bBoard.property} 开始拍卖");
+                            Debug.Log($"{bBoard.property} start auction");
                             isAuction=true;
 
                              StartCoroutine(BuyableAuction(bBoard));
@@ -1274,13 +1274,13 @@ private IEnumerator showBankPanel(){
                                  generator.updateTile(bBoard);
                             }else{
                                 //此处执行没钱提示
-                                Debug.Log("余额不足，请联系游戏管理员以获得充值方法");
+                
                             }
 
                                 }
                         else{//此处执行拍卖
 
-                        Debug.Log($"地产 {bBoard.property} 开始拍卖");
+                        Debug.Log($"{bBoard.property} start auction");
                             isAuction=true;
 
                              StartCoroutine(BuyableAuction(bBoard));
@@ -1313,7 +1313,7 @@ private IEnumerator showBankPanel(){
 private bool canBuild(Player player, estateBoard board)
 {
     int minlevel=5;
-    Debug.Log("同色套装判断");
+
     foreach (Board b in RunGame.mapList)
     {estateBoard i = b as estateBoard;
     if(i!=null){
@@ -1421,7 +1421,7 @@ public void AutoSaveGame()
 public void SaveGame(){
      if (cachedSaveData == null)
     {
-        Debug.LogWarning("还没有缓存的自动存档，无法手动保存！");
+        Debug.LogWarning("no auto save");
         return;
     }
 
@@ -1433,7 +1433,7 @@ public void SaveGame(){
     string path = Application.dataPath + "/save/savegame.json";
     System.IO.File.WriteAllText(path, json);
 
-    Debug.Log("游戏已保存到：" + path);
+    Debug.Log("game was saved in" + path);
 
 }
 

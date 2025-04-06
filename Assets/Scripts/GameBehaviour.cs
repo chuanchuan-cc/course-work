@@ -370,9 +370,14 @@ public void remdeemBuyableBoard(BuyableBoard board){
         }
         public void tearBuilding(estateBoard board){
             board.improvedLevel-=1;
-            if(board.owner is PlayerData playerOwner)
-            playerOwner.money+=(costCalculer(board))/2;
-            RunGame.bank.money-=(costCalculer(board))/2;
+            int n;
+            if(board.owner is PlayerData playerOwner){
+            if(board.isMortgage)
+            n=(costCalculer(board))/2;
+            else
+            n=costCalculer(board);
+            playerOwner.money+=n;
+            RunGame.bank.money-=n;}
         }
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)
