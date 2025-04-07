@@ -23,10 +23,6 @@ public class GameBehaviour: MonoBehaviour
    }
     public void bankrupt(Player player){
 
-        player.playerData.isBankrupt=true;
-        player.gameObject.SetActive(false);
-        Destroy(player.gameObject);
-        RunGame.instance.deletePlayer(player);
         foreach(Board b in player.playerData.assetsList){
             estateBoard eb = b as estateBoard;
             if(eb!=null)
@@ -38,6 +34,11 @@ public class GameBehaviour: MonoBehaviour
             
 
         }
+        player.playerData.isBankrupt=true;
+        player.gameObject.SetActive(false);
+        RunGame.instance.deletePlayer(player);
+        Destroy(player.gameObject);
+        
         RunGame.instance.isNext = true;
 
 

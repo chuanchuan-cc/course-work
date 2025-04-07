@@ -62,6 +62,7 @@ public class RunGame : MonoBehaviour
     public Button menusBack;
     public int oldPosNo;
     public Player nextPlayer=null;
+    public int point;
 
     
 
@@ -184,7 +185,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     opportunityCards=saveData.oCards;
     OpportunityNo=saveData.OpportunityNo;
     mapList = saveData.allBoards;
-    nextPlayer=saveData.savePlayer;
+    point=saveData.cpoint;
     isAI=saveData.isai;
     difficulty=saveData.diff;
 
@@ -193,6 +194,8 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     freeParkMoney = saveData.freeParkingMoney;
 
     playersList=new List<Player>(saveData.allPlayers.Count);
+
+   
     foreach(PlayerData pd in saveData.allPlayers){
         foreach (Transform child in playersPool.transform)
         {
@@ -251,6 +254,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         difficulty=PlayerPrefs.GetInt("difficulty",0);
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         playerNumber=(isAI)? playerNumber+1:playerNumber;
+        point=0;
         
 
 
@@ -267,6 +271,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
         playersList= new List<Player>(playerNumber);
+        
             foreach (Transform child in playersPool.transform)
         {
             Player player = child.GetComponent<Player>();
@@ -324,11 +329,15 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     Shuffle(luckCards);
     Shuffle(opportunityCards);
     }
+    
     }
 
-             foreach(Player player in playersList){
+
+    foreach(Player player in playersList){
             BoardConstructor.CreateChildren(player);
         }
+
+             
                 
     
    
@@ -406,7 +415,7 @@ void Update()
         changeCameraMode();
         yield return new WaitUntil(()=>!cameraController.isCameraMoving);
         }
-        AutoSaveGame();
+        
 
         
 
@@ -419,11 +428,12 @@ void Update()
         
         isEffectiveDice=false;
         if(nextPlayer==null)
-        currentPlayer = playersList[0];
+        currentPlayer = playersList[point];
         else
         currentPlayer=nextPlayer;
         nextPlayer=playersList[(playersList.IndexOf(currentPlayer)+1)%playersList.Count];
         Debug.Log($"currently player is {currentPlayer.name}");
+        AutoSaveGame();
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
 
@@ -544,8 +554,10 @@ public void win(){
 }
 public void playerUpdate(Player p){
     Debug.Log($"update {p.name}'s dashboard");
+    Transform tf = dashBoard.transform.Find(p.name);
+    if(tf!=null){
 
-    PlayerDisplay display = dashBoard.transform.Find(p.name).GetComponent<PlayerDisplay>();
+    PlayerDisplay display = tf.GetComponent<PlayerDisplay>();
     if (display != null)
     {
         display.UpdateDisplay(p);
@@ -557,21 +569,24 @@ public void playerUpdate(Player p){
     }
 
 }
+}
 
 public void deletePlayer(Player player){
+    if(player==nextPlayer)
+    nextPlayer=playersList[(playersList.IndexOf(nextPlayer)+1)%playersList.Count];
     playersList.Remove(player);
-Transform child = dashBoard.transform.Find(player.name);
-if (child != null)
-{
-    Destroy(child.gameObject);
-}
-BoardConstructor.RebuildLayout();
-isNext=true;
+    Transform child=dashBoard.transform.Find(player.name);
+    if (child!=null)
+    {
+        Destroy(child.gameObject);
+    }
+    BoardConstructor.RebuildLayout();
+    isNext=true;
 }
 
 
-public void ThrowDice()
-{
+    public void ThrowDice()
+    {
   
     roll=0;
     isbehavior=true;
@@ -660,31 +675,52 @@ void AIRoll(){
             
             isChecking = false;
             yield break;
-        }
+        }else{
 
-        if (player.playerData.freeJail > 0)
+        
+        
+            StartCoroutine(HandleBoard(player, currentBoard));
+        }
+        if(currentPlayer!=null)
+        playerUpdate(currentPlayer);
+        isChecking=false;
+        
+    }
+
+
+public IEnumerator HandleBoard(Player player, Board currentBoard){
+
+    if(currentBoard.property=="Free Parking"){
+            gameBehaviour.AddMoney(currentPlayer,freeParkMoney);
+  
+        }
+        else if(currentBoard.property=="Go to Jail"){
+            if (player.playerData.freeJail > 0)
         {
             player.playerData.freeJail--;
+            player.directlyMove(mapList.Find(board=>board.property == "Jail/Just visiting"));
+
         }
-        else
-        {if(currentBoard.property=="Free Parking"){
-            gameBehaviour.AddMoney(currentPlayer,freeParkMoney);
-        }
-        if(currentBoard.property=="Go to Jail"){
+        else{
             gameBehaviour.GoToJail(currentPlayer);
+            }
+      
         }
-        if(currentBoard.property=="Income Tax"){
+        else if(currentBoard.property=="Income Tax"){
             gameBehaviour.PayMoney(currentPlayer,200);
+
         }
-        if(currentBoard.property=="Super Tax"){
+        else if(currentBoard.property=="Super Tax"){
             gameBehaviour.PayMoney(currentPlayer,100);
+
         }
-            if (currentBoard.canBeBought)
+            else if (currentBoard.canBeBought)
             {
                 estateBoard eBoard = currentBoard as estateBoard;
                 if (eBoard != null)
                 {
                     yield return HandleEstate(player, eBoard);
+                    
                 }
                 else{
                     BuyableBoard bBoard = currentBoard as BuyableBoard;{
@@ -694,13 +730,7 @@ void AIRoll(){
                     }
                 }
             }
-        }
-        if(currentPlayer!=null)
-        playerUpdate(currentPlayer);
-        isChecking=false;
-        
-    }
-
+}
 
 
     IEnumerator DrawCard(Player player,Board board)
@@ -1413,7 +1443,7 @@ public void AutoSaveGame()
 
     cachedSaveData.lCards = new List<Card>(luckCards);
     cachedSaveData.oCards = new List<Card>(opportunityCards);
-    cachedSaveData.savePlayer = currentPlayer;
+    cachedSaveData.cpoint = playersList.IndexOf(currentPlayer);
     cachedSaveData.freeParkingMoney = freeParkMoney;
     cachedSaveData.luckNo = luckNo;
     cachedSaveData.OpportunityNo = OpportunityNo;
@@ -1456,7 +1486,7 @@ public class SaveData
     public List<Board> allBoards;
   
 
-    public Player savePlayer;
+    public int cpoint;
 
     public int freeParkingMoney;
     public int luckNo;
