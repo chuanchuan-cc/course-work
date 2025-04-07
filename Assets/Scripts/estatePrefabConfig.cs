@@ -27,7 +27,7 @@ public class estatePrefabConfig : TilePrefabConfig
             if (owner != null)
                 owner.text = $"owner : {board.owner.GetName()}";
             if (improvedLevel != null)
-                improvedLevel.text = $"build level : {board.improvedLevel}";
+                improvedLevel.text = $"build number : {board.improvedLevel}";
 
             ApplyZOffsetAndForceRender();
         }
