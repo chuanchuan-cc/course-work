@@ -10,38 +10,46 @@ public class estatePrefabConfig : TilePrefabConfig
     public TextMeshPro owner;
     public TextMeshPro improvedLevel;
 
-    public float offsetStep = 0.001f; 
+    public float offsetStep = 0.001f;
     private bool zOffsetApplied = false;
 
     public void updateConfigEstate(estateBoard board)
     {
         if (board != null)
-    {
-       
-    
-        property.text = board.property.ToString();
-        price.text = $"price : {board.price}";
-        rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
-        owner.text = $"owner : {board.owner.GetName()}";
-        improvedLevel.text = $"build level : {board.improvedLevel}";
+        {
 
-        ApplyZOffsetAndForceRender();}
+            if (property != null)
+                property.text = board.property.ToString();
+            if (price != null)
+                price.text = $"price : {board.price}";
+            if (rent != null)
+                rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
+            if (owner != null)
+                owner.text = $"owner : {board.owner.GetName()}";
+            if (improvedLevel != null)
+                improvedLevel.text = $"build level : {board.improvedLevel}";
+
+            ApplyZOffsetAndForceRender();
+        }
     }
 
     public void updateConfigBuyable(BuyableBoard board)
     {
         if (board != null)
-    {
-   
-       
-    
-        property.text = board.property.ToString();
-        price.text = $"price : {board.price}";
-        rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
-        owner.text = $"owner : {board.owner.GetName()}";
+        {
 
-        ApplyZOffsetAndForceRender();
-    }
+
+            if (property != null)
+                property.text = board.property.ToString();
+            if (price != null)
+                price.text = $"price : {board.price}";
+            if (rent != null)
+                rent.text = board.rent != 0 ? $"rent : {board.rent}" : "unknown";
+            if (owner != null)
+                owner.text = $"owner : {board.owner.GetName()}";
+
+            ApplyZOffsetAndForceRender();
+        }
     }
 
     private void ApplyZOffsetAndForceRender()
@@ -55,11 +63,11 @@ public class estatePrefabConfig : TilePrefabConfig
         {
             if (tmp != null)
             {
-               
+
                 tmp.transform.position += camDir * (order * offsetStep);
                 order++;
 
-               
+
                 var renderer = tmp.GetComponent<Renderer>();
                 if (renderer != null)
                 {
