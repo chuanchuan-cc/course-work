@@ -32,6 +32,13 @@ public class bankPanel : MonoBehaviour
   public Button brmortgageButton;
   public CanvasGroup brCanvasGroup;
   public TextMeshProUGUI brtext;
+  public bool isInteracting=false;
+  public TextMeshProUGUI estiMoney;
+  private bool isBankrupting=false;
+  public Player saveplayer;
+  public int brmoney;
+  public string brmessage;
+
 
 
     
@@ -57,16 +64,7 @@ public class bankPanel : MonoBehaviour
             
        
        }
-         if (brCanvasGroup == null){
-            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
-       
-            if (brCanvasGroup == null)
-            {
-                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
-            }
-            
-       
-       }
+         
        mapList=RunGame.mapList;
        gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
 
@@ -92,24 +90,41 @@ public class bankPanel : MonoBehaviour
 
 
 public void showbankruptPanel(Player p,int i){
-    brtext.text=$"lack of cash, {p.name}, you need at least {i}$";
+    if (brCanvasGroup == null){
+            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
+       
+            if (brCanvasGroup == null)
+            {
+                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
+            }
+            
+       
+       }
     bankruptPanel.SetActive(true);
-    StartCoroutine(sbp(p,i));
+    isBankrupting=true;
+    
 
-
-}
-private IEnumerator sbp(Player p,int i){
-    Player saveplayer=player;
+    
+    brtext.text=$"lack of cash, {p.name}, you need at least {i}$";
+    brmoney=i-p.playerData.money;
+    
+    brmessage=$"{p.name}, you need to raise more {i}$";
+    saveplayer=player;
     player=p;
     StartCoroutine(FadeIn(brCanvasGroup));
     brmortgageButton.onClick.AddListener(mortgage);
     brSellButton.onClick.AddListener(sell);
-    yield return new WaitUntil(()=>p.playerData.money>i);
-    StartCoroutine(FadeOut(brCanvasGroup));
-    player=saveplayer;
-    bankruptPanel.SetActive(false);
+
 
 }
+// private IEnumerator sbp(Player p,int i){
+    
+   // yield return new WaitUntil(()=>isInteracting);
+  // StartCoroutine(FadeOut(brCanvasGroup));
+ // player=saveplayer;
+ // bankruptPanel.SetActive(false);
+
+// }
 
  public void ShowPanel()
     {
@@ -129,7 +144,12 @@ private IEnumerator sbp(Player p,int i){
     }
     public void ShowBehaviourPanel(string _message)
     {
+        if(isBankrupting){
+        quitButton.interactable=false;
+        confirmButton.interactable=false;
+        }
         operationList.Clear();
+        
       
 
         behaviourPanel.SetActive(true);
@@ -147,19 +167,27 @@ private IEnumerator sbp(Player p,int i){
 
     }
     private void sell(){
-        
-
+        isInteracting=true;
+        if(isBankrupting)
+        ShowBehaviourPanel(brmessage);
+        else
         ShowBehaviourPanel("which estate you are willing to sell");
         generateSellableAssets();
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeSell"));
+        isInteracting=false;
       
     }
     private void mortgage(){
+        isInteracting=true;
+        if(isBankrupting)
+        ShowBehaviourPanel(brmessage);
+        else
         ShowBehaviourPanel("which estate you are willing to mortage");
         generateAssets(false);
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeMortgage"));
+        isInteracting=false;
     } 
     private void remdeem(){
         ShowBehaviourPanel("which estate you are willing to remdeem");
@@ -246,7 +274,10 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});   
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    if(isBankrupting)
+                    checkComfirm(false);
+                    });   
                 }}
             
                     
@@ -275,7 +306,10 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});    
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    if(isBankrupting)
+                    checkComfirm(false);
+                    });    
                     }
                     }
                     }
@@ -338,7 +372,12 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});    
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    if(isBankrupting)
+                    checkComfirm(true);
+                    
+                    
+                    });    
                     
                     
                     }
@@ -375,7 +414,10 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;});  
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    if(isBankrupting)
+                    checkComfirm(true);
+                    });  
             }
             
             
@@ -383,6 +425,32 @@ private void generateAssets(bool i){
             
             
             }
+   
+   
+   private void checkComfirm(bool b){
+    int p =checkPrice(b);
+    confirmButton.interactable = p>=brmoney;
+   }
+   
+   private int checkPrice(bool b)
+{
+    int p = 0;
+    foreach (Transform child in generateZone.transform)
+    {
+        Toggle toggle=child.GetComponent<Toggle>();
+        if (toggle==null||!toggle.isOn) continue;
+        string propName=child.name;
+        Board board=mapList.Find(b => b.property==propName);
+        if (board is estateBoard eB){
+            p+=b?eB.price:eB.price/2;
+        }
+        else if (board is BuyableBoard bB){
+            p+=b?bB.price:bB.price/2;
+        }}
+        return p;
+    
+}
+
 
 
 
@@ -458,8 +526,14 @@ private void generateAssets(bool i){
                     
                     }
                 }
+                
 
             }
+            if(isBankrupting){
+                player=saveplayer;
+                bankruptPanel.SetActive(false);
+                    
+                }
 
                 generateSellableAssets();
                 break;
@@ -482,6 +556,11 @@ private void generateAssets(bool i){
                 }
 
             }
+            if(isBankrupting){
+                player=saveplayer;
+                bankruptPanel.SetActive(false);
+                    
+                }
             generateAssets(false);
             break;
             

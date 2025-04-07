@@ -106,19 +106,20 @@ private void OperationCWAL(){
         Debug.Log("can not build in this property");
     }
     player.playerData.money=inMoney;
-    */
+    
     foreach(Player p in playerlist){
     
-            if(p.playerData.money>=100){
-            gameBehaviour.PayMoney(p,100);
+            if(p.name==player.name){
+            gameBehaviour.PayMoney(p,200);
             }
             else{
-            gameBehaviour.PayMoney(p,10);
+            gameBehaviour.PayMoney(p,100);
             }
         
     }
 
-
+*/
+gameBehaviour.PayMoney(player,2000);
 
 
 }
