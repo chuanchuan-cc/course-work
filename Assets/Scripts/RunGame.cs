@@ -121,20 +121,20 @@ public class RunGame : MonoBehaviour
         
        
 
-        // 自动查找并绑定 CardUI
+        // find and bind CardUI
         cardUI = FindObjectOfType<CardUI>();
 
-        //绑定操作交互面板
+        //bind interaction panel
 
         interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
         if(interactionPanel==null)Debug.Log("can't find interaction panel");
         else Debug.Log("already find interaction panel");
         
-        //绑定bank
+        //bind bank button
         BankButton=GameObject.Find("BankButton").GetComponent<Button>();
 
 
-        //绑定CG控制器
+        //bind cg controller
         cgControl=  FindObjectOfType<CGcontrol>();
 
 
@@ -259,7 +259,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
 
-        //测试用
+        //test
         isAI=true;
         difficulty=1;
         playerNumber=3;
@@ -296,7 +296,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         if(isAI) playersList[playerNumber-1].playerData.isAI=true;
 
 
-        //测试用除1号全ai
+        //test
         for(int i=1;i<playerNumber-1;i++){
             playersList[i].playerData.isAI=true;
         }
@@ -434,6 +434,7 @@ void Update()
         nextPlayer=playersList[(playersList.IndexOf(currentPlayer)+1)%playersList.Count];
         Debug.Log($"currently player is {currentPlayer.name}");
         AutoSaveGame();
+        BoardConstructor.highlightPlayer(currentPlayer);
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
 
@@ -473,7 +474,7 @@ void Update()
         
         yield return new WaitUntil(() => isEffectiveDice);
 
-        //作弊菜单
+        //test cheatting menu
         roll=(cheatStep!=0)? cheatStep: roll;
         oldPosNo=currentPlayer.playerData.positionNo;
         int PassGoNum=(roll>0)? roll:0;
@@ -662,7 +663,7 @@ void AIRoll(){
         Board currentBoard = mapList[player.playerData.positionNo];
       
 
-        // 判断是否踩到抽卡格子
+        // is card?
         if (currentBoard.property == "Opportunity Knocks" || currentBoard.property == "Pot Luck")
         {
             Debug.Log("drawcard");
@@ -756,7 +757,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         OpportunityNo=(OpportunityNo+1)%deck.Count;  
         }
 
-        // 显示卡片 UI
+        // show card
         cardUI.ShowCard(drawnCard);
      
                   MusicController.Instance.PlayCardSound();
@@ -827,7 +828,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         yield return new WaitUntil(()=>!isInteracting);
 
 
-        // 处理卡片效果
+        // handle card
         ApplyCardEffect(player, drawnCard);
 
         yield return new WaitUntil(()=>!isApplyCard);
@@ -984,10 +985,10 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         List<Player> auctionList=new List<Player>();
         foreach(Player p in playersList){
             
-            //圈数检测禁用，测试
+            //test circle
             // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
 
-            //开启检测
+            
             if(p.playerData.circle>1 && p.name!=currentPlayer.name) auctionList.Add(p);
             else continue;
         }
@@ -1055,9 +1056,9 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         List<Player> auctionList=new List<Player>();
         foreach(Player p in playersList){
             
-            //圈数检测禁用，测试
+            //test circle
             // if(p.playerData.circle>=1) auctionList.Add(playersList[t]);
-            //开启检测
+       
             if(p.playerData.circle>1 && p.name!=currentPlayer.name) auctionList.Add(p);
             else continue;
         }
@@ -1159,7 +1160,7 @@ private IEnumerator showBankPanel(){
                 return true;
                 else return false;
             }else{
-                //难布尔值
+                //hard
                 return false;
             }
         }else{
@@ -1176,7 +1177,7 @@ private IEnumerator showBankPanel(){
                 return true;
                 else return false;
             }else{
-                //难布尔值
+                //hard
                 return false;
             }
         }else{
@@ -1228,12 +1229,12 @@ private IEnumerator showBankPanel(){
                                  generator.updateTile(eBoard);
                                  
                             }else{
-                                //此处执行没钱提示
+                                //lack of cash
                              
                             }
 
                                 }
-                        else{//此处执行拍卖
+                        else{//auction
 
                         Debug.Log($"{eBoard.property} actuion");
                             isAuction=true;
@@ -1313,12 +1314,12 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.AddBuyable(player,bBoard);
                                  generator.updateTile(bBoard);
                             }else{
-                                //此处执行没钱提示
+                                //lack of cash
                 
                             }
 
                                 }
-                        else{//此处执行拍卖
+                        else{//auction
 
                         Debug.Log($"{bBoard.property} start auction");
                             isAuction=true;

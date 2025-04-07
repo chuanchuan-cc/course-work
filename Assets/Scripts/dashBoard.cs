@@ -38,6 +38,21 @@ public class dashBoardConstructor: MonoBehaviour
     if (rt!=null)
         StartCoroutine(RebuildCoroutine(rt));
 }
+public void highlightPlayer(Player player){
+    DashBoard=GameObject.Find("DashBoard");
+    Debug.Log($"开始高光玩家{player.name}");
+    if(DashBoard!=null){
+        foreach(Transform child in DashBoard.transform){
+            Image img=child.gameObject.GetComponent<Image>();
+            if(img!=null){
+            if(child.name==player.name)
+                img.color=new Color(253f/255f, 199f/255f, 96f/255f, 134f/255f);
+            else
+            img.color=new Color(34f/255f, 59f/255f, 84f/255f, 134f/255f);
+        }}
+    }
+    
+}
 
 private IEnumerator RebuildCoroutine(RectTransform rt)
 {

@@ -4868,7 +4868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.6745098}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7588,7 +7588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDetail: {fileID: 6439391413225035113, guid: 6e43c4a5a37479348ba8b57bc2be3d04, type: 3}
-  DashBoard: {fileID: 0}
+  DashBoard: {fileID: 1082690161}
 --- !u!114 &1082690164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10066,6 +10066,7 @@ MonoBehaviour:
   menusBack: {fileID: 616574491}
   oldPosNo: 0
   nextPlayer: {fileID: 0}
+  point: 0
   musicSlider: {fileID: 407040372}
 --- !u!1 &1605426554
 GameObject:
