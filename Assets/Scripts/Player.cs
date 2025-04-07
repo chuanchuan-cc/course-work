@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     private void positionInitialize(int n)
     {
         _rigidbody.position = GetPosition(n);
-       
+
     }
 
 
@@ -164,13 +164,36 @@ public class Player : MonoBehaviour
 
         for (int i = 0; i < Math.Abs(steps); i++)
         {
-            if(name=="ship")
-            MusicController.Instance.PlayShipSound();
+            if (name == "ship")
+                MusicController.Instance.PlayShipSound();
             else
-            MusicController.Instance.PlayJumpSound();
+                MusicController.Instance.PlayJumpSound();
 
-            
+
             playerData.positionNo = (steps > 0) ? (playerData.positionNo + 1) % 40 : (playerData.positionNo - 1) % 40;
+
+            if (name == "ship")
+            {
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 35)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                }
+            }
+            if (name == "boots")
+            {
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 35)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                }
+            }
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);
 
@@ -186,10 +209,10 @@ public class Player : MonoBehaviour
                 bool isHorizon = Math.Abs(startPos.x - targetPos.x) > Math.Abs(startPos.y - targetPos.y);
                 Vector2 interpolatedPos = Vector2.Lerp(startPos, targetPos, t);
                 if (name == "ship")
-                { 
+                {
 
                     _rigidbody.position = new Vector2(interpolatedPos.x, interpolatedPos.y);
-                    elapsedTime += Time.deltaTime/2;
+                    elapsedTime += Time.deltaTime / 2;
                     yield return null;
                 }
                 else
@@ -226,7 +249,7 @@ public class Player : MonoBehaviour
 
                     else
                     {
-                       
+
                         if (startPos.y - targetPos.y < 0)
                         {
                             _rigidbody.position = new Vector2(interpolatedPos.x - heightFactor * 1f, interpolatedPos.y + heightFactor * 1f);
@@ -254,10 +277,12 @@ public class Player : MonoBehaviour
             _rigidbody.position = targetPos;
             //播放格子下沉动画
             //将等待改为动画播放完毕
-            if(this.name!="ship"){
-            StartCoroutine(moveBoardAnimation());
-            StartCoroutine(tileGenerator.BoardAnimation(playerData.positionNo));
-            yield return new WaitUntil(() => !tileGenerator.isAnimationBoard);}
+            if (this.name != "ship")
+            {
+                StartCoroutine(moveBoardAnimation());
+                StartCoroutine(tileGenerator.BoardAnimation(playerData.positionNo));
+                yield return new WaitUntil(() => !tileGenerator.isAnimationBoard);
+            }
 
             //yield return new WaitForSeconds(0.2f);
 
