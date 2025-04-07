@@ -144,7 +144,7 @@ public static class BoardLoader
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogError($"fail to load data in row {rowIdx}");
+             
                     }
                 }
                 }
@@ -152,7 +152,7 @@ public static class BoardLoader
         }
         catch (Exception ex)
         {
-            Debug.LogError($"Excel加载失败: {ex.Message}");
+            Debug.LogError($"fall to load excel: {ex.Message}");
         }
         ValidateAllBoards(boards);
 
@@ -196,8 +196,8 @@ public static class BoardLoader
             improvedRents[i] = ParseCurrency(reader.GetValue(10 + i));
         }
 
-        if (price <= 0) throw new ArgumentException("价格必须大于0");
-        if (baseRent <= 0) throw new ArgumentException("基础租金必须大于0");
+        if (price <= 0) throw new ArgumentException("price have to larger than 0");
+        if (baseRent <= 0) throw new ArgumentException("base rent have to larger than 0");
         
         return (price, baseRent, improvedRents);
     }
@@ -211,9 +211,9 @@ public static class BoardLoader
             {
                 case estateBoard estate:
                     if (estate.owner == null)
-                        Debug.LogError($"地产 {estate.property} 缺少所有者");
+                        Debug.LogError($" {estate.property} has no owner");
                     if (!estate.canBeBought)
-                        Debug.LogError($"地产 {estate.property} 标记不可购买");
+                        Debug.LogError($"{estate.property} can not be purchase");
                     break;
                 
 

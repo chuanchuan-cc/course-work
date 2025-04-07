@@ -53,9 +53,11 @@ public class GameBehaviour: MonoBehaviour
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
         MusicController.Instance.PlayMoneySound();
+        RunGame.instance. playerUpdate(player);
     }
     public void PayMoney(Player player,int amount)
     {
+        Debug.Log($"{player.name} pay {amount}");
         if (player.playerData.isBankrupt)
         Debug.LogError("payer is bankrupted");
         if (player.playerData.money >= amount)
@@ -68,6 +70,7 @@ public class GameBehaviour: MonoBehaviour
             StartCoroutine(lackcash(player,amount));
             
                     }
+        RunGame.instance. playerUpdate(player);
             
 
         
@@ -87,6 +90,7 @@ private IEnumerator lackcash(Player player, int amount){
                             if(player.playerData.assetsWorth>amount){
                             bankpanel.showbankruptPanel(player,amount);
                             yield return new WaitUntil(()=>player.playerData.money>amount);
+                            bankpanel.ClosePanel();
                             PayMoney(player, amount);
                             }
                             else{
@@ -220,6 +224,11 @@ return l1;
             playerOwner.money += sellPrice;
             playerOwner.assetsList.Remove(board);
             board.owner=RunGame.bank;
+            foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
+            
             Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");
         }
         else
@@ -245,36 +254,59 @@ public void SellBuyableBoard(BuyableBoard board){
             else {sellPrice = board.price; }
             playerOwner.money += sellPrice;
             playerOwner.assetsList.Remove(board);
-            Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");}
+            Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");
+            foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
+            }
 board.owner=RunGame.bank;
+
 
 }
 public void mortageEstateBoard(estateBoard board){
 
     board.isMortgage=true;
-    if( board.owner is PlayerData playerOwner)
+    if( board.owner is PlayerData playerOwner){
     playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
+    }
 
 
 }
 public void mortageBuyableBoard(BuyableBoard board){
     board.isMortgage=true;
-    if( board.owner is PlayerData playerOwner)
+    if( board.owner is PlayerData playerOwner){
     playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
-
+    foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
+    }
     }
     
     public void remdeemEstateBoard(estateBoard board){
     board.isMortgage=false;
-    if( board.owner is PlayerData playerOwner)
+    if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
 
-
+    }
 }
 public void remdeemBuyableBoard(BuyableBoard board){
     board.isMortgage=false;
-    if( board.owner is PlayerData playerOwner)
+    if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
+    foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }}
 
 
 }
@@ -293,7 +325,9 @@ public void remdeemBuyableBoard(BuyableBoard board){
             Debug.Log($"{player.name} buy {board.property}");
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
-            player.playerData.assetsList.Add(board);}
+            player.playerData.assetsList.Add(board);
+            RunGame.instance.playerUpdate(player);
+            }
 
         }
         public void AddBuyable(Player player, BuyableBoard board)
@@ -380,7 +414,13 @@ public void remdeemBuyableBoard(BuyableBoard board){
             else
             n=costCalculer(board);
             playerOwner.money+=n;
-            RunGame.bank.money-=n;}
+            RunGame.bank.money-=n;
+            foreach(Player player in RunGame.instance.getplayerlist()){
+                if(player.name==playerOwner.name)
+                RunGame.instance. playerUpdate(player);
+            }
+            
+            }
         }
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)
@@ -402,12 +442,13 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
             
                                
       if(player.playerData.money>buildCost){
-         PayMoney(player, buildCost);
+         
                     board.improvedLevel++;
                     board.ResetRent(board.improvedLevel);
                     board.price+=buildCost;
                     string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
                     Debug.Log($"{player.name} built {buildingType} on {board.property}.");
+                    PayMoney(player, buildCost);
                     
 
                                 

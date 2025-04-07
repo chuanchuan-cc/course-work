@@ -374,7 +374,7 @@ void Update()
         {
             testmenus.cheating(currentPlayer);
         }
-        StartCoroutine(CheatingUppdate());
+        
 
 
     }
@@ -524,8 +524,7 @@ void Update()
             
         }
 
-        foreach (Player p in playersList)
-        {playerUpdate(p);}
+        
 
         
         
@@ -544,6 +543,7 @@ public void win(){
     Broadcast.win(winner);
 }
 public void playerUpdate(Player p){
+    Debug.Log($"update {p.name}'s dashboard");
 
     PlayerDisplay display = dashBoard.transform.Find(p.name).GetComponent<PlayerDisplay>();
     if (display != null)
@@ -1013,6 +1013,10 @@ void AIRoll(){
       
 
         }
+
+        public List<Player> getplayerlist(){
+            return playersList;
+        }
     IEnumerator BuyableAuction(BuyableBoard bBoard){
         isAuction=true;
         int auctionPrice=bBoard.price;
@@ -1310,12 +1314,7 @@ private IEnumerator showBankPanel(){
                     }
     }
 
-    IEnumerator CheatingUppdate(){
-        if(testmenus.isCheating){
-        playerUpdate(currentPlayer);
-        yield return null;
-        }
-    }
+
 private bool canBuild(Player player, estateBoard board)
 {
     int minlevel=5;

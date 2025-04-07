@@ -108,15 +108,14 @@ private void OperationCWAL(){
     player.playerData.money=inMoney;
     */
     foreach(Player p in playerlist){
-        if(p.name!=player.name){
+    
             if(p.playerData.money>=100){
-            p.playerData.money-=100;
-            p.playerData.assetsWorth-=100;}
-            else{
-                p.playerData.money-=10;
-            p.playerData.assetsWorth-=10;
+            gameBehaviour.PayMoney(p,100);
             }
-        }
+            else{
+            gameBehaviour.PayMoney(p,10);
+            }
+        
     }
 
 
