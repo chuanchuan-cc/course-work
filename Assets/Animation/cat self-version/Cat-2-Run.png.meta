@@ -3,7 +3,7 @@ guid: 71c3221f3b2644f018c809a646ae7510
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,8 +64,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -74,9 +77,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -86,9 +90,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -98,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -107,13 +113,14 @@ TextureImporter:
       name: Cat-2-Run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 10
+        y: 18
+        width: 19
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5495736, y: -0.003113683}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -128,13 +135,14 @@ TextureImporter:
       name: Cat-2-Run_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 18
+        width: 21
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5673625, y: 0.00001411438}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -149,13 +157,14 @@ TextureImporter:
       name: Cat-2-Run_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 110
+        y: 19
+        width: 25
+        height: 14
+      alignment: 9
+      pivot: {x: 0.5919467, y: -0.009212085}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -170,13 +179,14 @@ TextureImporter:
       name: Cat-2-Run_3
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 161
+        y: 20
+        width: 29
+        height: 10
+      alignment: 9
+      pivot: {x: 0.49913394, y: -0.033405114}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -191,13 +201,14 @@ TextureImporter:
       name: Cat-2-Run_4
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 213
+        y: 18
+        width: 27
+        height: 12
+      alignment: 9
+      pivot: {x: 0.59657794, y: -0.0042115846}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -212,13 +223,14 @@ TextureImporter:
       name: Cat-2-Run_5
       rect:
         serializedVersion: 2
-        x: 250
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 265
+        y: 18
+        width: 21
+        height: 12
+      alignment: 9
+      pivot: {x: 0.6603321, y: 0.20674658}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -233,13 +245,14 @@ TextureImporter:
       name: Cat-2-Run_6
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 314
+        y: 18
+        width: 18
+        height: 12
+      alignment: 9
+      pivot: {x: 0.6575199, y: 0.1772116}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -254,13 +267,14 @@ TextureImporter:
       name: Cat-2-Run_7
       rect:
         serializedVersion: 2
-        x: 350
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 362
+        y: 18
+        width: 15
+        height: 12
+      alignment: 9
+      pivot: {x: 0.66539305, y: 0.22151454}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -272,6 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -281,18 +296,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
       Cat-2-Run_0: -1689444797
-      Cat-2-Run_5: -719394768
-      Cat-2-Run_2: -1375625415
-      Cat-2-Run_7: -1653465737
-      Cat-2-Run_3: -1021212030
       Cat-2-Run_1: 587833758
-      Cat-2-Run_6: -659371257
+      Cat-2-Run_2: -1375625415
+      Cat-2-Run_3: -1021212030
       Cat-2-Run_4: -1550280241
-  spritePackingTag: 
+      Cat-2-Run_5: -719394768
+      Cat-2-Run_6: -659371257
+      Cat-2-Run_7: -1653465737
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

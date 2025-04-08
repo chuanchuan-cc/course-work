@@ -1734,7 +1734,7 @@ Transform:
   m_GameObject: {fileID: 238080614}
   serializedVersion: 2
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 4.12, y: -2.69, z: 0}
+  m_LocalPosition: {x: 3.967, y: -2.678, z: -0.079}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1833,7 +1833,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -135115322026416318, guid: 1ed985aa42b484389a213b51d5eb15ed, type: 3}
+  m_Sprite: {fileID: 1820053635, guid: d10f67cea56d94e8da6705d5ecb574be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2118,6 +2118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionPanel: {fileID: 1781051939}
   bankpanel: {fileID: 800054797}
+  cgControl: {fileID: 0}
 --- !u!4 &275860658
 Transform:
   m_ObjectHideFlags: 0
@@ -10186,7 +10187,6 @@ MonoBehaviour:
   OpportunityNo: 0
   keepGame: 1
   currentPlayer: {fileID: 0}
-  cgControl: {fileID: 0}
   DiceButton: {fileID: 1563336185}
   NextButton: {fileID: 1605426556}
   isEffectiveDice: 0
@@ -11539,8 +11539,8 @@ Transform:
   m_GameObject: {fileID: 1816720289}
   serializedVersion: 2
   m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 4.09, y: -2.82, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 3.942, y: -2.668, z: -0.305}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 149152073}

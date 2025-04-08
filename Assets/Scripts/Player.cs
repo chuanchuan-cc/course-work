@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
 
             if (name == "ship")
             {
-                if (playerData.positionNo >= 20 && playerData.positionNo <= 35)
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
                     transform.localScale = new Vector3(-1, 1, 1); // 左翻
                 }
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
             }
             if (name == "boots")
             {
-                if (playerData.positionNo >= 20 && playerData.positionNo <= 35)
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
                     transform.localScale = new Vector3(-1, 1, 1); // 左翻
                 }
@@ -194,6 +194,31 @@ public class Player : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1); // 正常
                 }
             }
+
+            if (name == "BlackCat") 
+            {
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                }
+            }
+
+            if (name == "iron") 
+            {
+                if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                }
+            }
+
             Vector2 startPos = _rigidbody.position;
             Vector2 targetPos = GetPosition(playerData.positionNo);
 
@@ -243,8 +268,8 @@ public class Player : MonoBehaviour
                             inputY = -1;
                         }
                         facex = inputX;
-                    //     _animator.SetFloat("inputX", inputX);
-                    //     _animator.SetFloat("inputY", inputY);
+                        // _animator.SetFloat("inputX", inputX);
+                        // _animator.SetFloat("inputY", inputY);
                     }
 
                     else

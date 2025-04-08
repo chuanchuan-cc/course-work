@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,37 +135,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u71A8\u6597jump-1_0"
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 30
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41e9cb1cac2b9e520800000000000000
-      internalID: 2731911232880418324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: "\u71A8\u6597jump-1_1"
       rect:
         serializedVersion: 2
-        x: 7
-        y: 15
-        width: 40
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1
+        y: 16
+        width: 45
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -178,55 +156,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: "\u71A8\u6597jump-1_2"
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 33
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e2a44937a6e57e80800000000000000
-      internalID: -8181379542153911576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u71A8\u6597jump-1_3"
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 24
-        width: 11
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a802cafd750f77cd0800000000000000
-      internalID: -2560313602931416950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fc3561b7f8901c14a9cb8bad6364f3d4
     internalID: 0
     vertices: []
     indices: 
