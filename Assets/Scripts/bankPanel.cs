@@ -90,6 +90,8 @@ public class bankPanel : MonoBehaviour
 
 
 public void showbankruptPanel(Player p,int i){
+    setPlayer(p);
+    bankruptPanel.SetActive(true);
     if (brCanvasGroup == null){
             brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
        
@@ -100,7 +102,7 @@ public void showbankruptPanel(Player p,int i){
             
        
        }
-    bankruptPanel.SetActive(true);
+    
     isBankrupting=true;
     
 
@@ -109,8 +111,7 @@ public void showbankruptPanel(Player p,int i){
     brmoney=i-p.playerData.money;
     
     brmessage=$"{p.name}, you need to raise more {i}$";
-    saveplayer=player;
-    player=p;
+
     StartCoroutine(FadeIn(brCanvasGroup));
     brmortgageButton.onClick.AddListener(mortgage);
     brSellButton.onClick.AddListener(sell);
@@ -147,6 +148,10 @@ public void showbankruptPanel(Player p,int i){
         if(isBankrupting){
         quitButton.interactable=false;
         confirmButton.interactable=false;
+        }else{
+            quitButton.interactable=true;
+        confirmButton.interactable=true;
+
         }
         operationList.Clear();
         
@@ -236,6 +241,13 @@ public void showbankruptPanel(Player p,int i){
        
     }
 private void generateAssets(bool i){
+            if(isBankrupting){
+            checkComfirm(false);
+            estiMoney.text=$"{checkPrice(false)}/{brmoney}";
+
+            }
+            else
+            estiMoney.text=$"{checkPrice(false)}";
             
             foreach (Transform child in generateZone.transform)
             {
@@ -275,8 +287,14 @@ private void generateAssets(bool i){
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
                     toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
-                    if(isBankrupting)
+                    if(isBankrupting){
                     checkComfirm(false);
+                    estiMoney.text=$"{checkPrice(false)}/{brmoney}";
+
+                    }
+                    else
+                    estiMoney.text=$"{checkPrice(false)}";
+                    
                     });   
                 }}
             
@@ -307,8 +325,13 @@ private void generateAssets(bool i){
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
                     toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
-                    if(isBankrupting)
+                    if(isBankrupting){
                     checkComfirm(false);
+                    estiMoney.text=$"{checkPrice(false)}/{brmoney}";
+
+                    }
+                    else
+                    estiMoney.text=$"{checkPrice(false)}";
                     });    
                     }
                     }
@@ -320,6 +343,13 @@ private void generateAssets(bool i){
         }}
 
         private void generateSellableAssets(){
+            if(isBankrupting){
+            checkComfirm(false);
+            estiMoney.text=$"{checkPrice(false)}/{brmoney}";
+
+            }
+            else
+            estiMoney.text=$"{checkPrice(false)}";
             foreach (Transform child in generateZone.transform)
             {
             Destroy(child.gameObject);
@@ -373,8 +403,14 @@ private void generateAssets(bool i){
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
                     toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
-                    if(isBankrupting)
+                    if(isBankrupting){
                     checkComfirm(true);
+                    estiMoney.text=$"{checkPrice(true)}/{brmoney}";
+
+                    }
+                    else
+                    estiMoney.text=$"{checkPrice(true)}";
+                    
                     
                     
                     });    
@@ -415,8 +451,13 @@ private void generateAssets(bool i){
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
                     toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
-                    if(isBankrupting)
+                    if(isBankrupting){
                     checkComfirm(true);
+                    estiMoney.text=$"{checkPrice(true)}/{brmoney}";
+
+                    }
+                    else
+                    estiMoney.text=$"{checkPrice(true)}";
                     });  
             }
             
@@ -530,8 +571,10 @@ private void generateAssets(bool i){
 
             }
             if(isBankrupting){
-                player=saveplayer;
-                bankruptPanel.SetActive(false);
+                isBankrupting=false;
+                quitButton.interactable=true;
+                ClosePanel();
+                
                     
                 }
 
@@ -557,8 +600,10 @@ private void generateAssets(bool i){
 
             }
             if(isBankrupting){
-                player=saveplayer;
-                bankruptPanel.SetActive(false);
+                isBankrupting=false;
+      
+                ClosePanel();
+                quitButton.interactable=true;
                     
                 }
             generateAssets(false);
