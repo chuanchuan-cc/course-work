@@ -483,7 +483,11 @@ private void generateAssets(bool i){
         string propName=child.name;
         Board board=mapList.Find(b => b.property==propName);
         if (board is estateBoard eB){
+            if(eB.improvedLevel==0)
             p+=b?eB.price:eB.price/2;
+            else{
+                p+=b?eB.improvedRents[eB.improvedLevel-1]:eB.improvedRents[eB.improvedLevel-1]/2;
+            }
         }
         else if (board is BuyableBoard bB){
             p+=b?bB.price:bB.price/2;
