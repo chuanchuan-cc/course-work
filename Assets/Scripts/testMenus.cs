@@ -89,7 +89,8 @@ private void ShowMeTheMoney(){
 
 }
 private void OperationCWAL(){
-    /*
+    
+  
     Board board=maplist[player.playerData.positionNo];
     estateBoard eBoard=board as estateBoard;
     int inMoney=player.playerData.money;
@@ -107,19 +108,18 @@ private void OperationCWAL(){
     }
     player.playerData.money=inMoney;
     
-    foreach(Player p in playerlist){
+    // foreach(Player p in playerlist){
     
-            if(p.name==player.name){
-            gameBehaviour.PayMoney(p,200);
-            }
-            else{
-            gameBehaviour.PayMoney(p,100);
-            }
+    //         if(p.name==player.name){
+    //         gameBehaviour.PayMoney(p,200);
+    //         }
+    //         else{
+    //         gameBehaviour.PayMoney(p,100);
+    //         }
         
-    }
+    // }
 
-*/
-player.playerData.money=50;
+// player.playerData.money=50;
 
 
 }

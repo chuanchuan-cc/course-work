@@ -439,7 +439,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
         if(board.improvedLevel < 5){
         int buildCost = costCalculer(board);
         
-        interactionPanel.ShowPanel($"are you want to pay {buildCost} to update you property? after that, this board price will be {board.price+buildCost}, rent will be {board.improvedRents[board.improvedLevel+1]}",board.group,board.price,board.rent,(bool isBuild)=> 
+        interactionPanel.ShowPanel($"are you want to pay {buildCost} to update you property? after that, this board price will be {board.price+buildCost}, rent will be {board.improvedRents[board.improvedLevel]}",board.group,board.price,board.rent,(bool isBuild)=> 
         { userChoice=isBuild;});
         yield return new WaitUntil(()=>userChoice.HasValue);
         
@@ -449,7 +449,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
       if(player.playerData.money>buildCost){
          
                     board.improvedLevel++;
-                    board.ResetRent(board.improvedLevel);
+                    board.ResetRent(board.improvedLevel-1);
                     board.price+=buildCost;
                     string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
                     Debug.Log($"{player.name} built {buildingType} on {board.property}.");
@@ -546,34 +546,73 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
 */
 private int costCalculer(estateBoard board){
     if(board.group.ToLower()=="brown"||board.group.ToLower()=="blue"){
-        if(board.improvedLevel<5){
+        if(board.improvedLevel<4){
 return 50;
         }else{
-return 50+board.improvedRents[4];
+return 50+board.improvedRents[3];
         }
      
     }
     else    if(board.group.ToLower()=="purple"||board.group.ToLower()=="orange"){
-        if(board.improvedLevel<5){
+        if(board.improvedLevel<4){
 return 100;
         }else{
-return 100+board.improvedRents[4];
+return 100+board.improvedRents[3];
         }
      
     }
     else    if(board.group.ToLower()=="red"||board.group.ToLower()=="yellow"){
-        if(board.improvedLevel<5){
+        if(board.improvedLevel<4){
 return 150;
         }else{
-return 150+board.improvedRents[4];
+return 150+board.improvedRents[3];
         }
 
     
 }else    if(board.group.ToLower()=="green"||board.group.Replace(" ","").ToLower()=="deepblue"){
-        if(board.improvedLevel<5){
+        if(board.improvedLevel<4){
 return 200;
         }else{
-return 200+board.improvedRents[4];
+return 200+board.improvedRents[3];
+        }
+
+    }
+    else {Debug.Log($"can't match you estateBoard, which group is {board.group.Replace(" ","").ToLower()}");
+        return 0;
+    }
+}
+
+
+public int getprice(estateBoard board, int improvedLevel){
+    if(board.group.ToLower()=="brown"||board.group.ToLower()=="blue"){
+        if(improvedLevel<4){
+return 50;
+        }else{
+return 50+board.improvedRents[3];
+        }
+     
+    }
+    else    if(board.group.ToLower()=="purple"||board.group.ToLower()=="orange"){
+        if(improvedLevel<4){
+return 100;
+        }else{
+return 100+board.improvedRents[3];
+        }
+     
+    }
+    else    if(board.group.ToLower()=="red"||board.group.ToLower()=="yellow"){
+        if(improvedLevel<4){
+return 150;
+        }else{
+return 150+board.improvedRents[3];
+        }
+
+    
+}else    if(board.group.ToLower()=="green"||board.group.Replace(" ","").ToLower()=="deepblue"){
+        if(improvedLevel<4){
+return 200;
+        }else{
+return 200+board.improvedRents[3];
         }
 
     }

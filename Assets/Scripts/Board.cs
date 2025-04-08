@@ -191,7 +191,7 @@ public static class BoardLoader
         int baseRent = ParseCurrency(reader.GetValue(8));
         
         int[] improvedRents = new int[5];
-        for (int i = 0; i < 5; i++)
+        for (int i = 1; i < 5; i++)
         {
             improvedRents[i] = ParseCurrency(reader.GetValue(10 + i));
         }

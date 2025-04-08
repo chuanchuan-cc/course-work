@@ -41,6 +41,7 @@ public class bankPanel : MonoBehaviour
   public Button brQuitButton;
 
  public bool isLackCash=false;
+public Sprite[] levelSprites;
 
 
     
@@ -319,6 +320,8 @@ private void generateAssets(bool i){
                 TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+                Image buildImg=o.transform.Find("buildingNum").GetComponent<Image>();
+                buildImg.gameObject.SetActive(false);
 
                 property.text=$"property: {bBoard.property}";
 
@@ -360,6 +363,8 @@ private void generateAssets(bool i){
                     TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+                    Image buildImg=o.transform.Find("buildingNum").GetComponent<Image>();
+                    
 
                     property.text=$"property: {eBoard.property}";
 
@@ -371,6 +376,30 @@ private void generateAssets(bool i){
                     mortgageState.text="mortgaged";}
                     else{
                         mortgageState.text="unmortgaged";
+                    }
+                    switch(eBoard.improvedLevel){
+                    case 1:
+                    buildImg.sprite=levelSprites[0];
+                    break;
+                    case 2:
+                    buildImg.sprite =levelSprites[1];
+                    break;
+                    case 3:
+                    buildImg.sprite =levelSprites[2];
+                    break;
+                    case 4:
+                    buildImg.sprite =levelSprites[3];
+                    break;
+                    case 5:
+                    buildImg.sprite =levelSprites[4];
+                    break;
+                    default:
+                    buildImg.sprite = null;
+                    buildImg.gameObject.SetActive(false);
+                    break;
+
+
+
                     }
                     Toggle toggle= o.GetComponent<Toggle>();
                     Image bgImage= o.GetComponent<Image>();
@@ -440,7 +469,11 @@ private void generateAssets(bool i){
                 TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI buildingNumber=o.transform.Find("improvelevel").GetComponent<TextMeshProUGUI>();
+                Image buildImg=o.transform.Find("buildingNum").GetComponent<Image>();
+                buildImg.gameObject.SetActive(false);
+                
+                
+                
 
                 property.text=$"property: {bBoard.property}";
 
@@ -453,7 +486,7 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                    buildingNumber.gameObject.SetActive(false);
+              
                     Toggle toggle= o.GetComponent<Toggle>();
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
@@ -492,7 +525,7 @@ private void generateAssets(bool i){
                     TextMeshProUGUI rent=o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group=o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI mortgageState=o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI buildingNumber=o.transform.Find("improvelevel").GetComponent<TextMeshProUGUI>();
+                    Image buildImg=o.transform.Find("buildingNum").GetComponent<Image>();
 
                     property.text=$"property: {eBoard.property}";
 
@@ -505,7 +538,30 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
-                    buildingNumber.text=$"building number : {eBoard.improvedLevel}";
+                    switch(eBoard.improvedLevel){
+                        case 1:
+                        buildImg.sprite=levelSprites[0];
+                        break;
+                        case 2:
+                        buildImg.sprite =levelSprites[1];
+                        break;
+                        case 3:
+                        buildImg.sprite =levelSprites[2];
+                        break;
+                        case 4:
+                        buildImg.sprite =levelSprites[3];
+                        break;
+                        case 5:
+                        buildImg.sprite =levelSprites[4];
+                        break;
+                        default:
+                        buildImg.sprite = null;
+                        buildImg.gameObject.SetActive(false);
+                        break;
+
+
+
+                    }
                     Toggle toggle= o.GetComponent<Toggle>();
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
@@ -548,7 +604,7 @@ private void generateAssets(bool i){
             if(eB.improvedLevel==0)
             p+=b?eB.price:eB.price/2;
             else{
-                p+=b?eB.improvedRents[eB.improvedLevel-1]:eB.improvedRents[eB.improvedLevel-1]/2;
+                p+=b?gameBehaviour.getprice(eB,eB.improvedLevel-1):gameBehaviour.getprice(eB,eB.improvedLevel-1)/2;
             }
         }
         else if (board is BuyableBoard bB){
@@ -557,6 +613,7 @@ private void generateAssets(bool i){
         return p;
     
 }
+
 
 
 
