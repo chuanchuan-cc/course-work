@@ -38,7 +38,9 @@ public class bankPanel : MonoBehaviour
   public Player saveplayer;
   public int brmoney;
   public string brmessage;
+  public Button brQuitButton;
 
+ public bool isLackCash=false;
 
 
     
@@ -64,6 +66,16 @@ public class bankPanel : MonoBehaviour
             
        
        }
+       if (brCanvasGroup == null){
+            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
+       
+            if (brCanvasGroup == null)
+            {
+                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
+            }
+            
+       
+       }
          
        mapList=RunGame.mapList;
        gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
@@ -77,13 +89,25 @@ public class bankPanel : MonoBehaviour
 
     }
 
-    public void ClosePanel()
+public void ClosePanel()
+{
+    HideVisually(choosePanel.GetComponent<CanvasGroup>());
+    HideVisually(behaviourPanel.GetComponent<CanvasGroup>());
+    HideVisually(bankruptPanel.GetComponent<CanvasGroup>());
+    isbanking = false;
+}
+
+private void HideVisually(CanvasGroup cg)
+{
+    if (cg != null)
     {
-        choosePanel.SetActive(false);
-        behaviourPanel.SetActive(false);
-        bankruptPanel.SetActive(false);
-        isbanking=false;
+        cg.alpha = 0f;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
     }
+}
+
+
     public void setPlayer(Player _player){
         player=_player;
     }
@@ -91,7 +115,32 @@ public class bankPanel : MonoBehaviour
 
 public void showbankruptPanel(Player p,int i){
     setPlayer(p);
-    bankruptPanel.SetActive(true);
+
+    brQuitButton.gameObject.SetActive(false);
+ 
+    
+    isBankrupting=true;
+    
+
+    
+    brtext.text=$"lack of cash, {p.name}, you need at least {i}$";
+    brmoney=i-p.playerData.money;
+    
+    brmessage=$"{p.name}, you need to raise more {i}$";
+
+    StartCoroutine(FadeIn(brCanvasGroup));
+    brmortgageButton.onClick.AddListener(mortgage);
+    brSellButton.onClick.AddListener(sell);
+
+
+}
+
+public void showLackOfCashPanel(Player p,int i){
+    isLackCash=true;
+    setPlayer(p);
+    brQuitButton.onClick.AddListener(ClosePanel);
+
+    brQuitButton.gameObject.SetActive(true);
     if (brCanvasGroup == null){
             brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
        
@@ -103,7 +152,6 @@ public void showbankruptPanel(Player p,int i){
        
        }
     
-    isBankrupting=true;
     
 
     
@@ -130,8 +178,7 @@ public void showbankruptPanel(Player p,int i){
  public void ShowPanel()
     {
        
-       
-        choosePanel.SetActive(true);
+
         
 
 
@@ -157,7 +204,7 @@ public void showbankruptPanel(Player p,int i){
         
       
 
-        behaviourPanel.SetActive(true);
+
         message.text=_message;
         
 
@@ -292,6 +339,9 @@ private void generateAssets(bool i){
                     estiMoney.text=$"{checkPrice(false)}/{brmoney}";
 
                     }
+                    else if(isLackCash)
+                    estiMoney.text=$"{checkPrice(false)}/{brmoney}";
+
                     else
                     estiMoney.text=$"{checkPrice(false)}";
                     
@@ -330,6 +380,8 @@ private void generateAssets(bool i){
                     estiMoney.text=$"{checkPrice(false)}/{brmoney}";
 
                     }
+                    else if(isLackCash)
+                    estiMoney.text=$"{checkPrice(false)}/{brmoney}";
                     else
                     estiMoney.text=$"{checkPrice(false)}";
                     });    
@@ -410,6 +462,8 @@ private void generateAssets(bool i){
                     estiMoney.text=$"{checkPrice(true)}/{brmoney}";
 
                     }
+                    else if(isLackCash)
+                    estiMoney.text=$"{checkPrice(true)}/{brmoney}";
                     else
                     estiMoney.text=$"{checkPrice(true)}";
                     
@@ -460,6 +514,8 @@ private void generateAssets(bool i){
                     estiMoney.text=$"{checkPrice(true)}/{brmoney}";
 
                     }
+                    else if(isLackCash)
+                    estiMoney.text=$"{checkPrice(true)}/{brmoney}";
                     else
                     estiMoney.text=$"{checkPrice(true)}";
                     });  
@@ -585,6 +641,10 @@ private void generateAssets(bool i){
                 
                     
                 }
+                if(isLackCash){
+                    ClosePanel();
+                    isLackCash=false;
+                }
 
                 generateSellableAssets();
                 break;
@@ -613,7 +673,9 @@ private void generateAssets(bool i){
                 ClosePanel();
                 quitButton.interactable=true;
                     
-                }
+                }if(isLackCash){
+                ClosePanel();
+                isLackCash=false;}
             generateAssets(false);
             break;
             

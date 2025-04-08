@@ -119,7 +119,7 @@ private void OperationCWAL(){
     }
 
 */
-gameBehaviour.PayMoney(player,2000);
+player.playerData.money=50;
 
 
 }

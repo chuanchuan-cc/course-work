@@ -74,7 +74,7 @@ public class RunGame : MonoBehaviour
     
 
 
-    //测试用玩家
+
 
     int roll;
 
@@ -260,9 +260,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
         //test
-        isAI=true;
-        difficulty=1;
-        playerNumber=3;
+       
 
 
 
@@ -297,7 +295,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
         //test
-        for(int i=1;i<playerNumber-1;i++){
+        for(int i=1;i<=playerNumber-1;i++){
             playersList[i].playerData.isAI=true;
         }
 
@@ -1229,7 +1227,14 @@ private IEnumerator showBankPanel(){
                                  generator.updateTile(eBoard);
                                  
                             }else{
-                                //lack of cash
+                                bankpanel.showLackOfCashPanel(player,eBoard.price);
+                                yield return new WaitUntil(()=>!bankpanel.isLackCash);
+                                if(player.playerData.money>eBoard.price){
+                                    gameBehaviour.PayMoney(player,eBoard.price);
+                                 gameBehaviour.AddProperty(player,eBoard);
+                                 generator.updateTile(eBoard);
+
+                                }
                              
                             }
 
@@ -1272,6 +1277,7 @@ private IEnumerator showBankPanel(){
                         gameBehaviour.PayRent(currentPlayer,eBoard);
                         
                         }
+                        playerUpdate(plaeyr);
     }
 
 
@@ -1314,7 +1320,14 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.AddBuyable(player,bBoard);
                                  generator.updateTile(bBoard);
                             }else{
-                                //lack of cash
+                                bankpanel.showLackOfCashPanel(player,bBoard.price);
+                                yield return new WaitUntil(()=>!bankpanel.isLackCash);
+                                if(player.playerData.money>bBoard.price){
+                                    gameBehaviour.PayMoney(player,bBoard.price);
+                                 gameBehaviour.AddBuyable(player,bBoard);
+                                 generator.updateTile(bBoard);
+
+                                }
                 
                             }
 
@@ -1331,6 +1344,7 @@ private IEnumerator showBankPanel(){
                              
                         }
                     }
+                        playerUpdate(plaeyr);
                         isChecking = false;
                         yield break;
                             

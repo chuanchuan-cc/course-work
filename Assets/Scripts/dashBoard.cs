@@ -40,7 +40,7 @@ public class dashBoardConstructor: MonoBehaviour
 }
 public void highlightPlayer(Player player){
     DashBoard=GameObject.Find("DashBoard");
-    Debug.Log($"开始高光玩家{player.name}");
+  
     if(DashBoard!=null){
         foreach(Transform child in DashBoard.transform){
             Image img=child.gameObject.GetComponent<Image>();
