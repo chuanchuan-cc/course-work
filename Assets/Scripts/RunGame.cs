@@ -22,7 +22,7 @@ public class RunGame : MonoBehaviour
 
     public bool keepGame = true;
     public Player currentPlayer;
-    public CGcontrol cgControl;
+    
 
 
     public Button DiceButton;
@@ -134,8 +134,7 @@ public class RunGame : MonoBehaviour
         BankButton=GameObject.Find("BankButton").GetComponent<Button>();
 
 
-        //bind cg controller
-        cgControl=  FindObjectOfType<CGcontrol>();
+       
 
 
 
@@ -380,6 +379,10 @@ void Update()
         if (Input.GetKeyDown(KeyCode.C))
         {
             testmenus.cheating(currentPlayer);
+            Debug.Log($"{currentPlayer.name}, money={currentPlayer.playerData.money}, freejailNum= {currentPlayer.playerData.freeJail}, worth={currentPlayer.playerData.assetsWorth}"
+       
+       
+       );
         }
         
 
@@ -480,7 +483,7 @@ void Update()
         
         
         if(roll==-1){
-            cgControl.CGDisplay("GoToJail");
+            
             gameBehaviour.GoToJail(currentPlayer);
           
             

@@ -8,6 +8,7 @@ public class GameBehaviour: MonoBehaviour
 {
     public playerInteractionPanel interactionPanel;
     public bankPanel bankpanel;
+    public CGcontrol cgControl;
 
 
 
@@ -17,6 +18,11 @@ public class GameBehaviour: MonoBehaviour
 
    
    void Start(){
+     //bind cg controller
+    cgControl=  FindObjectOfType<CGcontrol>();
+
+
+
     interactionPanel=GameObject.Find("interactionPanel").GetComponent<playerInteractionPanel>();
     if(interactionPanel==null)Debug.Log("can't find interaction panel");
     
@@ -188,8 +194,11 @@ return l1;
 
         if(b!=null){
             if(player.playerData.freeJail==0){
+                cgControl.CGDisplay("GoToJail");
             MusicController.Instance.PlayJailSound();
              FreezeTurn(player, 2);}
+             else
+             player.playerData.freeJail--;
       
         player.directlyMove(b);
         

@@ -36,6 +36,7 @@ public class testMenus : MonoBehaviour
             gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
        
        close();
+       
  }
 private void close(){
     menus.SetActive(false);
@@ -91,22 +92,22 @@ private void ShowMeTheMoney(){
 private void OperationCWAL(){
     
   
-    Board board=maplist[player.playerData.positionNo];
-    estateBoard eBoard=board as estateBoard;
-    int inMoney=player.playerData.money;
-    if(eBoard!=null){
-    if(player.playerData.assetsList.Contains(eBoard)){
+    // Board board=maplist[player.playerData.positionNo];
+    // estateBoard eBoard=board as estateBoard;
+    // int inMoney=player.playerData.money;
+    // if(eBoard!=null){
+    // if(player.playerData.assetsList.Contains(eBoard)){
         
 
-        gameBehaviour.BuildBuilding(player,eBoard);
+    //     gameBehaviour.BuildBuilding(player,eBoard);
         
 
-    }else{
-        Debug.Log("it is not your property");
-    }}else{
-        Debug.Log("can not build in this property");
-    }
-    player.playerData.money=inMoney;
+    // }else{
+    //     Debug.Log("it is not your property");
+    // }}else{
+    //     Debug.Log("can not build in this property");
+    // }
+    // player.playerData.money=inMoney;
     
     // foreach(Player p in playerlist){
     
@@ -120,6 +121,11 @@ private void OperationCWAL(){
     // }
 
 // player.playerData.money=50;
+
+
+
+player.playerData.freeJail+=1;
+Debug.Log($"玩家{player.name} 免死金牌数为{player.playerData.freeJail}");
 
 
 }
