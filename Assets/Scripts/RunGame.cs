@@ -1277,7 +1277,7 @@ private IEnumerator showBankPanel(){
                         gameBehaviour.PayRent(currentPlayer,eBoard);
                         
                         }
-                        playerUpdate(plaeyr);
+                        playerUpdate(player);
     }
 
 
@@ -1344,7 +1344,7 @@ private IEnumerator showBankPanel(){
                              
                         }
                     }
-                        playerUpdate(plaeyr);
+                        playerUpdate(player);
                         isChecking = false;
                         yield break;
                             

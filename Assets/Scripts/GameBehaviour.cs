@@ -104,55 +104,55 @@ private IEnumerator lackcash(Player player, int amount){
         if (player.playerData.assetsList.Count == 0 || player.playerData.assetsWorth <= player.playerData.money) {
         bankrupt(player);
         return;}
-else if(RunGame.instance.difficulty==0){
-    if(player.playerData.money<0.15*player.playerData.assetsWorth){
-        int n=Random.Range(0,player.playerData.assetsList.Count);
-    estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
-if(eBoard!=null)
-mortageEstateBoard(eBoard);
-else{
-    BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
-    mortageBuyableBoard(bBoard);
-}
-
-
-    }
-
-}
-else if(RunGame.instance.difficulty==1){
-if(player.playerData.money<0.15*player.playerData.assetsWorth){
-List<int>l2 = MortagageState(player);
-if(l2.Count==0){
-    if(player.playerData.assetsList.Count>0){
-        int n=Random.Range(0,player.playerData.assetsList.Count);
+    else if(RunGame.instance.difficulty==0){
+        if(player.playerData.money<0.15*player.playerData.assetsWorth){
+            int n=Random.Range(0,player.playerData.assetsList.Count);
         estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
-if(eBoard!=null)
-mortageEstateBoard(eBoard);
-else{
-    BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
-    mortageBuyableBoard(bBoard);
-}
-
+    if(eBoard!=null)
+    mortageEstateBoard(eBoard);
+    else{
+        BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+        mortageBuyableBoard(bBoard);
     }
 
 
-}
-else{
-int n1=Random.Range(0,l2.Count);
-estateBoard eBoard= player.playerData.assetsList[l2[n1]] as estateBoard;
-if(eBoard!=null)
-SellEstateBoard(eBoard);
-else{
-    BuyableBoard bBoard= player.playerData.assetsList[n1] as BuyableBoard;
-    SellBuyableBoard(bBoard);
-}
+        }
+
+    }
+    else if(RunGame.instance.difficulty==1){
+    if(player.playerData.money<0.15*player.playerData.assetsWorth){
+    List<int>l2 = MortagageState(player);
+    if(l2.Count==0){
+        if(player.playerData.assetsList.Count>0){
+            int n=Random.Range(0,player.playerData.assetsList.Count);
+            estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
+    if(eBoard!=null)
+    mortageEstateBoard(eBoard);
+    else{
+        BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+        mortageBuyableBoard(bBoard);
+    }
+
+        }
 
 
-}
-}
+    }
+    else{
+    int n1=Random.Range(0,l2.Count);
+    estateBoard eBoard= player.playerData.assetsList[l2[n1]] as estateBoard;
+    if(eBoard!=null)
+    SellEstateBoard(eBoard);
+    else{
+        BuyableBoard bBoard= player.playerData.assetsList[n1] as BuyableBoard;
+        SellBuyableBoard(bBoard);
+    }
 
 
-}
+    }
+    }
+
+
+    }
 
 
 
@@ -211,6 +211,7 @@ return l1;
     }
     public void SellEstateBoard(estateBoard board)
 {
+   
     if (board.owner is PlayerData playerOwner){
     if (playerOwner.assetsList.Contains(board))
     {
@@ -246,6 +247,7 @@ return l1;
 
 }
 public void SellBuyableBoard(BuyableBoard board){
+
             int sellPrice;
             if( board.owner is PlayerData playerOwner){
             if(board.isMortgage){
@@ -266,6 +268,7 @@ board.owner=RunGame.bank;
 
 }
 public void mortageEstateBoard(estateBoard board){
+  
 
     board.isMortgage=true;
     if( board.owner is PlayerData playerOwner){
@@ -279,6 +282,7 @@ public void mortageEstateBoard(estateBoard board){
 
 }
 public void mortageBuyableBoard(BuyableBoard board){
+
     board.isMortgage=true;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;

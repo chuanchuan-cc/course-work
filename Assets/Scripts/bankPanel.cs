@@ -227,6 +227,7 @@ public void showLackOfCashPanel(Player p,int i){
         generateSellableAssets();
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeSell"));
+     
         isInteracting=false;
       
     }
@@ -239,6 +240,7 @@ public void showLackOfCashPanel(Player p,int i){
         generateAssets(false);
         confirmButton.onClick.RemoveAllListeners();
         confirmButton.onClick.AddListener(()=>confirm("makeMortgage"));
+      
         isInteracting=false;
     } 
     private void remdeem(){
@@ -627,6 +629,8 @@ private void generateAssets(bool i){
                         else
                         gameBehaviour.SellEstateBoard(eBoard);
 
+                   
+
 
                     
                     }
@@ -661,6 +665,7 @@ private void generateAssets(bool i){
                             gameBehaviour.mortageEstateBoard(eBoard);
                             
                         }
+                    
 
                         
                     }
