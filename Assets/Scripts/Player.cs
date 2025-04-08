@@ -243,8 +243,8 @@ public class Player : MonoBehaviour
                             inputY = -1;
                         }
                         facex = inputX;
-                        _animator.SetFloat("inputX", inputX);
-                        _animator.SetFloat("inputY", inputY);
+                    //     _animator.SetFloat("inputX", inputX);
+                    //     _animator.SetFloat("inputY", inputY);
                     }
 
                     else
@@ -264,7 +264,8 @@ public class Player : MonoBehaviour
                     elapsedTime += Time.deltaTime;
                     //                     yield return StartCoroutine(
                     //      FindFirstObjectByType<CGcontrol>().PlayCGAnimation("wallet_add", this)
-                    //  );
+                    // 
+                    // );
 
                     yield return null;
 
@@ -275,8 +276,7 @@ public class Player : MonoBehaviour
 
 
             _rigidbody.position = targetPos;
-            //播放格子下沉动画
-            //将等待改为动画播放完毕
+            //board animation
             if (this.name != "ship")
             {
                 StartCoroutine(moveBoardAnimation());

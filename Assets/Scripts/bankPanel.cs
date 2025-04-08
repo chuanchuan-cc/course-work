@@ -386,6 +386,7 @@ private void generateAssets(bool i){
                 TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI buildingNumber=o.transform.Find("improvelevel").GetComponent<TextMeshProUGUI>();
 
                 property.text=$"property: {bBoard.property}";
 
@@ -398,6 +399,7 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
+                    buildingNumber.gameObject.SetActive(false);
                     Toggle toggle= o.GetComponent<Toggle>();
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
@@ -427,13 +429,14 @@ private void generateAssets(bool i){
           
             
             foreach(estateBoard eBoard in el){
-                    GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
-                    o.name = eBoard.property;
-                    TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI mortgageState= o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+                    GameObject o =GameObject.Instantiate(estatePrefab, generateZone.transform);
+                    o.name=eBoard.property;
+                    TextMeshProUGUI property=o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI price=o.transform.Find("price").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI rent=o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI group=o.transform.Find("group").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI mortgageState=o.transform.Find("isMortgage").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI buildingNumber=o.transform.Find("improvelevel").GetComponent<TextMeshProUGUI>();
 
                     property.text=$"property: {eBoard.property}";
 
@@ -446,6 +449,7 @@ private void generateAssets(bool i){
                     else{
                         mortgageState.text="unmortgaged";
                     }
+                    buildingNumber.text=$"building number : {eBoard.improvedLevel}";
                     Toggle toggle= o.GetComponent<Toggle>();
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
