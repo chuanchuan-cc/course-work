@@ -74,7 +74,7 @@ public class CGcontrol : MonoBehaviour
 
         GameObject animObject = animTransform.gameObject;
         if(pos!=new Vector3(999999f,999999f,999999f)){
-        animObject.transform.position=new Vector3(pos.x, pos.y+0.5f, pos.z);
+        animObject.transform.position=new Vector3(pos.x, pos.y, pos.z);
         animObject.transform.eulerAngles = new Vector3(-45f, 0f, 0f);
 
         }
@@ -89,7 +89,7 @@ public class CGcontrol : MonoBehaviour
         {
             animator.Play(cgName);
   
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length-0.2f);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length+0.2f);
         }
         else
         {

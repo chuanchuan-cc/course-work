@@ -67,6 +67,7 @@ public class RunGame : MonoBehaviour
     
 
     public Slider musicSlider;
+    public CGcontrol cGcontrol;
  
 
 
@@ -84,6 +85,7 @@ public class RunGame : MonoBehaviour
     isLoadGame = PlayerPrefs.GetInt("isLoadGame", 0) == 1;
         PlayerPrefs.SetInt("isLoadGame", 0);
     PlayerPrefs.Save();
+    cGcontrol=FindObjectOfType<CGcontrol>();
    
         
 
@@ -659,7 +661,8 @@ void AIRoll(){
  IEnumerator check(Player player)
     {
         isChecking=true;
-        yield return new WaitForSeconds(0.2f);
+        int inimoney=player.playerData.money;
+        
         
         Board currentBoard = mapList[player.playerData.positionNo];
       
@@ -684,7 +687,14 @@ void AIRoll(){
             StartCoroutine(HandleBoard(player, currentBoard));
         }
         if(currentPlayer!=null)
+        if(player.playerData.money>inimoney)
+        cGcontrol.PlayCG("add_money",player);
+        if(player.playerData.money<inimoney)
+        cGcontrol.PlayCG("money_fly",player);
+
+        
         playerUpdate(currentPlayer);
+        yield return new WaitForSeconds(0.2f);
         isChecking=false;
         
     }
