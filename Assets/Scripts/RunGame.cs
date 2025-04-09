@@ -1131,6 +1131,8 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         
         
 private void showbankPanel(){
+    if(cameraController.canBeDragging){
+        changeCameraMode();}
     StartCoroutine(showBankPanel());
 
 }
@@ -1434,6 +1436,8 @@ private void changeCameraMode(){
     }
 }
 private void showMenus(){
+    if(cameraController.canBeDragging){
+        changeCameraMode();}
     menus.gameObject.SetActive(true);
 
 }

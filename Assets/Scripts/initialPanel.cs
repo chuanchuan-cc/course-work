@@ -43,7 +43,8 @@ public class initialPanelScript : MonoBehaviour
         UpdatePlayerNumberText(playerNumberSlider.value);
         mapText.text="Default map";
         cardText.text="Default cardpool";
-        playerNumberSlider.value=1;
+        playerNumberSlider.value=3;
+        playerNumberSlider.onValueChanged.AddListener(isSole);
         playerNumber.text = playerNumberSlider.value.ToString();
         difficultySlider.gameObject.SetActive(false);
         difficultyOutput.gameObject.SetActive(false);
@@ -71,6 +72,13 @@ public class initialPanelScript : MonoBehaviour
         SceneManager.LoadScene("gameScene");
     }
     
+    void isSole(float value){
+        if(value==1){
+            AIToggle.isOn=true;
+            AIToggle.interactable=false;
+        }else
+        AIToggle.interactable=true;
+    }
     void toggleClick(bool i){
         toggleImage.sprite= i? toggleTrueImage:toggleFalseImage;
         if(i){
