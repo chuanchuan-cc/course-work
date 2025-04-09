@@ -200,7 +200,7 @@ return l1;
 
         if(b!=null){
             if(player.playerData.freeJail==0){
-                cgControl.PlayCGAnimation("jail");
+                cgControl.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
             MusicController.Instance.PlayJailSound();
              FreezeTurn(player, 2);}
              else

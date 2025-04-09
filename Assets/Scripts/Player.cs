@@ -176,22 +176,22 @@ public class Player : MonoBehaviour
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                    transform.localScale = new Vector3(1, 1, 1); 
                 }
             }
             if (name == "boots")
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                    transform.localScale = new Vector3(1, 1, 1); 
                 }
             }
 
@@ -199,11 +199,11 @@ public class Player : MonoBehaviour
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                    transform.localScale = new Vector3(-1, 1, 1); 
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
             }
 
@@ -211,11 +211,11 @@ public class Player : MonoBehaviour
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); // 左翻
+                    transform.localScale = new Vector3(-1, 1, 1); 
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); // 正常
+                    transform.localScale = new Vector3(1, 1, 1); 
                 }
             }
 

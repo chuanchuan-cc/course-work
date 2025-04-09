@@ -124,7 +124,7 @@ public IEnumerator BoardAnimation(int no){
 
 }
 
-    private Vector3Int BoardGetPosition(int no)
+    public Vector3Int BoardGetPosition(int no)
     {
         if (no == 0) return new Vector3Int(7, -3, 0);
         else if (no <= 15) return new Vector3Int(7 - no, -3, 0);

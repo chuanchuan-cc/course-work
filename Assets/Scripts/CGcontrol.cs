@@ -4,12 +4,14 @@ using System.Collections;
 
 public class CGcontrol : MonoBehaviour
 {
+    public TileGenerator tileGenerator;
     public bool isCG=false;
 
     public GameObject behaviorCG;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tileGenerator= GameObject.Find("Map").GetComponent<TileGenerator>();
         behaviorCG = GameObject.Find("BehaviorCG");
         foreach (Transform child in behaviorCG.transform)
         {
@@ -46,16 +48,26 @@ public class CGcontrol : MonoBehaviour
     //     cgObject.SetActive(false);
 
     // }
- 
+    public void PlayCG(string cgName,int i){
+     
+        Vector3Int posInt = tileGenerator.BoardGetPosition(i);
+        Vector3 pos = new Vector3(posInt.x, posInt.y, posInt.z);
+        
+        PlayCGAnimation(cgName,pos);
+        
 
-    public void PlayCGAnimation(string cgName)
+        
+    }
+
+    public void PlayCGAnimation(string cgName,Vector3 pos)
     {
         isCG=true;
-        StartCoroutine(PlayAnimation(cgName));
+        StartCoroutine(PlayAnimation(cgName,pos));
     }
     
-    private IEnumerator PlayAnimation(string cgName)
+    private IEnumerator PlayAnimation(string cgName,Vector3 pos)
     {
+
 
         Transform animTransform = behaviorCG.transform.Find(cgName);
         if (animTransform == null)
@@ -65,6 +77,12 @@ public class CGcontrol : MonoBehaviour
         }
 
         GameObject animObject = animTransform.gameObject;
+        if(pos!=new Vector3(999999f,999999f,999999f)){
+        animObject.transform.position=new Vector3(pos.x+0.5f, pos.y+1.5f, pos.z);
+        animObject.transform.eulerAngles = new Vector3(-45f, 0f, 0f);
+
+        }
+
         
         
      

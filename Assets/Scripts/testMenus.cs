@@ -93,11 +93,11 @@ private void ShowMeTheMoney(){
 }
 private void OperationCWAL(){
     if(inputtext.text=="1")
-    cGcontrol.PlayCGAnimation("jail");
+    cGcontrol.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
     if(inputtext.text=="2")
-    cGcontrol.PlayCGAnimation("add_money");
+    cGcontrol.PlayCG("add_money",player.playerData.positionNo);
     if(inputtext.text=="3")
-    cGcontrol.PlayCGAnimation("money_fly");
+    cGcontrol.PlayCG("money_fly",player.playerData.positionNo);
 
 
     
