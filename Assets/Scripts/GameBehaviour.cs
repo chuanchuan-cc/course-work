@@ -215,6 +215,7 @@ return l1;
         
       Debug.Log($"{player.name} is sent to jail!");
     }
+
     public void FreezeTurn(Player player, int turns){
         player.playerData.freezeTurn = turns;
     }

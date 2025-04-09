@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
-using System.Numerics;
+
 
 public class CGcontrol : MonoBehaviour
 {
+    public bool isCG=false;
 
     public GameObject behaviorCG;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,10 +50,11 @@ public class CGcontrol : MonoBehaviour
 
     public void PlayCGAnimation(string cgName)
     {
-        StartCoroutine(CenterAnimation(cgName));
+        isCG=true;
+        StartCoroutine(PlayAnimation(cgName));
     }
     
-    private IEnumerator CenterAnimation(string cgName)
+    private IEnumerator PlayAnimation(string cgName)
     {
 
         Transform animTransform = behaviorCG.transform.Find(cgName);
@@ -65,7 +67,8 @@ public class CGcontrol : MonoBehaviour
         GameObject animObject = animTransform.gameObject;
         
         
-        animObject.transform.position = new UnityEngine.Vector3(Screen.width / 2, Screen.height / 2, 0);
+        animObject.transform.position = new UnityEngine.Vector3(0, 0, 0);
+        animObject.transform.rotation = Quaternion.Euler(-45f, 0f, 0f);
         animObject.SetActive(true);
 
         Animator animator = animObject.GetComponent<Animator>();
@@ -80,6 +83,7 @@ public class CGcontrol : MonoBehaviour
             Debug.LogWarning("No Animator component found on: " + cgName);
             yield return new WaitForSeconds(5f);
         }
+        isCG=false;
         
         animObject.SetActive(false);
     }
