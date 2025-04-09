@@ -95,9 +95,9 @@ private void OperationCWAL(){
     if(inputtext.text=="1")
     cGcontrol.PlayCGAnimation("jail");
     if(inputtext.text=="2")
-    cGcontrol.PlayCGAnimation("wallet_add");
+    cGcontrol.PlayCGAnimation("add_money");
     if(inputtext.text=="3")
-    cGcontrol.PlayCGAnimation("wallet_lose");
+    cGcontrol.PlayCGAnimation("money_fly");
 
 
     
