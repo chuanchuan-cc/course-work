@@ -81,7 +81,7 @@ public class GameBehaviour: MonoBehaviour
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
         MusicController.Instance.PlayMoneySound();
-    
+       
         }else{
             StartCoroutine(lackcash(player,amount));
             
