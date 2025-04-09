@@ -77,6 +77,7 @@ public class TileGenerator : MonoBehaviour
 
 public void updateTile(Board board){
     Debug.Log($"update tile {board.positionNo}");
+    if(tileList!=null && tileList.Count!=0){
             GameObject tile=tileList[board.positionNo];
                 
             estatePrefabConfig config = tile.GetComponent<estatePrefabConfig>();
@@ -90,7 +91,7 @@ public void updateTile(Board board){
                     
                 }                
             
-            }
+            }}
                 
 
 }

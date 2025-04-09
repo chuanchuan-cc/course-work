@@ -9,6 +9,7 @@ public class GameBehaviour: MonoBehaviour
     public playerInteractionPanel interactionPanel;
     public bankPanel bankpanel;
     public CGcontrol cgControl;
+    public TileGenerator generator;
 
 
 
@@ -20,6 +21,7 @@ public class GameBehaviour: MonoBehaviour
    void Start(){
      //bind cg controller
     cgControl=  FindObjectOfType<CGcontrol>();
+    generator=GameObject.Find("Map").GetComponent<TileGenerator>();
 
 
 
@@ -31,11 +33,13 @@ public class GameBehaviour: MonoBehaviour
 
         foreach(Board b in player.playerData.assetsList){
             estateBoard eb = b as estateBoard;
-            if(eb!=null)
+            if(eb!=null){
                 eb.owner=RunGame.bank;
+                generator.updateTile(eb);}
             else{
                 BuyableBoard bb = b as BuyableBoard;
                 bb.owner=RunGame.bank;
+                generator.updateTile(bb);
             }
             
 
@@ -46,6 +50,8 @@ public class GameBehaviour: MonoBehaviour
         Destroy(player.gameObject);
         
         RunGame.instance.isNext = true;
+        
+        
 
 
 
@@ -254,6 +260,7 @@ return l1;
         
         Debug.Log($"{playerOwner.name} does not own {board.property}, so they cannot sell it!");
     }}
+    generator.updateTile(board);
 
 }
 public void SellBuyableBoard(BuyableBoard board){
@@ -274,6 +281,7 @@ public void SellBuyableBoard(BuyableBoard board){
             }
             }
 board.owner=RunGame.bank;
+generator.updateTile(board);
 
 
 }
@@ -343,6 +351,7 @@ public void remdeemBuyableBoard(BuyableBoard board){
             player.playerData.assetsList.Add(board);
             RunGame.instance.playerUpdate(player);
             }
+            generator.updateTile(board);
 
         }
         public void AddBuyable(Player player, BuyableBoard board)
@@ -382,6 +391,7 @@ public void remdeemBuyableBoard(BuyableBoard board){
             board.owner = player.playerData;
             player.playerData.assetsWorth+=board.price;
             player.playerData.assetsList.Add(board);
+            generator.updateTile(board);
 
 
         }}
@@ -436,6 +446,7 @@ public void remdeemBuyableBoard(BuyableBoard board){
             }
             
             }
+            generator.updateTile(board);
         }
 
 public IEnumerator BuildBuilding(Player player, estateBoard board)
@@ -485,6 +496,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
          
 
        }
+       generator.updateTile(board);
   
        
 

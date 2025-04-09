@@ -731,6 +731,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                         }
                     }
                 }
+                
             }
 }
 
@@ -1280,7 +1281,9 @@ private IEnumerator showBankPanel(){
                         gameBehaviour.PayRent(currentPlayer,eBoard);
                         
                         }
+                        generator.updateTile(eBoard);
                         playerUpdate(player);
+                        isChecking=false;
     }
 
 
@@ -1347,6 +1350,7 @@ private IEnumerator showBankPanel(){
                              
                         }
                     }
+                    generator.updateTile(bBoard);
                         playerUpdate(player);
                         isChecking = false;
                         yield break;
@@ -1394,6 +1398,7 @@ private bool canBuild(Player player, estateBoard board)
 private void build(){
         estateBoard eBoard=mapList[currentPlayer.playerData.positionNo] as estateBoard;
     StartCoroutine(gameBehaviour.BuildBuilding(currentPlayer,eBoard));
+
 
     buildingButton.gameObject.SetActive(false);
 }
