@@ -21,8 +21,12 @@ public class Board{
         this.positionNo=positionNo;
         this.canBeBought=canBeBought;
         this.group=group;
-        this.action = action;
+        this.action=action;
         this.property=property;
+    }
+        public virtual Board DeepCopy()
+    {
+        return new Board(positionNo, property, group, action, canBeBought);
     }
    
 
@@ -46,9 +50,9 @@ public class estateBoard:Board{
 
         this.improvedLevel=0;
         this.price=price;
-        this.baseRent = baseRent;
-        this.improvedRents = improvedRents;
-        this.owner = RunGame.bank;
+        this.baseRent=baseRent;
+        this.improvedRents=improvedRents;
+        this.owner=RunGame.bank;
         this.rent=baseRent;
         this.isMortgage=false;
         this.initialPrice=price;
@@ -67,7 +71,16 @@ public class estateBoard:Board{
         this.rent=this.improvedRents[i];
         
     }
-}
+     public override Board DeepCopy()
+    {
+        return new estateBoard(positionNo, property, group, price, baseRent, (int[])improvedRents.Clone())
+        {
+            improvedLevel=this.improvedLevel,
+            rent=this.rent,
+            isMortgage=this.isMortgage,
+            initialPrice=this.initialPrice
+        };
+}}
 
 [Serializable]
 public class BuyableBoard : Board
@@ -81,13 +94,21 @@ public class BuyableBoard : Board
     public BuyableBoard(int positionNo, string property, string group, int price)
         : base(positionNo, property, group, "", true)
     {
-        this.price = price;
-        this.owner = RunGame.bank;
+        this.price=price;
+        this.owner=RunGame.bank;
         if(group=="Station")this.rent=25;
         isMortgage=false;
     }
     public void setRent(int _rent){
         this.rent=_rent;
+    }
+    public override Board DeepCopy()
+    {
+        return new BuyableBoard(positionNo, property, group, price)
+        {
+            rent=this.rent,
+            isMortgage=this.isMortgage
+        };
     }
 }
 
@@ -96,13 +117,13 @@ public static class BoardLoader
 {
     public static List<Board> LoadBoards(string excelPath)
     {
-        List<Board> boards = new List<Board>();
+        List<Board> boards=new List<Board>();
 
         try
         {
             
-            using (var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read))
-            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            using (var stream=File.Open(excelPath, FileMode.Open, FileAccess.Read))
+            using (var reader=ExcelReaderFactory.CreateReader(stream))
             {
                 int rowIdx=0;
                 while(reader.Read())
@@ -115,22 +136,22 @@ public static class BoardLoader
                 {
                     
                     
-                    int positionNo = ParseInt(reader.GetValue(0))-1;
-                    string property = GetString(reader.GetValue(1));
-                    string group = GetString(reader.GetValue(3)).Replace(" ", "");
-                    string action = GetString(reader.GetValue(4));
-                    bool canBeBought = ParseBool(reader.GetValue(5));
+                    int positionNo=ParseInt(reader.GetValue(0))-1;
+                    string property=GetString(reader.GetValue(1));
+                    string group=GetString(reader.GetValue(3)).Replace(" ", "");
+                    string action=GetString(reader.GetValue(4));
+                    bool canBeBought=ParseBool(reader.GetValue(5));
 
                     try
                     {
                         if (IsStation(group) || IsUtility(group))
 {
-    int price = ParseCurrency(reader.GetValue(7));
+    int price=ParseCurrency(reader.GetValue(7));
     boards.Add(new BuyableBoard(positionNo, property, group, price));
 }
                         else if (canBeBought)
                         {
-                            var (price, baseRent, improvedRents) = ParsePropertyData(reader);
+                            var (price, baseRent, improvedRents)=ParsePropertyData(reader);
                             boards.Add(new estateBoard(
                                 positionNo, property, group, 
                                 price, baseRent, improvedRents
@@ -159,7 +180,6 @@ public static class BoardLoader
         return boards;
     }
 
-    #region 
     private static string GetString(object cell) => cell?.ToString().Trim() ?? "";
     
     private static int ParseInt(object cell) => 
@@ -170,13 +190,13 @@ public static class BoardLoader
 
     private static int ParseCurrency(object cell)
     {
-        string value = GetString(cell);
+        string value=GetString(cell);
         if (value.Contains("See notes")) return 0;
         return int.TryParse(value.Replace("£", ""), out int num) ? num : 0;
     }
-    #endregion
+   
 
-    #region 
+  
     private static bool IsStation(string group) => 
         group.Equals("Station", StringComparison.OrdinalIgnoreCase);
 
@@ -187,13 +207,13 @@ public static class BoardLoader
 
     private static (int price, int baseRent, int[] improvedRents) ParsePropertyData(IExcelDataReader reader)
     {
-        int price = ParseCurrency(reader.GetValue(7));
-        int baseRent = ParseCurrency(reader.GetValue(8));
+        int price=ParseCurrency(reader.GetValue(7));
+        int baseRent=ParseCurrency(reader.GetValue(8));
         
-        int[] improvedRents = new int[5];
-        for (int i = 1; i < 5; i++)
+        int[] improvedRents=new int[5];
+        for (int i=0; i < 5; i++)
         {
-            improvedRents[i] = ParseCurrency(reader.GetValue(10 + i));
+            improvedRents[i]=ParseCurrency(reader.GetValue(10 + i));
         }
 
         if (price <= 0) throw new ArgumentException("price have to larger than 0");
@@ -220,7 +240,7 @@ public static class BoardLoader
             }
         }
     }
-    #endregion
+   
   
 }
 

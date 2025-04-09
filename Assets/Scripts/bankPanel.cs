@@ -16,7 +16,7 @@ public class bankPanel : MonoBehaviour
     public Button remdeemButton;
     public Button quitButton;
     private System.Action<bool> callback; 
-    public bool isResult = false;
+    public bool isResult=false;
     public GameObject estatePrefab;
     public Button behaviourQuit;
     public Button confirmButton;
@@ -49,37 +49,37 @@ public Sprite[] levelSprites;
     void Start()
     {
        if (bankCanvasGroup == null){
-            bankCanvasGroup = choosePanel.GetComponent<CanvasGroup>();
+            bankCanvasGroup=choosePanel.GetComponent<CanvasGroup>();
        
             if (bankCanvasGroup == null)
             {
-                bankCanvasGroup = choosePanel.AddComponent<CanvasGroup>(); 
+                bankCanvasGroup=choosePanel.AddComponent<CanvasGroup>(); 
             }
        
        }
        if (interactionCanvasGroup == null){
-            interactionCanvasGroup = behaviourPanel.GetComponent<CanvasGroup>();
+            interactionCanvasGroup=behaviourPanel.GetComponent<CanvasGroup>();
        
             if (interactionCanvasGroup == null)
             {
-                interactionCanvasGroup = behaviourPanel.AddComponent<CanvasGroup>(); 
+                interactionCanvasGroup=behaviourPanel.AddComponent<CanvasGroup>(); 
             }
             
        
        }
        if (brCanvasGroup == null){
-            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
+            brCanvasGroup=bankruptPanel.GetComponent<CanvasGroup>();
        
             if (brCanvasGroup == null)
             {
-                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
+                brCanvasGroup=bankruptPanel.AddComponent<CanvasGroup>(); 
             }
             
        
        }
          
        mapList=RunGame.mapList;
-       gameBehaviour = GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
+       gameBehaviour=GameObject.Find("BehaviourPool").GetComponent<GameBehaviour>();
 
 
 
@@ -95,16 +95,16 @@ public void ClosePanel()
     HideVisually(choosePanel.GetComponent<CanvasGroup>());
     HideVisually(behaviourPanel.GetComponent<CanvasGroup>());
     HideVisually(bankruptPanel.GetComponent<CanvasGroup>());
-    isbanking = false;
+    isbanking=false;
 }
 
 private void HideVisually(CanvasGroup cg)
 {
     if (cg != null)
     {
-        cg.alpha = 0f;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
+        cg.alpha=0f;
+        cg.interactable=false;
+        cg.blocksRaycasts=false;
     }
 }
 
@@ -143,11 +143,11 @@ public void showLackOfCashPanel(Player p,int i){
 
     brQuitButton.gameObject.SetActive(true);
     if (brCanvasGroup == null){
-            brCanvasGroup = bankruptPanel.GetComponent<CanvasGroup>();
+            brCanvasGroup=bankruptPanel.GetComponent<CanvasGroup>();
        
             if (brCanvasGroup == null)
             {
-                brCanvasGroup = bankruptPanel.AddComponent<CanvasGroup>(); 
+                brCanvasGroup=bankruptPanel.AddComponent<CanvasGroup>(); 
             }
             
        
@@ -255,7 +255,7 @@ public void showLackOfCashPanel(Player p,int i){
     }
     private IEnumerator PanelDisplay()
     {
-        isResult = false;
+        isResult=false;
         yield return StartCoroutine(FadeIn(bankCanvasGroup));
         yield return new WaitUntil(() => isResult);
         yield return StartCoroutine(FadeOut(bankCanvasGroup));
@@ -265,7 +265,7 @@ public void showLackOfCashPanel(Player p,int i){
     void SetResult(bool result)
     {
        
-        isResult = true;
+        isResult=true;
         callback?.Invoke(result);
     }
 
@@ -274,20 +274,20 @@ public void showLackOfCashPanel(Player p,int i){
         isbanking=true;
      
 
-        float duration = 0.25f;
-        float elapsedTime = 0f;
+        float duration=0.25f;
+        float elapsedTime=0f;
 
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
+        cg.interactable=true;
+        cg.blocksRaycasts=true;
 
         while (elapsedTime < duration)
         {  
-            cg.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
+            cg.alpha=Mathf.Lerp(0, 1, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
       
-        cg.alpha = 1;
+        cg.alpha=1;
        
     }
 private void generateAssets(bool i){
@@ -306,14 +306,14 @@ private void generateAssets(bool i){
 
         
             foreach(Board _board in player.playerData.assetsList){
-                estateBoard eBoard = _board as estateBoard;{
+                estateBoard eBoard=_board as estateBoard;{
                     if(eBoard==null){
                         
                 BuyableBoard bBoard=_board as BuyableBoard;
                 if(bBoard.isMortgage==i){
                 
-                GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
-                o.name = bBoard.property;
+                GameObject o=GameObject.Instantiate(estatePrefab, generateZone.transform);
+                o.name=bBoard.property;
                 
                 TextMeshProUGUI property= o.transform.Find("property").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
@@ -338,7 +338,7 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color=isOn ? highlightColor : originalColor;
                     if(isBankrupting){
                     checkComfirm(false);
                     estiMoney.text=$"{checkPrice(false)}/{brmoney}";
@@ -356,9 +356,9 @@ private void generateAssets(bool i){
                     
                     else
                     {if(eBoard.isMortgage==i){
-                        GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
-                        o.name = eBoard.property;
-                    TextMeshProUGUI property = o.transform.Find("property").GetComponent<TextMeshProUGUI>();
+                        GameObject o=GameObject.Instantiate(estatePrefab, generateZone.transform);
+                        o.name=eBoard.property;
+                    TextMeshProUGUI property=o.transform.Find("property").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI rent= o.transform.Find("rent").GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI group= o.transform.Find("group").GetComponent<TextMeshProUGUI>();
@@ -394,7 +394,7 @@ private void generateAssets(bool i){
                     buildImg.sprite =levelSprites[4];
                     break;
                     default:
-                    buildImg.sprite = null;
+                    buildImg.sprite=null;
                     buildImg.gameObject.SetActive(false);
                     break;
 
@@ -405,7 +405,7 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color=isOn ? highlightColor : originalColor;
                     if(isBankrupting){
                     checkComfirm(false);
                     estiMoney.text=$"{checkPrice(false)}/{brmoney}";
@@ -441,12 +441,12 @@ private void generateAssets(bool i){
             List<estateBoard> el=new List<estateBoard>();
             foreach(Board _board in player.playerData.assetsList){
              
-            estateBoard eB = _board as estateBoard;
+            estateBoard eB=_board as estateBoard;
             if(eB!=null){
                 
             el.RemoveAll(old => old.group == eB.group && old.improvedLevel < eB.improvedLevel);
 
-            bool hasHigher = el.Exists(old => old.group == eB.group && old.improvedLevel > eB.improvedLevel);
+            bool hasHigher=el.Exists(old => old.group == eB.group && old.improvedLevel > eB.improvedLevel);
             if (!hasHigher) {
                 el.Add(eB);
             }
@@ -460,9 +460,9 @@ private void generateAssets(bool i){
             else{
            
 
-            BuyableBoard bBoard = _board as BuyableBoard;
-                GameObject o = GameObject.Instantiate(estatePrefab, generateZone.transform);
-                o.name = bBoard.property;
+            BuyableBoard bBoard=_board as BuyableBoard;
+                GameObject o=GameObject.Instantiate(estatePrefab, generateZone.transform);
+                o.name=bBoard.property;
                 
                 TextMeshProUGUI property= o.transform.Find("property").GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI price= o.transform.Find("price").GetComponent<TextMeshProUGUI>();
@@ -491,7 +491,7 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color=isOn ? highlightColor : originalColor;
                     if(isBankrupting){
                     checkComfirm(true);
                     estiMoney.text=$"{checkPrice(true)}/{brmoney}";
@@ -555,7 +555,7 @@ private void generateAssets(bool i){
                         buildImg.sprite =levelSprites[4];
                         break;
                         default:
-                        buildImg.sprite = null;
+                        buildImg.sprite=null;
                         buildImg.gameObject.SetActive(false);
                         break;
 
@@ -566,7 +566,7 @@ private void generateAssets(bool i){
                     Image bgImage= o.GetComponent<Image>();
                     Color originalColor= bgImage.color;
                     Color highlightColor= new Color(254f/255f,225f/255f,131f/255f);
-                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color = isOn ? highlightColor : originalColor;
+                    toggle.onValueChanged.AddListener((isOn)=>{bgImage.color=isOn ? highlightColor : originalColor;
                     if(isBankrupting){
                     checkComfirm(true);
                     estiMoney.text=$"{checkPrice(true)}/{brmoney}";
@@ -588,12 +588,12 @@ private void generateAssets(bool i){
    
    private void checkComfirm(bool b){
     int p =checkPrice(b);
-    confirmButton.interactable = p>=brmoney;
+    confirmButton.interactable=p>=brmoney;
    }
    
    private int checkPrice(bool b)
 {
-    int p = 0;
+    int p=0;
     foreach (Transform child in generateZone.transform)
     {
         Toggle toggle=child.GetComponent<Toggle>();
@@ -620,27 +620,27 @@ private void generateAssets(bool i){
 
     private IEnumerator FadeOut(CanvasGroup cg)
     {
-        float duration = 0.25f;
-        float elapsedTime = 0f;
+        float duration=0.25f;
+        float elapsedTime=0f;
 
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
+        cg.interactable=false;
+        cg.blocksRaycasts=false;
 
         while (elapsedTime < duration)
         {
-            cg.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
+            cg.alpha=Mathf.Lerp(1, 0, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        cg.alpha = 0;
+        cg.alpha=0;
         isbanking=false;
      
       
     }
         private IEnumerator behaviourPanelDisplay()
     {
-        isResult = false;
+        isResult=false;
         yield return StartCoroutine(FadeIn(interactionCanvasGroup));
         yield return new WaitUntil(() => isResult);
         yield return StartCoroutine(FadeOut(interactionCanvasGroup));
@@ -662,7 +662,7 @@ private void generateAssets(bool i){
     operationList.Clear();
         foreach (Transform child in generateZone.transform)
         {
-            Toggle toggle = child.GetComponent<Toggle>();
+            Toggle toggle=child.GetComponent<Toggle>();
             if (toggle != null && toggle.isOn)
             {
     
@@ -675,7 +675,7 @@ private void generateAssets(bool i){
                 foreach(Board board in mapList){
 
                     if(board.property==str){
-                        estateBoard eBoard = board as estateBoard;
+                        estateBoard eBoard=board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
                         gameBehaviour.SellBuyableBoard(bBoard);}
@@ -714,7 +714,7 @@ private void generateAssets(bool i){
                foreach( string str in operationList){
                 foreach(Board board in mapList){
                     if(board.property==str){
-                        estateBoard eBoard = board as estateBoard;
+                        estateBoard eBoard=board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
                         gameBehaviour.mortageBuyableBoard(bBoard);}
@@ -745,7 +745,7 @@ private void generateAssets(bool i){
                foreach( string str in operationList){
                 foreach(Board board in mapList){
                     if(board.property==str){
-                        estateBoard eBoard = board as estateBoard;
+                        estateBoard eBoard=board as estateBoard;
                         if(eBoard==null){
                         BuyableBoard bBoard=board as BuyableBoard;
                         gameBehaviour.remdeemBuyableBoard(bBoard);}

@@ -33,6 +33,12 @@ public class initialPanelScript : MonoBehaviour
 
     public Button musicButton;
     public MusicController musicController;
+
+    public Slider RuntimeSlider;
+    public Toggle gameModeToggle;
+    public TextMeshProUGUI RuntimeText;
+    public Image gameModeToggleImg;
+    public GameObject RuntimeOutput;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +56,10 @@ public class initialPanelScript : MonoBehaviour
         difficultyOutput.gameObject.SetActive(false);
         AIToggle.onValueChanged.AddListener(toggleClick);
         toggleClick(AIToggle.isOn);
+        RuntimeSlider.gameObject.SetActive(false);
+        RuntimeOutput.gameObject.SetActive(false);
+        gameModeToggle.onValueChanged.AddListener(gameModeChange);
+        gameModeChange(gameModeToggle.isOn);
         startGame.onClick.AddListener(startNewGame);
         loadMap.onClick.AddListener(LoadMap);
         loadCard.onClick.AddListener(LoadCard);
@@ -69,7 +79,9 @@ public class initialPanelScript : MonoBehaviour
     PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
     PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
     PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
-        SceneManager.LoadScene("gameScene");
+    PlayerPrefs.SetInt("maxRuntime",gameModeToggle.isOn?(int)RuntimeSlider.value:0);
+    SceneManager.LoadScene("gameScene");
+
     }
     
     void isSole(float value){
@@ -84,9 +96,8 @@ public class initialPanelScript : MonoBehaviour
         if(i){
                        difficultySlider.gameObject.SetActive(true);
             difficultyOutput.gameObject.SetActive(true);
-           difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
-
-           difficultyText.text = "easy";
+            difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
+            UpdateDifficultyText(difficultySlider.value);
           
 
         }else{
@@ -96,6 +107,30 @@ public class initialPanelScript : MonoBehaviour
         
         }
         
+    }
+    void gameModeChange(bool i){
+                gameModeToggleImg.sprite= i? toggleTrueImage:toggleFalseImage;
+        if(i){
+                RuntimeSlider.gameObject.SetActive(true);
+                RuntimeOutput.gameObject.SetActive(true);
+                RuntimeSlider.onValueChanged.AddListener(UpdateRuntime);
+                UpdateRuntime(RuntimeSlider.value);
+                
+
+           
+          
+
+        }else{
+            RuntimeSlider.gameObject.SetActive(false);
+            RuntimeOutput.gameObject.SetActive(false);
+
+        
+        }
+        
+    }
+
+    void UpdateRuntime(float value){
+        RuntimeText.text = $"{value} minutes";
     }
     void UpdatePlayerNumberText(float value)
 {

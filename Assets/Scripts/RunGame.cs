@@ -63,12 +63,17 @@ public class RunGame : MonoBehaviour
     public int oldPosNo;
     public Player nextPlayer=null;
     public int point;
+    public float runtime;
+    public float maxRuntime;
 
     
 
     public Slider musicSlider;
     public CGcontrol cGcontrol;
- 
+    
+    public timeBoard timeboard;
+    public bool isTimeOver=false;
+    private int inimoney;
 
 
     private SaveData cachedSaveData; 
@@ -185,10 +190,12 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     luckNo=saveData.luckNo;
     opportunityCards=saveData.oCards;
     OpportunityNo=saveData.OpportunityNo;
-    mapList = saveData.allBoards;
+    mapList=saveData.allBoards;
     point=saveData.cpoint;
     isAI=saveData.isai;
     difficulty=saveData.diff;
+    runtime=saveData.runtime;
+    maxRuntime=saveData.maxRuntime;
 
 
 
@@ -248,7 +255,7 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     }
     else
     {   
-        // read the input from last scene
+        // load the input from last scene
 
         
         isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
@@ -256,6 +263,9 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
         playerNumber=(isAI)? playerNumber+1:playerNumber;
         point=0;
+        maxRuntime=PlayerPrefs.GetInt("maxRuntime",0)*60f;
+
+        runtime=0f;
         
 
 
@@ -344,7 +354,9 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
     
 
-
+    
+    timeboard=GameObject.Find("TimeBoard").GetComponent<timeBoard>();
+    timeboard.setMaxtime(maxRuntime);
     generator=GameObject.Find("Map").GetComponent<TileGenerator>();
     generator.GenerateMapFromList(mapList);
     BankButton.onClick.AddListener(showbankPanel);
@@ -377,6 +389,12 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 }
 void Update()
     {
+
+        runtime+=Time.deltaTime;
+        if (runtime>=maxRuntime&&maxRuntime!=0)
+            {    
+                isTimeOver=true;}
+        timeboard.updateTimeBoard(runtime);
         
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -397,6 +415,7 @@ void Update()
 
     IEnumerator GameLoop()
 {
+    
 
 
 
@@ -405,6 +424,7 @@ void Update()
     
     while (keepGame)
     {
+        
         menus.gameObject.SetActive(false);
         
         cardUI.HideCard();
@@ -436,8 +456,11 @@ void Update()
         currentPlayer=nextPlayer;
         nextPlayer=playersList[(playersList.IndexOf(currentPlayer)+1)%playersList.Count];
         Debug.Log($"currently player is {currentPlayer.name}");
+        
         AutoSaveGame();
         BoardConstructor.highlightPlayer(currentPlayer);
+        inimoney=currentPlayer.playerData.money;
+        currentPlayer.playerData.turns++;
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
 
@@ -446,9 +469,19 @@ void Update()
         yield return new WaitForSeconds(1f);
         Broadcast.closeBroad(currentPlayer);
         yield return new WaitUntil(()=>!Broadcast.isBroadcasting);
-        BankButton.interactable=true;
         viewButton.interactable=true;
         menusButton.interactable=true;
+        if(currentPlayer.playerData.isAI){
+            BankButton.interactable=false;
+            
+            
+            
+        }else{
+            BankButton.interactable=true;
+            
+
+        }
+        
 
 
    
@@ -546,10 +579,41 @@ void Update()
         NextButton.interactable=true;
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI||currentPlayer.playerData.isBankrupt);
+        
+        if(isTimeOver&&timeToStop()){
+            timeOver();
+
+        }
 
         
 
     }
+}
+public bool timeToStop(){
+   
+            int t=currentPlayer.playerData.turns;
+            foreach(Player p in playersList){
+                if(p.playerData.turns!=t)
+                return false;
+                
+                
+            }
+            return true;
+        
+}
+public void timeOver(){
+
+    keepGame=false;
+    Player winner=null;
+    int maxValue=0;
+    foreach(Player p in playersList){
+        if(p.playerData.assetsWorth>maxValue){
+            winner=p;
+            maxValue=p.playerData.assetsWorth;
+        }
+    }
+    string winnerName=winner.playerData.name;
+    Broadcast.win(winnerName);
 }
 
 public void win(){
@@ -661,7 +725,7 @@ void AIRoll(){
  IEnumerator check(Player player)
     {
         isChecking=true;
-        int inimoney=player.playerData.money;
+        
         
         
         Board currentBoard = mapList[player.playerData.positionNo];
@@ -874,7 +938,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                         
                         player.directlyMove(i);
                         break;
-                    }
+                    }}
                
                     
 
@@ -902,7 +966,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                  
                  
 
-                    }}
+                    }
                 
 
 
@@ -1438,11 +1502,13 @@ private void changeCameraMode(){
 private void showMenus(){
     if(cameraController.canBeDragging){
         changeCameraMode();}
+      
     menus.gameObject.SetActive(true);
 
 }
 private void closeMenus(){
     menus.gameObject.SetActive(false);
+
 
 }
 private  void quitGame(){
@@ -1475,17 +1541,26 @@ public void AutoSaveGame()
     
     }
 
-    cachedSaveData.allBoards = new List<Board>(mapList);
+
+    cachedSaveData.allBoards=new List<Board>();
+    foreach (Board b in mapList)
+    {
+    cachedSaveData.allBoards.Add(b.DeepCopy());
+    }
 
 
-    cachedSaveData.lCards = new List<Card>(luckCards);
-    cachedSaveData.oCards = new List<Card>(opportunityCards);
-    cachedSaveData.cpoint = playersList.IndexOf(currentPlayer);
-    cachedSaveData.freeParkingMoney = freeParkMoney;
-    cachedSaveData.luckNo = luckNo;
-    cachedSaveData.OpportunityNo = OpportunityNo;
-    cachedSaveData.isai = isAI;
-    cachedSaveData.diff = difficulty;
+
+    cachedSaveData.lCards=new List<Card>(luckCards);
+    cachedSaveData.oCards=new List<Card>(opportunityCards);
+    cachedSaveData.cpoint=playersList.IndexOf(currentPlayer);
+    cachedSaveData.freeParkingMoney=freeParkMoney;
+    cachedSaveData.luckNo=luckNo;
+    cachedSaveData.OpportunityNo=OpportunityNo;
+    cachedSaveData.isai=isAI;
+    cachedSaveData.diff=difficulty;
+    cachedSaveData.runtime = runtime;
+    cachedSaveData.maxRuntime = maxRuntime;
+
 
    
     }
@@ -1532,4 +1607,6 @@ public class SaveData
     public List<Card> oCards;
     public bool isai;
     public int diff;
+    public float runtime;
+    public float maxRuntime;
 }

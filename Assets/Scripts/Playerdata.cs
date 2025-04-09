@@ -19,6 +19,7 @@ public class PlayerData: IOwner
     public int circle=1;
     public int assetsWorth;
     public List<string> assetsName=new List<string>();
+    public int turns=0;
 
 
     public string GetName(){
