@@ -194,7 +194,7 @@ t++;
 return l1;
 }
 
-    public void GoToJail(Player player)
+    public IEnumerator GoToJail(Player player)
     {
         
         
@@ -202,15 +202,47 @@ return l1;
         Board b=RunGame.mapList.Find(board=>board.property == "Jail/Just visiting");
 
         if(b!=null){
+            if(player.playerData.isAI){
+                if(player.playerData.freeJail>0)
+                player.playerData.freeJail--;
+                else if(player.playerData.assetsWorth>1000){
+                    PayMoney(player,50);
+
+                }else{cgControl.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
+            MusicController.Instance.PlayJailSound();
+             FreezeTurn(player, 2);
+
+                }
+
+            }else{
+                
             if(player.playerData.freeJail==0){
-                cgControl.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
+                bool? userChoice=null;
+
+
+        interactionPanel.ShowPanel($"are you want to pay 50 to released from jail?",(bool Result)=> 
+          { userChoice=Result;});
+
+          yield return new WaitUntil(()=>userChoice.HasValue);
+               if(userChoice.Value){
+                PayMoney(player,50);
+                 }else{
+            cgControl.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
             MusicController.Instance.PlayJailSound();
              FreezeTurn(player, 2);}
+
+              }
+             
+       
+               
              else
              player.playerData.freeJail--;
       
-        player.directlyMove(b);
         
+        
+        
+        }
+        player.directlyMove(b);
         
         }
         else {

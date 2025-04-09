@@ -73,7 +73,7 @@ public class RunGame : MonoBehaviour
     
     public timeBoard timeboard;
     public bool isTimeOver=false;
-    private int inimoney;
+   
 
 
     private SaveData cachedSaveData; 
@@ -459,7 +459,7 @@ void Update()
         
         AutoSaveGame();
         BoardConstructor.highlightPlayer(currentPlayer);
-        inimoney=currentPlayer.playerData.money;
+        int inimoney;inimoney=currentPlayer.playerData.money;
         currentPlayer.playerData.turns++;
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
@@ -519,7 +519,7 @@ void Update()
         
         if(roll==-1){
             
-            gameBehaviour.GoToJail(currentPlayer);
+            StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
           
             
         }else if (!currentPlayer.isMoving) 
@@ -563,6 +563,11 @@ void Update()
 
       
         yield return new WaitUntil(()=>!isChecking);
+        if(currentPlayer!=null)
+        if(currentPlayer.playerData.money>inimoney)
+        cGcontrol.PlayCG("add_money",currentPlayer);
+        if(currentPlayer.playerData.money<inimoney)
+        cGcontrol.PlayCG("money_fly",currentPlayer);
         
 
         if (playersList.Count == 1)
@@ -584,6 +589,8 @@ void Update()
             timeOver();
 
         }
+        if(bank.money<=20000)
+        bank.money=50000;
 
         
 
@@ -750,11 +757,7 @@ void AIRoll(){
         
             StartCoroutine(HandleBoard(player, currentBoard));
         }
-        if(currentPlayer!=null)
-        if(player.playerData.money>inimoney)
-        cGcontrol.PlayCG("add_money",player);
-        if(player.playerData.money<inimoney)
-        cGcontrol.PlayCG("money_fly",player);
+        
 
         
         playerUpdate(currentPlayer);
@@ -778,7 +781,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
 
         }
         else{
-            gameBehaviour.GoToJail(currentPlayer);
+            StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
             }
       
         }
@@ -1019,7 +1022,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         if (card.isGoJail)
         {
            
-            gameBehaviour.GoToJail(player);
+            StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
         }
         if(card.isRepair){
             int houseNum=0;
