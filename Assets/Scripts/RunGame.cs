@@ -1342,22 +1342,22 @@ private IEnumerator showBankPanel(){
                         
                         
                     }else if(eBoard.owner.GetName()==player.playerData.name){
+                        if(player.playerData.isAI)
+                        AIBuild(player);
+                        else{
               
                         if(canBuild(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
                             
                             
 
-                        }else{
-        Debug.Log($"{player.name} cannot build on {eBoard.property} because they do not own all properties in this color set!");
-       }
-                        
+                        }}    
 
                     }
 
                     else
                     {
-                        gameBehaviour.PayRent(currentPlayer,eBoard);
+                        gameBehaviour.PayRent(player,eBoard);
                         
                         }
                         generator.updateTile(eBoard);
@@ -1480,6 +1480,36 @@ private void build(){
 
 
     buildingButton.gameObject.SetActive(false);
+}
+public void AIBuild(Player player)
+{
+    estateBoard eBoard = mapList[currentPlayer.playerData.positionNo] as estateBoard;
+    if(eBoard!=null&&canBuild(player,eBoard)){
+        int buildCost=gameBehaviour.costCalculer(eBoard);
+    if (difficulty == 0)
+    {
+        if (Random.Range(0, 2)==0&&player.playerData.money>buildCost&&eBoard.improvedLevel<5)
+        {
+            eBoard.improvedLevel++;
+            eBoard.ResetRent(eBoard.improvedLevel-1);
+            eBoard.price+=buildCost;
+            string buildingType = eBoard.improvedLevel == 5 ? "a Hotel" : "a House";
+            Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
+            gameBehaviour.PayMoney(player, buildCost);
+        }
+    }
+    else if (difficulty == 1)
+    {
+        if (player.playerData.money/player.playerData.assetsWorth>0.3&&player.playerData.money>buildCost&&eBoard.improvedLevel<5)
+        {
+            eBoard.improvedLevel++;
+            eBoard.ResetRent(eBoard.improvedLevel-1);
+            eBoard.price+=buildCost;
+            string buildingType = eBoard.improvedLevel == 5 ? "a Hotel" : "a House";
+            Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
+            gameBehaviour.PayMoney(player, buildCost);
+        }
+    }}
 }
 public void cheatRoll(int i){
     cheatStep=i;
