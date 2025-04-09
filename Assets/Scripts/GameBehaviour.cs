@@ -65,8 +65,10 @@ public class GameBehaviour: MonoBehaviour
         player.playerData.money += amount;
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
-        MusicController.Instance.PlayMoneySound();
+        MusicController.Instance.PlayMoneySound(); 
+        cgControl.PlayCG("add_money",player);
         RunGame.instance. playerUpdate(player);
+       
     }
     public void PayMoney(Player player,int amount)
     {
@@ -79,6 +81,7 @@ public class GameBehaviour: MonoBehaviour
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
         MusicController.Instance.PlayMoneySound();
+        cgControl.PlayCG("money_fly",player);
         }else{
             StartCoroutine(lackcash(player,amount));
             

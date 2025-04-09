@@ -48,16 +48,11 @@ public class CGcontrol : MonoBehaviour
     //     cgObject.SetActive(false);
 
     // }
-    public void PlayCG(string cgName,int i){
-     
-        Vector3Int posInt = tileGenerator.BoardGetPosition(i);
-        Vector3 pos = new Vector3(posInt.x, posInt.y, posInt.z);
-        
-        PlayCGAnimation(cgName,pos);
-        
-
-        
-    }
+    public void PlayCG(string cgName, Player player)
+{
+    Vector3 pos = player.transform.position;
+    PlayCGAnimation(cgName, pos);
+}
 
     public void PlayCGAnimation(string cgName,Vector3 pos)
     {
@@ -75,10 +70,11 @@ public class CGcontrol : MonoBehaviour
             Debug.LogWarning("Can't find the animation object: " + cgName);
             yield break;
         }
+         animTransform.SetParent(null);
 
         GameObject animObject = animTransform.gameObject;
         if(pos!=new Vector3(999999f,999999f,999999f)){
-        animObject.transform.position=new Vector3(pos.x+0.5f, pos.y+1.5f, pos.z);
+        animObject.transform.position=new Vector3(pos.x, pos.y+0.5f, pos.z);
         animObject.transform.eulerAngles = new Vector3(-45f, 0f, 0f);
 
         }
@@ -93,7 +89,7 @@ public class CGcontrol : MonoBehaviour
         {
             animator.Play(cgName);
   
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length+0.2f);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length-0.2f);
         }
         else
         {
@@ -103,6 +99,7 @@ public class CGcontrol : MonoBehaviour
         isCG=false;
         
         animObject.SetActive(false);
+         animTransform.SetParent(behaviorCG.transform);
     }
 
     }

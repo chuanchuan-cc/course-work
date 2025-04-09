@@ -95,9 +95,9 @@ private void OperationCWAL(){
     if(inputtext.text=="1")
     cGcontrol.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
     if(inputtext.text=="2")
-    cGcontrol.PlayCG("add_money",player.playerData.positionNo);
+    cGcontrol.PlayCG("add_money",player);
     if(inputtext.text=="3")
-    cGcontrol.PlayCG("money_fly",player.playerData.positionNo);
+    cGcontrol.PlayCG("money_fly",player);
 
 
     
@@ -135,8 +135,7 @@ private void OperationCWAL(){
 
 
 
-player.playerData.freeJail+=1;
-Debug.Log($"玩家{player.name} 免死金牌数为{player.playerData.freeJail}");
+
 
 
 }
