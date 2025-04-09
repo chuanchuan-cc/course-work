@@ -77,7 +77,7 @@ public class initialPanelScript : MonoBehaviour
                        difficultySlider.gameObject.SetActive(true);
             difficultyOutput.gameObject.SetActive(true);
            difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
-           UpdatePlayerNumberText(difficultySlider.value);
+
            difficultyText.text = "easy";
           
 

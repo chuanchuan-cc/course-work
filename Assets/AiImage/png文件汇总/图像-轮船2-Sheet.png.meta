@@ -153,11 +153,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 675
-        y: 74
+        y: 80
         width: 107
-        height: 101
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,11 +175,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 207
-        y: 68
+        y: 78
         width: 108
-        height: 108
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: "\u56FE\u50CF-\u8F6E\u82392-Sheet_2"
       rect:
         serializedVersion: 2
-        x: 1127
-        y: 80
-        width: 113
-        height: 103
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1130
+        y: 86
+        width: 110
+        height: 97
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -210,28 +210,6 @@ TextureImporter:
       bones: []
       spriteID: 856f558b0e182aa4e98322a5927f4f75
       internalID: 1587304391
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u56FE\u50CF-\u8F6E\u82392-Sheet_5"
-      rect:
-        serializedVersion: 2
-        x: 1229
-        y: 176
-        width: 7
-        height: 4
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92ea745dab8e7d143a8c141ff9e3fbd4
-      internalID: 1396246239
       vertices: []
       indices: 
       edges: []
@@ -276,28 +254,6 @@ TextureImporter:
       bones: []
       spriteID: e085635a0be73614c972a0f260d9c8f3
       internalID: 2061532588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u56FE\u50CF-\u8F6E\u82392-Sheet_9"
-      rect:
-        serializedVersion: 2
-        x: 1228
-        y: 97
-        width: 5
-        height: 11
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b534dd735400790448776b4ee4312ee8
-      internalID: -1753527984
       vertices: []
       indices: 
       edges: []
