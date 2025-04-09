@@ -67,8 +67,7 @@ public class CGcontrol : MonoBehaviour
         GameObject animObject = animTransform.gameObject;
         
         
-        animObject.transform.position = new UnityEngine.Vector3(0, 0, 0);
-        animObject.transform.rotation = Quaternion.Euler(-45f, 0f, 0f);
+     
         animObject.SetActive(true);
 
         Animator animator = animObject.GetComponent<Animator>();
@@ -76,7 +75,7 @@ public class CGcontrol : MonoBehaviour
         {
             animator.Play(cgName);
   
-            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length+0.2f);
         }
         else
         {

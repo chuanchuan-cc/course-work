@@ -20,6 +20,8 @@ public class testMenus : MonoBehaviour
     private List<Board> maplist;
     private List<Player>playerlist;
 
+    public CGcontrol cGcontrol;
+
 
 
  void Start(){
@@ -90,6 +92,15 @@ private void ShowMeTheMoney(){
 
 }
 private void OperationCWAL(){
+    if(inputtext.text=="1")
+    cGcontrol.PlayCGAnimation("jail");
+    if(inputtext.text=="2")
+    cGcontrol.PlayCGAnimation("wallet_add");
+    if(inputtext.text=="3")
+    cGcontrol.PlayCGAnimation("wallet_lose");
+
+
+    
     
   
     // Board board=maplist[player.playerData.positionNo];
