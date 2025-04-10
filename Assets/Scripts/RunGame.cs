@@ -588,22 +588,8 @@ void Update()
         
         if(currentPlayer!=null&&!currentPlayer.playerData.isAI)
         NextButton.interactable=true;
-        yield return new WaitForSeconds(0.1f);
-        Debug.Log("准备处理动画进程");
-         if(currentPlayer!=null){
         
-        if(currentPlayer.playerData.money>inimoney){
-            Debug.Log("播放加钱动画");
-            cGcontrol.PlayCG("add_money",currentPlayer);
-        }
-        if(currentPlayer.playerData.money<inimoney){
-            Debug.Log("播放扣钱动画");
-            cGcontrol.PlayCG("money_fly",currentPlayer);
-        }
-        
-        }else{
-            Debug.Log("本回合未播放动画");
-        }
+      
         
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI||currentPlayer.playerData.isBankrupt);
@@ -1497,6 +1483,7 @@ private IEnumerator showBankPanel(){
                         isChecking=false;
                         }
                     }
+                    isChecking=false;
                     generator.updateTile(bBoard);
                         playerUpdate(player);
                     

@@ -41,7 +41,7 @@ public class bankPanel : MonoBehaviour
   public Button brQuitButton;
 
  public bool isLackCash=false;
- public CGcontrol cGControl;
+ public CGcontrol cgControl;
 public Sprite[] levelSprites;
 
 
@@ -49,7 +49,7 @@ public Sprite[] levelSprites;
 
     void Start()
     {
-        cGControl=FindObjectOfType<CGcontrol>();
+        cgControl=FindObjectOfType<CGcontrol>();
        if (bankCanvasGroup == null){
             bankCanvasGroup=choosePanel.GetComponent<CanvasGroup>();
        
@@ -708,11 +708,11 @@ private void generateAssets(bool i){
                 if(isLackCash){
                     
                     ClosePanel();
-                    
+                    cgControl.PlayCG("money_fly",player);
                     isLackCash=false;
                 }
                 if(!isBankrupting&&!isLackCash)
-                cGControl.PlayCG("add_money",player);
+                cgControl.PlayCG("add_money",player);
 
                 generateSellableAssets();
                 break;
@@ -744,9 +744,10 @@ private void generateAssets(bool i){
                     
                 }if(isLackCash){
                 ClosePanel();
+                cgControl.PlayCG("money_fly",player);
                 isLackCash=false;}
                 if(!isBankrupting&&!isLackCash)
-                cGControl.PlayCG("add_money",player);
+                cgControl.PlayCG("add_money",player);
             generateAssets(false);
             break;
             
@@ -768,7 +769,7 @@ private void generateAssets(bool i){
                 }
 
             }
-            cGControl.PlayCG("money_fly",player);
+            cgControl.PlayCG("money_fly",player);
            generateAssets(true);
            break;
            default:

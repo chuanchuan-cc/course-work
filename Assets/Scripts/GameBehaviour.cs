@@ -66,6 +66,7 @@ public class GameBehaviour: MonoBehaviour
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
         MusicController.Instance.PlayMoneySound(); 
+        cgControl.PlayCG("add_money",player);
         
         RunGame.instance. playerUpdate(player);
        
@@ -81,6 +82,7 @@ public class GameBehaviour: MonoBehaviour
             Debug.Log($"{player.name} paid £{amount}, remaining balance: £{player.playerData.money}");
         player.playerData.assetsWorth-=amount;
         MusicController.Instance.PlayMoneySound();
+        cgControl.PlayCG("money_fly",player);
        
         }else{
             StartCoroutine(lackcash(player,amount));
@@ -279,6 +281,7 @@ return l1;
             playerOwner.money += sellPrice;
             playerOwner.assetsList.Remove(board);
             board.owner=RunGame.bank;
+
             foreach(Player player in RunGame.instance.getplayerlist()){
                 if(player.name==playerOwner.name)
                 RunGame.instance. playerUpdate(player);
@@ -311,6 +314,7 @@ public void SellBuyableBoard(BuyableBoard board){
             else {sellPrice = board.price; }
             playerOwner.money += sellPrice;
             playerOwner.assetsList.Remove(board);
+
             Debug.Log($"{playerOwner.name} sold {board.property} for £{sellPrice}.");
             foreach(Player player in RunGame.instance.getplayerlist()){
                 if(player.name==playerOwner.name)
@@ -328,6 +332,7 @@ public void mortageEstateBoard(estateBoard board){
     board.isMortgage=true;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money+=(board.price%2==0)? board.price/2:(board.price-1)/2;
+
     foreach(Player player in RunGame.instance.getplayerlist()){
                 if(player.name==playerOwner.name)
                 RunGame.instance. playerUpdate(player);
