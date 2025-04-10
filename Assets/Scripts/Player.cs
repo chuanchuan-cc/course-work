@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
                 MusicController.Instance.PlayJumpSound();
 
 
-            playerData.positionNo = (steps > 0) ? (playerData.positionNo + 1) % 40 : (playerData.positionNo - 1) % 40;
+            playerData.positionNo = (steps > 0) ? (playerData.positionNo + 1) % 40 : (playerData.positionNo - 1+40) % 40;
 
             if (name == "ship")
             {
