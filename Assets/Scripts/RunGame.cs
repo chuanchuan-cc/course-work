@@ -1368,8 +1368,10 @@ private IEnumerator showBankPanel(){
                     }
 
                     else
-                    {
+                    {   if (eBoard.owner is PlayerData playerOwner){
+                        if(playerOwner.freezeTurn>0)
                         gameBehaviour.PayRent(player,eBoard);
+                        }
                         
                         }
                         generator.updateTile(eBoard);
@@ -1441,10 +1443,6 @@ private IEnumerator showBankPanel(){
                              
                         }
                     }
-                    generator.updateTile(bBoard);
-                        playerUpdate(player);
-                        isChecking = false;
-                        yield break;
                             
 
                         
@@ -1453,8 +1451,13 @@ private IEnumerator showBankPanel(){
 
                     else
                     {
-                        gameBehaviour.PayBuyableRent(player, bBoard);
+                        if (bBoard.owner is PlayerData playerOwner){
+                        if(playerOwner.freezeTurn>0)
+                        gameBehaviour.PayBuyableRent(player, bBoard);}
                     }
+                    generator.updateTile(bBoard);
+                        playerUpdate(player);
+                        isChecking=false;
     }
 
 
