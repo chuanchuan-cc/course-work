@@ -205,6 +205,7 @@ public class RunGame : MonoBehaviour
             playersList = new List<Player>(saveData.allPlayers.Count);
 
 
+
             foreach (PlayerData pd in saveData.allPlayers)
             {
                 foreach (Transform child in playersPool.transform)
@@ -218,7 +219,7 @@ public class RunGame : MonoBehaviour
                         if (player != null && player.gameObject.name == pd.name)
                         {
 
-
+                            player.gameObject.SetActive(true);
 
 
                             player.loadPlayer(pd);
@@ -251,12 +252,14 @@ public class RunGame : MonoBehaviour
 
 
                             playersList.Add(player);
+                            break;
                         }
                     }
                 }
 
 
             }
+            
 
 
 
