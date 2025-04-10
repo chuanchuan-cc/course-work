@@ -586,7 +586,7 @@ void Update()
 
         
         
-        
+        if(currentPlayer!=null&&!currentPlayer.playerData.isAI)
         NextButton.interactable=true;
         yield return new WaitForSeconds(0.1f);
         Debug.Log("准备处理动画进程");
