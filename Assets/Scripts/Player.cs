@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 public class Player : MonoBehaviour
 {
     public PlayerDisplay playerDisplay;
-    public string name;
+    public new string name;
     public PlayerData playerData;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     public void directlyMove(Board board)
     {
-        isMoving=true;
+        isMoving = true;
         Debug.Log($"directly move to {board.property}");
         if (this.playerData.freezeTurn == 0)
             MusicController.Instance.PlayMoveDirectlySound();
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DirectMoveRoutine(Board board)
     {
-     
+
         yield return StartCoroutine(FadeOut(0.5f));
 
         yield return new WaitUntil(() => !isFading);
@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); 
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
             }
             if (name == "boots")
@@ -192,15 +192,15 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); 
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
             }
 
-            if (name == "BlackCat") 
+            if (name == "BlackCat")
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); 
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else
                 {
@@ -208,15 +208,15 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (name == "iron") 
+            if (name == "iron")
             {
                 if (playerData.positionNo >= 20 && playerData.positionNo <= 39)
                 {
-                    transform.localScale = new Vector3(-1, 1, 1); 
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1); 
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
             }
 

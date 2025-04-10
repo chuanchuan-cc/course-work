@@ -42,15 +42,14 @@ public class initialPanelScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         initialPanel.transform.localScale = Vector3.zero;
         initialStart.onClick.AddListener(() => onClickStart(initialPanel));
         playerNumberSlider.onValueChanged.AddListener(UpdatePlayerNumberText);
         UpdatePlayerNumberText(playerNumberSlider.value);
-        mapText.text="Default map";
-        cardText.text="Default cardpool";
-        playerNumberSlider.value=3;
-        playerNumberSlider.onValueChanged.AddListener(isSole);
+        mapText.text = "Default map";
+        cardText.text = "Default cardpool";
+        playerNumberSlider.value = 3;
         playerNumber.text = playerNumberSlider.value.ToString();
         difficultySlider.gameObject.SetActive(false);
         difficultyOutput.gameObject.SetActive(false);
@@ -73,148 +72,159 @@ public class initialPanelScript : MonoBehaviour
 
 
 
-   
-   
-    void startNewGame(){
-    PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
-    PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
-    PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
-    PlayerPrefs.SetInt("maxRuntime",gameModeToggle.isOn?(int)RuntimeSlider.value:0);
-    SceneManager.LoadScene("gameScene");
+
+
+    void startNewGame()
+    {
+        PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
+        PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
+        PlayerPrefs.SetInt("maxRuntime", gameModeToggle.isOn ? (int)RuntimeSlider.value : 0);
+        SceneManager.LoadScene("gameScene");
 
     }
-    
-    void isSole(float value){
-        if(value==1){
-            AIToggle.isOn=true;
-            AIToggle.interactable=false;
-        }else
-        AIToggle.interactable=true;
-    }
-    void toggleClick(bool i){
-        toggleImage.sprite= i? toggleTrueImage:toggleFalseImage;
-        if(i){
-                       difficultySlider.gameObject.SetActive(true);
+
+
+    void toggleClick(bool i)
+    {
+        toggleImage.sprite = i ? toggleTrueImage : toggleFalseImage;
+        if (i)
+        {
+            difficultySlider.gameObject.SetActive(true);
             difficultyOutput.gameObject.SetActive(true);
             difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
             UpdateDifficultyText(difficultySlider.value);
-          
 
-        }else{
+
+        }
+        else
+        {
             difficultySlider.gameObject.SetActive(false);
             difficultyOutput.gameObject.SetActive(false);
 
-        
+
         }
-        
+
     }
-    void gameModeChange(bool i){
-                gameModeToggleImg.sprite= i? toggleTrueImage:toggleFalseImage;
-        if(i){
-                RuntimeSlider.gameObject.SetActive(true);
-                RuntimeOutput.gameObject.SetActive(true);
-                RuntimeSlider.onValueChanged.AddListener(UpdateRuntime);
-                UpdateRuntime(RuntimeSlider.value);
-                
+    void gameModeChange(bool i)
+    {
+        gameModeToggleImg.sprite = i ? toggleTrueImage : toggleFalseImage;
+        if (i)
+        {
+            RuntimeSlider.gameObject.SetActive(true);
+            RuntimeOutput.gameObject.SetActive(true);
+            RuntimeSlider.onValueChanged.AddListener(UpdateRuntime);
+            UpdateRuntime(RuntimeSlider.value);
 
-           
-          
 
-        }else{
+
+
+
+        }
+        else
+        {
             RuntimeSlider.gameObject.SetActive(false);
             RuntimeOutput.gameObject.SetActive(false);
 
-        
+
         }
-        
+
     }
 
-    void UpdateRuntime(float value){
+    void UpdateRuntime(float value)
+    {
         RuntimeText.text = $"{value} minutes";
     }
     void UpdatePlayerNumberText(float value)
-{
-    playerNumber.text = ((int)value).ToString();
-}
-  
-      void UpdateDifficultyText(float value)
-{
-    switch(value){
-    case 1:
-        difficultyText.text = "easy";
-        break;
-    case 2:
-        difficultyText.text = "normal";
-        break;
-    case 3:
-        difficultyText.text = "difficult";
-        break;
-
-}
-}
-   
-    public void onClickExit(GameObject gameObject){
-       StopAllCoroutines();
-        StartCoroutine(hidePanel(gameObject));
-        
+    {
+        playerNumber.text = ((int)value).ToString();
     }
-        IEnumerator hidePanel(GameObject gameObject){
-          float timer = 0;
-        while(timer<=1){
-            gameObject.transform.localScale=Vector3.one*(1-Curve.Evaluate(timer));
-            timer+=Time.deltaTime*animationSpeed;
-           
+
+    void UpdateDifficultyText(float value)
+    {
+        switch (value)
+        {
+            case 1:
+                difficultyText.text = "easy";
+                break;
+            case 2:
+                difficultyText.text = "normal";
+                break;
+            case 3:
+                difficultyText.text = "difficult";
+                break;
+
+        }
+    }
+
+    public void onClickExit(GameObject gameObject)
+    {
+        StopAllCoroutines();
+        StartCoroutine(hidePanel(gameObject));
+
+    }
+    IEnumerator hidePanel(GameObject gameObject)
+    {
+        float timer = 0;
+        while (timer <= 1)
+        {
+            gameObject.transform.localScale = Vector3.one * (1 - Curve.Evaluate(timer));
+            timer += Time.deltaTime * animationSpeed;
+
             yield return null;
         }
         gameObject.transform.localScale = Vector3.zero;
-       
+
     }
-     public void onClickStart(GameObject gameObject)
+    public void onClickStart(GameObject gameObject)
     {
         StopAllCoroutines();
         StartCoroutine(showPanel(gameObject));
     }
-   
-    IEnumerator showPanel(GameObject gameObject){
-        float timer = 0;
-        while(timer<=1){
 
-            gameObject.transform.localScale=Vector3.one*Curve.Evaluate(timer);
-            timer+=Time.deltaTime*animationSpeed;
-            
+    IEnumerator showPanel(GameObject gameObject)
+    {
+        float timer = 0;
+        while (timer <= 1)
+        {
+
+            gameObject.transform.localScale = Vector3.one * Curve.Evaluate(timer);
+            timer += Time.deltaTime * animationSpeed;
+
             yield return null;
         }
         gameObject.transform.localScale = Vector3.one;
 
 
-}
- public void LoadMap()
+    }
+    public void LoadMap()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(xlsx-formatted file)", defaultFolder+"/map", "xlsx", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your map(xlsx-formatted file)", defaultFolder + "/map", "xlsx", false);
         if (paths.Length > 0)
         {
-            string mapPath=paths[0];
+            string mapPath = paths[0];
             PlayerPrefs.SetString("mapPath", mapPath);
             PlayerPrefs.Save();
-            mapText.text=Path.GetFileName(mapPath);
+            mapText.text = Path.GetFileName(mapPath);
         }
     }
-     public void LoadCard()
+    public void LoadCard()
     {
-        var paths = StandaloneFileBrowser.OpenFilePanel("choose your card(xlsx-formatted file)", defaultFolder+"/card", "xlsx", false);
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your card(xlsx-formatted file)", defaultFolder + "/card", "xlsx", false);
         if (paths.Length > 0)
         {
-            string cardPath=paths[0];
+            string cardPath = paths[0];
             PlayerPrefs.SetString("cardPath", cardPath);
             PlayerPrefs.Save();
-            cardText.text=Path.GetFileName(cardPath);
+            cardText.text = Path.GetFileName(cardPath);
         }
     }
-    public void loadGame(){
-         var paths = StandaloneFileBrowser.OpenFilePanel("choose your save document", defaultFolder+"/save", "json", false);
+    public void loadGame()
+    {
+        var paths = StandaloneFileBrowser.OpenFilePanel("choose your save document", defaultFolder + "/save", "json", false);
         if (paths.Length > 0)
         {
-            string savePath=paths[0];
+            string savePath = paths[0];
             PlayerPrefs.SetInt("isLoadGame", 1);
             PlayerPrefs.SetString("savePath", savePath);
             PlayerPrefs.Save();
