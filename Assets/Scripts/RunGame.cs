@@ -586,8 +586,10 @@ void Update()
 
         
         
-        if(currentPlayer!=null&&!currentPlayer.playerData.isAI)
+        if(currentPlayer!=null&&!currentPlayer.playerData.isAI){
         NextButton.interactable=true;
+        next();
+        }
         
       
         
