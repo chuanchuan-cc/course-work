@@ -1262,6 +1262,7 @@ private IEnumerator showBankPanel(){
     private bool AIauction(Player player,int price){
         if(player.playerData.isAI){
             if(difficulty==0){
+                
                 if (UnityEngine.Random.Range(0, 2) == 0){
                 cgControl.PlayCG("money_fly",player);
                 return true;
@@ -1275,6 +1276,7 @@ private IEnumerator showBankPanel(){
                 }
                 
                 else return false;
+        
             }else{
                 //hard
                 return false;
@@ -1287,6 +1289,7 @@ private IEnumerator showBankPanel(){
     private bool AIBuyProperty(Player player,int price){
         if(player.playerData.isAI){
             if(difficulty==0){
+                
 
                 if(UnityEngine.Random.Range(0, 2) == 0){
 
@@ -1297,6 +1300,7 @@ private IEnumerator showBankPanel(){
                 else return false;
                 
             }else if (difficulty==1){
+          
                               if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth){
                                 cgControl.PlayCG("money_fly",player);
                                 return true;
