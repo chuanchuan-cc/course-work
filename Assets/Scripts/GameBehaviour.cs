@@ -66,7 +66,7 @@ public class GameBehaviour: MonoBehaviour
         Debug.Log($"{player.name} recieved £{amount}, new balance: £{player.playerData.money}");
         player.playerData.assetsWorth+=amount;
         MusicController.Instance.PlayMoneySound(); 
-     
+        
         RunGame.instance. playerUpdate(player);
        
     }
@@ -205,12 +205,13 @@ return l1;
             if(player.playerData.isAI){
                 if(player.playerData.freeJail>0)
                 player.playerData.freeJail--;
-                else if(player.playerData.assetsWorth>1000){
+                else if(player.playerData.money>1000){
                     PayMoney(player,50);
 
                 }else{cgControl.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
             MusicController.Instance.PlayJailSound();
              FreezeTurn(player, 2);
+            
 
                 }
 
@@ -243,6 +244,7 @@ return l1;
         
         }
         player.directlyMove(b);
+        yield return new WaitUntil(()=>!cgControl.isCG);
         
         }
         else {

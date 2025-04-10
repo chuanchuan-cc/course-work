@@ -467,7 +467,7 @@ void Update()
         
         AutoSaveGame();
         BoardConstructor.highlightPlayer(currentPlayer);
-        int inimoney;inimoney=currentPlayer.playerData.money;
+        
         currentPlayer.playerData.turns++;
 
         PlayerDisplay playerDisplay=dashBoard.transform.Find(currentPlayer.name).GetComponent<PlayerDisplay>();
@@ -561,6 +561,7 @@ void Update()
             
             currentPlayer.playerData.circle += 1;
         }
+        int inimoney=currentPlayer.playerData.money;
     
 
 
@@ -794,6 +795,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         }
         else{
             StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
+            yield return new WaitUntil(()=>!cGcontrol.isCG);
             }
       
         }

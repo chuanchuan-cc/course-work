@@ -94,7 +94,7 @@ public class CGcontrol : MonoBehaviour
         else
         {
             Debug.LogWarning("No Animator component found on: " + cgName);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(0.5f);
         }
         isCG=false;
         

@@ -41,6 +41,7 @@ public class bankPanel : MonoBehaviour
   public Button brQuitButton;
 
  public bool isLackCash=false;
+ public CGControl cGControl;
 public Sprite[] levelSprites;
 
 
@@ -48,6 +49,7 @@ public Sprite[] levelSprites;
 
     void Start()
     {
+        cGControl=FindObjectOfType<CGcontrol>();
        if (bankCanvasGroup == null){
             bankCanvasGroup=choosePanel.GetComponent<CanvasGroup>();
        
@@ -698,12 +700,15 @@ private void generateAssets(bool i){
             if(isBankrupting){
                 isBankrupting=false;
                 quitButton.interactable=true;
-                ClosePanel();
                 
+                ClosePanel();
+         
                     
                 }
                 if(isLackCash){
+                    
                     ClosePanel();
+                    
                     isLackCash=false;
                 }
 
