@@ -305,10 +305,6 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
         if(isAI) playersList[playerNumber-1].playerData.isAI=true;
 
 
-        //test
-        for(int i=1;i<=playerNumber-1;i++){
-            playersList[i].playerData.isAI=true;
-        }
 
 
     
