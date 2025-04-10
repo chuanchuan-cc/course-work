@@ -774,6 +774,7 @@ void AIRoll(){
         }
         
         if(player!=null){
+            isChecking = false;
         
         playerUpdate(player);}
         yield return new WaitForSeconds(0.2f);
@@ -821,6 +822,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                 if (eBoard != null)
                 {
                     yield return HandleEstate(player, eBoard);
+                    isChecking = false;
                     
                 }
                 else{
@@ -1333,7 +1335,8 @@ private IEnumerator showBankPanel(){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);  
-                                 generator.updateTile(eBoard);  
+                                 generator.updateTile(eBoard);
+                                 isChecking = false;
                                                       
                         }else{
                             Debug.Log($"{eBoard.property} start auction");
@@ -1342,11 +1345,12 @@ private IEnumerator showBankPanel(){
 
                              StartCoroutine(auction(eBoard));
                              yield return new WaitUntil(()=>!isAuction);
+                             isChecking = false;
                              
                             
 
                         }
-                        isChecking=false;
+               
                         
 
                     }
@@ -1372,10 +1376,11 @@ private IEnumerator showBankPanel(){
                                     gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
                                  generator.updateTile(eBoard);
+                                 isChecking = false;
                                  
 
                                 }
-                                isChecking=false;
+                              
                              
                             }
 
@@ -1402,16 +1407,19 @@ private IEnumerator showBankPanel(){
                     }else if(eBoard.owner.GetName()==player.playerData.name){
                         if(player.playerData.isAI){
                         AIBuild(player);
-                        isChecking=false;}
+                        isChecking=false;
+                        }
                         else{
               
                         if(canBuild(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
-                            isChecking=false;
+                            
                             
                             
 
-                        }}    
+                        }
+                        isChecking=false;
+                        }    
 
                     }
 
@@ -1570,7 +1578,9 @@ public void AIBuild(Player player)
             Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
             gameBehaviour.PayMoney(player, buildCost);
             cgControl.PlayCG("money_fly",player);
+            
         }
+        isChecking=false;
     }
     else if (difficulty == 1)
     {
@@ -1584,7 +1594,10 @@ public void AIBuild(Player player)
             gameBehaviour.PayMoney(player, buildCost);
             cgControl.PlayCG("money_fly",player);
         }
-    }}
+        isChecking=false;
+    }
+    isChecking=false;
+    }
 }
 public void cheatRoll(int i){
     cheatStep=i;
