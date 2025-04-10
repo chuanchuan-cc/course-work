@@ -825,7 +825,8 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                     BuyableBoard bBoard = currentBoard as BuyableBoard;{
                         if(bBoard!=null){
                             yield return HadleBuyable(player,bBoard);
-                        }
+                        }else
+                        isChecking=false;
                     }
                 }
                 
@@ -904,7 +905,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                 foreach(Board i in mapList){
                     if(i.property=="Opportunity Knocks"){
 
-                        StartCoroutine(DrawCard(currentPlayer,i));
+                        yield return StartCoroutine(DrawCard(currentPlayer, i));
                    
 
                         yield break;
@@ -1369,9 +1370,10 @@ private IEnumerator showBankPanel(){
                                     gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
                                  generator.updateTile(eBoard);
-                                 isChecking=false;
+                                 
 
                                 }
+                                isChecking=false;
                              
                             }
 
@@ -1415,8 +1417,9 @@ private IEnumerator showBankPanel(){
                     {   if (eBoard.owner is PlayerData playerOwner){
                         if(playerOwner.freezeTurn>0)
                         gameBehaviour.PayRent(player,eBoard);
-                        isChecking=false;
+                        
                         }
+                        isChecking=false;
                         
                         }
                         generator.updateTile(eBoard);
@@ -1503,8 +1506,9 @@ private IEnumerator showBankPanel(){
                         if (bBoard.owner is PlayerData playerOwner){
                         if(playerOwner.freezeTurn>0)
                         gameBehaviour.PayBuyableRent(player, bBoard);
-                        isChecking=false;
+                        
                         }
+                        isChecking=false;
                     }
                     isChecking=false;
                     generator.updateTile(bBoard);
