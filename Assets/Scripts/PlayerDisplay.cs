@@ -13,6 +13,7 @@ using System.Linq;
 public class PlayerDisplay: MonoBehaviour
 {
     public Image playerImage;
+    public Image isai;
 
     public Player player;
     public TextMeshProUGUI playerCash;
@@ -22,6 +23,7 @@ public class PlayerDisplay: MonoBehaviour
     public TextMeshProUGUI playerWorth;
     public TextMeshProUGUI playerAssets;
     public Transform PlayersPool;
+    public Sprite aiImg;
     
 
 
@@ -42,6 +44,10 @@ public class PlayerDisplay: MonoBehaviour
         player = newPlayer;
         playerName.text = player.name;
         playerImage.sprite=PlayersPool.Find(player.name).GetComponent<SpriteRenderer>().sprite;
+        if(player.playerData.isAI)
+        isai.sprite=aiImg;
+        else
+        isai.gameObject.SetActive(false);
      
         UpdateDisplay(player);
 
