@@ -21,7 +21,7 @@ public class initialPanelScript : MonoBehaviour
     public TextMeshProUGUI cardText;
     public Slider playerNumberSlider;
     public TextMeshProUGUI playerNumber;
-    public Toggle AIToggle;
+
     public Image toggleImage;
     public Sprite toggleTrueImage;
     public Sprite toggleFalseImage;
@@ -39,6 +39,10 @@ public class initialPanelScript : MonoBehaviour
     public TextMeshProUGUI RuntimeText;
     public Image gameModeToggleImg;
     public GameObject RuntimeOutput;
+    public Slider AInumber;
+    public TextMeshProUGUI AINumberText;
+    private const int MaxTotalPlayers = 6;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,10 +55,11 @@ public class initialPanelScript : MonoBehaviour
         cardText.text = "Default cardpool";
         playerNumberSlider.value = 3;
         playerNumber.text = playerNumberSlider.value.ToString();
-        difficultySlider.gameObject.SetActive(false);
-        difficultyOutput.gameObject.SetActive(false);
-        AIToggle.onValueChanged.AddListener(toggleClick);
-        toggleClick(AIToggle.isOn);
+        AInumber.value=1;
+        AInumber.onValueChanged.AddListener(UpdateAINumber);
+        UpdateAINumber(AInumber.value);
+        difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
+        UpdateDifficultyText(difficultySlider.value);
         RuntimeSlider.gameObject.SetActive(false);
         RuntimeOutput.gameObject.SetActive(false);
         gameModeToggle.onValueChanged.AddListener(gameModeChange);
@@ -70,14 +75,22 @@ public class initialPanelScript : MonoBehaviour
     }
     // Update is called once per frame
 
-
+    void UpdateAINumber(float value){
+        AINumberText.text=$"{value}";
+        if (playerNumberSlider.value+AInumber.value>MaxTotalPlayers)
+    {
+        playerNumberSlider.value=MaxTotalPlayers-AInumber.value;
+        UpdatePlayerNumberText(playerNumberSlider.value);
+    }
+        
+    }
 
 
 
     void startNewGame()
     {
         PlayerPrefs.SetInt("PlayerNumber", (int)playerNumberSlider.value);
-        PlayerPrefs.SetInt("IsAI", AIToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("AInumber", (int)AInumber.value);
         PlayerPrefs.SetInt("difficulty", (int)difficultySlider.value);
         PlayerPrefs.SetInt("maxRuntime", gameModeToggle.isOn ? (int)RuntimeSlider.value : 0);
         SceneManager.LoadScene("gameScene");
@@ -85,27 +98,6 @@ public class initialPanelScript : MonoBehaviour
     }
 
 
-    void toggleClick(bool i)
-    {
-        toggleImage.sprite = i ? toggleTrueImage : toggleFalseImage;
-        if (i)
-        {
-            difficultySlider.gameObject.SetActive(true);
-            difficultyOutput.gameObject.SetActive(true);
-            difficultySlider.onValueChanged.AddListener(UpdateDifficultyText);
-            UpdateDifficultyText(difficultySlider.value);
-
-
-        }
-        else
-        {
-            difficultySlider.gameObject.SetActive(false);
-            difficultyOutput.gameObject.SetActive(false);
-
-
-        }
-
-    }
     void gameModeChange(bool i)
     {
         gameModeToggleImg.sprite = i ? toggleTrueImage : toggleFalseImage;
@@ -138,6 +130,11 @@ public class initialPanelScript : MonoBehaviour
     void UpdatePlayerNumberText(float value)
     {
         playerNumber.text = ((int)value).ToString();
+         if (playerNumberSlider.value+AInumber.value>MaxTotalPlayers)
+    {
+        AInumber.value=MaxTotalPlayers-playerNumberSlider.value;
+        UpdateAINumber(AInumber.value);
+    }
     }
 
     void UpdateDifficultyText(float value)

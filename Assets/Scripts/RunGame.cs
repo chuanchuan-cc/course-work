@@ -268,10 +268,11 @@ public class RunGame : MonoBehaviour
             // load the input from last scene
 
 
-            isAI = PlayerPrefs.GetInt("IsAI", 0) == 1;
+            isAI = true;
+            int AINumber=PlayerPrefs.GetInt("AInumber",1);
             difficulty = PlayerPrefs.GetInt("difficulty", 0);
             int playerNumber = PlayerPrefs.GetInt("PlayerNumber", 1);
-            playerNumber = (isAI) ? playerNumber : playerNumber;
+            playerNumber = playerNumber+ AINumber;
             point = 0;
             maxRuntime = PlayerPrefs.GetInt("maxRuntime", 0) * 60f;
 
@@ -318,7 +319,8 @@ public class RunGame : MonoBehaviour
 
 
 
-            if (isAI) playersList[playerNumber - 1].playerData.isAI = true;
+            for(int i=playerNumber-AINumber;i<playersList.Count;i++){
+            playersList[i].playerData.isAI = true;}
 
 
 
