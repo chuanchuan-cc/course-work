@@ -69,7 +69,7 @@ public class RunGame : MonoBehaviour
     
 
     public Slider musicSlider;
-    public CGcontrol cGcontrol;
+    public CGcontrol cgControl;
     
     public timeBoard timeboard;
     public bool isTimeOver=false;
@@ -90,7 +90,7 @@ public class RunGame : MonoBehaviour
     isLoadGame = PlayerPrefs.GetInt("isLoadGame", 0) == 1;
         PlayerPrefs.SetInt("isLoadGame", 0);
     PlayerPrefs.Save();
-    cGcontrol=FindObjectOfType<CGcontrol>();
+    cgControl=FindObjectOfType<CGcontrol>();
    
         
 
@@ -798,7 +798,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         }
         else{
             StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
-            yield return new WaitUntil(()=>!cGcontrol.isCG);
+            yield return new WaitUntil(()=>!cgControl.isCG);
             isChecking=false;
             }
       
@@ -1262,10 +1262,18 @@ private IEnumerator showBankPanel(){
     private bool AIauction(Player player,int price){
         if(player.playerData.isAI){
             if(difficulty==0){
-                return UnityEngine.Random.Range(0, 2) == 0;
-            }else if (difficulty==1){
-                if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth)
+                if (UnityEngine.Random.Range(0, 2) == 0){
+                cgControl.PlayCG("money_fly",player);
                 return true;
+                }
+                
+                else return false;
+            }else if (difficulty==1){
+                if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth){
+                cgControl.PlayCG("money_fly",player);
+                return true;
+                }
+                
                 else return false;
             }else{
                 //hard
@@ -1279,10 +1287,21 @@ private IEnumerator showBankPanel(){
     private bool AIBuyProperty(Player player,int price){
         if(player.playerData.isAI){
             if(difficulty==0){
-                return UnityEngine.Random.Range(0, 2) == 0;
+
+                if(UnityEngine.Random.Range(0, 2) == 0){
+
+                    cgControl.PlayCG("money_fly",player);
+                    return true;
+
+                }
+                else return false;
+                
             }else if (difficulty==1){
-                              if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth)
-                return true;
+                              if ((player.playerData.money-price)>=0.3*player.playerData.assetsWorth){
+                                cgControl.PlayCG("money_fly",player);
+                                return true;
+                              }
+                
                 else return false;
             }else{
                 //hard
@@ -1540,6 +1559,7 @@ public void AIBuild(Player player)
             string buildingType = eBoard.improvedLevel == 5 ? "a Hotel" : "a House";
             Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
             gameBehaviour.PayMoney(player, buildCost);
+            cgControl.PlayCG("money_fly",player);
         }
     }
     else if (difficulty == 1)
@@ -1552,6 +1572,7 @@ public void AIBuild(Player player)
             string buildingType = eBoard.improvedLevel == 5 ? "a Hotel" : "a House";
             Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
             gameBehaviour.PayMoney(player, buildCost);
+            cgControl.PlayCG("money_fly",player);
         }
     }}
 }
