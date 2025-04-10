@@ -343,6 +343,9 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
 
 
     foreach(Player player in playersList){
+
+            player.gameObject.layer=LayerMask.NameToLayer("PlayerDefault");
+
             BoardConstructor.CreateChildren(player);
         }
 
@@ -454,6 +457,11 @@ void Update()
         currentPlayer = playersList[point];
         else
         currentPlayer=nextPlayer;
+        Debug.Log($"玩家当前图层为{currentPlayer.gameObject.layer}");
+
+        currentPlayer.gameObject.layer=LayerMask.NameToLayer("PlayerActive");
+        Debug.Log($"修改后/玩家当前图层为{currentPlayer.gameObject.layer}");
+
         nextPlayer=playersList[(playersList.IndexOf(currentPlayer)+1)%playersList.Count];
         Debug.Log($"currently player is {currentPlayer.name}");
         
@@ -563,11 +571,12 @@ void Update()
 
       
         yield return new WaitUntil(()=>!isChecking);
-        if(currentPlayer!=null)
+        if(currentPlayer!=null){
         if(currentPlayer.playerData.money>inimoney)
         cGcontrol.PlayCG("add_money",currentPlayer);
         if(currentPlayer.playerData.money<inimoney)
         cGcontrol.PlayCG("money_fly",currentPlayer);
+        }
         
 
         if (playersList.Count == 1)
@@ -584,6 +593,9 @@ void Update()
         NextButton.interactable=true;
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI||currentPlayer.playerData.isBankrupt);
+        if(currentPlayer!=null)
+        currentPlayer.gameObject.layer=LayerMask.NameToLayer("PlayerDefault");;
+
         
         if(isTimeOver&&timeToStop()){
             timeOver();
@@ -758,9 +770,9 @@ void AIRoll(){
             StartCoroutine(HandleBoard(player, currentBoard));
         }
         
-
+        if(player!=null){
         
-        playerUpdate(currentPlayer);
+        playerUpdate(player);}
         yield return new WaitForSeconds(0.2f);
         isChecking=false;
         
