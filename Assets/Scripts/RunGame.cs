@@ -314,8 +314,8 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     
     
     //initialize the map and card
-    string cardPath=(PlayerPrefs.GetString("cardPath")==null)? PlayerPrefs.GetString("cardPath"):Application.dataPath+"/Resources/card/testCard.xlsx";
-    string mapPath=(PlayerPrefs.GetString("mapPath")==null)?PlayerPrefs.GetString("mapPath"):Application.dataPath+"/Resources/map/testMap.xlsx";;
+    string cardPath=(PlayerPrefs.GetString("cardPath")!=null)? PlayerPrefs.GetString("cardPath"):Application.dataPath+"/Resources/card/testCard.xlsx";
+    string mapPath=(PlayerPrefs.GetString("mapPath")!=null)?PlayerPrefs.GetString("mapPath"):Application.dataPath+"/Resources/map/testMap.xlsx";;
   
     if(mapPath== null){
         Debug.LogError("mapPath is null");
