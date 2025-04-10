@@ -843,6 +843,8 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                     }
                 }
                 
+        }else{
+            isChecking=false;
         }
 }
 
