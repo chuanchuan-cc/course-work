@@ -711,6 +711,8 @@ private void generateAssets(bool i){
                     
                     isLackCash=false;
                 }
+                if(!isBankrupting&&!isLackCash)
+                cGControl.PlayCG("add_money",player);
 
                 generateSellableAssets();
                 break;
@@ -743,6 +745,8 @@ private void generateAssets(bool i){
                 }if(isLackCash){
                 ClosePanel();
                 isLackCash=false;}
+                if(!isBankrupting&&!isLackCash)
+                cGControl.PlayCG("add_money",player);
             generateAssets(false);
             break;
             
@@ -764,6 +768,7 @@ private void generateAssets(bool i){
                 }
 
             }
+            cGControl.PlayCG("money_fly",player);
            generateAssets(true);
            break;
            default:

@@ -512,6 +512,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
                     string buildingType = board.improvedLevel == 5 ? "a Hotel" : "a House";
                     Debug.Log($"{player.name} built {buildingType} on {board.property}.");
                     PayMoney(player, buildCost);
+                    cgControl.PlayCG("add_money",player);
                     
 
                                 

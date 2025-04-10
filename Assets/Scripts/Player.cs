@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
 
     public void directlyMove(Board board)
     {
+        isMoving=true;
         Debug.Log($"directly move to {board.property}");
         if (this.playerData.freezeTurn == 0)
             MusicController.Instance.PlayMoveDirectlySound();
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator DirectMoveRoutine(Board board)
     {
-        isMoving = true;
+     
         yield return StartCoroutine(FadeOut(0.5f));
 
         yield return new WaitUntil(() => !isFading);

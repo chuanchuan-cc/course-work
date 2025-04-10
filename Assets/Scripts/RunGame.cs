@@ -572,18 +572,8 @@ void Update()
 
       
         yield return new WaitUntil(()=>!isChecking);
-        if(currentPlayer!=null){
         
-        if(currentPlayer.playerData.money>inimoney){
-            Debug.Log("播放加钱动画");
-            cGcontrol.PlayCG("add_money",currentPlayer);
-        }
-        if(currentPlayer.playerData.money<inimoney){
-            Debug.Log("播放扣钱动画");
-            cGcontrol.PlayCG("money_fly",currentPlayer);
-        }
-        
-        }
+       
         
 
         if (playersList.Count == 1)
@@ -598,10 +588,28 @@ void Update()
         
         
         NextButton.interactable=true;
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("准备处理动画进程");
+         if(currentPlayer!=null){
+        
+        if(currentPlayer.playerData.money>inimoney){
+            Debug.Log("播放加钱动画");
+            cGcontrol.PlayCG("add_money",currentPlayer);
+        }
+        if(currentPlayer.playerData.money<inimoney){
+            Debug.Log("播放扣钱动画");
+            cGcontrol.PlayCG("money_fly",currentPlayer);
+        }
+        
+        }else{
+            Debug.Log("本回合未播放动画");
+        }
+        
 
         yield return new WaitUntil(() => isNext||currentPlayer.playerData.isAI||currentPlayer.playerData.isBankrupt);
         if(currentPlayer!=null)
-        currentPlayer.gameObject.layer=LayerMask.NameToLayer("PlayerDefault");;
+        currentPlayer.gameObject.layer=LayerMask.NameToLayer("PlayerDefault");
+        
 
         
         if(isTimeOver&&timeToStop()){
@@ -781,7 +789,7 @@ void AIRoll(){
         
         playerUpdate(player);}
         yield return new WaitForSeconds(0.2f);
-        isChecking=false;
+        
         
     }
 
@@ -790,6 +798,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
 
     if(currentBoard.property=="Free Parking"){
             gameBehaviour.AddMoney(currentPlayer,freeParkMoney);
+            isChecking=false;
   
         }
         else if(currentBoard.property=="Go to Jail"){
@@ -797,24 +806,29 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         {
             player.playerData.freeJail--;
             player.directlyMove(mapList.Find(board=>board.property == "Jail/Just visiting"));
+            yield return new WaitUntil(()=>!player.isMoving);
+            isChecking=false;
 
         }
         else{
             StartCoroutine(gameBehaviour.GoToJail(currentPlayer));
             yield return new WaitUntil(()=>!cGcontrol.isCG);
+            isChecking=false;
             }
       
         }
         else if(currentBoard.property=="Income Tax"){
             gameBehaviour.PayMoney(currentPlayer,200);
+            isChecking=false;
 
         }
         else if(currentBoard.property=="Super Tax"){
             gameBehaviour.PayMoney(currentPlayer,100);
+            isChecking=false;
 
         }
-            else if (currentBoard.canBeBought)
-            {
+        else if (currentBoard.canBeBought)
+        {
                 estateBoard eBoard = currentBoard as estateBoard;
                 if (eBoard != null)
                 {
@@ -829,7 +843,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                     }
                 }
                 
-            }
+        }
 }
 
 
@@ -1074,6 +1088,7 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
         }
     }
     public void next(){
+        Debug.Log("调用next方法");
         isNext=true;
     }
     IEnumerator auction(estateBoard eBoard){
@@ -1127,8 +1142,10 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                             gameBehaviour.AddProperty(buyer,eBoard);
                             generator.updateTile(eBoard);
                             isAuction=false;
+                           
                             yield break; }
                              if(auctionList.Count==0&&buyer==null){
+                             
                 isAuction=false;
                 yield break;
             }
@@ -1198,9 +1215,11 @@ public IEnumerator HandleBoard(Player player, Board currentBoard){
                             generator.updateTile(bBoard);
   
                             isAuction=false;
+                     
                             yield break; }
                              if(auctionList.Count==0&&buyer==null){
                 isAuction=false;
+             
                 yield break;
             }
 
@@ -1300,7 +1319,8 @@ private IEnumerator showBankPanel(){
                         if(player.playerData.money>=eBoard.price&&AIBuyProperty(player,eBoard.price)){
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);  
-                                 generator.updateTile(eBoard);                          
+                                 generator.updateTile(eBoard);  
+                                                      
                         }else{
                             Debug.Log($"{eBoard.property} start auction");
                             isAuction=true;
@@ -1309,9 +1329,10 @@ private IEnumerator showBankPanel(){
                              StartCoroutine(auction(eBoard));
                              yield return new WaitUntil(()=>!isAuction);
                              
-                             isChecking = false;
+                            
 
                         }
+                        isChecking=false;
                         
 
                     }
@@ -1328,6 +1349,7 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
                                  generator.updateTile(eBoard);
+                                 isChecking=false;
                                  
                             }else{
                                 bankpanel.showLackOfCashPanel(player,eBoard.price);
@@ -1336,6 +1358,7 @@ private IEnumerator showBankPanel(){
                                     gameBehaviour.PayMoney(player,eBoard.price);
                                  gameBehaviour.AddProperty(player,eBoard);
                                  generator.updateTile(eBoard);
+                                 isChecking=false;
 
                                 }
                              
@@ -1354,7 +1377,7 @@ private IEnumerator showBankPanel(){
                              
                         }
                     }
-                        isChecking = false;
+                       
                         yield break;
                         }
                             
@@ -1362,12 +1385,14 @@ private IEnumerator showBankPanel(){
                         
                         
                     }else if(eBoard.owner.GetName()==player.playerData.name){
-                        if(player.playerData.isAI)
+                        if(player.playerData.isAI){
                         AIBuild(player);
+                        isChecking=false;}
                         else{
               
                         if(canBuild(player,eBoard)){
                             buildingButton.gameObject.SetActive(true);
+                            isChecking=false;
                             
                             
 
@@ -1379,12 +1404,13 @@ private IEnumerator showBankPanel(){
                     {   if (eBoard.owner is PlayerData playerOwner){
                         if(playerOwner.freezeTurn>0)
                         gameBehaviour.PayRent(player,eBoard);
+                        isChecking=false;
                         }
                         
                         }
                         generator.updateTile(eBoard);
                         playerUpdate(player);
-                        isChecking=false;
+                      
     }
 
 
@@ -1401,7 +1427,9 @@ private IEnumerator showBankPanel(){
                         if(player.playerData.money>=bBoard.price&&AIBuyProperty(player,bBoard.price)){
                                  gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);   
-                                 generator.updateTile(bBoard);}
+                                 generator.updateTile(bBoard);
+                                 isChecking=false;
+                                 }
                            else{
                             Debug.Log($"{bBoard.property} start auction");
                             isAuction=true;
@@ -1426,14 +1454,16 @@ private IEnumerator showBankPanel(){
                                  gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);
                                  generator.updateTile(bBoard);
+                                 isChecking=false;
                             }else{
                                 bankpanel.showLackOfCashPanel(player,bBoard.price);
                                 yield return new WaitUntil(()=>!bankpanel.isLackCash);
                                 if(player.playerData.money>bBoard.price){
                                     gameBehaviour.PayMoney(player,bBoard.price);
                                  gameBehaviour.AddBuyable(player,bBoard);
+                                
                                  generator.updateTile(bBoard);
-
+                                isChecking=false;
                                 }
                 
                             }
@@ -1461,11 +1491,13 @@ private IEnumerator showBankPanel(){
                     {
                         if (bBoard.owner is PlayerData playerOwner){
                         if(playerOwner.freezeTurn>0)
-                        gameBehaviour.PayBuyableRent(player, bBoard);}
+                        gameBehaviour.PayBuyableRent(player, bBoard);
+                        isChecking=false;
+                        }
                     }
                     generator.updateTile(bBoard);
                         playerUpdate(player);
-                        isChecking=false;
+                    
     }
 
 
