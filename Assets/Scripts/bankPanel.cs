@@ -41,7 +41,7 @@ public class bankPanel : MonoBehaviour
   public Button brQuitButton;
 
  public bool isLackCash=false;
- public CGControl cGControl;
+ public CGcontrol cGControl;
 public Sprite[] levelSprites;
 
 
