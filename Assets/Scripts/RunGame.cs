@@ -573,10 +573,16 @@ void Update()
       
         yield return new WaitUntil(()=>!isChecking);
         if(currentPlayer!=null){
-        if(currentPlayer.playerData.money>inimoney)
-        cGcontrol.PlayCG("add_money",currentPlayer);
-        if(currentPlayer.playerData.money<inimoney)
-        cGcontrol.PlayCG("money_fly",currentPlayer);
+        
+        if(currentPlayer.playerData.money>inimoney){
+            Debug.Log("播放加钱动画");
+            cGcontrol.PlayCG("add_money",currentPlayer);
+        }
+        if(currentPlayer.playerData.money<inimoney){
+            Debug.Log("播放扣钱动画");
+            cGcontrol.PlayCG("money_fly",currentPlayer);
+        }
+        
         }
         
 
