@@ -279,28 +279,28 @@ SaveData saveData = JsonConvert.DeserializeObject<SaveData>(json, new JsonSerial
     //initialize player
 
 
-        playersList= new List<Player>(playerNumber);
         
+        List<Player> allPlayers = new List<Player>();
             foreach (Transform child in playersPool.transform)
         {
             Player player = child.GetComponent<Player>();
-            if(playersList.Count>=playerNumber)
-            player.gameObject.SetActive(false);
-            else{
-            
-            if (player != null)
-            {
-                Debug.Log("find Player: " + child.name);
-                
-                
-   
-        
-            player.InitializePlayer(player.gameObject.name);
-            
-            playersList.Add(player);
-            }
+            if(player!=null){
+                allPlayers.Add(player);
             }}
-        
+            Shuffle(allPlayers);
+            playersList= new List<Player>(playerNumber);
+            for(int i =0;i<allPlayers.Count;i++){
+                if(i<playerNumber){
+                    allPlayers[i].InitializePlayer(allPlayers[i].gameObject.name);
+                    playersList.Add(allPlayers[i]);
+                }else{
+                    allPlayers[i].gameObject.SetActive(false);
+                }
+            }
+
+
+
+
 
         if(isAI) playersList[playerNumber-1].playerData.isAI=true;
 
