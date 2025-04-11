@@ -259,6 +259,14 @@ public class RunGame : MonoBehaviour
 
 
             }
+                foreach (Transform child in playersPool.transform)
+    {
+        Player p = child.GetComponent<Player>();
+        if (p != null && !playersList.Contains(p))
+        {
+            p.gameObject.SetActive(false);
+        }
+    }
             
 
 
@@ -889,10 +897,12 @@ public class RunGame : MonoBehaviour
         }
         else if (currentBoard.canBeBought)
         {
+
             estateBoard eBoard = currentBoard as estateBoard;
             if (eBoard != null)
             {
-                yield return HandleEstate(player, eBoard);
+
+                yield return HandleEstate(currentPlayer, eBoard);
                 isChecking = false;
 
             }
@@ -902,7 +912,7 @@ public class RunGame : MonoBehaviour
                 {
                     if (bBoard != null)
                     {
-                        yield return HadleBuyable(player, bBoard);
+                        yield return HadleBuyable(currentPlayer, bBoard);
                     }
                     else
                         isChecking = false;
@@ -1183,7 +1193,7 @@ public class RunGame : MonoBehaviour
     }
     public void next()
     {
-        Debug.Log("调用next方法");
+  
         isNext = true;
     }
     IEnumerator auction(estateBoard eBoard)
@@ -1493,7 +1503,7 @@ public class RunGame : MonoBehaviour
 
     IEnumerator HandleEstate(Player player, estateBoard eBoard)
     {
-        Debug.Log(eBoard.owner.GetName());
+
 
         if (eBoard.owner == bank
 
@@ -1590,8 +1600,15 @@ public class RunGame : MonoBehaviour
         {
             if (player.playerData.isAI)
             {
-                AIBuild(player);
+                if(canBuild(player, eBoard)){
+                    AIBuild(player,eBoard);
+                
+
+
+
+                }
                 isChecking = false;
+                
             }
             else
             {
@@ -1613,7 +1630,8 @@ public class RunGame : MonoBehaviour
         {
             if (eBoard.owner is PlayerData playerOwner)
             {
-                if (playerOwner.freezeTurn > 0)
+                
+                if (playerOwner.freezeTurn == 0)
                     gameBehaviour.PayRent(player, eBoard);
 
             }
@@ -1769,16 +1787,17 @@ public class RunGame : MonoBehaviour
 
         buildingButton.gameObject.SetActive(false);
     }
-    public void AIBuild(Player player)
+    public void AIBuild(Player player,estateBoard eBoard)
     {
-        estateBoard eBoard = mapList[currentPlayer.playerData.positionNo] as estateBoard;
-        if (eBoard != null && canBuild(player, eBoard))
+        Debug.Log($"已调用ai建房，难度为{difficulty}");
+        if (eBoard != null)
         {
             int buildCost = gameBehaviour.costCalculer(eBoard);
             if (difficulty == 0)
             {
                 if (Random.Range(0, 2) == 0 && player.playerData.money > buildCost && eBoard.improvedLevel < 5)
-                {
+                { 
+                    Debug.Log("已成功ai建房");
                     eBoard.improvedLevel++;
                     eBoard.ResetRent(eBoard.improvedLevel - 1);
                     eBoard.price += buildCost;
@@ -1787,13 +1806,15 @@ public class RunGame : MonoBehaviour
                     gameBehaviour.PayMoney(player, buildCost);
                     cgControl.PlayCG("money_fly", player);
 
-                }
+                }else
+                Debug.Log("已失败ai建房，简单难度运气问题");
                 isChecking = false;
             }
             else if (difficulty == 1)
             {
-                if (player.playerData.money / player.playerData.assetsWorth > 0.3 && player.playerData.money > buildCost && eBoard.improvedLevel < 5)
+                if (player.playerData.money-buildCost>1000&& eBoard.improvedLevel < 5)
                 {
+                    Debug.Log("已成功ai建房");
                     eBoard.improvedLevel++;
                     eBoard.ResetRent(eBoard.improvedLevel - 1);
                     eBoard.price += buildCost;
@@ -1801,6 +1822,8 @@ public class RunGame : MonoBehaviour
                     Debug.Log($"{player.name} built {buildingType} on {eBoard.property}.");
                     gameBehaviour.PayMoney(player, buildCost);
                     cgControl.PlayCG("money_fly", player);
+                }else{
+                    Debug.Log($"已失败ai建房,成本为{buildCost}");
                 }
                 isChecking = false;
             }

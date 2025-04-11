@@ -141,13 +141,13 @@ public class initialPanelScript : MonoBehaviour
     {
         switch (value)
         {
-            case 1:
+            case 0:
                 difficultyText.text = "easy";
                 break;
-            case 2:
+            case 1:
                 difficultyText.text = "normal";
                 break;
-            case 3:
+            case 2:
                 difficultyText.text = "difficult";
                 break;
 
