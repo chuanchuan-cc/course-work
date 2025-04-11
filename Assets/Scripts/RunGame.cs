@@ -628,11 +628,14 @@ public class RunGame : MonoBehaviour
 
 
 
-            if (currentPlayer != null && !currentPlayer.playerData.isAI)
+            if (currentPlayer != null && currentPlayer.playerData.isAI)
             {
-                NextButton.interactable = true;
                 next();
+           
             }
+
+            NextButton.interactable = true;
+            Debug.Log($"当前玩家状态{currentPlayer.name},isnext={isNext},is ai {currentPlayer.playerData.isAI},is bankrupt{currentPlayer.playerData.isBankrupt}");
 
 
 
@@ -1596,7 +1599,7 @@ public class RunGame : MonoBehaviour
                 if (canBuild(player, eBoard))
                 {
                     buildingButton.gameObject.SetActive(true);
-
+                    
 
 
 
