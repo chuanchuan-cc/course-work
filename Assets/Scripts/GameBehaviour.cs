@@ -316,7 +316,7 @@ return l1;
 {
    
     if (board.owner is PlayerData playerOwner){
-    if (playerOwner.assetsList.Contains(board))
+    if (playerOwner.assetsList.Contains(board)){
 
         if (board.improvedLevel == 0) 
         {
@@ -351,8 +351,9 @@ return l1;
         Debug.Log($"{playerOwner.name} does not own {board.property}, so they cannot sell it!");
     }}
     generator.updateTile(board);
-
 }
+
+
 public void SellBuyableBoard(BuyableBoard board){
             int sellPrice;
             if( board.owner is PlayerData playerOwner){
