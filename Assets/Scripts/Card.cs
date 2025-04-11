@@ -235,7 +235,7 @@ public static class CardLoader
 {
     public static (List<Card>, List<Card>) LoadCards(string excelPath)
     {
-        
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
         List<Card> luckCards = new List<Card>();
         List<Card> opportunityCards = new List<Card>();
@@ -246,20 +246,14 @@ public static class CardLoader
             return (luckCards, opportunityCards);
         }
 
-        var config = new ExcelReaderConfiguration
-{
-    FallbackEncoding = Encoding.UTF8
-};
-
-using (var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read))
-using (var reader = ExcelReaderFactory.CreateReader(stream, config))
-{
-    int rowIndex = 0;
-    bool isStarted = false;
-    var currentGroup = Group.None;
-
-    while (reader.Read())
-    {
+        using (var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read))
+        using (var reader = ExcelReaderFactory.CreateReader(stream))
+        {
+            int rowIndex=0;
+            bool isStarted = false;
+            var currentGroup = Group.None;
+            while(reader.Read())
+            {
                 rowIndex++;
                
    

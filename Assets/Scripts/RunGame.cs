@@ -442,6 +442,7 @@ public class RunGame : MonoBehaviour
         {
             isTimeOver = true;
         }
+        if(timeboard!=null)
         timeboard.updateTimeBoard(runtime);
 
         // if (Input.GetKeyDown(KeyCode.C))
@@ -1885,7 +1886,12 @@ public class RunGame : MonoBehaviour
         {
             string source = Path.Combine(Application.streamingAssetsPath, "map/testMap.xlsx");
             if (File.Exists(source)) File.Copy(source, mapPath);
+
+
+         
         }
+       
+
     }
     private void changeCameraMode()
     {

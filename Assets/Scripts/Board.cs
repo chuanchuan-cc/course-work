@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using ExcelDataReader;
 using Newtonsoft.Json;
+using System.Text; 
 
 
 [Serializable]
@@ -117,14 +118,21 @@ public static class BoardLoader
 {
     public static List<Board> LoadBoards(string excelPath)
     {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         List<Board> boards=new List<Board>();
 
         try
         {
             
+            
+            var config = new ExcelReaderConfiguration
+                {
+            FallbackEncoding = Encoding.GetEncoding(1252)
+                };
+
             using (var stream=File.Open(excelPath, FileMode.Open, FileAccess.Read))
-            using (var reader=ExcelReaderFactory.CreateReader(stream))
-            {
+            using (var reader = ExcelReaderFactory.CreateReader(stream, config))
+                {
                 int rowIdx=0;
                 while(reader.Read())
                 {
