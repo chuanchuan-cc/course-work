@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 6d695869c6bd35942a1a24b339fd70a0
+guid: fb91392297a2ae94e9f153b138d7a88a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3248220239304228727
-    second: ComfyUI_00089__0
+      213: 2062586657012035579
+    second: "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_0"
+  - first:
+      213: -6477455237541673750
+    second: "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_1"
+  - first:
+      213: -434193471890457541
+    second: "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_2"
+  - first:
+      213: -846962656378758263
+    second: "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_3"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +105,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ComfyUI_00089__0
+      name: "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_3"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 1024
+        x: 62
+        y: 222
+        width: 884
+        height: 625
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9808904f6e00ce2d0800000000000000
-      internalID: -3248220239304228727
+      spriteID: 98bd58093fbfe34f0800000000000000
+      internalID: -846962656378758263
       vertices: []
       indices: 
       edges: []
@@ -138,7 +134,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4aadc4aec1c6c454fabbd641009813c7
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +144,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ComfyUI_00089__0: -3248220239304228727
+      "ChatGPT Image 2025\u5E744\u670811\u65E5 13_19_44_3": -846962656378758263
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

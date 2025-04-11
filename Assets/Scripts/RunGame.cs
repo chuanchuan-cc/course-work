@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 
 
@@ -1935,11 +1936,8 @@ public class RunGame : MonoBehaviour
     }
     private void quitGame()
     {
-#if UNITY_EDITOR
-         UnityEditor.EditorApplication.isPlaying=false;
-#else
-        Application.Quit();
-#endif
+        SceneManager.LoadScene("StartScene");
+
     }
     private IEnumerator moveCheck(Player player)
     {
