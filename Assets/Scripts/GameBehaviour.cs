@@ -118,12 +118,13 @@ private IEnumerator lackcash(Player player, int amount){
                         }
 }
     public void AISell(Player player){
-         Debug.Log($"玩家现有资产数{MortagageState(player).Count}");
+        Debug.Log($"已调用ai卖资产");
         if (player.playerData.assetsList.Count == 0 || player.playerData.assetsWorth <= player.playerData.money) {
         bankrupt(player);
         return;}
     else if(RunGame.instance.difficulty==0){
-        if(player.playerData.money<0.15*player.playerData.assetsWorth){
+         Debug.Log($"已调用ai卖资产0");
+
             int n=Random.Range(0,player.playerData.assetsList.Count);
         estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
     if(eBoard!=null)
@@ -134,14 +135,14 @@ private IEnumerator lackcash(Player player, int amount){
     }
 
 
-        }
+        
 
     }
     else if(RunGame.instance.difficulty==1){
-    if(player.playerData.money<0.15*player.playerData.assetsWorth){
+ 
     List<int>l2 = MortagageState(player);
     if(l2.Count==0){
-        if(player.playerData.assetsList.Count>0){
+      
             int n=Random.Range(0,player.playerData.assetsList.Count);
             estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
     if(eBoard!=null)
@@ -151,7 +152,7 @@ private IEnumerator lackcash(Player player, int amount){
         mortageBuyableBoard(bBoard);
     }
 
-        }
+        
 
 
     }
@@ -167,12 +168,11 @@ private IEnumerator lackcash(Player player, int amount){
 
 
     }
-    }
+    
 
 
     }
     RunGame.instance.playerUpdate(player);
-    Debug.Log($"玩家现有资产数{MortagageState(player).Count}");
 
 
 
@@ -284,6 +284,7 @@ return l1;
             playerOwner.money += sellPrice;
             playerOwner.assetsList.Remove(board);
             board.owner=RunGame.bank;
+           
 
             foreach(Player player in RunGame.instance.getplayerlist()){
                 if(player.name==playerOwner.name)
@@ -331,6 +332,7 @@ generator.updateTile(board);
 
 }
 public void mortageEstateBoard(estateBoard board){
+    Debug.Log($"已调用ai抵押地皮");
   
 
     board.isMortgage=true;
@@ -346,6 +348,7 @@ public void mortageEstateBoard(estateBoard board){
 
 }
 public void mortageBuyableBoard(BuyableBoard board){
+    Debug.Log($"已调用ai抵押设施");
 
     board.isMortgage=true;
     if( board.owner is PlayerData playerOwner){
