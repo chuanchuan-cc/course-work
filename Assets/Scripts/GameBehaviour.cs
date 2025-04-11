@@ -128,10 +128,10 @@ private IEnumerator lackcash(Player player, int amount){
             int n=Random.Range(0,player.playerData.assetsList.Count);
         estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
     if(eBoard!=null)
-    mortageEstateBoard(eBoard);
+    SellEstateBoard(eBoard);
     else{
         BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
-        mortageBuyableBoard(bBoard);
+        SellBuyableBoard(bBoard);
     }
 
 
