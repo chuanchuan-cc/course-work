@@ -16,7 +16,7 @@ public class estatePrefabConfig : TilePrefabConfig
 
     public void updateConfigEstate(estateBoard board)
     {
-        Debug.Log("调用更新颜色地产方法");
+      
         if (board != null)
         {
 

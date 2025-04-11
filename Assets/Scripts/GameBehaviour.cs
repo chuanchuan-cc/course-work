@@ -118,7 +118,7 @@ private IEnumerator lackcash(Player player, int amount){
                         }
 }
 public void AIRedeem(Player player){
-    Debug.Log($"AI赎回已调用,可赎回有{player.playerData.assetsList.Count-canMortagageList(player).Count}");
+
     foreach(Board board in player.playerData.assetsList){
         if(board is BuyableBoard bBoard){
             if(bBoard.isMortgage&&(player.playerData.money-bBoard.price/2)>1000)
@@ -317,7 +317,7 @@ return l1;
    
     if (board.owner is PlayerData playerOwner){
     if (playerOwner.assetsList.Contains(board))
-    {Debug.Log("已进入卖空地");
+
         if (board.improvedLevel == 0) 
         {
               int sellPrice;
@@ -340,7 +340,7 @@ return l1;
         }
         else
         {
-            Debug.Log("已进入拆房");
+
             tearBuilding(board);
           
         }
@@ -356,7 +356,7 @@ return l1;
 public void SellBuyableBoard(BuyableBoard board){
             int sellPrice;
             if( board.owner is PlayerData playerOwner){
-                Debug.Log("已进入卖buyable");
+        
             if(board.isMortgage){
                 sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
@@ -377,7 +377,7 @@ generator.updateTile(board);
 
 }
 public void mortageEstateBoard(estateBoard board){
-    Debug.Log($"已调用ai抵押地皮");
+
   
 
     board.isMortgage=true;
@@ -393,7 +393,7 @@ public void mortageEstateBoard(estateBoard board){
 
 }
 public void mortageBuyableBoard(BuyableBoard board){
-    Debug.Log($"已调用ai抵押设施");
+ 
 
     board.isMortgage=true;
     if( board.owner is PlayerData playerOwner){
@@ -406,7 +406,7 @@ public void mortageBuyableBoard(BuyableBoard board){
     }
     
     public void remdeemEstateBoard(estateBoard board){
-        Debug.Log($"ai已赎回{board.property}");
+
     board.isMortgage=false;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
@@ -418,7 +418,7 @@ public void mortageBuyableBoard(BuyableBoard board){
     }
 }
 public void remdeemBuyableBoard(BuyableBoard board){
-    Debug.Log($"ai已赎回{board.property}");
+
     board.isMortgage=false;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
@@ -583,7 +583,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
              
              }
      else{
-              //不升级
+              //do not update
                       
           RunGame.instance.buildingButton.gameObject.SetActive(true);
                              
@@ -603,7 +603,7 @@ public IEnumerator BuildBuilding(Player player, estateBoard board)
         return Random.Range(1, 7);
     }
          /*
-            if (board.improvedLevel < 5&& isbuild) // 0-4: 建造房屋，5: 酒店
+            if (board.improvedLevel < 5&& isbuild) 
             {
                 int buildCost = board.price;
                 if (player.playerData.money >= buildCost )
