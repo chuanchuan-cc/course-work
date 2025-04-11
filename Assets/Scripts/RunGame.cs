@@ -559,6 +559,7 @@ public class RunGame : MonoBehaviour
             }
             else
             {
+                gameBehaviour.AIRedeem(currentPlayer);
 
                 AIRoll();
 

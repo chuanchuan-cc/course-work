@@ -98,7 +98,7 @@ private IEnumerator lackcash(Player player, int amount){
     if(player.playerData.isAI){ 
         if(player.playerData.assetsWorth>amount){                   
                             while(player.playerData.money<amount)
-                            AISell(player);
+                            AISell(player,amount-player.playerData.money);
                             PayMoney(player, amount);}
                             else{
                             bankrupt(player);}
@@ -117,21 +117,60 @@ private IEnumerator lackcash(Player player, int amount){
 
                         }
 }
-    public void AISell(Player player){
-        Debug.Log($"已调用ai卖资产");
+public void AIRedeem(Player player){
+    foreach(Board board in player.playerData.assetsList){
+        if(board is BuyableBoard bBoard){
+            if(bBoard.isMortgage&&(player.playerData.money-bBoard.price/2)>1000)
+            remdeemBuyableBoard(bBoard);
+        }
+        if(board is estateBoard eBoard){
+            if(eBoard.isMortgage&&(player.playerData.money-eBoard.price/2)>1000)
+            remdeemEstateBoard(eBoard);
+        }
+    }
+
+}
+    public void AISell(Player player,int i){
+        int im=player.playerData.money;
+
         if (player.playerData.assetsList.Count == 0 || player.playerData.assetsWorth <= player.playerData.money) {
         bankrupt(player);
         return;}
     else if(RunGame.instance.difficulty==0){
-         Debug.Log($"已调用ai卖资产0");
 
-            int n=Random.Range(0,player.playerData.assetsList.Count);
+         
+
+        int n=Random.Range(0,player.playerData.assetsList.Count);
         estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
-    if(eBoard!=null)
-    SellEstateBoard(eBoard);
+        if(Random.Range(0,2)==0){
+    if(eBoard!=null){
+        SellEstateBoard(eBoard);
+
+    }
     else{
         BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
         SellBuyableBoard(bBoard);
+    }}else{
+         if(eBoard!=null){
+            if(eBoard.improvedLevel==0){
+            if(eBoard.isMortgage)
+        SellEstateBoard(eBoard);
+        else{
+            mortageEstateBoard(eBoard);
+        }}else{
+            tearBuilding(eBoard);
+        }
+
+    }
+    else{
+        BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+        if(bBoard.isMortgage)
+        SellBuyableBoard(bBoard);
+        else{
+            mortageBuyableBoard(bBoard);
+        }
+    }
+
     }
 
 
@@ -140,15 +179,15 @@ private IEnumerator lackcash(Player player, int amount){
     }
     else if(RunGame.instance.difficulty==1){
  
-    List<int>l2 = MortagageState(player);
-    if(l2.Count==0){
+    List<int>l2 = canMortagageList(player);
+    if(l2.Count!=0){
       
-            int n=Random.Range(0,player.playerData.assetsList.Count);
-            estateBoard eBoard= player.playerData.assetsList[n] as estateBoard;
+            int n=Random.Range(0,l2.Count);
+            estateBoard eBoard= player.playerData.assetsList[l2[n]] as estateBoard;
     if(eBoard!=null)
     mortageEstateBoard(eBoard);
     else{
-        BuyableBoard bBoard= player.playerData.assetsList[n] as BuyableBoard;
+        BuyableBoard bBoard= player.playerData.assetsList[l2[n]] as BuyableBoard;
         mortageBuyableBoard(bBoard);
     }
 
@@ -157,8 +196,8 @@ private IEnumerator lackcash(Player player, int amount){
 
     }
     else{
-    int n1=Random.Range(0,l2.Count);
-    estateBoard eBoard= player.playerData.assetsList[l2[n1]] as estateBoard;
+    int n1=Random.Range(0,player.playerData.assetsList.Count);
+    estateBoard eBoard= player.playerData.assetsList[n1] as estateBoard;
     if(eBoard!=null)
     SellEstateBoard(eBoard);
     else{
@@ -172,6 +211,11 @@ private IEnumerator lackcash(Player player, int amount){
 
 
     }
+
+    if(player.playerData.money<i)
+    AISell(player,i-player.playerData.money);
+   
+
     RunGame.instance.playerUpdate(player);
 
 
@@ -179,17 +223,17 @@ private IEnumerator lackcash(Player player, int amount){
 
 
 }
-private List<int> MortagageState(Player player){
+private List<int> canMortagageList(Player player){
     List<int> l1=new List<int>();
     int t=0;
 foreach(Board board in player.playerData.assetsList){
 estateBoard eBoard= board as estateBoard;
 if(eBoard!=null){
-    if(eBoard.isMortgage)
+    if(!eBoard.isMortgage&&eBoard.improvedLevel==0)
     l1.Add(t);
 }else{
 BuyableBoard bBoard= board as BuyableBoard;
-if(bBoard.isMortgage)
+if(!bBoard.isMortgage)
 l1.Add(t);
 
 }
