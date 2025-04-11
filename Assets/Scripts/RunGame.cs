@@ -815,6 +815,7 @@ public class RunGame : MonoBehaviour
 
     IEnumerator check(Player player)
     {
+        oldPosNo=player.playerData.positionNo;
         isChecking = true;
 
 

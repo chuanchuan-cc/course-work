@@ -118,6 +118,7 @@ private IEnumerator lackcash(Player player, int amount){
                         }
 }
     public void AISell(Player player){
+         Debug.Log($"玩家现有资产数{MortagageState(player).Count}");
         if (player.playerData.assetsList.Count == 0 || player.playerData.assetsWorth <= player.playerData.money) {
         bankrupt(player);
         return;}
@@ -170,6 +171,8 @@ private IEnumerator lackcash(Player player, int amount){
 
 
     }
+    RunGame.instance.playerUpdate(player);
+    Debug.Log($"玩家现有资产数{MortagageState(player).Count}");
 
 
 
@@ -269,7 +272,7 @@ return l1;
    
     if (board.owner is PlayerData playerOwner){
     if (playerOwner.assetsList.Contains(board))
-    {
+    {Debug.Log("已进入卖空地");
         if (board.improvedLevel == 0) 
         {
               int sellPrice;
@@ -291,6 +294,7 @@ return l1;
         }
         else
         {
+            Debug.Log("已进入拆房");
             tearBuilding(board);
           
         }
@@ -304,9 +308,9 @@ return l1;
 
 }
 public void SellBuyableBoard(BuyableBoard board){
-
             int sellPrice;
             if( board.owner is PlayerData playerOwner){
+                Debug.Log("已进入卖buyable");
             if(board.isMortgage){
                 sellPrice=(board.price%2==0)? board.price/2:(board.price-1)/2;
 
