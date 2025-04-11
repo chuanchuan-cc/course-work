@@ -91,17 +91,15 @@ private void SomethingForNothing(){
 private void ShowMeTheMoney(){
     int i=int.Parse(inputtext.text);
     Player p=playerlist[(i+playerlist.Count)%playerlist.Count];
-    gameBehaviour.PayMoney(p,100);
+    gameBehaviour.AddMoney(p,100);
+    
 
 
 }
 private void OperationCWAL(){
-    if(inputtext.text=="1")
-    cGcontrol.PlayCGAnimation("jail",new Vector3(999999f,999999f,999999f));
-    if(inputtext.text=="2")
-    cGcontrol.PlayCG("add_money",player);
-    if(inputtext.text=="3")
-    cGcontrol.PlayCG("money_fly",player);
+    int i=int.Parse(inputtext.text);
+    Player p=playerlist[(i+playerlist.Count)%playerlist.Count];
+    gameBehaviour.PayMoney(p,100);
 
 
     

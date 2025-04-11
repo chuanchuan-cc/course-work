@@ -984,7 +984,28 @@ public class RunGame : MonoBehaviour
 
 
         if (drawnCard.isInteractable)
-        {
+        {if(player.playerData.isAI){
+
+            if(Random.Range(0,2)==0){
+                 foreach (Board i in mapList)
+                {
+                    if (i.property == "Opportunity Knocks")
+                    {
+
+                        yield return StartCoroutine(DrawCard(currentPlayer, i));
+
+
+                        yield break;
+
+
+                    }
+
+                }
+            }
+
+
+        }
+        else{
             isInteracting = true;
 
 
@@ -1022,6 +1043,10 @@ public class RunGame : MonoBehaviour
             }
 
             isInteracting = false;
+
+
+
+        }
 
 
 

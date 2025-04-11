@@ -118,6 +118,7 @@ private IEnumerator lackcash(Player player, int amount){
                         }
 }
 public void AIRedeem(Player player){
+    Debug.Log($"AI赎回已调用,可赎回有{player.playerData.assetsList.Count-canMortagageList(player).Count}");
     foreach(Board board in player.playerData.assetsList){
         if(board is BuyableBoard bBoard){
             if(bBoard.isMortgage&&(player.playerData.money-bBoard.price/2)>1000)
@@ -405,6 +406,7 @@ public void mortageBuyableBoard(BuyableBoard board){
     }
     
     public void remdeemEstateBoard(estateBoard board){
+        Debug.Log($"ai已赎回{board.property}");
     board.isMortgage=false;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
@@ -416,6 +418,7 @@ public void mortageBuyableBoard(BuyableBoard board){
     }
 }
 public void remdeemBuyableBoard(BuyableBoard board){
+    Debug.Log($"ai已赎回{board.property}");
     board.isMortgage=false;
     if( board.owner is PlayerData playerOwner){
     playerOwner.money-=(board.price%2==0)? board.price/2:(board.price-1)/2;
