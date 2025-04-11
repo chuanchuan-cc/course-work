@@ -68,9 +68,25 @@ public class initialPanelScript : MonoBehaviour
         loadMap.onClick.AddListener(LoadMap);
         loadCard.onClick.AddListener(LoadCard);
         exitpanel.onClick.AddListener(() => onClickExit(initialPanel));
-        defaultFolder = Application.dataPath + "/Resources";
+        defaultFolder = Application.persistentDataPath;;
         loadgame.onClick.AddListener(loadGame);
         musicButton.onClick.AddListener(MusicController.Instance.changeThemeMode);
+
+        string defaultMapPath = Path.Combine(Application.persistentDataPath, "map/testMap.xlsx");
+        string defaultCardPath = Path.Combine(Application.persistentDataPath, "card/testCard.xlsx");
+         if (!PlayerPrefs.HasKey("mapPath") && File.Exists(defaultMapPath))
+        {
+            PlayerPrefs.SetString("mapPath", defaultMapPath);
+            mapText.text = "Default map";
+        }
+
+        if (!PlayerPrefs.HasKey("cardPath") && File.Exists(defaultCardPath))
+        {
+            PlayerPrefs.SetString("cardPath", defaultCardPath);
+            cardText.text = "Default cardpool";
+        }
+
+        PlayerPrefs.Save();
 
     }
     // Update is called once per frame

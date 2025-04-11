@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using System.IO;
 
 
 
@@ -170,6 +171,8 @@ public class RunGame : MonoBehaviour
     void Start()
     {
 
+        EnsureDefaultFiles();
+
 
 
         if (isLoadGame)
@@ -187,22 +190,22 @@ public class RunGame : MonoBehaviour
             {
                 TypeNameHandling = TypeNameHandling.Auto
             });
-            luckCards = saveData.lCards;
-            luckNo = saveData.luckNo;
-            opportunityCards = saveData.oCards;
-            OpportunityNo = saveData.OpportunityNo;
-            mapList = saveData.allBoards;
-            point = saveData.cpoint;
-            isAI = saveData.isai;
-            difficulty = saveData.diff;
-            runtime = saveData.runtime;
-            maxRuntime = saveData.maxRuntime;
+            luckCards=saveData.lCards;
+            luckNo=saveData.luckNo;
+            opportunityCards=saveData.oCards;
+            OpportunityNo=saveData.OpportunityNo;
+            mapList=saveData.allBoards;
+            point=saveData.cpoint;
+            isAI=saveData.isai;
+            difficulty=saveData.diff;
+            runtime=saveData.runtime;
+            maxRuntime=saveData.maxRuntime;
 
 
 
-            freeParkMoney = saveData.freeParkingMoney;
+            freeParkMoney=saveData.freeParkingMoney;
 
-            playersList = new List<Player>(saveData.allPlayers.Count);
+            playersList=new List<Player>(saveData.allPlayers.Count);
 
 
 
@@ -276,7 +279,9 @@ public class RunGame : MonoBehaviour
         }
         else
         {
+            
             // load the input from last scene
+
 
 
             isAI = true;
@@ -339,8 +344,8 @@ public class RunGame : MonoBehaviour
 
 
             //initialize the map and card
-            string cardPath = (PlayerPrefs.GetString("cardPath") != null) ? PlayerPrefs.GetString("cardPath") : Application.dataPath + "/Resources/card/testCard.xlsx";
-            string mapPath = (PlayerPrefs.GetString("mapPath") != null) ? PlayerPrefs.GetString("mapPath") : Application.dataPath + "/Resources/map/testMap.xlsx"; ;
+            string cardPath = PlayerPrefs.HasKey("cardPath") ? PlayerPrefs.GetString("cardPath") : Path.Combine(Application.persistentDataPath, "card/testCard.xlsx");
+            string mapPath = PlayerPrefs.HasKey("mapPath") ? PlayerPrefs.GetString("mapPath") : Path.Combine(Application.persistentDataPath, "map/testMap.xlsx");
 
             if (mapPath == null)
             {
@@ -439,14 +444,11 @@ public class RunGame : MonoBehaviour
         }
         timeboard.updateTimeBoard(runtime);
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            testmenus.cheating(currentPlayer);
-            Debug.Log($"{currentPlayer.name}, money={currentPlayer.playerData.money}, freejailNum= {currentPlayer.playerData.freeJail}, worth={currentPlayer.playerData.assetsWorth}"
-
-
-       );
-        }
+        // if (Input.GetKeyDown(KeyCode.C))
+        // {
+        //     testmenus.cheating(currentPlayer);
+        //     Debug.Log($"{currentPlayer.name}, money={currentPlayer.playerData.money}, freejailNum= {currentPlayer.playerData.freeJail}, worth={currentPlayer.playerData.assetsWorth}");
+        // }
 
 
 
@@ -498,13 +500,13 @@ public class RunGame : MonoBehaviour
                 currentPlayer = playersList[point];
             else
                 currentPlayer = nextPlayer;
-            Debug.Log($"玩家当前图层为{currentPlayer.gameObject.layer}");
+           
 
             currentPlayer.gameObject.layer = LayerMask.NameToLayer("PlayerActive");
-            Debug.Log($"修改后/玩家当前图层为{currentPlayer.gameObject.layer}");
+       
 
             nextPlayer = playersList[(playersList.IndexOf(currentPlayer) + 1) % playersList.Count];
-            Debug.Log($"currently player is {currentPlayer.name}");
+        
 
             AutoSaveGame();
             BoardConstructor.highlightPlayer(currentPlayer);
@@ -644,7 +646,7 @@ public class RunGame : MonoBehaviour
             }
 
             NextButton.interactable = true;
-            Debug.Log($"当前玩家状态{currentPlayer.name},isnext={isNext},is ai {currentPlayer.playerData.isAI},is bankrupt{currentPlayer.playerData.isBankrupt}");
+           
 
 
 
@@ -1816,7 +1818,7 @@ public class RunGame : MonoBehaviour
     }
     public void AIBuild(Player player,estateBoard eBoard)
     {
-        Debug.Log($"已调用ai建房，难度为{difficulty}");
+     
         if (eBoard != null)
         {
             int buildCost = gameBehaviour.costCalculer(eBoard);
@@ -1824,7 +1826,7 @@ public class RunGame : MonoBehaviour
             {
                 if (Random.Range(0, 2) == 0 && player.playerData.money > buildCost && eBoard.improvedLevel < 5)
                 { 
-                    Debug.Log("已成功ai建房");
+                
                     eBoard.improvedLevel++;
                     eBoard.ResetRent(eBoard.improvedLevel - 1);
                     eBoard.price += buildCost;
@@ -1834,14 +1836,14 @@ public class RunGame : MonoBehaviour
                     cgControl.PlayCG("money_fly", player);
 
                 }else
-                Debug.Log("已失败ai建房，简单难度运气问题");
+              
                 isChecking = false;
             }
             else if (difficulty == 1)
             {
                 if (player.playerData.money-buildCost>1000&& eBoard.improvedLevel < 5)
                 {
-                    Debug.Log("已成功ai建房");
+                  
                     eBoard.improvedLevel++;
                     eBoard.ResetRent(eBoard.improvedLevel - 1);
                     eBoard.price += buildCost;
@@ -1850,7 +1852,7 @@ public class RunGame : MonoBehaviour
                     gameBehaviour.PayMoney(player, buildCost);
                     cgControl.PlayCG("money_fly", player);
                 }else{
-                    Debug.Log($"已失败ai建房,成本为{buildCost}");
+               
                 }
                 isChecking = false;
             }
@@ -1861,6 +1863,29 @@ public class RunGame : MonoBehaviour
     {
         cheatStep = i;
 
+    }
+    void EnsureDefaultFiles()
+    {
+        string cardDir = Path.Combine(Application.persistentDataPath, "card");
+        string mapDir = Path.Combine(Application.persistentDataPath, "map");
+
+        Directory.CreateDirectory(cardDir);
+        Directory.CreateDirectory(mapDir);
+
+        string cardPath = Path.Combine(cardDir, "testCard.xlsx");
+        string mapPath = Path.Combine(mapDir, "testMap.xlsx");
+
+        if (!File.Exists(cardPath))
+        {
+            string source = Path.Combine(Application.streamingAssetsPath, "card/testCard.xlsx");
+            if (File.Exists(source)) File.Copy(source, cardPath);
+        }
+
+        if (!File.Exists(mapPath))
+        {
+            string source = Path.Combine(Application.streamingAssetsPath, "map/testMap.xlsx");
+            if (File.Exists(source)) File.Copy(source, mapPath);
+        }
     }
     private void changeCameraMode()
     {
@@ -1907,7 +1932,7 @@ public class RunGame : MonoBehaviour
 #if UNITY_EDITOR
          UnityEditor.EditorApplication.isPlaying=false;
 #else
-        Application.quit();
+        Application.Quit();
 #endif
     }
     private IEnumerator moveCheck(Player player)
@@ -1971,7 +1996,8 @@ public class RunGame : MonoBehaviour
             TypeNameHandling = TypeNameHandling.Auto
         });
 
-        string path = Application.dataPath + "/save/savegame.json";
+        string path = Path.Combine(Application.persistentDataPath, "savegame.json");
+        Directory.CreateDirectory(Path.GetDirectoryName(path));
         System.IO.File.WriteAllText(path, json);
 
         Debug.Log("game was saved in" + path);
