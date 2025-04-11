@@ -71,14 +71,16 @@ public void setmapplayer(List<Board> _maplist,List<Player> _playerlist){
 
 }
 private void SomethingForNothing(){
+    int i=int.Parse(inputtext.text);
+    Player p=playerlist[(i+playerlist.Count)%playerlist.Count];
     foreach(Board board in maplist){
         estateBoard eBoard=board as estateBoard;
         if(eBoard!=null){
-            gameBehaviour.AddProperty(player,eBoard);
+            gameBehaviour.AddProperty(p,eBoard);
         }else{
             BuyableBoard bBoard = board as BuyableBoard;
             if(bBoard!=null){
-                gameBehaviour.AddBuyable(player,bBoard);
+                gameBehaviour.AddBuyable(p,bBoard);
             }
         }
     }
@@ -87,7 +89,9 @@ private void SomethingForNothing(){
 
 }
 private void ShowMeTheMoney(){
-    gameBehaviour.AddMoney(player,10000);
+    int i=int.Parse(inputtext.text);
+    Player p=playerlist[(i+playerlist.Count)%playerlist.Count];
+    gameBehaviour.PayMoney(p,100);
 
 
 }
